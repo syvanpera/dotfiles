@@ -11,5 +11,6 @@ fi
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# Make the keyboard usable
 xset r rate 300 40
 setxkbmap -option 'caps:ctrl_modifier' && killall xcape 2>/dev/null ; xcape -e 'Caps_Lock=Escape' &
