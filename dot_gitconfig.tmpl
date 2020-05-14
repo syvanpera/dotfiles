@@ -1,0 +1,40 @@
+[hub]
+  protocol = https
+[alias]
+  s = status --short
+  st = status
+  co = checkout
+  count   = !git shortlog -sn
+  undo = !git reset --soft HEAD^1 && git reset && git co -- .
+  branchdate = !git for-each-ref --sort='authordate' --format='%(authordate:iso8601)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  bd = !git for-each-ref --sort='authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+[core]
+  excludesfile = {{ .chezmoi.homedir }}/.gitignore
+  editor = nvim
+[apply]
+  whitespace = nowarn
+[mergetool]
+  keepBackup = false
+[difftool]
+  prompt = false
+[help]
+  autocorrect = 1
+[remote "origin"]
+  push = HEAD
+[push]
+  # See `git help config` (search for push.default)
+  # for more information on different options of the below setting.
+  #
+  # Setting to git 2.0 default to suppress warning message
+  default = simple
+[user]
+  name = {{ .name }}
+  email = {{ .email }}
+[github]
+  user = syvanpera
