@@ -31,13 +31,13 @@ settings:
   colors.messages.warning.border:
     global: '#d47300'
   colors.tabs.bar.bg:
-    global: '#121212'
+    global: '#1d1f21'
   colors.tabs.even.bg:
-    global: '#121212'
+    global: '#1d1f21'
   colors.tabs.even.fg:
     global: white
   colors.tabs.odd.bg:
-    global: '#121212'
+    global: '#1d1f21'
   colors.tabs.odd.fg:
     global: white
   colors.tabs.pinned.selected.odd.bg:
