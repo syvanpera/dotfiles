@@ -16,7 +16,7 @@
 
 TYPE="${BLOCK_INSTANCE:-mem}"
 
-awk -v type=$TYPE '
+awk -v label="$LABEL" -v type=$TYPE '
 /^MemTotal:/ {
 	mem_total=$2
 }
@@ -52,18 +52,18 @@ END {
 	}
 
 	# full text
-	printf("%.1fG/%.1fG (%.f%%)\n", used, total, pct)
+	printf("%s %.1fG/%.1fG (%.f%%)\n", label, used, total, pct)
 
 	# short text
 	printf("%.f%%\n", pct)
 
 	# color
 	if (pct > 90) {
-		print("#FF0000")
+		print("#cc6666")
 	} else if (pct > 80) {
-		print("#FFAE00")
+    print("#da8548")
 	} else if (pct > 70) {
-		print("#FFF600")
-	}
+    print("#f0c674")
+  }
 }
 ' /proc/meminfo
