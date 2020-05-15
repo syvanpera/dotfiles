@@ -24,6 +24,9 @@ SETUVAR _fish_abbr_n:newsboat
 SETUVAR _fish_abbr_r:ranger
 SETUVAR _fish_abbr_ya:yadm\x20add
 SETUVAR _fish_abbr_yc:yadm\x20commit
+SETUVAR _fish_abbr_yd:yadm\x20diff
+SETUVAR _fish_abbr_yp:yadm\x20push\x20origin\x20master
+SETUVAR _fish_abbr_ys:yadm\x20status
 SETUVAR fish_color_autosuggestion:969896
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:b294bb
