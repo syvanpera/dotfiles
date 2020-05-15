@@ -62,8 +62,7 @@
 
 # General settings ------------------------------------------------------------------------------{{{
 
-  # font pango:JetBrains Mono 9
-  font pango:Droid Sans Regular 8
+  font pango:JetBrainsMono Nerd Font 9
 
   # Use Mouse+$mod to drag floating windows to their wanted position
   floating_modifier $mod
@@ -285,9 +284,9 @@
   #set powersavings for display:
   exec --no-startup-id xset s 480 dpms 600 600 600
 
-  exec --no-startup-id picom -cC
-  exec --no-startup-id nm-applet
-  exec --no-startup-id nitrogen --restore
+  exec        --no-startup-id picom -cC
+  exec        --no-startup-id nm-applet
+  exec_always --no-startup-id nitrogen --restore
 
   # Desktop notifications
   exec --no-startup-id /usr/bin/dunst
@@ -301,6 +300,7 @@
 # i3blocsk --------------------------------------------------------------------------------------{{{
 
   bar {
+      font pango:JetBrainsMono Nerd Font 10
       status_command i3blocks -c ~/.config/i3/i3blocks.conf
       tray_output primary
       position top
