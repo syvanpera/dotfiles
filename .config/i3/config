@@ -308,7 +308,7 @@
 
       colors {
           separator          #666666
-          background         #1d1f21
+          background         #121212
           statusline         #dddddd
           focused_workspace  #51afef #51afef #ffffff
           active_workspace   #333333 #333333 #ffffff
