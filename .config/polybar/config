@@ -24,7 +24,7 @@ red    = #cc6666
 blue   = #51afef
 purple = #b45bcf
 
-bg = #1d1f21
+bg = #121212
 fg = #d8dee9
 fg-alt = #abb2bf
 
@@ -490,7 +490,7 @@ click-left = ~/scripts/rofi-kube-namespace.sh
 
 [module/vpncheck]
 type = custom/script
-exec = sh ~/scripts/vpncheck.sh
+exec = sh ~/.config/polybar/scripts/vpncheck.sh
 format-foreground = ${color.fg}
 interval = 5
 click-left = networkmanager_dmenu
@@ -602,9 +602,9 @@ animation-charging-framerate = 750
 
 [module/compositor]
 type = custom/script
-exec = ~/.config/polybar/scripts/isrunning-compton.sh
+exec = ~/.config/polybar/scripts/comptoncheck.sh
 interval = 5
-click-left = ~/.config/polybar/scripts/isrunning-compton.sh --toggle &
+click-left = ~/.config/polybar/scripts/comptoncheck.sh --toggle &
 
 [module/docker]
 type = custom/script

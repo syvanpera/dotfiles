@@ -5,7 +5,7 @@ case "$1" in
         if [ "$(pgrep -x picom)" ]; then
             pkill picom
         else
-            picom -b --config ~/.config/compton/config
+            picom -cC --config ~/.config/compton/config
         fi
         ;;
     *)

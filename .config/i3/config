@@ -276,8 +276,10 @@
 
 # Autostarts ------------------------------------------------------------------------------------{{{
 
-  # exec_always --no-startup-id ~/.config/polybar/launch.sh
-  # exec_always --no-startup-id ~/.config/compton/launch.sh
+  exec_always --no-startup-id ~/.config/polybar/launch.sh
+  exec_always --no-startup-id ~/.config/compton/launch.sh
+  exec_always --no-startup-id nitrogen --restore
+
   # exec        --no-startup-id ~/.fehbg
 
   # get auth work with polkit-gnome
@@ -285,9 +287,7 @@
   #set powersavings for display:
   exec --no-startup-id xset s 480 dpms 600 600 600
 
-  exec        --no-startup-id picom -cC
   exec        --no-startup-id nm-applet
-  exec_always --no-startup-id nitrogen --restore
 
   # Desktop notifications
   exec --no-startup-id /usr/bin/dunst
@@ -298,28 +298,67 @@
 
 # }}}
 
-# i3blocks --------------------------------------------------------------------------------------{{{
+# i3bar -----------------------------------------------------------------------------------------{{{
 
-  bar {
-      font pango:JetBrainsMono Nerd Font 10
-      status_command i3blocks -c ~/.config/i3/i3blocks.conf
-      output eDP1
-      output DP2
-      tray_output primary
-      position top
-      tray_padding 0
-      separator_symbol " • "
-
-      colors {
-          separator          #969896
-          background         #121212
-          statusline         #dddddd
-          focused_workspace  #51afef #51afef #ffffff
-          active_workspace   #333333 #333333 #ffffff
-          inactive_workspace #333333 #333333 #888888
-          urgent_workspace   #2f343a #cc6666 #ffffff
-      }
-  }
+  # bar {
+  #     font pango:JetBrainsMono Nerd Font 10
+  #     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  #     output DP2
+  #     tray_output primary
+  #     position top
+  #     tray_padding 0
+  #     workspace_min_width 32
+  #     separator_symbol " • "
+  #
+  #     colors {
+  #         separator          #969896
+  #         background         #121212
+  #         statusline         #dddddd
+  #         focused_workspace  #51afef #51afef #ffffff
+  #         active_workspace   #333333 #333333 #ffffff
+  #         inactive_workspace #333333 #333333 #888888
+  #         urgent_workspace   #2f343a #cc6666 #ffffff
+  #     }
+  # }
+  #
+  # bar {
+  #     font pango:JetBrainsMono Nerd Font 20
+  #     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  #     output eDP1
+  #     tray_output primary
+  #     position top
+  #     tray_padding 0
+  #     workspace_min_width 32
+  #     separator_symbol " • "
+  #
+  #     colors {
+  #         separator          #969896
+  #         background         #121212
+  #         statusline         #dddddd
+  #         focused_workspace  #51afef #51afef #ffffff
+  #         active_workspace   #333333 #333333 #ffffff
+  #         inactive_workspace #333333 #333333 #888888
+  #         urgent_workspace   #2f343a #cc6666 #ffffff
+  #     }
+  # }
+  #
+  # bar {
+  #     font pango:JetBrainsMono Nerd Font 10
+  #     status_command i3status --config ~/.config/i3/i3status.conf
+  #     output DP1
+  #     position top
+  #     workspace_min_width 32
+  #
+  #     colors {
+  #         separator          #969896
+  #         background         #121212
+  #         statusline         #dddddd
+  #         focused_workspace  #51afef #51afef #ffffff
+  #         active_workspace   #333333 #333333 #ffffff
+  #         inactive_workspace #333333 #333333 #888888
+  #         urgent_workspace   #2f343a #cc6666 #ffffff
+  #     }
+  # }
 
 # }}}
 
