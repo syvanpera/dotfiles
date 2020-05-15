@@ -9,7 +9,7 @@ configuration {
     fullscreen:          false;
     hide-scrollbar:      true;
     sidebar-mode:        false;
-    location:            3;
+    location:            1;
 }
 
 @import "fonts.rasi"
@@ -22,8 +22,8 @@ window {
     border-radius:    0px;
     height:           15%;
     width:            15%;
-    x-offset:         -0.5%;
-    y-offset:         3%;
+    x-offset:         0%;
+    y-offset:         2%;
 }
 
 prompt {

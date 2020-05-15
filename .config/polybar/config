@@ -102,7 +102,7 @@ monitor = eDP1
 inherit = bar/hidpi
 
 modules-left = distro i3
-modules-right = compositor separator fs-root fs-home separator backlight separator-alt pulseaudio separator vpncheck network separator battery separator date
+modules-right = compositor separator cpu separator-alt memory separator fs-root fs-home separator backlight separator-alt pulseaudio separator vpncheck network separator battery separator date
 
 [bar/external]
 monitor = DP2
@@ -164,9 +164,7 @@ content = " "
 content-padding = 0
 content-background = ${color.bg}
 content-foreground = ${color.acolor}
-click-left = rmenu_g
-click-middle = rfull
-click-right = rmenu_wi_g
+click-left = ~/.config/rofi/scripts/powermenu
 
 [module/xmonad]
 type = custom/script
