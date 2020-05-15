@@ -3,7 +3,7 @@ env:
 
 # Font configuration
 font:
-  size: 6.5
+  size: 9
   # Suitable for Ubuntu mono
   # size: 7.5
   # size: 10

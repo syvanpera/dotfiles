@@ -95,6 +95,7 @@
   for_window [class="VirtualBox Manager"] floating enable
   for_window [class="Gcolor3"] floating enable
   for_window [class="Yad" instance="yad"] floating enable
+  for_window [class="Arandr" instance="arandr"] floating enable
 
 # }}}
 
