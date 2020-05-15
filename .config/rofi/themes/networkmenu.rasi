@@ -10,7 +10,6 @@ configuration {
     hide-scrollbar:      true;
     sidebar-mode:        false;
     location:            3;
-    anchor:              3;
 }
 
 @import "fonts.rasi"
