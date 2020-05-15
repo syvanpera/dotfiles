@@ -6,7 +6,7 @@ configuration {
   hide-scrollbar: true;
   /* theme: "~/.config/rofi/themes/custom.rasi"; */
   /* theme: "~/.config/rofi/themes/gruvbox-dark-soft.rasi"; */
-  theme: "~/.config/rofi/themes/gruvbox.rasi";
+  /* theme: "~/.config/rofi/themes/gruvbox.rasi"; */
   /* drun-icon-theme: "Arc"; */
   kb-remove-to-eol: "";
   kb-row-up: "Up,Control+p,Alt+k,Control+k,ISO_Left_Tab,Alt+Shift+Tab";

@@ -1,8 +1,9 @@
+@import "fonts.rasi"
+
 * {
     background-color: #212B30;
     text-color:       #4DD0E1;
     passwd:           #EC407A;
-    font:                                             "JetBrainsMono Nerd Font 16";
 }
 
 #window {

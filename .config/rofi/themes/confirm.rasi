@@ -1,5 +1,4 @@
 configuration {
-    font:                 "JetBrainsMono Nerd Font 16";
     show-icons:          false;
     icon-theme:          "Papirus";
     display-drun:        "Search :";
@@ -12,6 +11,7 @@ configuration {
     sidebar-mode:        false;
 }
 
+@import "fonts.rasi"
 @import "colors.rasi"
 
 window {

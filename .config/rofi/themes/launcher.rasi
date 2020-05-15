@@ -1,14 +1,4 @@
-/*
- *
- * Author : Aditya Shakya (adi1090x)
- * Mail : adi1090x@gmail.com
- * Github : @adi1090x
- * Reddit : @adi1090x
- *
- */
-
 configuration {
-    font:                                                "JetBrainsMono Nerd Font 16";
     show-icons:          false;
     icon-theme:          "Papirus";
     display-drun:        "Search :";
@@ -21,6 +11,7 @@ configuration {
     sidebar-mode:        false;
 }
 
+@import "fonts.rasi"
 @import "colors.rasi"
 
 window {
