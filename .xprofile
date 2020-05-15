@@ -6,7 +6,7 @@ if [ $DISPLAYS -eq 1 ]; then
 
   # xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -t int -s 2
 
-  sed -i 's/^\(.*doom-font.*\)size [0-9]*\(.*\)$/\1size 26\2/g' ~/.doom.d/config.el
+  sed -i 's/^\(.*doom-font.*\)size [0-9]*\(.*\)$/\1size 24\2/g' ~/.doom.d/config.el
   sed -i 's/\(  size:\).*$/\1 6.5/g' /home/tuomo/.config/alacritty/alacritty.yml
   sed -i 's/\(font = \).*$/\1 Noto Sans Regular 18/g' /home/tuomo/.config/dunst/dunstrc
   sed -i 's/\( *font: *\).*$/\1 "JetBrainsMono Nerd Font 16";/g' /home/tuomo/.config/rofi/themes/fonts.rasi
