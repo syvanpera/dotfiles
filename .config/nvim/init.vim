@@ -278,6 +278,7 @@
   nnoremap <leader>bc :BCommits<CR>
   nnoremap <leader>gc :Commits<CR>
   nnoremap <leader><space> :Files<CR>
+  nnoremap <leader>ff :Files<CR>
 
   nnoremap <M-F> :Rg<CR>
 
