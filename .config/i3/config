@@ -250,15 +250,20 @@
 # Hardware keys ---------------------------------------------------------------------------------{{{
 
   # Volume control
-  bindsym XF86AudioRaiseVolume exec sh -c "amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
-  bindsym XF86AudioLowerVolume exec sh -c "amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
+  # bindsym XF86AudioRaiseVolume exec sh -c "amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
+  # bindsym XF86AudioLowerVolume exec sh -c "amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
+  bindsym XF86AudioRaiseVolume exec sh -c "amixer -D pulse sset Master 5%+ && ~/.config/i3/scripts/audio-notification.sh"
+  bindsym XF86AudioLowerVolume exec sh -c "amixer -D pulse sset Master 5%- && ~/.config/i3/scripts/audio-notification.sh"
 
   # Granular volume control
-  bindsym $mod+XF86AudioRaiseVolume exec sh -c "amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
-  bindsym $mod+XF86AudioLowerVolume exec sh -c "amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
+  # bindsym $mod+XF86AudioRaiseVolume exec sh -c "amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
+  # bindsym $mod+XF86AudioLowerVolume exec sh -c "amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
+  bindsym $mod+XF86AudioRaiseVolume exec sh -c "amixer -D pulse sset Master 1%+ && ~/.config/i3/scripts/audio-notification.sh"
+  bindsym $mod+XF86AudioLowerVolume exec sh -c "amixer -D pulse sset Master 1%- && ~/.config/i3/scripts/audio-notification.sh"
 
   # Mute
-  bindsym XF86AudioMute exec sh -c "amixer sset Master toggle && killall -USR1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
+  # bindsym XF86AudioMute exec sh -c "amixer sset Master toggle && killall -USR1 i3blocks && ~/.config/i3/scripts/audio-notification.sh"
+  bindsym XF86AudioMute exec sh -c "amixer sset Master toggle && ~/.config/i3/scripts/audio-notification.sh"
 
   # Brightness control
   bindsym XF86MonBrightnessUp exec sh -c "brightnessctl set 5%+ && ~/.config/i3/scripts/brightness-notification.sh"
