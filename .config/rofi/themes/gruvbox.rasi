@@ -1,0 +1,109 @@
+/*
+ * ROFI Gruvbox Dark Theme
+ *
+ * Based on https://github.com/DaveDavenport/rofi-themes/blob/master/User%20Themes/onedark.rasi
+ * Based on OneDark.vim (https://github.com/joshdick/onedark.vim)
+ */
+
+
+* {
+  base03:     #002b36;
+  base03t:    #282828;
+  base02:     #3c3836;
+  base01:     #586e75;
+  base0:      #839496;
+  base1:      #93a1a1;
+  yellow:     #b58900;
+  red:	      #dc322f;
+  blue:       #51afef;
+  cyan:       #2aa198;
+  black:      #000000;
+  white:      #ffffff;
+  green:      #689d6a;
+
+  spacing: 0;
+  background-color: transparent;
+  border-color:     @blue;
+  separatorcolor:   @blue;
+
+  font:                                  "JetBrainsMono Nerd Font 16";
+  text-color: @base0;
+}
+
+window {
+  /* transparency: "real"; */
+  /* fullscreen: true; */
+  background-color: @base03t;
+  border:           2;
+  padding:          2;
+}
+
+mainbox {
+  /* padding: 30% 30%; */
+  border:  0;
+  padding: 0;
+}
+
+inputbar {
+  padding: 10px;
+  margin: 0px 0px 10px 0px;
+  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+  border: 0 0 2px 0;
+  border-color: @blue;
+  background-color: @base02;
+}
+
+prompt {
+  text-color: @blue;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: ":";
+  text-color: @base1;
+}
+
+entry {
+  margin: 0px 10px;
+}
+
+listview {
+  spacing: 5px;
+  dynamic: true;
+  scrollbar: false;
+}
+
+element {
+  padding: 5px;
+  text-color: @base1;
+  highlight: @yellow;
+  border-radius: 3px;
+}
+
+element selected {
+  background-color: @blue;
+  text-color: @white;
+}
+
+element urgent, element selected urgent {
+  text-color: @red;
+}
+
+element active, element selected active {
+  text-color: @white;
+}
+
+message {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @base02;
+  border: 1px;
+  border-color: @cyan;
+}
+
+button selected {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @base02;
+}
+

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rofi -modi "Files:$HOME/.config/rofi/scripts/file-browser.sh" -show Files
