@@ -285,9 +285,16 @@
 
   " NERDTree  ---------------------------------------------------------------{{{
 
-  nnoremap <M-e>     :NERDTreeToggle<CR>
+  nnoremap <M-e>     :NERDTreeFind<CR>
   nmap     <leader>E :NERDTreeToggle<CR>
   nmap     <leader>e :NERDTreeFind<CR>
+
+  let g:NERDTreeWinSize=45
+  let g:NERDTreeQuitOnOpen=1
+  let g:NERDTreeAutoDeleteBuffer=1
+  let NERDTreeMinimalUI=1
+  let NERDTreeDirArrows=1
+  let g:WebDevIconsOS='Darwin'
 
   " }}}
 
