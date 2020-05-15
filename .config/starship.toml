@@ -1,0 +1,29 @@
+[character]
+symbol = "λ"
+error_symbol = ""
+use_symbol_for_status = true
+
+[git_branch]
+symbol = " "
+truncation_symbol = ""
+
+[git_state]
+cherry_pick = "🍒 PICKING"
+
+[golang]
+symbol = "ﳑ "
+
+[rust]
+symbol = " "
+
+[package]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[python]
+symbol = " "
+
+[kubernetes]
+disabled = true

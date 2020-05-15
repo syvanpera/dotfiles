@@ -1,0 +1,16 @@
+DISPLAYS=$(xrandr --listactivemonitors| grep 'Monitors:'| awk '{print $2}')
+
+if [ $DISPLAYS -eq 1 ]; then
+  export GDK_SCALE=2
+  export QT_SCALE_FACTOR=2
+
+  xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -t int -s 2
+else
+  xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -t int -s 1
+fi
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Make the keyboard usable
+xset r rate 300 40
+setxkbmap -option 'caps:ctrl_modifier' && killall xcape 2>/dev/null ; xcape -e 'Caps_Lock=Escape' &
