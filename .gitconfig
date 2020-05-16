@@ -1,6 +1,10 @@
 [hub]
   protocol = https
 [alias]
+  p = push
+  c = commit
+  a = add
+  d = diff
   s = status --short
   st = status
   co = checkout
