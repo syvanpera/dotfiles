@@ -62,7 +62,7 @@
 
 # General settings ------------------------------------------------------------------------------{{{
 
-  font pango:JetBrainsMono Nerd Font 9
+  font pango:JetBrainsMono Nerd Font 16
 
   # Use Mouse+$mod to drag floating windows to their wanted position
   floating_modifier $mod
@@ -306,7 +306,7 @@
 # i3bar -----------------------------------------------------------------------------------------{{{
 
   # bar {
-  #     font pango:JetBrainsMono Nerd Font 10
+  #     font pango:JetBrainsMono Nerd Font 16
   #     status_command i3blocks -c ~/.config/i3/i3blocks.conf
   #     output DP2
   #     tray_output primary
@@ -327,7 +327,7 @@
   # }
   #
   # bar {
-  #     font pango:JetBrainsMono Nerd Font 20
+  #     font pango:JetBrainsMono Nerd Font 16
   #     status_command i3blocks -c ~/.config/i3/i3blocks.conf
   #     output eDP1
   #     tray_output primary
@@ -348,7 +348,7 @@
   # }
   #
   # bar {
-  #     font pango:JetBrainsMono Nerd Font 10
+  #     font pango:JetBrainsMono Nerd Font 16
   #     status_command i3status --config ~/.config/i3/i3status.conf
   #     output DP1
   #     position top
