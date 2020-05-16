@@ -69,7 +69,7 @@
 
   title_align center
 
-  default_border pixel 1
+  default_border pixel 2
   default_floating_border normal
 
   focus_follows_mouse no
@@ -86,8 +86,7 @@
 
 # Window rules ----------------------------------------------------------------------------------{{{
 
-  for_window [class="^.*"] border pixel 1
-  # for_window [class="Firefox"] border pixel 2
+  for_window [class="^.*"] border pixel 2
 
   # open specific applications in floating mode
   for_window [class="Pavucontrol" instance="pavucontrol"] floating enable

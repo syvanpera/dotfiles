@@ -29,7 +29,7 @@
   # the top and down respectively.
   # The width can be negative.  In this case the actual width is the
   # screen width minus the width defined in within the geometry option.
-  geometry = "500x50-10+38"
+  geometry = "600x50-5+50"
 
   # Show how many messages are currently hidden (because of geometry).
   indicate_hidden = yes
@@ -167,7 +167,7 @@
 
   # Paths to default icons.
   #icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-  icon_path= /usr/share/icons/Arc-X-D/status/:/usr/share/icons/Arc-X-D/devices/:/usr/share/icons/Arc-X-D/apps/:/usr/share/icons/Arc-X-D/actions/:/usr/share/icons/Arc-X-D/categories/
+  icon_path= /usr/share/icons/Paper/32x32/apps:/usr/share/icons/Arc-X-D/status/:/usr/share/icons/Arc-X-D/devices/:/usr/share/icons/Arc-X-D/apps/:/usr/share/icons/Arc-X-D/actions/:/usr/share/icons/Arc-X-D/categories/
 
   ### History ###
 
@@ -214,7 +214,7 @@
   # corners.
   # The radius will be automatically lowered if it exceeds half of the
   # notification height to avoid clipping text and/or icons.
-  corner_radius = 3
+  corner_radius = 5
 
   ### Legacy
 
@@ -275,7 +275,7 @@
 [urgency_low]
   # IMPORTANT: colors have to be defined in quotation marks.
   # Otherwise the "#" and following would be interpreted as a comment.
-  background  = "#0d1117"
+  background  = "#212B30"
   foreground  = "#ffffff"
   frame_color = "#51afef"
   timeout = 5
@@ -283,7 +283,7 @@
   icon = /usr/share/icons/Arc-X-D/status/32/dialog-information.png
 
 [urgency_normal]
-  background  = "#0d1117"
+  background  = "#212B30"
   foreground  = "#ffffff"
   frame_color = "#51afef"
   timeout = 5
@@ -291,7 +291,7 @@
   icon = /usr/share/icons/Arc-X-D/status/32/dialog-question.png
 
 [urgency_critical]
-  background  = "#0d1117"
+  background  = "#212B30"
   foreground  = "#cc6666"
   frame_color = "#cc6666"
   timeout = 120
