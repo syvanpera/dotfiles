@@ -1,0 +1,13 @@
+[Unit]
+Description=Sync mail from gmail every 10 mins
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+Persistent=false
+OnBootSec=60
+OnCalendar=*:0/10
+Unit=mailsync.service
+
+[Install]
+WantedBy=timers.target

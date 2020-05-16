@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync mailboxes
+
+[Service]
+Type=simple
+ExecStart=/home/tuomo/.local/bin/mailsync
+
+[Install]
+WantedBy=default.target
