@@ -36,7 +36,7 @@ prompt {
 
 textbox-prompt-colon {
     expand:           false;
-    str:              "";
+    str:              "ﰌ";
     background-color: @background;
     text-color:       @logo;
     padding:          4px 0px 0px 8px;

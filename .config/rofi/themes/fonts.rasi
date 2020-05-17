@@ -1,0 +1,5 @@
+/* Fonts For All Themes*/
+
+* {
+    font:          "JetBrainsMono Nerd Font 16";
+}
