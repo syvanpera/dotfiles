@@ -9,7 +9,7 @@ configuration {
     fullscreen:          false;
     hide-scrollbar:      true;
     sidebar-mode:        false;
-    location:            1;
+    location:            3;
 }
 
 @import "fonts.rasi"
