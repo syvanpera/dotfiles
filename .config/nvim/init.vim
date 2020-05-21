@@ -19,8 +19,6 @@
 
     " Themes
     Plug 'rakr/vim-one'
-    Plug 'sonph/onehalf', {'rtp': 'vim/'}
-    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
     " Make navigation between vim & tmux easier
     Plug 'christoomey/vim-tmux-navigator'
@@ -42,7 +40,7 @@
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Use Ranger inside vim
-    Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+    " Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
     " Plug 'francoiscabrol/ranger.vim'
     " Highlight a unique character in every word on a line
     Plug 'unblevable/quick-scope'
@@ -60,6 +58,8 @@
     Plug 'airblade/vim-rooter'
     " Jump around a file like a champ
     Plug 'justinmk/vim-sneak'
+    " Golang support
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   call plug#end()
 
@@ -123,10 +123,10 @@
   " diagnostics appear/become resolved.
   set signcolumn=yes
 
-  if has("persistent_undo")
-    set undodir=~/.vim/undodir
-    set undofile
-  endif
+  " if has("persistent_undo")
+  "   set undodir=~/.vim/undodir
+  "   set undofile
+  " endif
 
   "set t_Co=256
 
@@ -166,11 +166,6 @@
   set background=dark
   syntax on
 
-  "colorscheme challenger_deep
-
-  "colorscheme onehalfdark
-  "let g:airline_theme = 'onehalfdark'
-
   colorscheme one
   let g:airline_theme = 'one'
   let g:one_allow_italics = 1
@@ -182,7 +177,7 @@
 
 " Basic key mappings  -------------------------------------------------------{{{
 
-  nnoremap <leader>v :sp ~/.config/nvim/init.vim<CR>
+  nnoremap <leader>v :ed ~/.config/nvim/init.vim<CR>
   nnoremap <leader>u :source ~/.config/nvim/init.vim<CR>
 
   nnoremap <leader>jf :%!python -m json.tool<CR>

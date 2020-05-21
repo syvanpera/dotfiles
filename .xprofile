@@ -15,7 +15,7 @@ else
   # xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -t int -s 1
 
   sed -i 's/^\(.*font pango:\).*/\1JetBrainsMono Nerd Font 9/g' ~/.config/i3/config
-  sed -i 's/^\(.*doom-font.*\)size [0-9]*\(.*\)$/\1size 14\2/g' ~/.doom.d/config.el
+  sed -i 's/^\(.*doom-font.*\)size [0-9]*\(.*\)$/\1size 13\2/g' ~/.doom.d/config.el
   sed -i 's/\(  size:\).*$/\1 9/g' /home/tuomo/.config/alacritty/alacritty.yml
   sed -i 's/\(font = \).*$/\1 Noto Sans Regular 9/g' /home/tuomo/.config/dunst/dunstrc
   sed -i 's/\( *font: *\).*$/\1 "JetBrainsMono Nerd Font 10";/g' /home/tuomo/.config/rofi/themes/fonts.rasi

@@ -52,6 +52,8 @@ settings:
     global: '#51afef'
   content.autoplay:
     global: false
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: true
   downloads.location.directory:
     global: /home/tuomo/Downloads
   fonts.default_family:

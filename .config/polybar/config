@@ -17,7 +17,7 @@ white = #FFFFFF
 black = #000000
 gray  = #1d1f21
 
-green  = #b5bd68
+green  = #87af5f
 yellow = #f0c674
 orange = #da8548
 red    = #cc6666
@@ -28,9 +28,9 @@ bg = #0d1117
 fg = #d8dee9
 fg-alt = #abb2bf
 
-acolor  = #51afef
-asepcolor = #969896
-sepcolor = #51afef
+acolor  = #87af5f
+asepcolor = #5c6370
+sepcolor = #8b929f
 urgent = #cc626a
 unfocused = #5c6370
 occupied = #fabd2f
@@ -189,7 +189,7 @@ label-mode-foreground = ${color.fg}
 label-mode-background = ${color.gray}
 
 ; focused = Active workspace on focused monitor
-label-focused-foreground = ${color.blue}
+label-focused-foreground = ${color.acolor}
 ;label-focused-overline = ${color.acolor}
 label-focused-padding = 1
 label-focused-underline = ${color.acolor}
@@ -225,7 +225,7 @@ label-mode-foreground = ${color.fg}
 label-mode-background = ${color.gray}
 
 ; focused = Active workspace on focused monitor
-label-focused-foreground = ${color.blue}
+label-focused-foreground = ${color.acolor}
 ;label-focused-overline = ${color.acolor}
 label-focused-padding = 0
 ; label-focused-underline = ${color.acolor}
@@ -388,7 +388,7 @@ label-unmounted-foreground = ${color.fg-alt}
 type = custom/script
 tail = true
 label=%output%
-; format-underline = ${colors.blue}
+; format-underline = ${colors.acolor}
 
 exec = ~/.config/polybar/scripts/pulseaudio-control.bash --listen
 click-right = exec pavucontrol &

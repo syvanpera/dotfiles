@@ -62,7 +62,7 @@
 
 # General settings ------------------------------------------------------------------------------{{{
 
-  font pango:JetBrainsMono Nerd Font 9
+  font pango:JetBrainsMono Nerd Font 16
 
   # Use Mouse+$mod to drag floating windows to their wanted position
   floating_modifier $mod
@@ -106,7 +106,7 @@
   set $base05 #1d1f21
   set $base07 #8FBCBB
   set $base08 #88C0D0
-  set $base0A #51afef
+  set $base0A #87af5f
   set $base0B #80a1bd
   set $base0C #6C6F84
   set $base0D #f0c674
@@ -291,21 +291,23 @@
   #set powersavings for display:
   exec --no-startup-id xset s 480 dpms 600 600 600
 
-  exec        --no-startup-id nm-applet
+  exec --no-startup-id nm-applet
 
   # Desktop notifications
   exec --no-startup-id /usr/bin/dunst
 
   # update notification should be set to tray and notification
-  exec --no-startup-id sleep 15 && eos-update-notifier
-  exec --no-startup-id sleep 15 && eos-welcome
+  # exec --no-startup-id sleep 15 && eos-update-notifier
+  # exec --no-startup-id sleep 15 && eos-welcome
+
+  exec --no-startup-id unclutter &
 
 # }}}
 
 # i3bar -----------------------------------------------------------------------------------------{{{
 
   # bar {
-  #     font pango:JetBrainsMono Nerd Font 9
+  #     font pango:JetBrainsMono Nerd Font 16
   #     status_command i3blocks -c ~/.config/i3/i3blocks.conf
   #     output DP2
   #     tray_output primary
@@ -326,7 +328,7 @@
   # }
   #
   # bar {
-  #     font pango:JetBrainsMono Nerd Font 9
+  #     font pango:JetBrainsMono Nerd Font 16
   #     status_command i3blocks -c ~/.config/i3/i3blocks.conf
   #     output eDP1
   #     tray_output primary
@@ -347,7 +349,7 @@
   # }
   #
   # bar {
-  #     font pango:JetBrainsMono Nerd Font 9
+  #     font pango:JetBrainsMono Nerd Font 16
   #     status_command i3status --config ~/.config/i3/i3status.conf
   #     output DP1
   #     position top
