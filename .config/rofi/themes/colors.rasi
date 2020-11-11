@@ -1,7 +1,8 @@
 /* Color-Scheme For All Themes*/
 
 * {
-    background:     #212B30ff;
+    /* background:     #212B30ff; */
+    background:     #292f36ff;
     background-alt: #263238ff;
     foreground:     #C4C7C5ff;
     border:         #4DD0E1ff;

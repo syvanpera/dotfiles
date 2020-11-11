@@ -1,5 +1,5 @@
 /* Fonts For All Themes*/
 
 * {
-    font:                                    "JetBrainsMono Nerd Font 16";
+    font:                                          "JetBrainsMono Nerd Font 16";
 }
