@@ -15,7 +15,7 @@
   #
   # If this option is set to mouse or keyboard, the monitor option
   # will be ignored.
-  follow = keyboard
+  follow = none
 
   # The geometry of the window:
   #   [{width}]x{height}[+/-{x}+/-{y}]
@@ -29,60 +29,25 @@
   # the top and down respectively.
   # The width can be negative.  In this case the actual width is the
   # screen width minus the width defined in within the geometry option.
-  geometry = "600x50-10+38"
-
-  # Show how many messages are currently hidden (because of geometry).
-  indicate_hidden = yes
-
-  # Shrink window if it's smaller than the width.  Will be ignored if
-  # width is 0.
-  shrink = no
-
-  # The transparency of the window.  Range: [0; 100].
-  # This option will only work if a compositing window manager is
-  # present (e.g. xcompmgr, compiz, etc.).
-  transparency = 16
-
-  # Draw a line of "separator_height" pixel height between two
-  # notifications.
-  # Set to 0 to disable.
-  separator_height = 4
-
-  # Define a color for the separator.
-  # possible values are:
-  #  * auto: dunst tries to find a color fitting to the background;
-  #  * foreground: use the same color as the foreground;
-  #  * frame: use the same color as the frame;
-  #  * anything else will be interpreted as a X color.
-  separator_color = auto
-
-  # Padding between text and separator.
-  padding = 20
-
-  # Horizontal padding.
-  horizontal_padding = 20
+  #geometry = "300x50-0+0"
 
   # Defines width in pixels of frame around the notification window.
   # Set to 0 to disable.
-  frame_width = 0
+  frame_width = 1
 
-  # Sort messages by urgency.
-  sort = yes
+  # Horizontal padding.
+  horizontal_padding = 10
 
-  # Don't remove messages, if the user is idle (no mouse or keyboard input)
-  # for longer than idle_threshold seconds.
-  # Set to 0 to disable.
-  # A client can set the 'transient' hint to bypass this. See the rules
-  # section for how to disable this if necessary
-  idle_threshold = 120
+  # Padding between text and separator.
+  padding = 10
 
   ### Text ###
 
-  font =  Noto Sans Regular 18
+  font =  Noto Sans Regular 9
 
   # The spacing between lines.  If the height is smaller than the
   # font height, it will get raised to the font height.
-  line_height = 4
+  line_height = 2
 
   # Possible values are:
   # full: Allow a small subset of html markup in notifications:
@@ -120,30 +85,8 @@
   # Markup is allowed
   format = %s\n%b
 
-  # Alignment of message text.
-  # Possible values are "left", "center" and "right".
-  alignment = left
-
-  # Show age of message if message is older than show_age_threshold
-  # seconds.
-  # Set to -1 to disable.
-  show_age_threshold = 60
-
-  # Split notifications into multiple lines if they don't fit into
-  # geometry.
-  word_wrap = yes
-
-  # Ignore newlines '\n' in notifications.
-  ignore_newline = no
-
-  # Stack together notifications with the same content
-  stack_duplicates = true
-
-  # Hide the count of stacked notifications with the same content
-  hide_duplicate_count = false
-
   # Display indicators for URLs (U) and actions (A).
-  show_indicators = no
+  show_indicators = yes
 
   ### Icons ###
 
@@ -151,71 +94,10 @@
   icon_position = left
 
   # Scale larger icons down to this size, set to 0 to disable
-  max_icon_size = 48
+  max_icon_size = 24
 
   # Paths to default icons.
-  icon_path= /usr/share/icons/Paper/32x32/apps:/usr/share/icons/Arc-X-D/status/:/usr/share/icons/Arc-X-D/devices/:/usr/share/icons/Arc-X-D/apps/:/usr/share/icons/Arc-X-D/actions/:/usr/share/icons/Arc-X-D/categories/
-
-  ### History ###
-
-  # Should a notification popped up from history be sticky or timeout
-  # as if it would normally do.
-  sticky_history = yes
-
-  # Maximum amount of notifications kept in history
-  history_length = 20
-
-  ### Misc/Advanced ###
-
-  # dmenu path.
-  dmenu = /usr/bin/dmenu -p dunst:
-
-  # Browser for opening urls in context menu.
-  browser = x-www-browser -new-tab
-
-  # Always run rule-defined scripts, even if the notification is suppressed
-  always_run_script = true
-
-  # Define the title of the windows spawned by dunst
-  title = Dunst
-
-  # Define the class of the windows spawned by dunst
-  class = Dunst
-
-  # Print a notification on startup.
-  # This is mainly for error detection, since dbus (re-)starts dunst
-  # automatically after a crash.
-  startup_notification = false
-
-  # Manage dunst's desire for talking
-  # Can be one of the following values:
-  #  crit: Critical features. Dunst aborts
-  #  warn: Only non-fatal warnings
-  #  mesg: Important Messages
-  #  info: all unimportant stuff
-  # debug: all less than unimportant stuff
-  verbosity = mesg
-
-  # Define the corner radius of the notification window
-  # in pixel size. If the radius is 0, you have no rounded
-  # corners.
-  # The radius will be automatically lowered if it exceeds half of the
-  # notification height to avoid clipping text and/or icons.
-  corner_radius = 0
-
-  ### Mouse
-
-  # Defines action of mouse event
-  # Possible values are:
-  # * none: Don't do anything.
-  # * do_action: If the notification has exactly one action, or one is marked as default,
-  #              invoke it. If there are multiple and no default, open the context menu.
-  # * close_current: Close current notification.
-  # * close_all: Close all notifications.
-  mouse_left_click = close_current
-  mouse_middle_click = do_action
-  mouse_right_click = close_all
-
+  icon_path= /usr/share/icons/Papirus/48x48/apps:/usr/share/icons/Papirus/48x48/status/:/usr/share/icons/Papirus/48x48/devices/:/usr/share/icons/Papirus/48x48/apps/:/usr/share/icons/Papirus/48x48/actions/:/usr/share/icons/Papirus/48x48/categories/
 
 [shortcuts]
   # Shortcuts are specified as [modifier+][modifier+]...key
@@ -243,136 +125,24 @@
   background  = "#212B30"
   foreground  = "#C4C7C5"
   frame_color = "#4DD0E1"
-  icon = /usr/share/icons/Arc-X-D/status/32/dialog-information.png
 
 [urgency_normal]
   timeout     = 5
   background  = "#212B30"
   foreground  = "#C4C7C5"
   frame_color = "#4DD0E1"
-  icon = /usr/share/icons/Arc-X-D/status/32/dialog-question.png
 
 [urgency_critical]
   timeout     = 0
   background  = "#212B30"
   foreground  = "#EC407A"
   frame_color = "#EC407A"
-  icon = /usr/share/icons/Arc-X-D/status/32/dialog-warning.png
 
-
-# Every section that isn't one of the above is interpreted as a rules to
-# override settings for certain messages.
-#
-# Messages can be matched by
-#    appname (discouraged, see desktop_entry)
-#    body
-#    category
-#    desktop_entry
-#    icon
-#    match_transient
-#    msg_urgency
-#    stack_tag
-#    summary
-#
-# and you can override the
-#    background
-#    foreground
-#    format
-#    frame_color
-#    fullscreen
-#    new_icon
-#    set_stack_tag
-#    set_transient
-#    timeout
-#    urgency
-#
-# Shell-like globbing will get expanded.
-#
-# Instead of the appname filter, it's recommended to use the desktop_entry filter.
-# GLib based applications export their desktop-entry name. In comparison to the appname,
-# the desktop-entry won't get localized.
-#
-# SCRIPTING
-# You can specify a script that gets run when the rule matches by
-# setting the "script" option.
-# The script will be called as follows:
-#   script appname summary body icon urgency
-# where urgency can be "LOW", "NORMAL" or "CRITICAL".
-#
-# NOTE: if you don't want a notification to be displayed, set the format
-# to "".
-# NOTE: It might be helpful to run dunst -print in a terminal in order
-# to find fitting options for rules.
-
-# Disable the transient hint so that idle_threshold cannot be bypassed from the
-# client
-#[transient_disable]
-#    match_transient = yes
-#    set_transient = no
-#
-# Make the handling of transient notifications more strict by making them not
-# be placed in history.
-#[transient_history_ignore]
-#    match_transient = yes
-#    history_ignore = yes
-
-# fullscreen values
-# show: show the notifications, regardless if there is a fullscreen window opened
-# delay: displays the new notification, if there is no fullscreen window active
-#        If the notification is already drawn, it won't get undrawn.
-# pushback: same as delay, but when switching into fullscreen, the notification will get
-#           withdrawn from screen again and will get delayed like a new notification
-#[fullscreen_delay_everything]
-#    fullscreen = delay
-#[fullscreen_show_critical]
-#    msg_urgency = critical
-#    fullscreen = show
-
-#[espeak]
-#    summary = "*"
-#    script = dunst_espeak.sh
-
-#[script-test]
-#    summary = "*script*"
-#    script = dunst_test.sh
-
-#[ignore]
-#    # This notification will not be displayed
-#    summary = "foobar"
-#    format = ""
-
-#[history-ignore]
-#    # This notification will not be saved in history
-#    summary = "foobar"
-#    history_ignore = yes
-
-#[skip-display]
-#    # This notification will not be displayed, but will be included in the history
-#    summary = "foobar"
-#    skip_display = yes
-
-#[signed_on]
-#    appname = Pidgin
-#    summary = "*signed on*"
-#    urgency = low
-#
-#[signed_off]
-#    appname = Pidgin
-#    summary = *signed off*
-#    urgency = low
-#
-#[says]
-#    appname = Pidgin
-#    summary = *says*
-#    urgency = critical
-#
-#[twitter]
-#    appname = Pidgin
-#    summary = *twitter.com*
-#    urgency = normal
-#
-#[stack-volumes]
-#    appname = "some_volume_notifiers"
-#    set_stack_tag = "volume"
+[changeVolume]
+    appname = changeVolume
+    history_ignore = yes
+    foreground = "#d8dee9"
+    background = "#1F2329"
+    frame_color = "#1f2329"
 
 # vim: ft=cfg
