@@ -28,3 +28,8 @@ symbol = " "
 
 [kubernetes]
 disabled = true
+
+[gcloud]
+disabled = true
+symbol = " "
+format = 'on [$symbol$account(\($project/$region\))]($style) '
