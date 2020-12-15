@@ -1,7 +1,7 @@
 configuration {
-    show-icons:          false;
+    show-icons:          true;
     icon-theme:          "Papirus";
-    display-drun:        "Search :";
+    display-drun:        "Run :";
     drun-display-format: "{name}";
     threads:             0;
     scroll-method:       0;
@@ -38,7 +38,7 @@ prompt {
 
 textbox-prompt-colon {
     expand:           false;
-    str:              "ﰌ";
+    str:              "省 ";
     background-color: @background;
     text-color:       @logo;
     padding:          4px 0px 0px 8px;

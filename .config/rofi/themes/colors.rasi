@@ -2,11 +2,14 @@
 
 * {
     /* background:     #212B30ff; */
-    background:     #292f36ff;
+    /* background:     #292f36ff; */
+    background:     #0c131fff;
     background-alt: #263238ff;
     foreground:     #C4C7C5ff;
-    border:         #4DD0E1ff;
-    selected:       #4DD0E1ff;
+    /* border:         #4DD0E1ff; */
+    /* selected:       #4DD0E1ff; */
+    border:         #87af5fff;
+    selected:       #87af5fff;
     urgent:         #EC407Aff;
     logo:           #EC407Aff;
     on:             #61C766ff;
