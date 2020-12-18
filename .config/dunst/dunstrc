@@ -29,7 +29,7 @@
   # the top and down respectively.
   # The width can be negative.  In this case the actual width is the
   # screen width minus the width defined in within the geometry option.
-  #geometry = "300x50-0+0"
+  geometry = "500x50-0+50"
 
   # Defines width in pixels of frame around the notification window.
   # Set to 0 to disable.
@@ -139,10 +139,10 @@
   frame_color = "#EC407A"
 
 [changeVolume]
-    appname = changeVolume
-    history_ignore = yes
-    foreground = "#d8dee9"
-    background = "#1F2329"
-    frame_color = "#1f2329"
+  appname = changeVolume
+  history_ignore = yes
+  background  = "#212B30"
+  foreground  = "#C4C7C5"
+  frame_color = "#4DD0E1"
 
 # vim: ft=cfg

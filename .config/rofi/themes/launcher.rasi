@@ -13,10 +13,11 @@ configuration {
 
 @import "fonts.rasi"
 @import "colors.rasi"
+/* @import "~/.cache/wal/colors-rofi-dark.rasi" */
 
 window {
-    transparency:     "real";
     background-color: @background;
+    transparency:     "real";
     text-color:       @foreground;
     border:           1px;
     border-color:     @selected;
@@ -27,6 +28,7 @@ window {
     anchor:           center;
     x-offset:         0;
     y-offset:         0;
+    padding:          1ch;
 }
 
 prompt {
@@ -40,7 +42,7 @@ textbox-prompt-colon {
     expand:           false;
     str:              "省 ";
     background-color: @background;
-    text-color:       @logo;
+    text-color:       @selected;
     padding:          4px 0px 0px 8px;
 }
 
@@ -51,7 +53,7 @@ inputbar {
     expand:           false;
     border:           0px 0px 1px 0px;
     border-radius:    0px;
-    border-color:     @border;
+    border-color:     @selected;
     margin:           0px 0px 0px 0px;
     padding:          0px 0px 0px 0px;
     position:         center;
@@ -130,7 +132,7 @@ element selected {
     text-color:       @background;
     border:           0px;
     border-radius:    0px;
-    border-color:     @border;
+    border-color:     @selected;
 }
 
 element selected.urgent {

@@ -24,11 +24,14 @@ red    = #cc6666
 blue   = #51afef
 purple = #b45bcf
 
-bg = #0d1117
+;bg = #0d1117
+;bg = #292F36
+bg = #0C131F
 fg = #d8dee9
 fg-alt = #abb2bf
 
-acolor  = #87af5f
+; acolor  = #87af5f
+acolor  = #3b84c0
 asepcolor = #5c6370
 sepcolor = #8b929f
 urgent = #cc626a
@@ -101,14 +104,14 @@ module-margin-right = 0
 monitor = eDP1
 inherit = bar/hidpi
 
-modules-left = distro i3
+modules-left = distro xmonad
 modules-right = compositor separator cpu separator-alt memory separator fs-root fs-home separator backlight separator-alt pulseaudio separator vpncheck network separator battery separator date
 
 [bar/external]
 monitor = DP2
 inherit = bar/lodpi
 
-modules-left = distro i3
+modules-left = distro xmonad
 modules-right = compositor separator cpu separator-alt memory separator fs-root fs-home separator backlight separator-alt pulseaudio separator vpncheck network separator battery separator date
 
 [bar/dp1-1]
@@ -122,14 +125,14 @@ modules-right = compositor separator cpu separator-alt memory separator fs-root 
 monitor = DP2
 inherit = bar/lodpi
 
-modules-left = i3
+modules-left = xmonad
 modules-right = date
 
 [bar/edp1]
 monitor = eDP1
 inherit = bar/hidpi
 
-modules-left = i3
+modules-left = xmonad
 modules-right = date
 
 ;== Modules ========================================================
@@ -155,9 +158,9 @@ content-foreground = ${color.asepcolor}
 
 [module/distro]
 type = custom/text
-content = " "
+; content = " "
 ; content = " "
-; content = " "
+content = " "
 ; content = 
 ; content = 
 ;alt-icon = 
@@ -451,7 +454,7 @@ ramp-4 = 🌑
 
 [module/network]
 type = internal/network
-interface = wlan0
+interface = wlp60s0
 ; click-left = ~/.config/rofi/scripts/network
 
 interval = 2.0

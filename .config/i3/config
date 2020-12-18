@@ -37,7 +37,6 @@
 # set $ws8 8:
 # set $ws9 9:
 
-  set $menu    ~/.config/rofi/scripts/launcher
   set $term    alacritty
   set $browser qutebrowser
   set $editor  emacs
@@ -62,7 +61,8 @@
 
 # General settings ------------------------------------------------------------------------------{{{
 
-  font pango:JetBrainsMono Nerd Font 16
+  #font pango:JetBrainsMono Nerd Font 16
+  font pango:JetBrainsMono Nerd Font 9
 
   # Use Mouse+$mod to drag floating windows to their wanted position
   floating_modifier $mod
@@ -106,7 +106,8 @@
   set $base05 #1d1f21
   set $base07 #8FBCBB
   set $base08 #88C0D0
-  set $base0A #87af5f
+  #set $base0A #87af5f
+  set $base0A #3b84c0
   set $base0B #80a1bd
   set $base0C #6C6F84
   set $base0D #f0c674
@@ -228,12 +229,13 @@
 
   bindsym $mod+Return       exec --no-startup-id $term
   bindsym $mod+Shift+Return exec --no-startup-id $term -e tmux
-  bindsym $mod+space        exec --no-startup-id $menu
+  bindsym $mod+space        exec --no-startup-id ~/.config/rofi/scripts/launcher
   bindsym $mod+0            exec --no-startup-id ~/.config/rofi/scripts/powermenu
   bindsym $mod+shift+w      exec --no-startup-id ~/.config/rofi/scripts/windows
   bindsym $mod+shift+0      exec --no-startup-id ~/.config/rofi/scripts/calc
   bindsym $mod+Shift+n      exec --no-startup-id ~/.config/rofi/scripts/networkmanager-dmenu
   bindsym $mod+Shift+c      exec --no-startup-id ~/.config/rofi/scripts/clipboard
+  bindsym $mod+Shift+b      exec --no-startup-id ~/.config/rofi/scripts/bwmenu
   bindsym $mod+Shift+space  exec --no-startup-id ~/.config/rofi/scripts/filebrowser
   bindsym $super+Shift+s    exec --no-startup-id gnome-screenshot --interactive
 
@@ -281,8 +283,8 @@
 # Autostarts ------------------------------------------------------------------------------------{{{
 
   exec_always --no-startup-id ~/.config/polybar/launch.sh
-  exec_always --no-startup-id ~/.config/compton/launch.sh
-  exec_always --no-startup-id nitrogen --restore
+  # exec_always --no-startup-id ~/.config/compton/launch.sh
+  # exec_always --no-startup-id nitrogen --restore
 
   # exec        --no-startup-id ~/.fehbg
 

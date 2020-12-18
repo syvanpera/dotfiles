@@ -19,6 +19,7 @@
 
     " Themes
     Plug 'rakr/vim-one'
+    " Plug 'dylanaraps/wal.vim'
 
     " Make navigation between vim & tmux easier
     Plug 'christoomey/vim-tmux-navigator'
@@ -167,6 +168,7 @@
   syntax on
 
   colorscheme one
+  " colorscheme wal
   let g:airline_theme = 'one'
   let g:one_allow_italics = 1
 

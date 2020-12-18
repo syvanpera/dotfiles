@@ -1,6 +1,6 @@
 Config {
-    font = "xft:TerminessTTF Nerd Font:pixelsize=28:antialias=true:hinting=true"
-  , additionalFonts = [ "xft:Material Icons:pixelsize=22" ]
+    font = "xft:xos4Terminus:pixelsize=18:antialias=true:hinting=true"
+  , additionalFonts = [ "xft:Material Icons:pixelsize=18" ]
   , bgColor = "#1d1f21"
   , fgColor = "#d8dee9"
   -- , fgColor = "#B45BCF"

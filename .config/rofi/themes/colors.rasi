@@ -6,10 +6,10 @@
     background:     #0c131fff;
     background-alt: #263238ff;
     foreground:     #C4C7C5ff;
-    /* border:         #4DD0E1ff; */
-    /* selected:       #4DD0E1ff; */
-    border:         #87af5fff;
-    selected:       #87af5fff;
+    /* border:         #87af5fff; */
+    /* selected:       #87af5fff; */
+    border:         #3b84c0ff;
+    selected:       #3b84c0ff;
     urgent:         #EC407Aff;
     logo:           #EC407Aff;
     on:             #61C766ff;
