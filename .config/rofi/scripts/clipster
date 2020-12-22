@@ -23,9 +23,9 @@ C_HIST="$(clipster -c -o -n 500 -0 \
 
 # Echo clipboard items to Rofi and save the selection made by user
 if [[ -t 0 ]]; then
-  SELECTION="$(echo "$C_HIST" | fzf-tmux -d 15 --prompt='selection: ')"
+  SELECTION="$(echo "$C_HIST" | fzf-tmux -d 15 --prompt='Clipboard: ')"
 else
-  SELECTION="$(echo "$C_HIST" | rofi -theme themes/launcher.rasi -dmenu -i -lines 20 -width 80 -p 'selection: ')"
+  SELECTION="$(echo "$C_HIST" | rofi -theme themes/clipboard.rasi -dmenu -i -lines 20 -p 'Clipboard: ')"
 fi
 
 # Verify user made a selection

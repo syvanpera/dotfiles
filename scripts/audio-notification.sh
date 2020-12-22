@@ -27,9 +27,9 @@ if [[ $STATE != '[off]' ]]; then
                 ICON=~/.local/share/icons/vol-high.png
         fi
 
-        PROGRESS=$(~/scripts/getprogressstring.sh 10 "•" "·" $VOLUME)
+        PROGRESS=$(~/scripts/getprogressstring.sh 10 "█" "░" $VOLUME)
 
-        ~/scripts/notify-send.sh "Volume: $VOLUME% $PROGRESS" \
+        ~/scripts/notify-send.sh "Volume: $VOLUME%\n$PROGRESS" \
             --replace=100 \
             -a changeVolume \
             -t 2000 \

@@ -8,8 +8,10 @@ PCT=$(echo $BRIGHTNESS $MAX_BRIGHTNESS  | awk '{printf "%4.0f\n",($1/$2)*100}' |
 # Round the brightness percentage:
 LC_ALL=C
 
+PROGRESS=$(~/scripts/getprogressstring.sh 10 "█" "░" $PCT)
+
 # Send the notification with the icon:
-~/scripts/notify-send.sh "Brightness ${PCT}%" \
+~/scripts/notify-send.sh "Brightness ${PCT}%\n$PROGRESS" \
     --replace=101 \
     -t 2000 \
     --icon ~/.local/share/icons/brightness-icon.png \

@@ -3,9 +3,11 @@
 case "$1" in
     --toggle)
         if [ "$(pgrep -x picom)" ]; then
+            notify-send "picom killed"
             pkill picom
         else
-            picom -cC --config ~/.config/compton/config
+            notify-send "picom started"
+            picom # -cC --config ~/.config/compton/config
         fi
         ;;
     *)

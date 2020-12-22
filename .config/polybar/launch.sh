@@ -1,45 +1,29 @@
 #!/usr/bin/env bash
 
-# DP1_STATUS=$(</sys/class/drm/card0/card0-DP-1/status )
-#
-# if [ -f /sys/class/drm/card0/card0-DP-2/status ]; then
-#     DP2_STATUS=$(</sys/class/drm/card0/card0-DP-2/status )
-# fi
-
-DISPLAYS=$(xrandr --listactivemonitors| grep 'Monitors:'| awk '{print $2}')
+SHOW_ON_ALL_DISPLAYS=$1
 
 # Terminate already running bar instances
 killall -q polybar
-rm /tmp/ipc-polybar*
 
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# if type "xrandr"; then
-#     for m in $(xrandr --query |grep " connected" | cut -d" " -f1); do
-#         MONITOR=$m polybar --reload main &
-#         polybar --config="$HOME/.config/polybar/config-desktop-arch" --reload $m &
-#     done
-# else
-#     polybar --reload main &
-# fi
+xrandr --listactivemonitors | sed 1d | while read -r entry
+do
+  set -- $entry
+  STATUS=$2
+  X_RES=$(echo "$3"|awk -F'/' '{split($0, a, "/"); print a[1]}')
+  MONITOR=$4
 
-# if [ "connected" == "$DP1_STATUS" ]; then
-if [ $DISPLAYS -gt 1 ]; then
-    polybar external -c ~/.config/polybar/config &
-    ln -s /tmp/polybar_mqueue.$! /tmp/ipc-polybar1
-else
-    polybar main -c ~/.config/polybar/config &
-fi
-# if [ "connected" == "$DP2_STATUS" ]; then
-#     polybar dp2 -c ~/.config/polybar/config &
-#     ln -s /tmp/polybar_mqueue.$! /tmp/ipc-polybar2
-# fi
+  [[ $STATUS =~ .*"*".* ]] && BAR="main" || BAR="secondary"
+  [[ $X_RES -ge 3000 ]] && BASE="bar/hidpi" || BASE="bar/lodpi"
 
-# if [ "connected" == "$DP1_STATUS" ] || [ "connected" == "$DP2_STATUS" ]; then
-#     # polybar edp1 -c ~/.config/polybar/config &
-#     ln -s /tmp/polybar_mqueue.$! /tmp/ipc-polybar3
-# else
-#     polybar main -c ~/.config/polybar/config &
-#     ln -s /tmp/polybar_mqueue.$! /tmp/ipc-polybar1
-# fi
+
+  if [ -z "$SHOW_ON_ALL_DISPLAYS" ]; then
+    if [ "$BAR" == "main" ]; then
+      BAR_MONITOR=$MONITOR BAR_BASE=$BASE polybar $BAR -c ~/.config/polybar/config &
+    fi
+  else
+    BAR_MONITOR=$MONITOR BAR_BASE=$BASE polybar $BAR -c ~/.config/polybar/config &
+  fi
+done

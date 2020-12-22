@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if ps aux | rg "[o]penconnect" >&/dev/null; then
-    echo "";
+    echo " ";
 elif ps aux | rg "[o]penvpn" >&/dev/null; then
-    echo "";
+    echo " ";
 elif ip addr | rg "wg0" >&/dev/null; then
-    echo "";
+    echo " ";
 else
-    echo "";
+    echo "";
 fi

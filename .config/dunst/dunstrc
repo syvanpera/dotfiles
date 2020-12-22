@@ -29,11 +29,18 @@
   # the top and down respectively.
   # The width can be negative.  In this case the actual width is the
   # screen width minus the width defined in within the geometry option.
-  geometry = "500x50-0+50"
+  # geometry = "500x50-0+20"
+  geometry = "0x0-10+30"
 
   # Defines width in pixels of frame around the notification window.
   # Set to 0 to disable.
   frame_width = 1
+
+  # Defines width in pixels of frame around the notification window.
+  # Set to 0 to disable.
+  frame_width = 1
+
+  separator_color = auto
 
   # Horizontal padding.
   horizontal_padding = 10
@@ -48,6 +55,8 @@
   # The spacing between lines.  If the height is smaller than the
   # font height, it will get raised to the font height.
   line_height = 2
+
+  corner_radius = 5
 
   # Possible values are:
   # full: Allow a small subset of html markup in notifications:
@@ -83,7 +92,7 @@
   #   %n  progress value if set without any extra characters
   #   %%  Literal %
   # Markup is allowed
-  format = %s\n%b
+  format = "<b>%s</b>\n%b"
 
   # Display indicators for URLs (U) and actions (A).
   show_indicators = yes
@@ -94,7 +103,7 @@
   icon_position = left
 
   # Scale larger icons down to this size, set to 0 to disable
-  max_icon_size = 24
+  max_icon_size = 32
 
   # Paths to default icons.
   icon_path= /usr/share/icons/Papirus/48x48/apps:/usr/share/icons/Papirus/48x48/status/:/usr/share/icons/Papirus/48x48/devices/:/usr/share/icons/Papirus/48x48/apps/:/usr/share/icons/Papirus/48x48/actions/:/usr/share/icons/Papirus/48x48/categories/
@@ -124,25 +133,28 @@
   timeout     = 3
   background  = "#212B30"
   foreground  = "#C4C7C5"
-  frame_color = "#4DD0E1"
+  frame_color = "#fac863"
+  icon        = /home/tuomo/.config/dunst/normal.png
 
 [urgency_normal]
   timeout     = 5
   background  = "#212B30"
   foreground  = "#C4C7C5"
-  frame_color = "#4DD0E1"
+  frame_color = "#fac863"
+  icon        = /home/tuomo/.config/dunst/normal.png
 
 [urgency_critical]
   timeout     = 0
   background  = "#212B30"
-  foreground  = "#EC407A"
-  frame_color = "#EC407A"
+  foreground  = "#ec5f67"
+  frame_color = "#ec5f67"
+  icon        = /home/tuomo/.config/dunst/critical.png
 
 [changeVolume]
   appname = changeVolume
   history_ignore = yes
   background  = "#212B30"
   foreground  = "#C4C7C5"
-  frame_color = "#4DD0E1"
+  frame_color = "#fac863"
 
 # vim: ft=cfg

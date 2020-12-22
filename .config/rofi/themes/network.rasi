@@ -23,7 +23,7 @@ window {
     border:           1px;
     border-color:     @selected;
     border-radius:    0px;
-    height:           19%;
+    /* height:           19%; */
     width:            15%;
     x-offset:         -0.5%;
     y-offset:         3%;
@@ -33,7 +33,7 @@ prompt {
     enabled:          true;
     padding:          4px 4px 6px 6px;
     background-color: @background;
-    text-color:       @foreground;
+    text-color:       @logo;
 }
 
 textbox-prompt-colon {

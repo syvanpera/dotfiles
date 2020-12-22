@@ -19,13 +19,13 @@ window {
     background-color: @background;
     transparency:     "real";
     text-color:       @foreground;
-    border:           1px;
+    border:           0 0 1px 0;
     border-color:     @selected;
     border-radius:    0px;
-    height:           33%;
-    width:            30%;
-    location:         center;
-    anchor:           center;
+    /* height:           33%; */
+    width:            100%;
+    location:         north west;
+    anchor:           north west;
     x-offset:         0;
     y-offset:         0;
     padding:          1ch;
@@ -35,14 +35,14 @@ prompt {
     enabled:          true;
     padding:          4px 4px 6px 6px;
     background-color: @background;
-    text-color:       @foreground;
+    text-color:       @logo;
 }
 
 textbox-prompt-colon {
     expand:           false;
     str:              "省 ";
+    text-color:       @logo;
     background-color: @background;
-    text-color:       @selected;
     padding:          4px 0px 0px 8px;
 }
 
@@ -99,7 +99,7 @@ element {
     text-color:       @foreground;
     orientation:      horizontal;
     border-radius:    4px;
-    padding:          6px 6px 6px 6px;
+    padding:          4px 4px 4px 4px;
 }
 
 element-icon {

@@ -18,13 +18,13 @@ options="$screen\n$area\n$window"
 chosen="$(echo -e "$options" | $rofi_command -p 'Take A Shot' -dmenu -selected-row 1)"
 case $chosen in
   $screen)
-    sleep 1; scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots ; imv $$(xdg-user-dir PICTURES)/Screenshots/$f'
+    sleep 1; scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
     ;;
   $area)
-    scrot -s 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots ; imv $$(xdg-user-dir PICTURES)/Screenshots/$f'
+    scrot -s 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
     ;;
   $window)
-    sleep 1; scrot -u 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots ; imv $$(xdg-user-dir PICTURES)/Screenshots/$f'
+    sleep 1; scrot -u 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
     ;;
 esac
 

@@ -309,6 +309,17 @@
 # i3bar -----------------------------------------------------------------------------------------{{{
 
   # bar {
+  #   position top
+  #   status_command exec ~/projects/personal/my3bar/my3bar
+  #   font pango:DejaVu Sans Mono 10
+  #   # font pango:JetBrainsMono Nerd Font 16
+  #
+  #   colors {
+  #     background #0d1117
+  #   }
+  # }
+
+  # bar {
   #     font pango:JetBrainsMono Nerd Font 16
   #     status_command i3blocks -c ~/.config/i3/i3blocks.conf
   #     output DP2
