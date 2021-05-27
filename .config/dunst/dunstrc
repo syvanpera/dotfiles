@@ -133,14 +133,14 @@
   timeout     = 3
   background  = "#212B30"
   foreground  = "#C4C7C5"
-  frame_color = "#fac863"
+  frame_color = "#fbc02d"
   icon        = /home/tuomo/.config/dunst/normal.png
 
 [urgency_normal]
   timeout     = 5
   background  = "#212B30"
   foreground  = "#C4C7C5"
-  frame_color = "#fac863"
+  frame_color = "#fbc02d"
   icon        = /home/tuomo/.config/dunst/normal.png
 
 [urgency_critical]
@@ -155,6 +155,6 @@
   history_ignore = yes
   background  = "#212B30"
   foreground  = "#C4C7C5"
-  frame_color = "#fac863"
+  frame_color = "#fbc02d"
 
 # vim: ft=cfg

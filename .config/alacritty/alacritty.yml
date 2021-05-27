@@ -6,7 +6,7 @@ font:
   size: 9
 
   normal:
-    family: JetBrainsMono Nerd Font
+    family: RobotoMono Nerd Font
     style: Regular
 
 # Background opacity
@@ -78,7 +78,7 @@ colors:
     black:   '0x1b2b34'
     red:     '0xec5f67'
     green:   '0x99c794'
-    yellow:  '0xfac863'
+    yellow:  '0xfbc02d'
     blue:    '0x6699cc'
     magenta: '0xc594c5'
     cyan:    '0x5fb3b3'
@@ -89,7 +89,7 @@ colors:
     black:   '0x65737e'
     red:     '0xec5f67'
     green:   '0x99c794'
-    yellow:  '0xfac863'
+    yellow:  '0xfbc02d'
     blue:    '0x6699cc'
     magenta: '0xc594c5'
     cyan:    '0x5fb3b3'

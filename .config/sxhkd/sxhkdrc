@@ -22,8 +22,11 @@ alt + {_, shift +} Return
 alt + space
   ~/.config/rofi/scripts/launcher
 
-super + e
-  emacsclient --create-frame --alternate-editor="" --no-wait
+super + {e, r}
+  { \
+  emacsclient --create-frame --alternate-editor="" --no-wait, \
+  $TERMINAL -e ranger \
+  }
 
 alt + shift + {c,n,w}
   { \

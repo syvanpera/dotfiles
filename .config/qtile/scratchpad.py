@@ -38,14 +38,23 @@ class Scratchpad(object):
                         on_focus_lost_hide = on_focus_lost_hide,
                         warp_pointer = warp_pointer),
 
-                    # Another terminal exclusively for qshell
-                    DropDown("qshell",
-                        terminal + " -e qshell",
+                    # Another terminal exclusively for file manager
+                    DropDown("fileman",
+                        terminal + " -e ranger",
                         opacity            = opacity,
                         y                  = y_position,
                         height             = height,
                         on_focus_lost_hide = on_focus_lost_hide,
                         warp_pointer       = warp_pointer)
+
+                    # Another terminal exclusively for qshell
+                    # DropDown("qshell",
+                    #     terminal + " -e qshell",
+                    #     opacity            = opacity,
+                    #     y                  = y_position,
+                    #     height             = height,
+                    #     on_focus_lost_hide = on_focus_lost_hide,
+                    #     warp_pointer       = warp_pointer)
                 ]
             ),
         ]
@@ -65,7 +74,7 @@ class DropDown_Keys(object):
             Key([modalt], "comma",
                 lazy.group["SPD"].dropdown_toggle("term")),
             Key([modalt], "period",
-                lazy.group["SPD"].dropdown_toggle("qshell")),
+                lazy.group["SPD"].dropdown_toggle("fileman")),
             Key([modalt], "m",
                 lazy.group["SPD"].dropdown_toggle("music")),
         ]

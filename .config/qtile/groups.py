@@ -19,6 +19,7 @@ class Groups(object):
                     layouts = [
                         layout.monadTall(),
                         layout.monadWide(),
+                        layout.tabbed()
                     ],
                     screen_affinity=0,
                     spawn="alacritty -e tmux"
@@ -38,6 +39,7 @@ class Groups(object):
                 Group("",
                     layouts = [
                         layout.max(),
+                        layout.monadTall(),
                     ],
                     screen_affinity=2,
                     matches = [
@@ -49,7 +51,8 @@ class Groups(object):
                     ),
                 Group("",
                     layouts = [
-                        layout.max()
+                        layout.max(),
+                        layout.monadTall(),
                     ],
                     screen_affinity=2,
                     matches = [
@@ -78,7 +81,7 @@ class Groups(object):
                 Group("",
                     layouts = [
                         layout.monadTall(),
-                        layout.monadWide(),
+                        layout.tabbed()
                     ],
                     screen_affinity=0,
                     spawn="alacritty -e tmux"
@@ -86,6 +89,7 @@ class Groups(object):
                 Group("",
                     layouts = [
                         layout.max(),
+                        layout.monadTall(),
                     ],
                     screen_affinity=0,
                     matches = [
@@ -111,7 +115,8 @@ class Groups(object):
                     ),
                 Group("",
                     layouts = [
-                        layout.max()
+                        layout.max(),
+                        layout.monadTall(),
                     ],
                     screen_affinity=0,
                     matches = [

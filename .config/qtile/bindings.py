@@ -15,8 +15,8 @@ class Keys(object):
         terminal = guess_terminal()
 
         # Key alias
-        mod    = "mod1"
-        modalt = "mod4"
+        mod    = "mod4"
+        modalt = "mod1"
         altgr  = "mod5"
 
         return [
@@ -61,10 +61,10 @@ class Keys(object):
             # Key([mod, "control"], "k",
             #     lazy.layout.client_to_next()),              # Move window to next stack side
 
-            Key([mod], "Tab",
-                lazy.group.next_window()),                  # Switch focus to other window
-            Key([mod, "shift"], "Tab",
-                lazy.group.prev_window()),                  # Switch focus to other window
+            # Key([mod], "Tab",
+            #     lazy.group.next_window()),                  # Switch focus to other window
+            # Key([mod, "shift"], "Tab",
+            #     lazy.group.prev_window()),                  # Switch focus to other window
 
             # Key([mod, altgr], "Tab",
             #     lazy.group.next_window(),
@@ -82,9 +82,9 @@ class Keys(object):
             # Key([mod, "control"], "w",
             #     Function.kill_all_windows()),               # Kill all windows
 
-            Key([modalt], "f",
+            Key([mod], "f",
                 lazy.window.toggle_floating()),             # Toggle floating
-            Key([modalt, "shift"], "f",
+            Key([mod, "shift"], "f",
                 lazy.window.toggle_fullscreen()),           # Toggle fullscreen
 
             # On layout
@@ -99,9 +99,9 @@ class Keys(object):
             Key([mod, "control", "shift"], "l",
                     lazy.layout.grow()),                      # Grow size of window (Xmonad)
 
-            Key([modalt], "n",
+            Key([mod], "n",
                 lazy.layout.normalize()),                   # Restore all windows to default size ratios
-            Key([modalt], "m",
+            Key([mod], "m",
                 lazy.layout.maximize()),                    # Toggle a window between min and max sizes
 
             # Key([mod, "shift"], "space",
@@ -111,9 +111,9 @@ class Keys(object):
             # Key([mod, "shift"], "Return",
             #     lazy.layout.toggle_split()),                # Toggle between split and unsplit (Stack)
 
-            Key([modalt], "space",
+            Key([mod], "Tab",
                 lazy.prev_layout()),                          # Toggle through layouts
-            Key([modalt, "shift"], "space",
+            Key([mod, "shift"], "Tab",
                 lazy.next_layout()),                          # Toggle through layouts
 
             # On group
@@ -140,20 +140,20 @@ class Keys(object):
             #     lazy.screen.next_group()),                  # Move with window to next group
 
             # On screen
-            Key([modalt], "1",
-                lazy.to_screen(0)),                         # Switch to screen 0
-            Key([modalt], "2",
-                lazy.to_screen(2)),                         # Switch to screen 2
-            Key([modalt], "3",
-                lazy.to_screen(1)),                         # Switch to screen 1
-            Key([modalt], "h",
-                lazy.to_screen(0)),                         # Switch to screen 0
-            Key([modalt], "k",
-                lazy.to_screen(0)),                         # Switch to screen 0
-            Key([modalt], "j",
-                lazy.to_screen(1)),                         # Switch to screen 1
-            Key([modalt], "l",
-                lazy.to_screen(2)),                         # Switch to screen 2
+            # Key([modalt], "1",
+            #     lazy.to_screen(0)),                         # Switch to screen 0
+            # Key([modalt], "2",
+            #     lazy.to_screen(2)),                         # Switch to screen 2
+            # Key([modalt], "3",
+            #     lazy.to_screen(1)),                         # Switch to screen 1
+            # Key([modalt], "h",
+            #     lazy.to_screen(0)),                         # Switch to screen 0
+            # Key([modalt], "k",
+            #     lazy.to_screen(0)),                         # Switch to screen 0
+            # Key([modalt], "j",
+            #     lazy.to_screen(1)),                         # Switch to screen 1
+            # Key([modalt], "l",
+            #     lazy.to_screen(2)),                         # Switch to screen 2
 
             # Hardware keys
             Key([], "XF86AudioRaiseVolume",
@@ -170,16 +170,16 @@ class Keys(object):
 
             # Launchers
             Key([mod],              "Return", lazy.spawn(terminal)),
-            Key([mod, "shift"],     "Return", lazy.spawn(terminal + " -e tmux")),
-            Key([modalt,],          "r",      lazy.spawn(terminal + " -e ranger")),
-            Key([modalt],           "e",      lazy.spawn("emacs")),
+            Key([mod, "shift"],     "Return", lazy.spawn(terminal + " -e tmux new-session -A -s 'Default'")),
+            Key([mod,],             "r",      lazy.spawn(terminal + " -e ranger")),
+            Key([mod],              "e",      lazy.spawn("emacs")),
 
             Key([mod],             "space",   lazy.spawn(expanduser("~/.config/rofi/scripts/launcher"))),
             Key([mod],             "0",       lazy.spawn(expanduser("~/.config/rofi/scripts/powermenu"))),
             Key([mod, "shift"],    "w",       lazy.spawn(expanduser("~/.config/rofi/scripts/windows"))),
             Key([mod, "shift"],    "0",       lazy.spawn(expanduser("~/.config/rofi/scripts/calc"))),
             Key([mod, "shift"],    "n",       lazy.spawn(expanduser("~/.config/rofi/scripts/networkmanager-dmenu"))),
-            Key([mod, "shift"],    "c",       lazy.spawn(expanduser("~/.config/rofi/scripts/clipboard"))),
+            Key([mod, "shift"],    "c",       lazy.spawn(expanduser("~/.config/rofi/scripts/clipmenu"))),
             Key([mod, "shift"],    "b",       lazy.spawn(expanduser("~/.config/rofi/scripts/bwmenu"))),
             Key([mod, "shift"],    "space",   lazy.spawn(expanduser("~/.config/rofi/scripts/filebrowser"))),
             Key([modalt, "shift"], "s",     lazy.spawn("gnome-screenshot --interactive")),
@@ -190,8 +190,8 @@ class Keys(object):
     def init_group_keybindings(self, groups):
 
         # Key alias
-        mod    = "mod1"
-        modalt = "mod4"
+        mod    = "mod4"
+        modalt = "mod1"
         altgr  = "mod5"
 
         group_keys  = []
@@ -222,8 +222,8 @@ class Mouses(object):
     def init_mouse(self):
 
         # Key alias
-        mod    = "mod1"
-        modalt = "mod4"
+        mod    = "mod4"
+        modalt = "mod1"
         altgr  = "mod5"
 
         return [

@@ -33,6 +33,7 @@ class Rules(object):
                     "Gcolor3",
                     "balena-etcher-electron",
                     "Virt-manager",
+                    "Dragon-drag-and-drop",
                     re.compile("VirtualBox")
                 ]),
                 float = True,

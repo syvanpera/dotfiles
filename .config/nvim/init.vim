@@ -20,6 +20,9 @@
     " Themes
     Plug 'rakr/vim-one'
     " Plug 'dylanaraps/wal.vim'
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'mhartington/oceanic-next'
+    Plug 'vim-airline/vim-airline-themes'
 
     " Make navigation between vim & tmux easier
     Plug 'christoomey/vim-tmux-navigator'
@@ -56,11 +59,13 @@
     " Emacs org-mode support
     Plug 'jceb/vim-orgmode'
     " Change root directory to project root
-    Plug 'airblade/vim-rooter'
+    " Plug 'airblade/vim-rooter'
     " Jump around a file like a champ
     Plug 'justinmk/vim-sneak'
     " Golang support
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    " Prisma 2 support
+    Plug 'pantharshit00/vim-prisma'
 
   call plug#end()
 
@@ -85,7 +90,7 @@
   set hidden
   set shell=bash
   set encoding=UTF-8
-  set list listchars=tab:»·,trail:·,nbsp:·
+  " set list listchars=tab:»·,trail:·,nbsp:·
   set scrolloff=0
   " set clipboard+=unnamedplus
   set nocompatible
@@ -158,7 +163,7 @@
 
 " Autocommands --------------------------------------------------------------{{{
 
-  autocmd BufWritePost *sxhkdrc !kill -SIGUSR1 sxhkd
+  " autocmd BufWritePost *sxhkdrc !kill -SIGUSR1 sxhkd
 
 " }}}
 
@@ -167,13 +172,41 @@
   set background=dark
   syntax on
 
+  " colorscheme nord
   colorscheme one
+  colorscheme OceanicNext
   " colorscheme wal
-  let g:airline_theme = 'one'
+  let g:airline_theme = 'base16_oceanicnext'
   let g:one_allow_italics = 1
+
+  let g:airline_left_sep = "\ue0b8"
+  let g:airline_right_sep = "\ue0ba"
+
+  " Highlighted row
+  let g:nord_cursor_line_number_background = 1
+
+  " Uniform status line
+  let g:nord_uniform_status_lines = 1
+
+  " Vsplit line
+  let g:nord_bold_vertical_split_line = 1
+
+  "Uniform backgroung highlighting
+  let g:nord_uniform_diff_background = 1
+
+  " Include bold style for specified syntax
+  let g:nord_bold = 0
+
+  " Include italic style for specified syntax
+  let g:nord_italic = 0
+
+  " Include underline style for specified syntax
+  let g:nord_underline = 0
 
   highlight Normal guibg=NONE ctermbg=NONE guifg=#e9fffa
   highlight LineNr guibg=NONE ctermbg=NONE
+  highlight EndOfBuffer guibg=NONE ctermbg=NONE
+  highlight SignColumn guibg=NONE ctermbg=NONE
 
 " }}}
 
@@ -493,7 +526,34 @@
 
   " }}}
 
-" }}}
+  " Go  ---------------------------------------------------------------------{{{
 
-" vim:foldmethod=marker
+  au FileType go set shiftwidth=4 softtabstop=4 tabstop=4
+
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_structs = 1
+  let g:go_highlight_types = 1
+
+  let g:go_auto_sameids = 1
+
+  let g:gofmt_command = "goimports"
+  let g:go_auto_type_info = 1
+
+  let g:go_code_completion_enabled = 1
+  let g:go_fmt_autosave = 1
+  let g:go_addtags_transform = "camelcase"
+
+  let g:go_metalinter_autosave = 1
+  let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+
+  "}}}
+
+"}}}
+
+"vim:foldmethod=marker
 

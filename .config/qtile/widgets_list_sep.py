@@ -43,7 +43,7 @@ class Widgets_List(object):
 
         wl += [CurrentLayoutIcon(
             fontsize=fontsize,
-            custom_icon_paths=[expanduser("~/.config/qtile/icons")],
+            # custom_icon_paths=[expanduser("~/.config/qtile/icons")],
             foreground=self.color.white,
             padding=10,
             scale=0.7
@@ -129,12 +129,12 @@ class Widgets_List(object):
 
         wl += [TextBox(
             fontsize=fontsize,
-            foreground=self.color.green,
+            foreground=self.color.blue,
             text=" "
         )]
         wl += [CPU(
             fontsize=fontsize,
-            foreground=self.color.green,
+            foreground=self.color.blue,
             # TODO Remove hard coded terminal
             mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn("alacritty -e ytop")},
             format='{load_percent}%',
@@ -145,12 +145,12 @@ class Widgets_List(object):
 
         wl += [TextBox(
             fontsize=fontsize,
-            foreground=self.color.green,
+            foreground=self.color.blue,
             text=" "
         )]
         wl += [ThermalSensor(
             fontsize=fontsize,
-            foreground=self.color.green,
+            foreground=self.color.blue,
             threshold=90,
             mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn("alacritty -e ytop")},
             update_interval=2.0
@@ -159,12 +159,12 @@ class Widgets_List(object):
         wl += [self.separator.normal()]
         wl += [TextBox(
             fontsize=fontsize,
-            foreground=self.color.blue,
+            foreground=self.color.cyan,
             text=" "
         )]
         wl += [Memory(
             fontsize=fontsize,
-            foreground=self.color.blue,
+            foreground=self.color.cyan,
             mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(terminal + ' -e ytop')},
             update_interval=2.0,
         )]
@@ -173,13 +173,13 @@ class Widgets_List(object):
 
         wl += [TextBox(
             fontsize=fontsize,
-            foreground=self.color.cyan,
+            foreground=self.color.green,
             font=self.font.bold,
             text="直 "
         )]
         wl += [Wlan(
             fontsize=fontsize,
-            foreground=self.color.cyan,
+            foreground=self.color.green,
             interface='wlp60s0',
             format='{essid} ({percent:2.0%})'
         )]

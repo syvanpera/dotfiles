@@ -45,11 +45,13 @@ settings:
   colors.tabs.pinned.selected.odd.fg:
     global: white
   colors.tabs.selected.even.bg:
-    global: '#51afef'
+    global: '#fabd2f'
   colors.tabs.selected.even.fg:
-    global: white
+    global: black
   colors.tabs.selected.odd.bg:
-    global: '#51afef'
+    global: '#fabd2f'
+  colors.tabs.selected.odd.fg:
+    global: black
   content.autoplay:
     global: false
   content.register_protocol_handler:
@@ -78,7 +80,8 @@ settings:
     global: always
   url.searchengines:
     global:
-      DEFAULT: https://duckduckgo.com/?q={}
+      DEFAULT: https://www.google.com/search?q={}
       aw: https://wiki.archlinux.org/?search={}
+      d: https://duckduckgo.com/?q={}
       g: https://www.google.com/search?q={}
       y: https://www.youtube.com/results?search_query={}

@@ -26,6 +26,9 @@ run-or-restart() {
 # run tmux new-session -d -s common    # Tmux server
 run dunst                            # Notification daemon
 run picom                            # Compositor
+run xbanish                          # Hide mouse cursor when typing
+run clipmenud                        # Clipboard manager daemon
+# run clipster -d                      # Clipboard manager daemon
 # run redshift                         # Red screen
 
 # run volumeicon                       # Volume icon

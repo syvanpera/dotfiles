@@ -42,3 +42,13 @@
   email = tuomo.syvanpera@gmail.com
 [github]
   user = syvanpera
+[pull]
+  rebase = true
+
+[includeIf "gitdir:~/projects/houston/"]
+    path = ~/.gitconfig_houston
+
+[includeIf "gitdir:~/projects/logisnext/"]
+    path = ~/.gitconfig_houston
+[init]
+	defaultBranch = main
