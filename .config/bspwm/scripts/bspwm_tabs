@@ -1,7 +1,0 @@
-#!/bin/sh
-
-wid=$(bspc query -N -n focused)
-tabbedid=$(tabbed -d)
-echo $tabbedid
-sleep 0.1
-xdotool windowreparent $wid $tabbedid
