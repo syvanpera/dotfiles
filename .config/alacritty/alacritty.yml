@@ -3,10 +3,10 @@ env:
 
 # Font configuration
 font:
-  size: 9
+# size: 9
 
   normal:
-    family: RobotoMono Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Regular
 
 # Background opacity

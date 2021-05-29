@@ -7,7 +7,7 @@
   // Choose the order of the modules
   "modules-left": ["sway/workspaces", "sway/window"],
   // "modules-center": ["sway/window"],
-  "modules-right": ["cpu", "memory", "temperature", "disk", "disk#home", "pulseaudio", "backlight", "battery", "tray", "clock", "custom/power"],
+  "modules-right": ["cpu", "memory", "temperature", "disk", "pulseaudio", "backlight", "battery", "tray", "clock", "custom/power"],
   // Modules configuration
   "sway/workspaces": {
     "disable-scroll": false,
@@ -76,7 +76,7 @@
   },
   "clock": {
     // "timezone": "America/New_York",
-    "format": "{:%H:%M %p}",
+    "format": "{:%H:%M}",
     "format-alt": "{:%A, %B %d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     // "format-alt": "{:%Y-%m-%d}"
@@ -132,7 +132,7 @@
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "interval": 60,
-    "on-click-middle": "exec foot -e nmtui"
+    "on-click-middle": "exec footclient -e nmtui"
   },
   "pulseaudio": {
     "scroll-step": 1, // %, can be a float
