@@ -3,10 +3,10 @@ env:
 
 # Font configuration
 font:
-# size: 9
+#  size: 11
 
   normal:
-    family: JetBrainsMono Nerd Font
+    family: JetBrains Mono Nerd Font
     style: Regular
 
 # Background opacity
@@ -66,6 +66,7 @@ colors:
   primary:
     # background: '0x1b2b34'
     background: '0x0d1117'
+    # background: '0x121b21'
     foreground: '0xc0c5ce'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
