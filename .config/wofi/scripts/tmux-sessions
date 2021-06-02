@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cmd="wofi"
+terminal="gnome-terminal"
+
+sessions=$(tmux ls | sed -e 's/^\([^:]*\).*/\1/g')
+
+chosen="$(echo -e "$sessions" | $cmd -p "UP - $uptime" -dmenu -selected-row 0)"
+
+[[ ! -z "$chosen" ]] && $terminal -- tmux new-session -A -s $chosen

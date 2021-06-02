@@ -11,21 +11,21 @@ truncation_symbol = ""
 [git_state]
 cherry_pick = "🍒 PICKING"
 
-[golang]
-symbol = "ﳑ "
+# [golang]
+# symbol = "ﳑ "
 
-[rust]
-symbol = " "
+# [rust]
+# symbol = " "
 
-[package]
-symbol = " "
+# [package]
+# symbol = " "
 
-[nodejs]
-disabled = true
-symbol = " "
+# [nodejs]
+# disabled = true
+# symbol = " "
 
-[python]
-symbol = " "
+# [python]
+# symbol = " "
 
 [kubernetes]
 disabled = true

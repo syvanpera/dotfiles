@@ -4,7 +4,9 @@ xwayland enable
 
 # Variables -------------------------------------------------------------------------------------{{{
 
-  set $term footclient
+  # set $term footclient
+  # set $term alacritty
+  set $term kitty
 
   set $mod   Mod1
   set $super Mod4
@@ -32,17 +34,17 @@ xwayland enable
 
   # Your preferred application launcher
   # Note: it's recommended that you pass the final command to sway
-  set $menu wofi --show drun | xargs swaymsg exec --
-  # set $menu rofi -no-lazy-grab -show drun -theme themes/launcher.rasi | xargs swaymsg exec --
+  # set $menu wofi --show drun | xargs swaymsg exec --
+  set $menu rofi -no-lazy-grab -show drun -theme themes/launcher.rasi | xargs swaymsg exec --
 
 # }}}
 
 # Workspaces ------------------------------------------------------------------------------------{{{
 
-  workspace "1" output DP-2
-  workspace "2" output DP-2
-  workspace "3" output DP-1
-  workspace "4" output DP-1
+  workspace "1" output DP-3
+  workspace "2" output DP-3
+  workspace "3" output DP-2
+  workspace "4" output DP-2
   workspace "5" output eDP-1
   workspace "6" output eDP-1
   workspace "7" output eDP-1
@@ -124,8 +126,8 @@ xwayland enable
   # output * bg /home/tuomo/Pictures/wallpapers/1479167550300.jpg fill
 
   output eDP-1 scale 1 pos 700 1440 res 1900x1200
-  output DP-1 pos 2560 0 res 2560x1440
-  output DP-2 pos 0 0 res 2560x1440
+  output DP-2 pos 2560 0 res 2560x1440
+  output DP-3 pos 0 0 res 2560x1440
 
   focus output eDP-1
 
@@ -176,7 +178,7 @@ xwayland enable
 
   # Start a terminal
   bindsym $mod+Return exec $term
-  bindsym $mod+Shift+Return exec $term -e tmux
+  bindsym $mod+Shift+Return exec $term -e tmux new-session -A -s 'Default'
 
   # Kill focused window
   bindsym $mod+q kill
@@ -313,12 +315,12 @@ xwayland enable
 
 # Launcher bindings -----------------------------------------------------------------------------{{{
 
-  bindsym $mod+Shift+n exec ~/.config/rofi/scripts/networkmanager-dmenu
-  bindsym $mod+Shift+w exec ~/scripts/rofi/windows.sh
+  # bindsym $mod+Shift+n exec ~/.config/rofi/scripts/networkmanager-dmenu
+  bindsym $mod+Shift+w exec ~/.config/rofi/scripts/sway-windows
   bindsym $super+Shift+s exec ~/.config/rofi/scripts/sway-interactive-screenshot
   bindsym $mod+0 exec ~/.config/waybar/scripts/power.sh
 
-  bindsym $super+e exec emacs
+  bindsym $super+e exec emacsclient --create-frame --alternate-editor="" --no-wait
   bindsym $super+r exec alacritty -e ranger
   bindsym $super+h exec alacritty -e htop
   bindsym $super+m exec alacritty -e neomutt
@@ -332,6 +334,9 @@ xwayland enable
 #  bindsym XF86AudioRaiseVolume exec --no-startup-id bash -c "amixer -D pulse sset Master 5%+; ~/.config/sway/scripts/notifications/audio-notification.sh"
 #  bindsym XF86AudioLowerVolume exec --no-startup-id bash -c "amixer -D pulse sset Master 5%-; ~/.config/sway/scripts/notifications/audio-notification.sh"
 #  bindsym XF86AudioMute exec --no-startup-id bash -c "amixer -D pulse sset Master toggle; ~/.config/sway/scripts/notifications/audio-notification.sh"
+  bindsym XF86AudioRaiseVolume exec pamixer -ui 5 && pamixer --get-volume > $WOBSOCK
+  bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $WOBSOCK
+  bindsym XF86AudioMute exec pamixer --toggle-mute && (pamixer --get-mute && echo 0 > $WOBSOCK) || pamixer --get-volume > $WOBSOCK
 
   # MPRIS controls
 #  bindsym --locked XF86AudioPlay exec playerctl play-pause
@@ -339,14 +344,15 @@ xwayland enable
 #  bindsym --locked XF86AudioPrev exec playerctl previous
 
   # Brightness control
-#  bindsym XF86MonBrightnessUp exec sh -c "brightnessctl set 5%+; ~/.config/sway/scripts/notifications/brightness-notification.sh"
-#  bindsym XF86MonBrightnessDown exec sh -c "brightnessctl set 5%-; ~/.config/sway/scripts/notifications/brightness-notification.sh"
+  bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+  bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 
   # Lock screen
-  bindsym $super+l exec swaylock
+  # bindsym $super+l exec swaylock
 
   # Clipboard history
-  bindsym $mod+shift+c exec --no-startup-id clipman pick -t wofi
+  # bindsym $mod+shift+c exec --no-startup-id clipman pick -t wofi
+  bindsym $mod+shift+c exec ~/.config/rofi/scripts/clipman
 
   # Calculator
 #  bindsym $mod+shift+0 exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort
@@ -365,11 +371,15 @@ xwayland enable
   #  gsettings set $gnome-schema font-name    'Droid Sans 10'
   #}
 
+  set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+  exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
   exec wl-paste -t text --watch clipman store
   exec mako
-  exec foot --server
-#  exec nm-applet --indicator
+  exec nm-applet --indicator
+  exec blueman-tray
 #  exec blueman-applet
+#  exec foot --server
 
 # }}}
 

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+rofi_command="wofi"
+
+uptime=$(uptime -p | sed -e 's/up //g')
+
+# Options
+shutdown=" shutdown"
+reboot="勒 reboot"
+lock=" lock"
+suspend=" suspend"
+logout=" logout"
+
+# Variable passed to rofi
+options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+
+chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
+echo $chosen
+case $chosen in
+  $shutdown)
+    # gnome-session-quit --power-off
+    ;;
+  $reboot)
+    # gnome-session-quit --reboot
+    ;;
+  $lock)
+    # i3lock --color=#000000
+    ;;
+  $suspend)
+    # systemctl suspend
+    ;;
+  $logout)
+    # gnome-session-quit --logout
+    ;;
+esac
+

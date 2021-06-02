@@ -1,7 +1,7 @@
 stylesheet=/home/tuomo/.config/wofi/style.css
 hide_scroll=true
 show=drun
-width=100%
+width=30%
 lines=10
 line_wrap=word
 term=footclient
@@ -15,6 +15,6 @@ insensitive=true
 prompt=
 image_size=25
 display_generic=true
-key_up=Control_L-k
-key_down=Control_L-j
+key_up=Control_L-p
+key_down=Control_L-n
 key_expand=Tab

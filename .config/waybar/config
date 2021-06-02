@@ -7,7 +7,7 @@
   // Choose the order of the modules
   "modules-left": ["sway/workspaces", "sway/window"],
   // "modules-center": ["sway/window"],
-  "modules-right": ["cpu", "memory", "temperature", "disk", "pulseaudio", "backlight", "battery", "tray", "clock", "custom/power"],
+  "modules-right": ["cpu", "memory", "temperature", "disk", "pulseaudio", "backlight", "battery", "tray", "clock", "custom/ha"],
   // Modules configuration
   "sway/workspaces": {
     "disable-scroll": false,
@@ -18,13 +18,16 @@
       "2": [],
       "3": [],
       "4": [],
+      "5": [],
+      "6": [],
     },
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
+      "1": "",
+      "2": "",
+      "3": "",
       "4": "",
-      "5": "",
+      "5": "",
+      "6": "",
       "focused": "",
       "urgent": "",
       "default": ""
@@ -152,8 +155,8 @@
       "default": ""
     },
     "on-click": "pavucontrol",
-    "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
-    "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob",
+    "on-scroll-up": "pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob",
+    "on-scroll-down": "pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob",
   },
   "custom/weather": {
     "exec": "~/.config/waybar/scripts/weather.sh Terrebonne",
@@ -184,9 +187,9 @@
     "on-click": "~/.config/waybar/scripts/power.sh",
     "tooltip": false
   },
-  "custom/github": {
-    "format": "",
-    "on-click": "xdg-open https://github.com",
+  "custom/ha": {
+    "format": "",
+    "on-click": "xdg-open http://hass:8123",
     "tooltip": false
   },
   "custom/reddit": {

@@ -20,7 +20,7 @@ function list_geometry () {
 WINDOWS=`list_geometry visible with_description`
 FOCUSED=`list_geometry focused`
 
-CHOICE=`rofi -dmenu -p 'Screenshot' << EOF
+CHOICE=`rofi -theme themes/screenshot.rasi -dmenu -lines 8 -p 'Screenshot' << EOF
 fullscreen
 region
 focused
