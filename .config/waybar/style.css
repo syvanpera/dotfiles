@@ -111,7 +111,7 @@ window#waybar.empty {
 }
 /* WIDGETS */
 #cpu, #idle_inhibitor, #custom-pacman, #memory, #backlight, #disk, #network, #pulseaudio, #custom-weather, #temperature, #mpd {
-  font-size: 14px;
+  font-size: 15px;
   background-color: #1c232f;
   padding: 0px 10px 0px 10px;
   margin: 2px 0px 2px 0px;
@@ -175,6 +175,7 @@ window#waybar.empty {
   color: #eb4d4b;
 }
 #battery {
+  font-size: 15px;
   color: #8fbcbb;
   padding: 0px 10px 0px 20px;
 }
@@ -216,7 +217,7 @@ label:focus {
   padding-left: 15px;
 }
 #clock {
-  font-size: 14px;
+  font-size: 15px;
 }
 #custom-recorder {
   padding: 2px 5px 2px 5px;

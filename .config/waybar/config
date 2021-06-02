@@ -85,12 +85,12 @@
     // "format-alt": "{:%Y-%m-%d}"
   },
   "cpu": {
-    "format": "  {:2}%",
-    "on-click": "foot -e ytop",
+    "format": "<big></big>  {:2}%",
+    "on-click": "kitty -e htop",
     "tooltip": false
   },
   "memory": {
-    "format": "  {:2}%"
+    "format": "<big></big>  {:2}%"
   },
   "temperature": {
     "thermal-zone": 2,
@@ -106,7 +106,7 @@
     "format": "{icon}  {percent}%",
     "format-alt": "{percent}% {icon}",
     "format-alt-click": "click-right",
-    "format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"],
+    "format-icons": ["🌑", "🌒", "🌓", "🌔", "🌕"],
     "on-scroll-down": "brightnessctl -c backlight set +5%",
     "on-scroll-up": "brightnessctl -c backlight set 5%-"
   },
@@ -122,8 +122,8 @@
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    // "format-icons": ["", "", "", "", ""]
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [" ", " ", " ", " ", " "]
+    // "format-icons": ["", "", "", "", ""]
   },
   "battery#bat2": {
     "bat": "BAT2"
@@ -139,7 +139,7 @@
   },
   "pulseaudio": {
     "scroll-step": 1, // %, can be a float
-    "format": "{icon}  {volume}%",
+    "format": "<big>{icon}</big>  {volume}%",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
@@ -175,7 +175,7 @@
   },
   "disk": {
     "interval": 30,
-    "format": "  {free}",
+    "format": "<big></big>  {free}",
     "path": "/",
   },
   "disk#home": {
