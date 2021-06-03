@@ -25,7 +25,7 @@ window#waybar {
   border-radius: 0 10px 10px 0;
 }
 #workspaces button, #tags button {
-  padding: 2px 10px 2px 10px;
+  padding: 2px 8px 2px 8px;
   background-color: transparent;
   margin: 0;
   color: #000000;
@@ -122,7 +122,7 @@ window#waybar.empty {
 #backlight {
   padding-right: 15px;
   border-radius: 0px 10px 10px 0px;
-  color: #f99157;
+  color: #b8ba25;
 }
 #disk {
   color:#6699cc;
