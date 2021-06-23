@@ -41,6 +41,63 @@ xwayland enable
 
 # }}}
 
+# Output configuration --------------------------------------------------------------------------{{{
+
+  output eDP-1 scale 1 pos 700 1440 res 1900x1200
+  output DP-2 pos 2560 0 res 2560x1440
+  output DP-3 pos 0 0 res 2560x1440
+
+  focus output eDP-1
+
+# }}}
+
+# Input configuration ---------------------------------------------------------------------------{{{
+
+  input * {
+    repeat_delay 300
+    repeat_rate  40
+
+    xkb_layout  fi
+    xkb_variant nodeadkeys
+    xkb_options caps:ctrl_modifier
+  }
+
+  input type:touchpad {
+    dwt              enabled
+    tap              enabled
+    natural_scroll   enabled
+    middle_emulation enabled
+    pointer_accel    0.2
+  }
+
+  input type:mouse {
+    natural_scroll   disabled
+    pointer_accel    0.05
+  }
+
+# }}}
+
+# Idle configuration ----------------------------------------------------------------------------{{{
+
+
+  # This will lock the screen after 900 seconds of inactivity, then turn off
+  # displays after another 300 seconds, and turn screens back on when resumed.
+  # It will also lock the screen before the computer goes to sleep.
+  exec swayidle -w \
+         # timeout 900  'swaylock -f -c 000000' \
+         timeout 900  'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2' \
+         timeout 1200 'swaymsg "output * dpms off"' \
+              resume  'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock'
+
+  # exec swayidle -w\
+  #     timeout 1070 'swaylock -f'\
+  #     timeout 770 'swaymsg "output * dpms off"' \
+  #     resume 'swaymsg "output * dpms on"' \
+  #     after-resume 'swaylock'
+
+# }}}
+
 # Workspaces ------------------------------------------------------------------------------------{{{
 
   workspace "1" output DP-3
@@ -59,7 +116,7 @@ xwayland enable
 
   focus_follows_mouse no
   focus_wrapping      false
-  mouse_warping       none
+  mouse_warping       output
 
   smart_gaps on
   smart_borders on
@@ -82,16 +139,17 @@ xwayland enable
   set $base03 #4C566A
   set $base04 #D8DEE9
   set $base05 #E5E9F0
-  set $base06 #ECEFF4
+  set $base06 #F8F8F2
   set $base07 #8FBCBB
   set $base08 #88C0D0
   set $base09 #81A1C1
-  # set $base0A #458588
   # set $base0A #3b84c0
   # set $base0A #fbc02d
   # set $base0A #8fbcbb
   # set $base0A #d79920
-  set $base0A #448488
+  # set $base0A #448488
+  set $base0A #bd93f9
+  # set $base0A #6699cc
   set $base0B #BF616A
   set $base0C #D08770
   # set $base0D #ECBE7B
@@ -100,9 +158,10 @@ xwayland enable
   set $base0E #A3BE8C
   set $base0F #7C6F64
 
-  set $white  #ffffff
+  set $white  #f8f8f2
   set $green  #98C379
-  set $yellow #fbc02d
+  # set $yellow #fbc02d
+  set $yellow #f1fa8c
 
   # Basic color configuration using the Base16 variables for windows and borders.
   # Property Name         Border  BG      Text    Indicator Child Border
@@ -132,60 +191,6 @@ xwayland enable
 
 # }}}
 
-# Output configuration --------------------------------------------------------------------------{{{
-
-  # output * bg /home/tuomo/Pictures/wallpapers/1479167550300.jpg fill
-  exec ~/.azotebg
-
-  output eDP-1 scale 1 pos 700 1440 res 1900x1200
-  output DP-2 pos 2560 0 res 2560x1440
-  output DP-3 pos 0 0 res 2560x1440
-
-  focus output eDP-1
-
-# }}}
-
-# Input configuration ---------------------------------------------------------------------------{{{
-
-  input * {
-      repeat_delay 300
-      repeat_rate  40
-
-      xkb_layout  fi
-      xkb_variant nodeadkeys
-      xkb_options caps:ctrl_modifier
-  }
-
-  input type:touchpad {
-      dwt              enabled
-      tap              enabled
-      natural_scroll   enabled
-      middle_emulation enabled
-      pointer_accel    0.2
-  }
-
-  input type:mouse {
-      natural_scroll   disabled
-      pointer_accel    0.05
-  }
-
-# }}}
-
-# Idle configuration ----------------------------------------------------------------------------{{{
-
-
-  # This will lock the screen after 900 seconds of inactivity, then turn off
-  # displays after another 300 seconds, and turn screens back on when resumed.
-  # It will also lock the screen before the computer goes to sleep.
-  exec swayidle -w \
-         # timeout 900  'swaylock -f -c 000000' \
-         timeout 900  'swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2' \
-         timeout 1200 'swaymsg "output * dpms off"' \
-              resume  'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock'
-
-# }}}
-
 # Sway specific bindings ------------------------------------------------------------------------{{{
 
   # Start a terminal
@@ -203,7 +208,7 @@ xwayland enable
   # Despite the name, also works for non-floating windows.
   # Change normal to inverse to use left mouse button for resizing and right
   # mouse button for dragging.
-  floating_modifier $mod normal
+  floating_modifier $super normal
 
   # Reload the configuration file
   bindsym $mod+Shift+r reload
@@ -355,7 +360,9 @@ xwayland enable
   bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $WOBSOCK
   bindsym XF86AudioMute exec pamixer --toggle-mute && (pamixer --get-mute && echo 0 > $WOBSOCK) || pamixer --get-volume > $WOBSOCK
 
-  bindsym XF86AudioMicMute exec pamixer --toggle-mute --source 54  && (pamixer --get-mute --source 54 && echo 0 > $WOBSOCK) || pamixer --get-volume --source 54 > $WOBSOCK
+  bindsym XF86AudioMicMute exec pamixer --toggle-mute --source $(pamixer --list-sources | grep 'Digital Microphone' | awk '{ print $1 }')
+  #
+  # bindsym XF86AudioMicMute exec pamixer --toggle-mute --source 54  && (pamixer --get-mute --source 54 && echo 0 > $WOBSOCK) || pamixer --get-volume --source 54 > $WOBSOCK
 
   # MPRIS controls
 #  bindsym --locked XF86AudioPlay exec playerctl play-pause
@@ -380,7 +387,18 @@ xwayland enable
 #  bindsym $mod+shift+0 exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort
 # }}}
 
+# Status Bar ------------------------------------------------------------------------------------{{{
+
+  bar {
+    swaybar_command /home/tuomo/.config/waybar/launch.sh
+  }
+
+# }}}
+
 # Autostarts ------------------------------------------------------------------------------------{{{
+
+  # output * bg /home/tuomo/Pictures/wallpapers/1479167550300.jpg fill
+  exec ~/.azotebg
 
   # Grab GTK-3 settings from .config/gtk-3.0/settings.ini
   exec_always ~/.config/sway/scripts/import-gsettings.sh gtk-theme:gtk-theme-name icon-theme:gtk-icon-theme-name cursor-theme:gtk-cursor-theme-name font-name:gtk-font-name
@@ -400,19 +418,16 @@ xwayland enable
   exec mako
   exec nm-applet --indicator
   exec blueman-tray
+
 #  exec blueman-applet
 #  exec foot --server
 
-# }}}
-
-# Status Bar ------------------------------------------------------------------------------------{{{
-
-  bar {
-    swaybar_command /home/tuomo/.config/waybar/launch.sh
-  }
+  exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
 # }}}
 
 include /etc/sway/config.d/*
+# include ~/.config/sway/decoration
+# include ~/.config/sway/window-rules
 
 # vim:foldmethod=marker

@@ -3,15 +3,15 @@
 * {
     /* background:     #212B30ff; */
     /* background:     #292f36ff; */
-    background:     #282a36ff;
+    background:     #0d1117ff;
     background-alt: #263238ff;
-    foreground:     #f8f8f2ff;
+    foreground:     #e5e9f0ff;
     /* border:         #87af5fff; */
     /* selected:       #87af5fff; */
     /* border:         #fabd2fff; */
-    border:         #bd93f9ff;
+    border:         #448488ff;
     /* selected:       #fabd2fff; */
-    selected:       #bd93f9ff;
+    selected:       #448488ff;
     urgent:         #EC407Aff;
     logo:           #51afefff;
     on:             #61C766ff;

@@ -1,10 +1,11 @@
 stylesheet=/home/tuomo/.config/wofi/style.css
 hide_scroll=true
 show=drun
-width=30%
+width=100%
 lines=10
+location=top
 line_wrap=word
-term=footclient
+term=kitty
 allow_markup=true
 always_parse_args=true
 show_all=true
@@ -15,6 +16,10 @@ insensitive=true
 prompt=
 image_size=25
 display_generic=true
+# orientation=horizontal
+
+key_forward=Control_L-j
+key_backward=Control_L-k
 key_up=Control_L-p
 key_down=Control_L-n
 key_expand=Tab

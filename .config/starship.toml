@@ -1,8 +1,8 @@
 [character]
-symbol = "λ"
+# symbol = "λ"
 success_symbol = "[λ](bold green)"
 error_symbol = ""
-use_symbol_for_status = true
+# use_symbol_for_status = true
 
 [git_branch]
 symbol = " "
@@ -30,7 +30,7 @@ cherry_pick = "🍒 PICKING"
 [kubernetes]
 disabled = true
 
-[gcloud]
-disabled = true
-symbol = " "
-format = 'on [$symbol$account(\($project/$region\))]($style) '
+# [gcloud]
+# disabled = true
+# symbol = " "
+# format = 'on [$symbol$account(\($project/$region\))]($style) '

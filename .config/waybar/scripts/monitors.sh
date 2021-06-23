@@ -1,0 +1,8 @@
+#!/bin/bash
+
+l=$(swaymsg -t get_outputs | jq  -r '[ .[] | select(.dpms and .active) ] | length')
+o=$(swaymsg -t get_outputs | jq  -r '. | map(.name) | join(",")')
+t=""
+for i in `seq $l`; do t="${t}🖥️";done
+text="{\"text\":\""$t"\",\"tooltip\":\""$o"\"}"
+echo $text

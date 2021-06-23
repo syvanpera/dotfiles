@@ -1,0 +1,13 @@
+@define-color background #282a36;
+@define-color foreground #f8f8f2;
+
+@define-color warn #ff5555;
+
+/* @define-color main #6699cc; */
+@define-color main #bd93f9;
+
+@define-color base01 #bd93f9;
+@define-color base02 #6272a4;
+@define-color base03 #f1fa8c;
+@define-color base04 #9da98d;
+@define-color base05 #a4c3b9;

@@ -3,16 +3,16 @@
   // "position": "bottom", // Waybar position (top|bottom|left|right)
   // "height": 30, // Waybar height (to be removed for auto height)
   // "width": 2560, // Waybar width
-  "output": ["DP-3"],
+  // "output": ["DP-3"],
   // Choose the order of the modules
   "modules-left": ["sway/workspaces", "sway/window"],
   // "modules-center": ["sway/window"],
   "modules-right": ["cpu", "memory", "temperature", "disk", "pulseaudio", "backlight", "battery", "tray", "clock"],
   // Modules configuration
   "sway/workspaces": {
-    "disable-scroll": false,
+    "disable-scroll": true,
     "all-outputs": true,
-    "format": "<big>{icon}</big>",
+    "format": "{icon}",
     "persistent_workspaces": {
       "1": [],
       "2": [],
@@ -22,12 +22,18 @@
       "6": [],
     },
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
+      /* "1": "", */
+      /* "2": "", */
+      /* "3": "", */
+      /* "4": "", */
+      /* "5": "", */
+      /* "6": "", */
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
       "focused": "",
       "urgent": "",
       "default": ""
@@ -79,8 +85,8 @@
   },
   "clock": {
     // "timezone": "America/New_York",
-    "format": "<big></big> {:%d.%m.%Y %H:%M}",
-    "format-alt": "{:%A, %d.%m}",
+    "format": "<big></big>  {:%d.%m.%Y %H:%M}",
+    "format-alt": "<big></big>  {:%A, %d.%m}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     // "format-alt": "{:%Y-%m-%d}"
   },
@@ -90,7 +96,7 @@
     "tooltip": false
   },
   "memory": {
-    "format": "<big></big> {:2}%"
+    "format": "<big></big>  {:2}%"
   },
   "temperature": {
     "thermal-zone": 2,
@@ -119,11 +125,11 @@
     "format": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
+    "format-alt": "{time}  <big>{icon}</big>",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": [" ", " ", " ", " ", " "]
-    // "format-icons": ["", "", "", "", ""]
+    /* "format-icons": ["", "", "", "", ""] */
+    "format-icons": ["", "", "", "", ""]
   },
   "battery#bat2": {
     "bat": "BAT2"
@@ -155,8 +161,8 @@
       "default": "蓼"
     },
     "on-click": "pavucontrol",
-    "on-scroll-up": "pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob",
-    "on-scroll-down": "pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob",
+    "on-scroll-up": "pamixer -ui 5",
+    "on-scroll-down": "pamixer -ud 5",
   },
   "custom/weather": {
     "exec": "~/.config/waybar/scripts/weather.sh Terrebonne",
@@ -222,5 +228,12 @@
     "max-length": 7,
     "on-click-right": "minimize",
     "on-click-middle": "close"
+  },
+  "custom/monitors": {
+    "format": "<span color='gold'>{}</span>",
+    "return-type" : "json",
+    "interval": 10,
+    "exec": "~/.config/waybar/scripts/monitors.sh",
+    "tooltip": "true"
   }
 }

@@ -1,6 +1,6 @@
 configuration {
   modi: "drun,run,window";
-  monitor: "1";
+  monitor: "0";
   lines:10;
   show-match: true;
   show-icons: true;
