@@ -1,0 +1,1 @@
+/home/tuomo/.fzf/shell/key-bindings.fish
