@@ -1,0 +1,6 @@
+# make keyboard go faster
+xset r rate 300 40
+
+# set keyboard layout and use caps lock as control and esc
+setxkbmap -layout fi -variant nodeadkeys -option 'caps:ctrl_modifier'
+killall xcape ; xcape -e 'Caps_Lock=Escape'

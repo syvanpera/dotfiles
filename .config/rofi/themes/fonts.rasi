@@ -1,0 +1,9 @@
+/* Fonts For All Themes*/
+
+* {
+    font: "JetBrainsMono Nerd Font 10";
+}
+
+textbox {
+    font: "JetBrainsMono Nerd Font 10";
+}

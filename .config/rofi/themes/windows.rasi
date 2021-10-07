@@ -1,0 +1,5 @@
+@import "launcher.rasi"
+
+textbox-prompt-colon {
+    str:              " ";
+}

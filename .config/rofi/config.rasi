@@ -1,0 +1,17 @@
+configuration {
+  modi: "drun,run,window";
+  monitor: "0";
+  show-icons: true;
+  /* theme: "~/.config/rofi/themes/custom.rasi"; */
+  /* theme: "~/.config/rofi/themes/gruvbox-dark-soft.rasi"; */
+  /* theme: "~/.config/rofi/themes/gruvbox.rasi"; */
+  /* drun-icon-theme: "Arc"; */
+  kb-remove-to-eol: "";
+  kb-row-up: "Up,Control+p,Alt+k,Control+k,ISO_Left_Tab,Alt+Shift+Tab";
+  kb-row-down: "Down,Alt+j,Control+n,Control+j";
+  kb-mode-next: "Shift+Right,Control+Tab,Tab";
+  kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab";
+  kb-row-tab: "";
+  kb-remove-char-back: "BackSpace";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+}
