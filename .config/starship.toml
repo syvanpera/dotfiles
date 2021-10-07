@@ -1,0 +1,36 @@
+[character]
+# symbol = "λ"
+success_symbol = "[λ](bold green)"
+error_symbol = ""
+# use_symbol_for_status = true
+
+[git_branch]
+symbol = " "
+truncation_symbol = ""
+
+[git_state]
+cherry_pick = "🍒 PICKING"
+
+[golang]
+symbol = "ﳑ "
+
+# [rust]
+# symbol = " "
+
+# [package]
+# symbol = " "
+
+# [nodejs]
+# disabled = true
+# symbol = " "
+
+# [python]
+# symbol = " "
+
+[kubernetes]
+disabled = true
+
+# [gcloud]
+# disabled = true
+# symbol = " "
+# format = 'on [$symbol$account(\($project/$region\))]($style) '
