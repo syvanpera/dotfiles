@@ -19,7 +19,7 @@ window {
     transparency:     "real";
     background-color: @background;
     text-color:       @foreground;
-    border:           1px;
+    /* border:           1px; */
     border-color:     @selected;
     border-radius:    0px;
     width:            25%;
@@ -64,7 +64,7 @@ entry {
     placeholder-color: @foreground;
     expand:            true;
     horizontal-align:  0;
-    placeholder:       "Search";
+    placeholder:       "";
     blink:             true;
     padding:           4px 0px 0px 0px;
 }

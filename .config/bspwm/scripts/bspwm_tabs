@@ -1,0 +1,4 @@
+#!/bin/sh
+
+id=$(bspc query -N -n)
+[[ "$(tabc printclass $id)" == "tabbed" ]] && tabc detach $id || tabc create $id

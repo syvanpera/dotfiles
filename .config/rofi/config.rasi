@@ -1,7 +1,8 @@
 configuration {
   modi: "drun,run,window";
-  monitor: "0";
+  monitor: "-1";
   show-icons: true;
+  theme: "~/.config/rofi/themes/general.rasi";
   /* theme: "~/.config/rofi/themes/custom.rasi"; */
   /* theme: "~/.config/rofi/themes/gruvbox-dark-soft.rasi"; */
   /* theme: "~/.config/rofi/themes/gruvbox.rasi"; */

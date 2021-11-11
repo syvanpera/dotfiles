@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export BW_SESSION:\x1d
+SETUVAR --export BW_SESSION:f9kS4ltu/vFv4kECtYrBz1dh6Ty9BZVpHuWdcbu5hSQ4vJ4NpCX/b\x2b8Iiq/BKywLOuYfM9mSNFU\x2bmkVU3SuYkw\x3d\x3d
 SETUVAR --export EDITOR:nvim
 SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25\x20\x2d\x2dreverse\x20\x2d\x2dborder
 SETUVAR FZF_DISABLE_KEYBINDINGS:0
@@ -8,17 +8,20 @@ SETUVAR FZF_LEGACY_KEYBINDINGS:1
 SETUVAR FZF_PREVIEW_DIR_CMD:ls
 SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SETUVAR FZF_TMUX_HEIGHT:40\x25
-SETUVAR SXHKD_SHELL:sh
+SETUVAR SXHKD_SHELL:bash
 SETUVAR Z_DATA_DIR:/home/tuomo/\x2elocal/share/z
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_g:gossip
+SETUVAR _fish_abbr_k:kubectl
 SETUVAR _fish_abbr_t:task
 SETUVAR _fisher_PatrickF1_2F_fzf_2E_fish_files:/home/tuomo/\x2econfig/fish/functions/__fzf_extract_var_info\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_preview_file\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_report_file_type\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_search_current_dir\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_search_git_log\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_search_git_status\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_search_history\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_search_shell_variables\x2efish\x1e/home/tuomo/\x2econfig/fish/conf\x2ed/fzf\x2efish
 SETUVAR _fisher_danhper_2F_fish_2D_ssh_2D_agent_files:/home/tuomo/\x2econfig/fish/functions/__ssh_agent_is_started\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__ssh_agent_start\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/init\x2efish
+SETUVAR _fisher_evanlucas_2F_fish_2D_kubectl_2D_completions_files:/home/tuomo/\x2econfig/fish/completions/kubectl\x2efish
 SETUVAR _fisher_jethrokuan_2F_fzf_files:/home/tuomo/\x2econfig/fish/functions/__fzf_cd\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_complete\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_complete_preview\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_find_file\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_get_dir\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_open\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_parse_commandline\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzf_reverse_isearch\x2efish\x1e/home/tuomo/\x2econfig/fish/functions/__fzfcmd\x2efish\x1e/home/tuomo/\x2econfig/fish/conf\x2ed/fzf\x2efish
-SETUVAR _fisher_plugins:danhper/fish\x2dssh\x2dagent\x1ePatrickF1/fzf\x2efish\x1ejethrokuan/fzf
+SETUVAR _fisher_plugins:danhper/fish\x2dssh\x2dagent\x1ePatrickF1/fzf\x2efish\x1ejethrokuan/fzf\x1eevanlucas/fish\x2dkubectl\x2dcompletions
 SETUVAR fish_color_autosuggestion:969896
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:b294bb

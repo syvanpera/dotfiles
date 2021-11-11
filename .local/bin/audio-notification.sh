@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Script to create pop-up notification when volume changes.
+
+# Create a delay so the change in volume can be registered:
+sleep 0.05
+
+# Get the volume and check if muted or not (STATE):
+VOLUME=`amixer -D pulse sget Master | \
+        grep 'Left:' | \
+        awk -F'[][]' '{ print $2 }' | \
+        sed --expression 's/%//g'`
+
+STATE=`amixer -D pulse sget Master          | \
+       egrep -m 1 'Playback.*?\[o' | \
+       egrep -o '\[o.+\]'`
+
+# Have a different symbol for varying volume levels:
+if [[ $STATE != '[off]' ]]; then
+        if [ "${VOLUME}" == "0" ]; then
+                ICON=~/.local/share/icons/vol-mute.png
+        elif [ "${VOLUME}" -lt "33" ] && [ $VOLUME -gt "0" ]; then
+                ICON=~/.local/share/icons/vol-low.png
+        elif [ "${VOLUME}" -lt "90" ] && [ $VOLUME -ge "33" ]; then
+                ICON=~/.local/share/icons/vol-med.png
+        else
+                ICON=~/.local/share/icons/vol-high.png
+        fi
+
+        PROGRESS=$(~/.local/bin/getprogressstring.sh 10 "█" "░" $VOLUME)
+
+        ~/.local/bin/notify-send.sh "Volume: $VOLUME%" \
+            --replace=100 \
+            -a changeVolume \
+            -t 2000 \
+            -i ${ICON} \
+            -h int:value:${VOLUME} \
+            -h string:synchronous:volume-change
+
+# If volume is muted, display the mute sybol:
+else
+        ~/.local/bin/notify-send.sh "Muted" \
+            --replace=100 \
+            -a changeVolume \
+            -t 2000 \
+            -i ~/.local/share/icons/vol-mute.png \
+            -h int:value:${VOLUME} \
+            -h string:synchronous:volume-change
+fi

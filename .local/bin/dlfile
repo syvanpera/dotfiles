@@ -1,0 +1,28 @@
+#!/bin/sh
+# Provides the ability to download a file by dropping it into a window
+
+url=$(dragon-drag-and-drop -t -x)
+
+if [ ! -z $url ]; then
+  printf "File name: "
+  name=""
+  while [ -z $name ] || [ -e $name ]
+  do
+    read name
+    if [ -e $name ]; then
+      printf "File already exists, overwrite (y/n): "
+      read ans
+
+      if [ $ans == "y" ]; then
+        break
+      else
+        printf "File name: "
+      fi
+    fi
+  done
+
+  # Download the file with curl
+  [ ! -z $name ] && curl -o "$name" $url || exit 1
+else
+  exit 1
+fi

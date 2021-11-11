@@ -63,7 +63,7 @@ entry {
     placeholder-color: @foreground;
     expand:            true;
     horizontal-align:  0;
-    placeholder:       "Search";
+    placeholder:       "";
     blink:             true;
     padding:           4px 0px 0px 0px;
 }

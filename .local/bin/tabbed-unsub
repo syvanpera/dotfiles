@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+split() {
+    # Usage: split "string" "delimiter" "field"
+    IFS=$'\n' read -d "" -ra arr <<< "${1//$2/$'\n'}"
+    printf '%s\n' "${arr[$3]}"
+}
+
+id=$1
+
+ while IFS= read -r node; do
+    node="$(split "$node" " " 3)"
+
+    if [[ "$node" == "$id" ]]; then
+        tabbedsub_px=$(pgrep -fo "tabbed-sub $id")
+
+        [[ -n $tabbedsub_px ]] && kill "$tabbedsub_px"
+
+        exit 0
+    fi
+done < <(bspc subscribe node_remove)

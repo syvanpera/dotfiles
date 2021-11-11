@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Rofi extension for BitWarden-cli
 NAME="$(basename "$0")"
 VERSION="0.4"
@@ -49,7 +49,7 @@ DIR="$(dirname "$(readlink -f "$0")")"
 source "$DIR/lib-bwmenu"
 
 ask_password() {
-  mpw=$(printf '' | rofi -dmenu -p "Master Password" -password -lines 0 -theme themes/bwmenu.rasi) || exit $?
+  mpw=$(printf '' | rofi -dmenu -p "Master Password" -password -lines 0) || exit $?
   echo "$mpw" | bw unlock 2>/dev/null | grep 'export' | sed -E 's/.*export BW_SESSION="(.*==)"$/\1/' || exit_error $? "Could not unlock vault"
 }
 
@@ -100,7 +100,7 @@ rofi_menu() {
     -kb-custom-9 $KB_LOCK
   )
 
-  msg="<b>$KB_SYNC</b>: sync | <b>$KB_URLSEARCH</b>: urls | <b>$KB_NAMESEARCH</b>: names | <b>$KB_FOLDERSELECT</b>: folders | <b>$KB_LOCK</b>: lock"
+  msg="<b>$KB_SYNC</b>: sync | <b>$KB_URLSEARCH</b>: urls | <b>$KB_NAMESEARCH</b>: names | <b>$KB_FOLDERSELECT</b>: folders | <b>$KB_TOTPCOPY</b>: totp | <b>$KB_LOCK</b>: lock"
 
   [[ ! -z "$AUTOTYPE_MODE" ]] && {
     actions+=(
@@ -109,12 +109,11 @@ rofi_menu() {
       -kb-custom-7 $KB_TYPEPASS
     )
     msg+="
-<b>$KB_TYPEALL</b>: all  | <b>$KB_TYPEUSER</b>: user | <b>$KB_TYPEPASS</b>: pass"
+<b>$KB_TYPEALL</b>: Type all  | <b>$KB_TYPEUSER</b>: Type user | <b>$KB_TYPEPASS</b>: Type pass"
   }
 
-  rofi -dmenu -p 'Password' \
+  rofi -dmenu -p 'Name' \
     -i -no-custom \
-    -theme themes/bwmenu.rasi \
     -mesg "$msg" \
     "${actions[@]}" \
     "${ROFI_OPTIONS[@]}"
@@ -372,7 +371,7 @@ show_copy_notification() {
   local body=""
   local extra_options=()
 
-  title="$(echo "$1" | jq -r '.name') copied"
+  title="<b>$(echo "$1" | jq -r '.name')</b> copied"
 
   if [[ $SHOW_PASSWORD == "yes" ]]; then
     pass=$(echo "$1" | jq -r '.login.password')
@@ -499,3 +498,4 @@ select_autotype_command
 select_copy_command
 load_items
 show_items
+

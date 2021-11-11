@@ -1,0 +1,9 @@
+#!/bin/bash
+
+killall -q tint2
+
+#	exec tint2 -c ~/.config/tint2/panellauncher.tint2rc &
+exec tint2 -c ~/.config/tint2/clock.tint2rc &
+exec tint2 -c ~/.config/tint2/customscripts.tint2rc &
+# exec tint2 -c ~/.config/tint2/icons.tint2rc &
+exec tint2 -c ~/.config/tint2/workspaces.tint2rc &

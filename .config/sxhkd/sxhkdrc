@@ -1,0 +1,121 @@
+super + shift + r ; {s,p,c}
+  { \
+  pkill -USR1 -x sxhkd && notify-send -i key_bindings "Key bindings reloaded", \
+  polybar-msg cmd restart, \
+  ~/.config/polybar/scripts/comptoncheck.sh --toggle \
+  }
+
+alt + 0
+  ~/.config/rofi/scripts/powermenu
+
+# Main programs
+# -------------
+alt + {_, shift +} Return
+  {alacritty,alacritty -e tmux new-session -A -s 'Default'}
+
+alt + space
+  ~/.config/rofi/scripts/launcher
+
+super + {e, r}
+  { \
+  emacsclient --create-frame --alternate-editor="" --no-wait, \
+  alacritty -e ranger \
+  }
+
+alt + shift + {c,n,w,p,b}
+  { \
+  ~/.config/rofi/scripts/clipmenu, \
+  ~/.config/rofi/scripts/networkmanager-dmenu, \
+  ~/.config/rofi/scripts/windows, \
+  ~/.config/rofi/scripts/bwmenu, \
+  qutebrowser-profile \
+  }
+
+alt + shift + a
+  ~/.config/rofi/scripts/audio-set-default-sink
+
+super + shift + a
+  ~/.config/rofi/scripts/audio-set-default-source
+
+super + shift + s
+  ~/.config/rofi/scripts/screenshot
+
+{section, super + section}
+  tdrop -ma -w -4 -y 0 -s Dropdown alacritty
+
+# Hardware keys
+# -------------
+
+XF86MonBrightness{Down,Up}
+  brightnessctl -c backlight set {5%-,5%+} && ~/.local/bin/brightness-notification.sh
+
+XF86Audio{LowerVolume,RaiseVolume,Mute}
+  amixer -D pulse sset Master {5%-,5%+,toggle} && ~/.local/bin/audio-notification.sh
+
+# XF86Audio{Play,Prev,Next}
+#   mpc {toggle,prev,next}
+
+
+#
+# BSPWM-specific commands
+#
+
+alt + shift + r
+  bspc wm -r
+
+# close (or kill) currently focused node
+alt + {_,shift +} q
+  bspc node -{c,k}
+
+# focus/move the node in the given direction
+# alt + {_,shift +}{h,j,k,l}
+#   bspc node -{f,s} {west,south,north,east}
+
+# focus the node in the given direction
+alt + {h,j,k,l}
+  bspc node -f {west,south,north,east}
+
+# move the node in the given direction
+alt + shift + {h,j,k,l}
+  ~/.config/bspwm/scripts/bspwm_smart_move {west,south,north,east}
+
+# focus or send to the given desktop
+alt + {_,shift +}{1-9}
+  bspc {desktop -f,node -d} {1-9}
+
+# expand or contract node in the given direction.
+super + shift + {h,j,k,l}
+  ~/.config/bspwm/scripts/bspwm_resize {west,south,north,east} 50
+
+# preselect the direction or insert again to cancel the preselection.
+super + ctrl + {h,j,k,l}
+  bspc node --presel-dir '~{west,south,north,east}'
+
+# toggle floating, tiled, fullscreen
+super + {t, f, shift + f}
+  bspc node -t ~{tiled,floating,fullscreen}
+
+# balance nodes
+super + ctrl + b
+  bspc node '@/' -B
+
+# alt + {_,shift +} Tab
+#   bspc node -f {next,prev}.local
+
+# switch to last active node
+# section
+#   bspc node -f last
+
+# Dynamic gaps.
+super + shift + {period,comma,minus}
+  ~/.config/bspwm/scripts/bspwm_gaps {grow 5,shrink 5,reset}
+
+# Rotate all windows {counter-}clockwise by 90 degrees.
+super + {_,shift +} o
+  bspc node @/ --rotate {90,-90}
+
+# super + shift + t
+#   ~/.config/bspwm/scripts/bspwm_tabs
+#
+# super + alt + {Left,Down,Up,Right}
+#   tabc attach $(bspc query -N -n) {$(bspc query -N -n west),$(bspc query -N -n south),$(bspc query -N -n north),$(bspc query -N -n east)}
