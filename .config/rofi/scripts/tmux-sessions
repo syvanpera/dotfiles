@@ -6,4 +6,4 @@ sessions=$(tmux ls | sed -e 's/^\([^:]*\).*/\1/g')
 
 chosen="$(echo -e "$sessions" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
 
-[[ ! -z "$chosen" ]] && kitty -e tmux new-session -A -s $chosen
+[[ ! -z "$chosen" ]] && konsole -e tmux new-session -A -s $chosen

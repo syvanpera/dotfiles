@@ -24,7 +24,7 @@ font:
   bold_italic:
     family: JetBrainsMono Nerd Font
 
-  # size: 11
+  size: 7
 
 
 key_bindings:

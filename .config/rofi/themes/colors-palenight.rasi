@@ -9,9 +9,11 @@
     /* border:         #87af5fff; */
     /* selected:       #87af5fff; */
     /* border:         #fabd2fff; */
-    border:         #ffcb6bff;
+    /* border:         #ffcb6bff; */
+    border:         #bc96daff;
     /* selected:       #fabd2fff; */
-    selected:       #ffcb6bff;
+    /* selected:       #ffcb6bff; */
+    selected:       #bc96daff;
     urgent:         #EC407Aff;
     logo:           #82aaffff;
     on:             #61C766ff;

@@ -1,30 +1,28 @@
 #!/bin/bash
 
-## Author : Aditya Shakya (adi1090x)
-## Mail : adi1090x@gmail.com
-## Github : @adi1090x
-## Reddit : @adi1090x
-
 rofi_command="rofi -theme themes/screenshot.rasi"
 
 # Options
 screen=" Whole Desktop"
-area=" Selected Area"
+region=" Selected Region"
 window=" Focused Window"
 
 # Variable passed to rofi
-options="$screen\n$area\n$window"
+options="$screen\n$region\n$window"
 
 chosen="$(echo -e "$options" | $rofi_command -p 'Take A Shot' -dmenu -selected-row 1)"
 case $chosen in
   $screen)
-    sleep 1; scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
+    spectacle --current
+    # sleep 1; scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
     ;;
-  $area)
-    scrot -s 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
+  $region)
+    spectacle --region
+    # scrot -s 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
     ;;
   $window)
-    sleep 1; scrot -u 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
+    spectacle --windowundercursor
+    # sleep 1; scrot -u 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
     ;;
 esac
 

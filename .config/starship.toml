@@ -24,8 +24,8 @@ symbol = "ﳑ "
 # disabled = true
 # symbol = " "
 
-# [python]
-# symbol = " "
+[python]
+symbol = " "
 
 [kubernetes]
 disabled = true

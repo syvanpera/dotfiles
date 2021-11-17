@@ -5,29 +5,34 @@ super + shift + r ; {s,p,c}
   ~/.config/polybar/scripts/comptoncheck.sh --toggle \
   }
 
-alt + 0
-  ~/.config/rofi/scripts/powermenu
+# alt + 0
+#   ~/.config/rofi/scripts/powermenu
 
 # Main programs
 # -------------
-alt + {_, shift +} Return
-  {alacritty,alacritty -e tmux new-session -A -s 'Default'}
+alt + Return
+  konsole
 
-alt + space
-  ~/.config/rofi/scripts/launcher
+alt + shift + Return
+  konsole -e tmux new-session -A -s 'Default'
+
+# alt + {_, shift +} Return
+#   {alacritty,alacritty -e tmux new-session -A -s 'Default'}
+
+# alt + space
+#   ~/.config/rofi/scripts/launcher
 
 super + {e, r}
   { \
   emacsclient --create-frame --alternate-editor="" --no-wait, \
-  alacritty -e ranger \
+  konsole -e ranger \
   }
 
-alt + shift + {c,n,w,p,b}
+alt + shift + {w,p,t,b}
   { \
-  ~/.config/rofi/scripts/clipmenu, \
-  ~/.config/rofi/scripts/networkmanager-dmenu, \
   ~/.config/rofi/scripts/windows, \
   ~/.config/rofi/scripts/bwmenu, \
+  ~/.config/rofi/scripts/tmux-sessions \
   qutebrowser-profile \
   }
 
@@ -41,16 +46,16 @@ super + shift + s
   ~/.config/rofi/scripts/screenshot
 
 {section, super + section}
-  tdrop -ma -w -4 -y 0 -s Dropdown alacritty
+  tdrop -ma -w -4 -y 0 -s Dropdown konsole
 
 # Hardware keys
 # -------------
 
-XF86MonBrightness{Down,Up}
-  brightnessctl -c backlight set {5%-,5%+} && ~/.local/bin/brightness-notification.sh
-
-XF86Audio{LowerVolume,RaiseVolume,Mute}
-  amixer -D pulse sset Master {5%-,5%+,toggle} && ~/.local/bin/audio-notification.sh
+# XF86MonBrightness{Down,Up}
+#   brightnessctl -c backlight set {5%-,5%+} && ~/.local/bin/brightness-notification.sh
+#
+# XF86Audio{LowerVolume,RaiseVolume,Mute}
+#   amixer -D pulse sset Master {5%-,5%+,toggle} && ~/.local/bin/audio-notification.sh
 
 # XF86Audio{Play,Prev,Next}
 #   mpc {toggle,prev,next}
