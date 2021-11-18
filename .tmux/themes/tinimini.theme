@@ -22,8 +22,8 @@ set -g status-fg colour137
 set -g status-left "#[fg=colour0,bg=colour4]  #S #[fg=colour4,bg=default,nobold,nounderscore,noitalics] "
 # set -g status-left "#[fg=colour0,bg=colour4]  #S #[fg=colour4,bg=default,nobold,nounderscore,noitalics] "
 
-# set -g status-right "#[fg=colour7,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour0,bg=yellow,nobold,nounderscore,noitalics] #h "
-set -g status-right "#[fg=colour7,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour15,bg=default] #(/bin/bash ~/.tmux/scripts/kube.tmux) #[fg=colour0,bg=yellow,nobold,nounderscore,noitalics] #h "
+set -g status-right "#[fg=colour7,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour0,bg=yellow,nobold,nounderscore,noitalics] #h "
+# set -g status-right "#[fg=colour7,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour15,bg=default] #(/bin/bash ~/.tmux/scripts/kube.tmux) #[fg=colour0,bg=yellow,nobold,nounderscore,noitalics] #h "
 # set -g status-right "#[fg=colour0,bg=colour2,nobold,nounderscore,noitalics] #h "
 set -g status-right-length 100
 set -g status-left-length 30

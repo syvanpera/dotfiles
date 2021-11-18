@@ -28,7 +28,7 @@ window {
     anchor:           north west;
     x-offset:         0;
     y-offset:         0;
-    padding:          1ch;
+    padding:          0ch;
 }
 
 prompt {

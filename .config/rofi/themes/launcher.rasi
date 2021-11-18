@@ -17,17 +17,17 @@ window {
     background-color: @background;
     transparency:     "real";
     text-color:       @foreground;
-    /* border:           0 0 1px 0; */
+    border:           0 0 1px 0;
     /* border:           1px 1px; */
     border-color:     @selected;
     border-radius:    0px;
-    height:           33%;
-    /* width:            100%; */
-    /* location:         north west; */
-    /* anchor:           north west; */
+    /* height:           33%; */
+    width:            100%;
+    location:         north west;
+    anchor:           north west;
     x-offset:         0;
     y-offset:         0;
-    padding:          1ch;
+    padding:          0ch;
 }
 
 prompt {

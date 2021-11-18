@@ -24,8 +24,8 @@ case $chosen in
   $shutdown)
     ans=$($HOME/.config/rofi/scripts/confirm)
     if [[ $ans == "yes" ]]; then
-      xfce4-session-logout -h
-      # systemctl poweroff
+      # xfce4-session-logout -h
+      systemctl poweroff
     elif [[ $ans == "no" ]]; then
       exit
       # else
@@ -35,8 +35,8 @@ case $chosen in
   $reboot)
     ans=$($HOME/.config/rofi/scripts/confirm)
     if [[ $ans == "yes" ]]; then
-      xfce4-session-logout -r
-      # systemctl reboot
+      # xfce4-session-logout -r
+      systemctl reboot
     elif [[ $ans == "no" ]]; then
       exit
       # else
@@ -52,8 +52,8 @@ case $chosen in
     if [[ $ans == "yes" ]]; then
       # mpc -q pause
       # amixer set Master mute
-      xfce4-session-logout -s
-      # systemctl suspend
+      # xfce4-session-logout -s
+      systemctl suspend
     elif [[ $ans == "no" ]]; then
       exit
       # else
@@ -61,7 +61,8 @@ case $chosen in
     fi
     ;;
   $logout)
-    xfce4-session-logout -l
+    # xfce4-session-logout -l
+    bspc quit
     # cinnamon-session-quit
     # ans=$($HOME/.config/rofi/scripts/confirm)
     # if [[ $ans == "yes" ]]; then

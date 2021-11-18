@@ -39,7 +39,7 @@
 
   # set_from_resource $term    i3.terminal alacritty
   # set_from_resource $term    i3.terminal kitty
-  set_from_resource $term    i3.terminal konsole
+  set_from_resource $term    i3.terminal konsole --profile Sweet
   set_from_resource $editor  i3.editor   emacsclient --create-frame --alternate-editor="" --no-wait
   set_from_resource $browser i3.browser  firefox
 
@@ -109,9 +109,8 @@
   for_window [class="Kmix"] floating enable, border none
   for_window [class="Klipper"] floating enable, border none
   for_window [class="Plasmoidviewer"] floating enable, border none
-  for_window [class="(?i)*nextcloud*"] floating disable
   for_window [class="lattedock"] floating enable, border none
-  for_window [class="plasmashell" window_type="notification"] floating enable, border none # , move right 700px, move down 450px
+  for_window [class="plasmashell" window_type="notification"] floating enable, border none, move left 10px, move down 40px
   no_focus [class="plasmashell" window_type="notification"]
 
 # }}}
@@ -128,8 +127,8 @@
   set $base07 #8FBCBB
   set $base08 #88C0D0
   set $base09 #81A1C1
-  # set $base0A #bd93f9
-  set $base0A #c50ed2
+  set $base0A #bd93f9
+  # set $base0A #c50ed2
   # set $base0A #fabc2e
   set $base0B #BF616A
   set $base0C #D08770
@@ -267,7 +266,7 @@
   bindsym $mod+Return       exec --no-startup-id $term
   bindsym $mod+Shift+Return exec --no-startup-id $term -e tmux new-session -A -s 'Default'
   bindsym $mod+space        exec --no-startup-id ~/.config/rofi/scripts/launcher
-  bindsym $mod+0            exec --no-startup-id ~/.config/rofi/scripts/powermenu
+  # bindsym $mod+0            exec --no-startup-id ~/.config/rofi/scripts/powermenu
   bindsym $mod+shift+w      exec --no-startup-id ~/.config/rofi/scripts/windows
   bindsym $mod+shift+0      exec --no-startup-id ~/.config/rofi/scripts/calc
   # bindsym $mod+Shift+n      exec --no-startup-id ~/.config/rofi/scripts/networkmanager-dmenu
@@ -276,6 +275,8 @@
   bindsym $mod+Shift+space  exec --no-startup-id ~/.config/rofi/scripts/filebrowser
   bindsym $mod+Shift+t      exec --no-startup-id ~/.config/rofi/scripts/tmux-sessions
   bindsym $super+Shift+s    exec --no-startup-id ~/.config/rofi/scripts/screenshot
+  bindsym $mod+Shift+a      exec --no-startup-id ~/.config/rofi/scripts/audio-set-default-sink
+  bindsym $super+Shift+a    exec --no-startup-id ~/.config/rofi/scripts/audio-set-default-source
   # bindsym $super+Shift+s    exec --no-startup-id gnome-screenshot --interactive
 
   bindsym $super+b       exec --no-startup-id $browser
@@ -322,7 +323,8 @@
 
 # Autostarts ------------------------------------------------------------------------------------{{{
 
-  exec_always --no-startup-id nitrogen --restore
+  # exec_always --no-startup-id nitrogen --restore
+  exec_always --no-startup-id /home/tuomo/.fehbg
   # exec_always --no-startup-id ~/.config/polybar/launch.sh 1
 
   # exec --no-startup-id dunst
