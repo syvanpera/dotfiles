@@ -11,29 +11,31 @@ window:
     dynamic_padding:  true
     decoration: none
 
-font:
-  normal:
-    family: JetBrainsMono Nerd Font
+#font:
+#  normal:
+#    family: JetBrainsMono Nerd Font
+#
+#  bold:
+#    family: JetBrainsMono Nerd Font
+#
+#  italic:
+#    family: JetBrainsMono Nerd Font
+#
+#  bold_italic:
+#    family: JetBrainsMono Nerd Font
+#
+#  size: 10
+#
+#  offset:
+#    y: 0
 
-  bold:
-    family: JetBrainsMono Nerd Font
-
-  italic:
-    family: JetBrainsMono Nerd Font
-
-  bold_italic:
-    family: JetBrainsMono Nerd Font
-
-  size: 7
-
+background_opacity: 0.7
 
 key_bindings:
   - { key: C, mods: Alt,   action: Copy           }
   - { key: V, mods: Alt,   action: Paste          }
   - { key: K, mods: Super, action: ScrollPageUp   }
   - { key: J, mods: Super, action: ScrollPageDown }
-
-background_opacity: 1
 
 # cursor:
 #   style: Underline
@@ -42,48 +44,76 @@ background_opacity: 1
 
 live_config_reload: true
 
-# Base16 Material Palenight 256 - alacritty color config
-# Nate Peterson
+# Space Duck
 colors:
   # Default colors
   primary:
-    background: '0x181a20'
-    foreground: '0x959dcb'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x292d3e'
-    cursor: '0x959dcb'
-
+    background: '#0f111b'
+    foreground: '#ecf0c1'
   # Normal colors
   normal:
-    black:   '0x292d3e'
-    red:     '0xf07178'
-    green:   '0xc3e88d'
-    yellow:  '0xffcb6b'
-    blue:    '0x82aaff'
-    magenta: '0xc792ea'
-    cyan:    '0x89ddff'
-    white:   '0x959dcb'
+    black:   '#000000'
+    red:     '#e33400'
+    green:   '#5ccc96'
+    yellow:  '#b3a1e6'
+    blue:    '#00a3cc'
+    magenta: '#f2ce00'
+    cyan:    '#7a5ccc'
+    white:   '#686f9a'
 
   # Bright colors
   bright:
-    black:   '0x676e95'
-    red:     '0xf07178'
-    green:   '0xc3e88d'
-    yellow:  '0xffcb6b'
-    blue:    '0x82aaff'
-    magenta: '0xc792ea'
-    cyan:    '0x89ddff'
-    white:   '0xffffff'
+    black:   '#686f9a'
+    red:     '#e33400'
+    green:   '#5ccc96'
+    yellow:  '#b3a1e6'
+    blue:    '#00a3cc'
+    magenta: '#f2ce00'
+    cyan:    '#7a5ccc'
+    white:   '#f0f1ce'
 
-  indexed_colors:
-    - { index: 16, color: '0xf78c6c' }
-    - { index: 17, color: '0xff5370' }
-    - { index: 18, color: '0x444267' }
-    - { index: 19, color: '0x32374d' }
-    - { index: 20, color: '0x8796b0' }
-    - { index: 21, color: '0x959dcb' }
+# Base16 Material Palenight 256 - alacritty color config
+# Nate Peterson
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x181a20'
+#     foreground: '0x959dcb'
+# 
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x292d3e'
+#     cursor: '0x959dcb'
+# 
+#   # Normal colors
+#   normal:
+#     black:   '0x292d3e'
+#     red:     '0xf07178'
+#     green:   '0xc3e88d'
+#     yellow:  '0xffcb6b'
+#     blue:    '0x82aaff'
+#     magenta: '0xc792ea'
+#     cyan:    '0x89ddff'
+#     white:   '0x959dcb'
+# 
+#   # Bright colors
+#   bright:
+#     black:   '0x676e95'
+#     red:     '0xf07178'
+#     green:   '0xc3e88d'
+#     yellow:  '0xffcb6b'
+#     blue:    '0x82aaff'
+#     magenta: '0xc792ea'
+#     cyan:    '0x89ddff'
+#     white:   '0xffffff'
+# 
+#   indexed_colors:
+#     - { index: 16, color: '0xf78c6c' }
+#     - { index: 17, color: '0xff5370' }
+#     - { index: 18, color: '0x444267' }
+#     - { index: 19, color: '0x32374d' }
+#     - { index: 20, color: '0x8796b0' }
+#     - { index: 21, color: '0x959dcb' }
 
 
 # colors:

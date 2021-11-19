@@ -31,9 +31,9 @@ run clipmenud
 # run cbatticon
 # run volumeicon
 
-bspm -d &
+# bspm -d &
 
-~/.config/polybar/launch.sh
+~/.config/polybar/launch.sh 1
 
 # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 

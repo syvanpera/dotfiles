@@ -16,6 +16,9 @@
 
     " Themes
     Plug 'dracula/vim'
+    Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+    " Airline
+    Plug 'vim-airline/vim-airline'
     " Make navigation between vim & tmux easier
     Plug 'christoomey/vim-tmux-navigator'
     " A file system tree explorer
@@ -139,9 +142,10 @@
   set background=dark
   syntax on
 
-  colorscheme dracula
+  " colorscheme dracula
+  colorscheme spaceduck
 
-  let g:airline_theme = 'dracula'
+  let g:airline_theme = 'spaceduck'
   let g:one_allow_italics = 1
 
   highlight Normal guibg=NONE ctermbg=NONE
