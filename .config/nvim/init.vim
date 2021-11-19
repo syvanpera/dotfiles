@@ -16,6 +16,8 @@
 
     " Themes
     Plug 'dracula/vim'
+    Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'joshdick/onedark.vim'
     Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
     " Airline
     Plug 'vim-airline/vim-airline'
@@ -143,10 +145,13 @@
   syntax on
 
   " colorscheme dracula
-  colorscheme spaceduck
+  " colorscheme spaceduck
+  colorscheme palenight
 
-  let g:airline_theme = 'spaceduck'
-  let g:one_allow_italics = 1
+  " let g:airline_theme = 'spaceduck'
+  let g:airline_theme = 'palenight'
+
+  let g:palenight_terminal_italics=1
 
   highlight Normal guibg=NONE ctermbg=NONE
   " highlight LineNr guibg=NONE ctermbg=NONE
