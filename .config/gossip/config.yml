@@ -1,0 +1,3 @@
+config:
+  browser: default
+  color: true

@@ -23,17 +23,20 @@ run-or-restart() {
   fi
 }
 
-# run dunst
 pkill sxhkd ; sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-run picom
+run picom --config ~/.config/picom.conf
 run clipmenud
+
+~/.config/polybar/launch.sh 1
+
+~/.fehbg &
+
+# run dunst
 # run volctl
 # run cbatticon
 # run volumeicon
 
 # bspm -d &
-
-~/.config/polybar/launch.sh 1
 
 # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -47,15 +50,6 @@ run clipmenud
 
 # Change to a random wallpaper
 # feh --no-fehbg --bg-scale $(find "/home/tuomo/Pictures/wallpapers" -xtype f | sort -R | head -1)
-
-~/.fehbg &
-
-# make the keyboard go faster
-# xset r rate 300 40
-
-# set keyboard layout and use caps lock as control and esc
-# setxkbmap -layout fi -variant nodeadkeys -option 'caps:ctrl_modifier'
-# killall xcape ; xcape -e 'Caps_Lock=Escape'
 
 wmname LG3D &
 
@@ -107,6 +101,7 @@ bspc rule -a Gcolor2 state=floating
 bspc rule -a Emacs state=tiled
 bspc rule -a Zathura state=tiled
 bspc rule -a spectacle state=floating center=on
+bspc rule -a Yad state=floating center=on
 
 bspc rule -a plasmashell state=floating center=off border=off
 bspc rule -a Plasma state=floating
