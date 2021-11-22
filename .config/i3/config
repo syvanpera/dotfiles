@@ -238,7 +238,7 @@
   bindsym $mod+Shift+r restart
 
   # exit i3 (logs you out of your X session)
-  bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+  bindsym $super+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 
   # passthrough mode - i3 won't grab shortcuts
   bindsym $super+Control+Shift+p mode "passthrough"

@@ -18,7 +18,7 @@ window {
     transparency:     "real";
     text-color:       @foreground;
     /* border:           0 0 1px 0; */
-    /* border:           1px 1px; */
+    border:           1px 1px;
     border-color:     @selected;
     border-radius:    0px;
     height:           33%;

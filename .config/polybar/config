@@ -29,7 +29,7 @@ red       = #cc6666
 blue      = #6699cc
 magenta   = #ce6f8f
 purple    = #7a5ccc
-cyan      = #00a3cc
+cyan      = #7daea3
 
 fg       = ${colors.white}
 bg       = ${colors.black}
@@ -62,7 +62,7 @@ foreground = ${colors.fg}
 [bar/main]
 inherit = ${env:BAR_BASE}
 modules-left = logo spacer fs-root spacer cpu memory
-modules-center = bspwm-alt
+modules-center = workspaces
 modules-right = pulseaudio backlight battery spacer datetime spacer
 
 tray-position = right
@@ -88,7 +88,7 @@ inherit = bar/base
 font-0 = "xso4 Terminus:pixelsize=10;2"
 font-1 = "FontAwesome:size=13;4"
 font-2 = "Material Icons:size=13;4"
-font-3 = "RobotoMono Nerd Font:pixelsize=13;1"
+font-3 = "JetBrainsMono Nerd Font:pixelsize=13;1"
 
 height = 30
 
@@ -97,7 +97,7 @@ height = 30
 
 [module/logo]
 type=custom/text
-content = " "
+content = "%{T3}%{T-}"
 content-foreground=${colors.fg}
 content-background=${colors.purple}
 content-padding=3
@@ -113,6 +113,26 @@ type = custom/text
 content = "  "
 content-background = ${colors.bg}
 content-foreground = ${colors.sepcolor}
+
+[module/workspaces]
+type = internal/xworkspaces
+format = <label-state>
+format-padding = 2
+index-sort = true
+
+enable-click = true
+reverse-scroll = false
+
+label-active = 
+label-active-padding = 1
+label-active-foreground = ${colors.purple}
+label-active-background = ${colors.bg}
+
+label-occupied = 
+label-occupied-padding = 1
+
+label-empty = 
+label-empty-padding = 1
 
 [module/bspwm]
 type = internal/bspwm

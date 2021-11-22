@@ -150,7 +150,7 @@ frame_width = 2
 # Xev might be helpful to find names for keys.
 
 # Close notification.
-close = ctrl+shift+space
+close = ctrl+space
 
 # Close all notifications.
 close_all = ctrl+shift+space
