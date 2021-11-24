@@ -1,5 +1,6 @@
-# set keyboard layout and use caps lock as control and esc
+# set keyboard layout and use caps lock as control and esc and alt gr as mod5
 setxkbmap -layout fi -variant nodeadkeys -option 'caps:ctrl_modifier'
+xmodmap -e add Mod5 = Alt_R
 killall xcape ; xcape -e 'Caps_Lock=Escape'
 
 # make keyboard go faster

@@ -23,7 +23,7 @@ run-or-restart() {
 run picom --config ~/.config/picom.conf
 run clipmenud
 
-pkill trayer ; trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor $ACTIVE_MON_IDX --transparent true --alpha 0 --tint 0x282c34  --height 22 &
+pkill trayer ; trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor $ACTIVE_MON_IDX --transparent true --alpha 0 --tint 0x0f111b  --height 24 &
 
 # pkill sxhkd ; sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 
