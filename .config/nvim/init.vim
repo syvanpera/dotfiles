@@ -19,6 +19,7 @@
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'joshdick/onedark.vim'
     Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+    Plug 'NLKNguyen/papercolor-theme'
     " Airline
     Plug 'vim-airline/vim-airline'
     " Make navigation between vim & tmux easier
@@ -38,6 +39,8 @@
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    " Golang support
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   call plug#end()
 
@@ -146,7 +149,8 @@
 
   " colorscheme dracula
   " colorscheme spaceduck
-  colorscheme palenight
+  " colorscheme palenight
+  colorscheme PaperColor
 
   " let g:airline_theme = 'spaceduck'
   let g:airline_theme = 'palenight'
