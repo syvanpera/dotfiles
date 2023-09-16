@@ -1,3 +1,6 @@
 [user]
   name = Tuomo Syvänperä
   email = tuomo.syvanpera@gmail.com
+[alias]
+  co = checkout
+  st = status
