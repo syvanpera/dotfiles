@@ -7,8 +7,9 @@ add_newline = true
 # format = """\
 # [╭╴](bold cyan)[ ](bold cyan) \
 # $jobs$username@$hostname$directory$git_branch$git_status$line_break[╰─](bold cyan)$character"""
+# [╭╴](bold cyan)[ ](bold cyan) \
 format = """\
-[╭╴](bold cyan)[ ](bold cyan) \
+[╭╴](bold cyan)[ ](bold cyan) \
 $jobs$username@$hostname$directory$git_branch$git_status$nix_shell$line_break[╰─](bold cyan)$character"""
 
 # Change the default prompt characters
