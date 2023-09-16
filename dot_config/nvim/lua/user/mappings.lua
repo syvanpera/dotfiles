@@ -33,7 +33,7 @@ return {
     ["<leader>."] = { "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
   },
   v = {
-    ["<leader>y"] = { '"*y', desc = "Copy to clipboard" },
-    ["<M-c>"] = { '"*y', desc = "Copy to clipboard" },
+    ["<leader>y"] = { '"+y', desc = "Copy to clipboard" },
+    ["<M-c>"] = { '"+y', desc = "Copy to clipboard" },
   },
 }
