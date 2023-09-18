@@ -4,3 +4,5 @@
 [alias]
   co = checkout
   st = status
+[init]
+  defaultBranch = main
