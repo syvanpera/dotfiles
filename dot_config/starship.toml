@@ -113,5 +113,5 @@ disabled = true
 
 [nix_shell]
 # symbol = ' '
-symbol = '❄️  '
+symbol = '❄️ '
 disabled = false
