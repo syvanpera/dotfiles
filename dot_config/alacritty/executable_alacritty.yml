@@ -13,10 +13,10 @@ font:
   # use_thin_strokes: true
   normal:
     # family: FiraCode Nerd Font
-    # family: JetBrainsMono Nerd Font
+    family: JetBrainsMono Nerd Font
     # family: SFMono Nerd Font
     # family: UbuntuMono Nerd Font
-    family: MesloLGS NF
+    # family: MesloLGS NF
     style: Regular
 
 key_bindings:
@@ -27,4 +27,5 @@ key_bindings:
   - { key: J, mods: Super, action: ScrollPageDown }
 
 import:
+  # - /home/tuomo/.config/alacritty/otto.yaml
   - /home/tuomo/.config/alacritty/ayu-mirage.yaml
