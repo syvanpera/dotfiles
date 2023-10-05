@@ -1,0 +1,23 @@
+/* Color-Scheme Dracula */
+
+* {
+    /* background:     #212B30ff; */
+    /* background:     #292f36ff; */
+    /* background:     #0f111bff; */
+    background:     #0f111bff;
+    background-alt: #263238ff;
+    foreground:     #bfc7d5;
+    /* border:         #87af5fff; */
+    /* selected:       #87af5fff; */
+    /* border:         #fabd2fff; */
+    /* border:         #ffcb6bff; */
+    border:         #6699ccff;
+    /* selected:       #fabd2fff; */
+    /* selected:       #ffcb6bff; */
+    /* selected:       #6699ccff; */
+    selected:       #6699ccff;
+    urgent:         #EC407Aff;
+    logo:           #82aaffff;
+    on:             #61C766ff;
+    off:            #EC7875ff;
+}

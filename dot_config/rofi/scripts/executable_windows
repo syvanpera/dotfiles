@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rofi -no-lazy-grab -show window -theme themes/windows.rasi -m "-1"

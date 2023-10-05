@@ -1,0 +1,34 @@
+#!/bin/bash
+
+rofi_command="rofi -theme themes/screenshot.rasi"
+
+# Options
+screen=" Whole Desktop"
+region=" Selected Region"
+window=" Focused Window"
+color=" Pick Color"
+
+# Variable passed to rofi
+options="$screen\n$region\n$window\n$color"
+
+chosen="$(echo -e "$options" | $rofi_command -p 'Take A Shot' -dmenu -selected-row 1)"
+case $chosen in
+  $screen)
+    # spectacle --current
+    # sleep 1; scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
+    ;;
+  $region)
+    # grim -g "$(slurp)" - | tee ~/Pictures/screenshots/scrot_$(date +%Y-%m-%d_%H:%M_%S).png | wl-copy
+    grim -g "$(slurp)" - | swappy -f -
+    # spectacle --region
+    # scrot -s 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
+    ;;
+  $window)
+    # spectacle --windowundercursor
+    # sleep 1; scrot -u 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots ; xclip -selection clipboard -t image/png -i $$(xdg-user-dir PICTURES)/screenshots/$f ;  imv $$(xdg-user-dir PICTURES)/screenshots/$f'
+    ;;
+  $color)
+    hyprpicker -a
+    ;;
+esac
+

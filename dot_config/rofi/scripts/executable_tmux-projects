@@ -1,0 +1,13 @@
+#!/bin/bash
+
+term=alacritty
+# term=kitty
+rofi_command="rofi -theme themes/launcher.rasi"
+
+projects=$(cat ~/.emacs.d/.local/cache/projectile.projects | sed -e 's/[()]//g' | sed -e 's/" "/\n/g' | sed -e 's/"//' | sed -e 's/\/$//g')
+
+chosen="$(echo -e "$projects" | rofi -p 'TMUX projects' -dmenu -selected-row 0)"
+project_name=$(echo -e "$chosen"| awk -F/ '{print $NF}')
+project_dir=$(echo -e "$chosen"| sed -e 's/~/\/home\/tuomo/')
+
+[[ ! -z "$chosen" ]] && $term -e tmux new-session -A -s $project_name -c $project_dir

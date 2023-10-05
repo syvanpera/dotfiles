@@ -1,0 +1,16 @@
+/* Color-Scheme Spaceduck */
+
+* {
+    /* background:     #212B30ff; */
+    /* background:     #292f36ff; */
+    background:     #1a1b26ff;
+    background-alt: #263238ff;
+    foreground:     #ecf8c1ff;
+    border:         #b3a1e6ff;
+    /* selected:       #fabd2fff; */
+    selected:       #b3a1e6ff;
+    urgent:         #EC407Aff;
+    logo:           #51afefff;
+    on:             #61C766ff;
+    off:            #EC7875ff;
+}
