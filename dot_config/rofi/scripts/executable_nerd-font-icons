@@ -1,9 +1,0 @@
-#!/bin/bash
-
-rofi_command="rofi -theme themes/launcher.rasi"
-
-icons=$(cat ~/.config/rofi/scripts/nerd_font.csv)
-
-chosen="$(echo -e "$icons" | rofi -p 'Nerd font icons' -dmenu -selected-row 0)"
-
-[[ ! -z "$chosen" ]] && echo $chosen | cut -d' ' -f1 | tr -d '\n' | wl-copy

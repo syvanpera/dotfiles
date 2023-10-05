@@ -1,3 +1,0 @@
-#!/bin/sh
-
-clipman pick --tool=rofi --tool-args="clipman -theme themes/clipboard.rasi -dmenu -i -lines 20 -p 'Clipboard: ' -m \"-1\""
