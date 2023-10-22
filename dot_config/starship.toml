@@ -10,7 +10,7 @@ add_newline = true
 # [╭╴](bold cyan)[ ](bold cyan) \
 format = """\
 [╭╴](bold cyan)[ ](bold cyan) \
-$jobs$username@$hostname$directory$git_branch$git_status$nix_shell$line_break[╰─](bold cyan)$character"""
+$jobs$username@$hostname$directory$git_branch$git_status$azure$terraform$nix_shell$line_break[╰─](bold cyan)$character"""
 
 # Change the default prompt characters
 [character]
@@ -20,7 +20,7 @@ error_symbol = "[󰁔 ](bold cyan)"
 
 # Shows an icon that should be included by zshrc script based on the distribution or os
 [env_var.STARSHIP_DISTRO]
-format = '[](bold white)'  # removed space between distro and rest for pwsh
+format = '[](bold white)'   # removed space between distro and rest for pwsh
 variable = "STARSHIP_DISTRO"
 disabled = false
 
@@ -29,7 +29,7 @@ disabled = false
 style_user = "white bold"
 style_root = "black bold"
 format = "[$user]($style)"
-disabled = false  # disable in powershell
+disabled = false           # disable in powershell
 show_always = true
 
 [hostname]
@@ -55,7 +55,7 @@ style = 'bold red'
 disabled = false
 # symbol = " "
 symbol = " "
-format = "on [$symbol$branch]($style) "
+format = "󰇙 [$symbol$branch]($style) "
 truncation_length = 20
 truncation_symbol = "…/"
 style = "bold green"
@@ -77,30 +77,30 @@ renamed = "襁 "
 deleted = " "
 
 [terraform]
-format = "via [ terraform $version]($style) 壟 [$workspace]($style) "
+format = "󰇙 [󱁢]($style) [$workspace]($style) "
 
 [vagrant]
-format = "via [ vagrant $version]($style) "
+format = "󰇙 [ vagrant $version]($style) "
 
 [docker_context]
-format = "via [ $context](bold blue) "
+format = "󰇙 [ $context](bold blue) "
 
 [helm]
-format = "via [ $version](bold purple) "
+format = "󰇙 [ $version](bold purple) "
 
 [python]
 symbol = " "
 python_binary = "python3"
 
 [nodejs]
-format = "via [ $version](bold green) "
+format = "󰇙 [ $version](bold green) "
 disabled = true
 
 [ruby]
-format = "via [ $version]($style) "
+format = "󰇙 [ $version]($style) "
 
 [kubernetes]
-format = 'on [ $context\($namespace\)](bold purple) '
+format = '󰇙 [ $context\($namespace\)](bold purple) '
 disabled = true
 
 [kubernetes.context_aliases]
@@ -112,6 +112,14 @@ symbol = " "
 disabled = true
 
 [nix_shell]
-# symbol = ' '
-symbol = '❄️ '
+symbol = ' '
+format = '󰇙 [$symbol$state$name]($style) '
+# symbol = '❄️ '
 disabled = false
+impure_msg = ''
+
+[azure]
+disabled = false
+format = '󰇙 [$symbol($subscription)]($style) '
+symbol = '󰠅 '
+style = 'blue bold'

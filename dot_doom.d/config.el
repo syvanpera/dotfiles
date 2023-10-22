@@ -30,12 +30,13 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-;; (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
-(setq doom-font (font-spec :family "MesloLGS NF" :size 14))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
+;; (setq doom-font (font-spec :family "MesloLGS NF" :size 14))
 (setq doom-variable-pitch-font (font-spec :family "sans" :size 14))
 
 ;; Transparency, should work with Emacs 29
 (add-to-list 'default-frame-alist '(alpha-background . 90))
+;; (add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -44,9 +45,9 @@
 ;; (setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-one-custom)
 ;; (setq doom-theme 'doom-gruvbox-custom)
-;; (setq doom-theme 'doom-dracula-custom)
 ;; (setq doom-theme 'doom-spaceduck-custom)
 (setq doom-theme 'doom-palenight-custom)
+;; (setq doom-theme 'doom-dracula-custom)
 
 ;; (setq doom-themes-treemacs-theme "doom-colors")
 ;; (setq doom-themes-neotree-file-icons t)
@@ -133,38 +134,40 @@
       :desc "Switch to workspace 9"  :n  "9"   #'(lambda () (interactive) (+workspace/switch-to 8))
       ;;; <leader> l --- workspace
       (:when (modulep! :ui workspaces)
-       (:prefix-map ("l" . "workspace")
-        :desc "Display tab bar"           "l"   #'+workspace/display
-        :desc "Switch workspace"          "."   #'+workspace/switch-to
-        :desc "Switch to last workspace"  "TAB" #'+workspace/other
-        :desc "New workspace"             "n"   #'+workspace/new
-        :desc "New named workspace"       "N"   #'+workspace/new-named
-        :desc "Load workspace from file"  "L"   #'+workspace/load
-        :desc "Save workspace to file"    "s"   #'+workspace/save
-        :desc "Delete session"            "x"   #'+workspace/kill-session
-        :desc "Delete this workspace"     "d"   #'+workspace/delete
-        :desc "Rename workspace"          "r"   #'+workspace/rename
-        :desc "Restore last session"      "R"   #'+workspace/restore-last-session
-        :desc "Next workspace"            "j"   #'+workspace/switch-right
-        :desc "Previous workspace"        "k"   #'+workspace/switch-left
-        :desc "Switch to 1st workspace"   "1"   #'+workspace/switch-to-0
-        :desc "Switch to 2nd workspace"   "2"   #'+workspace/switch-to-1
-        :desc "Switch to 3rd workspace"   "3"   #'+workspace/switch-to-2
-        :desc "Switch to 4th workspace"   "4"   #'+workspace/switch-to-3
-        :desc "Switch to 5th workspace"   "5"   #'+workspace/switch-to-4
-        :desc "Switch to 6th workspace"   "6"   #'+workspace/switch-to-5
-        :desc "Switch to 7th workspace"   "7"   #'+workspace/switch-to-6
-        :desc "Switch to 8th workspace"   "8"   #'+workspace/switch-to-7
-        :desc "Switch to 9th workspace"   "9"   #'+workspace/switch-to-8
-        :desc "Switch to final workspace" "0"   #'+workspace/switch-to-final))
+        (:prefix-map ("l" . "workspace")
+         :desc "Display tab bar"           "l"   #'+workspace/display
+         :desc "Switch workspace"          "."   #'+workspace/switch-to
+         :desc "Switch to last workspace"  "TAB" #'+workspace/other
+         :desc "New workspace"             "n"   #'+workspace/new
+         :desc "New named workspace"       "N"   #'+workspace/new-named
+         :desc "Load workspace from file"  "L"   #'+workspace/load
+         :desc "Save workspace to file"    "s"   #'+workspace/save
+         :desc "Delete session"            "x"   #'+workspace/kill-session
+         :desc "Delete this workspace"     "d"   #'+workspace/delete
+         :desc "Rename workspace"          "r"   #'+workspace/rename
+         :desc "Restore last session"      "R"   #'+workspace/restore-last-session
+         :desc "Next workspace"            "j"   #'+workspace/switch-right
+         :desc "Previous workspace"        "k"   #'+workspace/switch-left
+         :desc "Switch to 1st workspace"   "1"   #'+workspace/switch-to-0
+         :desc "Switch to 2nd workspace"   "2"   #'+workspace/switch-to-1
+         :desc "Switch to 3rd workspace"   "3"   #'+workspace/switch-to-2
+         :desc "Switch to 4th workspace"   "4"   #'+workspace/switch-to-3
+         :desc "Switch to 5th workspace"   "5"   #'+workspace/switch-to-4
+         :desc "Switch to 6th workspace"   "6"   #'+workspace/switch-to-5
+         :desc "Switch to 7th workspace"   "7"   #'+workspace/switch-to-6
+         :desc "Switch to 8th workspace"   "8"   #'+workspace/switch-to-7
+         :desc "Switch to 9th workspace"   "9"   #'+workspace/switch-to-8
+         :desc "Switch to final workspace" "0"   #'+workspace/switch-to-final))
       (:prefix-map ("e" . "errors")
        :desc "Next error"     "n" #'flycheck-next-error
        :desc "Previous error" "p" #'flycheck-previous-error
        :desc "List errors"    "l" #'flycheck-list-errors)
+      (:prefix-map ("t" . "toggle")
+       :desc "Frame decorations" "t" #'+custom/toggle-frame-undecorated)
       ;; (:prefix-map ("d" . "dired")
       ;;  :desc "Open dired"      "d" #'dired
       ;;  :desc "Jump to current" "." #'dired-jump)
-       )
+      )
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

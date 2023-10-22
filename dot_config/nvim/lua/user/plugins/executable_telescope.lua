@@ -6,6 +6,7 @@ return {
     "nvim-telescope/telescope-file-browser.nvim",
     "camgraff/telescope-tmux.nvim",
     "ThePrimeagen/harpoon",
+    "ThePrimeagen/git-worktree.nvim",
   },
   opts = function(_, opts)
     local actions = require "telescope.actions"
@@ -31,6 +32,7 @@ return {
     telescope.load_extension "tmux"
     telescope.load_extension "file_browser"
     telescope.load_extension "harpoon"
+    telescope.load_extension "git_worktree"
     -- telescope.load_extension "project"
   end,
 }

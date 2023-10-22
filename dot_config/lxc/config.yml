@@ -8,4 +8,4 @@ remotes:
     addr: unix://
     public: false
 aliases:
-  shell: exec @ARGS@ -- su -l tuomo
+  user-shell: exec @ARGS@ -- su -l tuomo

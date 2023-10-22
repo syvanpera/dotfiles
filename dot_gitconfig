@@ -6,3 +6,8 @@
   st = status
 [init]
   defaultBranch = main
+
+[includeIf "gitdir:~/projects/asteroid/"]
+  path = .gitconfig-asteroid
+[includeIf "gitdir:~/projects/helen/"]
+  path = .gitconfig-asteroid
