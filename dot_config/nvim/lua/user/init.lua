@@ -1,12 +1,14 @@
 vim.cmd [[noremap Y Y]]
 
+-- Enable gruvbox telescope theme
+vim.g.gruvbox_baby_telescope_theme = 1
+-- Enable gruvbox transparent mode
+vim.g.gruvbox_baby_transparent_mode = 1
+
 return {
-  colorscheme = "nightfox",
-  -- colorscheme = "palenightfall",
-  -- colorscheme = "catppuccin",
-  -- colorscheme = "kanagawa",
-  -- colorscheme = "material",
-  -- colorscheme = "dracula",
+  -- colorscheme = "catppuccin-mocha",
+  colorscheme = "gruvbox-baby",
+  -- colorscheme = "nightfox",
 
   lsp = {
     formatting = {

@@ -12,6 +12,11 @@ return {
     local actions = require "telescope.actions"
     return require("astronvim.utils").extend_tbl(opts, {
       defaults = {
+        borderchars = {
+          prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+          results = { " " },
+          preview = { " " },
+        },
         mappings = {
           i = {
             ["<C-l>"] = actions.cycle_history_next,

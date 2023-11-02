@@ -35,7 +35,7 @@
 (setq doom-variable-pitch-font (font-spec :family "sans" :size 14))
 
 ;; Transparency, should work with Emacs 29
-(add-to-list 'default-frame-alist '(alpha-background . 90))
+(add-to-list 'default-frame-alist '(alpha-background . 95))
 ;; (add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -44,9 +44,9 @@
 ;; (setq doom-theme 'doom-ayu-mirage)
 ;; (setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-one-custom)
-;; (setq doom-theme 'doom-gruvbox-custom)
+(setq doom-theme 'doom-gruvbox-custom)
 ;; (setq doom-theme 'doom-spaceduck-custom)
-(setq doom-theme 'doom-palenight-custom)
+;; (setq doom-theme 'doom-palenight-custom)
 ;; (setq doom-theme 'doom-dracula-custom)
 
 ;; (setq doom-themes-treemacs-theme "doom-colors")
