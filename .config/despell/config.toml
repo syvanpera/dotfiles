@@ -1,0 +1,18 @@
+[default]
+nerdfont = ""
+
+[icons.fish]
+nerdfont = "󰈺"
+color = "blue"
+
+[icons.nvim]
+nerdfont = ""
+color = "green"
+
+[icons.git]
+nerdfont = ""
+color = "red"
+
+[icons.yazi]
+nerdfont = "󰙅"
+color = "yellow"

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rofi -modi clipboard:/home/tuomo/.config/rofi/scripts/cliphist-rofi-img -show clipboard -show-icons -theme ~/.config/rofi/themes/current
+

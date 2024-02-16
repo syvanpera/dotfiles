@@ -1,0 +1,149 @@
+// __        __          _                 
+// \ \      / /_ _ _   _| |__   __ _ _ __  
+//  \ \ /\ / / _` | | | | '_ \ / _` | '__| 
+//   \ V  V / (_| | |_| | |_) | (_| | |    
+//    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    
+//                 |___/                   
+//  
+{
+  "mode": "dock",
+  "layer": "top",
+  "margin": "0 0 0 0",
+  "output": [
+    "HDMI-A-1"
+    //"eDP-1"
+  ],
+  "modules-left": [
+    "custom/appmenuicon",
+    "sway/workspaces"
+  ],
+  "modules-center": [
+    "sway/window"
+  ],
+  "modules-right": [
+    "network",
+    "custom/separator",
+    "pulseaudio",
+    "custom/separator",
+    "battery",
+    "custom/separator",
+    "clock#date",
+    "clock#time",
+    "custom/separator",
+    "tray",
+    "custom/notification"
+  ],
+  "custom/appmenuicon": {
+    "format": " ",
+    "interval": "once",
+    "on-click": "~/.config/rofi/launchers/type-6/launcher.sh"
+  },
+  "custom/separator": {
+    "format": "·",
+    "interval": "once",
+    "tooltip": false
+  },
+  "wlr/workspaces": {
+    "on-click": "activate",
+    "all-outputs": true
+  },
+  "sway/workspaces": {
+    "all-outputs": true,
+    "current-only": false
+  },
+  "sway/window": {
+    "max-length": 50,
+    "all-outputs": true,
+    "icon": true
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">  {}</span>",
+    "tooltip": false
+  },
+  "network": {
+    "interface": "wlo1",
+    "format-disconnected": "睊 ",
+    "format-wifi": "  {essid}",
+    "on-click": "networkmanager_dmenu"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} ",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 1,
+    "on-click": "~/.config/rofi/scripts/rofi-sound-picker"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "🌕",
+      "🌔",
+      "🌓",
+      "🌒",
+      ""
+    ]
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": " {icon}  {capacity}%",
+    "format-discharging": "{icon}  {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip": true,
+    "on-click": "~/.config/rofi/applets/bin/battery.sh"
+  },
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip": false
+  },
+  "clock#date": {
+    "interval": 10,
+    "format": "  {:%d.%m.%Y}",
+    "tooltip-format": "{:%A %B %Y}"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": " ",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": " ",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": " ",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": " "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
+}
