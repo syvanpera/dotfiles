@@ -2,7 +2,7 @@
 @define-color noti-bg rgba(41,41,41,0.5);
 @define-color noti-bg-hover-alt #454545;
 /* @define-color noti-bg-alt rgba(43,43,43,0.7); */
-@define-color noti-bg-alt rgba(0,0,0,0.4);
+@define-color noti-bg-alt rgba(0,0,0,0.5);
 @define-color noti-fg white;
 @define-color noti-bg-hover rgba(255, 255, 255, 0.1);
 @define-color noti-bg-focus rgba(255, 255, 255, 0.1);
