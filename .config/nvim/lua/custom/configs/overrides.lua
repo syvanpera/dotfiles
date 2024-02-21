@@ -63,6 +63,7 @@ M.mason = {
 -- git support in nvimtree
 local actions = require("telescope.actions")
 M.nvimtree = {
+	auto_close = true,
 	-- disable_netrw = false,
 	-- hijack_netrw = false,
 

@@ -1,7 +1,8 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "JetBrainsMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-family: "JetBrainsMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial,
+    sans-serif;
   font-size: 14px;
   /* min-height: 22px; */
 }
@@ -149,7 +150,7 @@ label:focus {
 }
 
 #network.disconnected {
-  background-color: #cc6666;
+  color: #cc6666;
 }
 
 #pulseaudio {

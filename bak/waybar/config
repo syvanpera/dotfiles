@@ -10,8 +10,8 @@
   "layer": "top",
   "margin": "0 0 0 0",
   "output": [
-    "HDMI-A-1"
-    //"eDP-1"
+    //"HDMI-A-1"
+    "eDP-1"
   ],
   "modules-left": [
     "custom/appmenuicon",

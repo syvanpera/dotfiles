@@ -43,6 +43,13 @@ local plugins = {
 	-- 	end,
 	-- },
 	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
@@ -66,7 +73,16 @@ local plugins = {
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			modes = {
+				search = {
+					enabled = false,
+				},
+				char = {
+					enabled = false,
+				},
+			},
+		},
 		keys = {
 			{
 				"s",
@@ -110,6 +126,13 @@ local plugins = {
 			},
 		},
 	},
+	-- {
+	-- 	"ggandor/leap.nvim",
+	-- 	lazy = false,
+	-- 	config = function(_, opts)
+	-- 		require("leap").create_default_mappings()
+	-- 	end,
+	-- },
 	{
 		"ray-x/go.nvim",
 		dependencies = {

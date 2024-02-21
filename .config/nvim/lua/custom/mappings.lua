@@ -10,7 +10,7 @@ M.disabled = {
 M.general = {
 	n = {
 		-- buffers
-		["<leader>bb"] = { "<cmd>Telescope buffers theme=ivy<CR>", "Find buffers" },
+		["<leader>bb"] = { "<cmd>Telescope buffers<CR>", "Find buffers" },
 		["<leader>bd"] = {
 			function()
 				require("nvchad.tabufline").close_buffer()
@@ -41,7 +41,7 @@ M.general = {
 		["<leader><tab>"] = { "<cmd>e #<CR>", "Alternate file" },
 		["<M-s>"] = { "<cmd>w<CR>", "Save file" },
 		["<M-e>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree" },
-		["<M-F>"] = { "<cmd>Telescope live_grep theme=ivy<CR>", "Live grep" },
+		["<M-F>"] = { "<cmd>Telescope live_grep<CR>", "Live grep" },
 
 		--  format with conform
 		["<leader>fm"] = {

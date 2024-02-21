@@ -338,7 +338,8 @@
 
   bindsym $mod+Return       exec --no-startup-id $term
   bindsym $mod+Shift+Return exec --no-startup-id $term -e tmux new-session -A -s 'default'
-  bindsym $mod+space        exec --no-startup-id ~/.config/rofi/launchers/type-6/launcher.sh | xargs swaymsg exec --
+  # bindsym $mod+space        exec --no-startup-id ~/.config/rofi/launchers/type-6/launcher.sh | xargs swaymsg exec --
+  bindsym $mod+space        exec --no-startup-id rofi -show drun | xargs swaymsg exec --
   # bindsym $mod+space        exec --no-startup-id ~/.config/rofi/scripts/launcher
   bindsym $mod+0            exec --no-startup-id ~/.config/rofi/applets/bin/powermenu.sh
   bindsym $mod+shift+w      exec --no-startup-id ~/.config/rofi/scripts/sway-windows
@@ -417,7 +418,7 @@
 # Status Bar ------------------------------------------------------------------------------------{{{
 
   bar {
-    swaybar_command waybar
+    swaybar_command ~/.config/waybar/launch.sh
   }
 
 # }}}
