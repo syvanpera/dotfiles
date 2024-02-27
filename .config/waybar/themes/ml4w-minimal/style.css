@@ -96,7 +96,7 @@ tooltip label {
 #window {
   margin: 0px 15px 0px 0px;
   border-radius: 12px;
-  color: @textcolor;
+  color: #f2a05c;
   font-size: 14px;
   font-weight: normal;
 }

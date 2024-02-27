@@ -16,8 +16,8 @@
     "margin-bottom": 0,
 
     "output": [
-        //"HDMI-A-1"
-        "eDP-1"
+        "HDMI-A-1"
+        //"eDP-1"
     ],
 
     // Position BOTTOM
@@ -51,7 +51,7 @@
         "custom/updates",
         "pulseaudio",
         "bluetooth",
-        "network",
+        // "network",
         "battery", 
         "group/hardware",
         "custom/cliphist",
