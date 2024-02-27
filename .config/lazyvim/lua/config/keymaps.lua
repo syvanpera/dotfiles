@@ -1,8 +1,17 @@
+local Util = require("lazyvim.util")
+
 local map = vim.keymap.set
 
 -- General Keymaps -------------------
 
-map("n", "<leader><tab>", "")
+vim.keymap.del("n", "<leader><tab>l")
+vim.keymap.del("n", "<leader><tab>f")
+vim.keymap.del("n", "<leader><tab><tab>")
+vim.keymap.del("n", "<leader><tab>]")
+vim.keymap.del("n", "<leader><tab>[")
+vim.keymap.del("n", "<leader><tab>d")
+
+-- map("n", "<leader><tab>", "")
 
 map("n", "<M-s>", "<cmd>w<cr>", { desc = "Save buffer" })
 map("n", "<leader><tab>", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
@@ -31,6 +40,8 @@ map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 
 -- toggles
 map("n", "<leader>th", "<cmd>nohl<cr>", { desc = "[T]oggle [H]ighliht" })
+
+map("n", "<leader>fp", Util.telescope.config_files(), { desc = "Find Config File" })
 
 -- map("n", "<M-e>", function()
 --   require("neo-tree.command").execute({ toggle = true, dir = Util.root() })

@@ -20,7 +20,7 @@ return {
           guibg = "#44406e"
 
           local buffer = {
-            ft_icon and { "", guibg = ft_fgcolor, guifg = ft_bgcolor },
+            ft_icon and { "", guibg = "#000000", guifg = ft_bgcolor },
             ft_icon and { ft_icon, " ", guibg = ft_bgcolor, guifg = ft_fgcolor } or "",
             " ",
             { filename, gui = modified and "bold,italic" or "bold" },

@@ -12,19 +12,19 @@ return {
 
   {
     "folke/noice.nvim",
-    -- enabled = false,
-    opts = {
-      cmdline = {
-        enabled = true,
-        view = "cmdline",
-      },
-      popupmenu = {
-        enabled = true,
-      },
-      presets = {
-        command_palette = false,
-      },
-    },
+    enabled = false,
+    -- opts = {
+    --   cmdline = {
+    --     enabled = true,
+    --     view = "cmdline",
+    --   },
+    --   popupmenu = {
+    --     enabled = true,
+    --   },
+    --   presets = {
+    --     command_palette = false,
+    --   },
+    -- },
   },
 
   {
@@ -84,6 +84,16 @@ return {
   },
 
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      defaults = {
+        ["<leader><tab>"] = "Alternate file",
+      },
+    },
+  },
+
+  {
     "nvim-telescope/telescope.nvim",
     opts = {
       defaults = {
@@ -122,6 +132,9 @@ return {
     opts = {
       modes = {
         char = {
+          enabled = false,
+        },
+        search = {
           enabled = false,
         },
       },
