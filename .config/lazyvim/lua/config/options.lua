@@ -6,3 +6,5 @@ vim.cmd([[noremap Y Y]])
 
 vim.opt.cmdheight = 2
 vim.opt.tabstop = 4
+vim.opt.laststatus = 3
+vim.opt.cmdheight = 1

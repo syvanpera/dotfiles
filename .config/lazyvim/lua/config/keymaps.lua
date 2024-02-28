@@ -35,8 +35,8 @@ map("n", "<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
 map("n", "<s-tab>", "<cmd>tabprev<cr>", { desc = "Prev tab" })
 
 -- buffer operations
-map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next buffer" })
-map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
+-- map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next buffer" })
+-- map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 
 -- toggles
 map("n", "<leader>th", "<cmd>nohl<cr>", { desc = "[T]oggle [H]ighliht" })

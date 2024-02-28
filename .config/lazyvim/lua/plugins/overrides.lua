@@ -1,16 +1,5 @@
 return {
   {
-    "folke/tokyonight.nvim",
-    opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-  },
-
-  {
     "folke/noice.nvim",
     enabled = false,
     -- opts = {
@@ -29,6 +18,7 @@ return {
 
   {
     "akinsho/bufferline.nvim",
+    enabled = false,
     opts = {
       options = {
         mode = "tabs",
@@ -96,6 +86,17 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     opts = {
+      pickers = {
+        find_files = {
+          theme = "ivy",
+        },
+        live_grep = {
+          theme = "ivy",
+        },
+        buffers = {
+          theme = "ivy",
+        },
+      },
       defaults = {
         mappings = {
           i = {

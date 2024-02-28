@@ -1,3 +1,6 @@
+-- stylua: ignore
+if true then return {} end
+
 return {
   "b0o/incline.nvim",
   event = "VeryLazy",
