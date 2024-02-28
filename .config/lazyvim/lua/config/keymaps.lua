@@ -21,18 +21,15 @@ map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
 map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- workspace (tab) operations
-map("n", "<leader>ln", "<cmd>tabnew<cr>", { desc = "New workspace" })
-map("n", "<leader>ld", "<cmd>tabclose<cr>", { desc = "Delete this workspace" })
-map("n", "<leader>ll", "<cmd>tabs<cr>", { desc = "List workspaces" })
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New tab" })
 map("n", "<leader>te", "<cmd>tabedit %<cr>", { desc = "Open buffer in new tab" })
-map("n", "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next tab" })
-map("n", "<leader>th", "<cmd>tabprev<cr>", { desc = "Prev tab" })
-map("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close tab" })
+map("n", "<leader>tl", "<cmd>tabs<cr>", { desc = "List tabs" })
 map("n", "<leader>td", "<cmd>tabclose<cr>", { desc = "Close tab" })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "Close other tabs" })
-map("n", "<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
-map("n", "<s-tab>", "<cmd>tabprev<cr>", { desc = "Prev tab" })
+map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "Next tab" })
+map("n", "<leader>tk", "<cmd>tabprev<cr>", { desc = "Prev tab" })
+-- map("n", "<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
+-- map("n", "<s-tab>", "<cmd>tabprev<cr>", { desc = "Prev tab" })
 
 -- buffer operations
 -- map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next buffer" })

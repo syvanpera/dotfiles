@@ -129,6 +129,21 @@ return {
   },
 
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<C-a>",
+          node_incremental = "<C-a>",
+          scope_incremental = false,
+          node_decremental = "<C-s>",
+        },
+      },
+    },
+  },
+
+  {
     "folke/flash.nvim",
     opts = {
       modes = {
