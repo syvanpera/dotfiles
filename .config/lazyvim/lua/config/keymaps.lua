@@ -38,6 +38,12 @@ map("n", "<leader>tk", "<cmd>tabprev<cr>", { desc = "Prev tab" })
 -- toggles
 map("n", "<leader>th", "<cmd>nohl<cr>", { desc = "[T]oggle [H]ighliht" })
 
+-- copilot
+map("i", "<C-f>", function()
+  vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
+end, { desc = "Copilot Accept", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
+-- map("i", "<C-f>", "copilot#Accept()", { silent = true, expr = true, desc = "Copilot Accept" })
+
 map("n", "<leader>fp", Util.telescope.config_files(), { desc = "Find Config File" })
 
 -- map("n", "<M-e>", function()

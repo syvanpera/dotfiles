@@ -166,7 +166,10 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "ofseed/copilot-status.nvim",
+    },
     config = function()
       local Util = require("lazyvim.util")
       local lazy_status = require("lazy.status")
@@ -200,7 +203,7 @@ return {
             { Util.lualine.pretty_path() },
             { "branch", icon = "" },
           },
-          lualine_x = { { lazy_status.updates, cond = lazy_status.has_updates }, "fileformat" },
+          lualine_x = { { lazy_status.updates, cond = lazy_status.has_updates }, "copilot", "fileformat" },
           lualine_y = { "filetype", "progress" },
           lualine_z = {
             { "location", separator = { right = "" }, left_padding = 2 },
