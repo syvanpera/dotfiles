@@ -2,63 +2,35 @@
 local M = {}
 
 -- Path to overriding theme and highlights files
-local highlights = require("custom.highlights")
+local highlights = require "custom.highlights"
 
 M.ui = {
-	theme = "tokyonight",
-	theme_toggle = { "tokyonight", "one_light" },
+  lsp_semantic_tokens = true,
 
-	hl_override = highlights.override,
-	hl_add = highlights.add,
+  theme = "onedark",
+  theme_toggle = { "onedark", "one_light" },
 
-	tabufline = {
-		enabled = false,
-	},
+  hl_override = highlights.override,
+  hl_add = highlights.add,
 
-	statusline = {
-		theme = "default", -- default/vscode/vscode_colored/minimal
-	},
+  extended_integrations = { "trouble" },
+
+  telescope = { style = "bordered" },
+  statusline = {
+    theme = "vscode_colored",
+    separator_style = "round"
+  },
+  nvdash = {
+    load_on_startup = true,
+  },
+  cmp = {
+    style = "atom_colored"
+  },
 }
 
 M.plugins = "custom.plugins"
 
 -- check core.mappings for table structure
-M.mappings = require("custom.mappings")
-
-M.lazy_nvim = {
-	performance = {
-		rtp = {
-			disabled_plugins = {
-				"2html_plugin",
-				"tohtml",
-				"getscript",
-				"getscriptPlugin",
-				"gzip",
-				"logipat",
-				-- "netrw",
-				-- "netrwPlugin",
-				-- "netrwSettings",
-				-- "netrwFileHandlers",
-				"matchit",
-				"tar",
-				"tarPlugin",
-				"rrhelper",
-				"spellfile_plugin",
-				"vimball",
-				"vimballPlugin",
-				"zip",
-				"zipPlugin",
-				"tutor",
-				"rplugin",
-				"syntax",
-				"synmenu",
-				"optwin",
-				"compiler",
-				"bugreport",
-				"ftplugin",
-			},
-		},
-	},
-}
+M.mappings = require "custom.mappings"
 
 return M

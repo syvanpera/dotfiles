@@ -2,229 +2,34 @@ local overrides = require("custom.configs.overrides")
 
 ---@type NvPluginSpec[]
 local plugins = {
-	{
-		"nvim-telescope/telescope.nvim",
-		opts = overrides.telescope,
-	},
-	{
-		"williamboman/mason.nvim",
-		opts = overrides.mason,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = overrides.treesitter,
-	},
-	{
-		"nvim-tree/nvim-tree.lua",
-		opts = overrides.nvimtree,
-	},
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	opts = overrides.cmp,
-	-- },
 
-	-- {
-	-- 	"Exafunction/codeium.vim",
-	-- 	event = "BufEnter",
-	-- },
-	-- {
-	-- 	"jackMort/ChatGPT.nvim",
-	-- 	event = "VeryLazy",
-	-- 	dependencies = {
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		"folke/trouble.nvim",
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"nvim-telescope/telescope.nvim",
-	-- 	},
-	-- 	config = function()
-	-- 		require("chatgpt").setup({
-	-- 			api_key_cmd = "pass show api/tokens/nvim-chatgpt",
-	-- 		})
-	-- 	end,
-	-- },
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			"nvim-lua/plenary.nvim",
-		},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		lazy = false,
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				textobjects = {
-					select = {
-						enable = true,
-						lookahead = true,
-						keymaps = {
-							["af"] = "@funtion.outer",
-							["if"] = "@funtion.inner",
-						},
-					},
-				},
-			})
-		end,
-	},
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		opts = {
-			modes = {
-				search = {
-					enabled = false,
-				},
-				char = {
-					enabled = false,
-				},
-			},
-		},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-			{
-				"S",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
-			{
-				"r",
-				mode = "o",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-			},
-			{
-				"R",
-				mode = { "o", "x" },
-				function()
-					require("flash").treesitter_search()
-				end,
-				desc = "Treesitter Search",
-			},
-			{
-				"<c-s>",
-				mode = { "c" },
-				function()
-					require("flash").toggle()
-				end,
-				desc = "Toggle Flash Search",
-			},
-		},
-	},
-	-- {
-	-- 	"ggandor/leap.nvim",
-	-- 	lazy = false,
-	-- 	config = function(_, opts)
-	-- 		require("leap").create_default_mappings()
-	-- 	end,
-	-- },
-	{
-		"ray-x/go.nvim",
-		dependencies = {
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("go").setup()
-		end,
-		event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-	},
-
-	{
-		"alexghergh/nvim-tmux-navigation",
-		lazy = false,
-		config = function(_, opts)
-			require("core.utils").load_mappings("tmux_navigation")
-		end,
-	},
-
-	-- {
-	--   "olexsmir/gopher.nvim",
-	--   ft = "go",
-	--   config = function(_, opts)
-	--     require("gopher").setup(opts)
-	--   end,
-	--   build = function()
-	--     vim.cmd [[silent! GoInstallDeps]]
-	--   end,
-	-- },
-
-	{
-		"mfussenegger/nvim-dap",
-		config = function(_, opts)
-			require("core.utils").load_mappings("dap")
-		end,
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = "mfussenegger/nvim-dap",
-		config = function()
-			local dap = require("dap")
-			local dapui = require("dapui")
-			dapui.setup()
-			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open()
-			end
-			dap.listeners.before.event_terminated["dapui_config"] = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited["dapui_config"] = function()
-				dapui.close()
-			end
-		end,
-	},
-	{
-		"mfussenegger/nvim-dap-python",
-		ft = "python",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"rcarriga/nvim-dap-ui",
-		},
-		config = function(_, opts)
-			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-			require("dap-python").setup(path)
-			require("core.utils").load_mappings("dap_python")
-		end,
-	},
-	-- {
-	--   "leoluz/nvim-dap-go",
-	--   ft = "go",
-	--   dependencies = {
-	--     "mfussenegger/nvim-dap",
-	--     "rcarriga/nvim-dap-ui",
-	--   },
-	--   config = function(_, opts)
-	--     require("dap-go").setup(opts)
-	--     require("core.utils").load_mappings("dap_go")
-	--   end,
-	-- },
+	-- Override plugin definition options
 
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("plugins.configs.lspconfig")
 			require("custom.configs.lspconfig")
-		end,
+		end, -- Override to setup mason-lspconfig
 	},
 
+	-- override plugin configs
+	{
+		"williamboman/mason.nvim",
+		opts = overrides.mason,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = overrides.treesitter,
+	},
+
+	{
+		"nvim-tree/nvim-tree.lua",
+		opts = overrides.nvimtree,
+	},
+
+	-- Install a plugin
 	{
 		"max397574/better-escape.nvim",
 		event = "InsertEnter",
@@ -232,13 +37,45 @@ local plugins = {
 			require("better_escape").setup()
 		end,
 	},
+
 	{
 		"stevearc/conform.nvim",
 		--  for users those who want auto-save conform + lazyloading!
-		event = "BufWritePre",
+		-- event = "BufWritePre"
 		config = function()
 			require("custom.configs.conform")
 		end,
+	},
+
+	{
+		"alexghergh/nvim-tmux-navigation",
+		lazy = false,
+		config = function()
+			require("core.utils").load_mappings("nvim-tmux-navigation")
+		end,
+	},
+
+  {
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    config = function()
+      dofile(vim.g.base46_cache .. "trouble")
+      require("trouble").setup()
+    end
+  },
+
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
+	{
+		"NvChad/nvcommunity",
+		{ import = "nvcommunity.git.diffview" },
+		{ import = "nvcommunity.git.neogit" },
 	},
 
 	-- To make a plugin not be loaded

@@ -6,42 +6,14 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-	Normal = {
-		bg = "NONE",
-	},
-	Comment = {
-		italic = true,
-	},
-	TbLineBufOn = {
-		bg = "NONE",
-	},
-	TbLineBufOnClose = {
-		bg = "NONE",
-	},
-	TbLineBufOnModified = {
-		bg = "NONE",
-	},
-	TbLineBufOff = {
-		bg = "#151921",
-	},
-	TbLineBufOffClose = {
-		bg = "#151921",
-	},
-	TbLineBufOffModified = {
-		bg = "NONE",
-	},
-	TblineFill = {
-		bg = "NONE",
-	},
-	Search = {
-		fg = "#ffffff",
-		bg = "#151921",
-	},
+  Comment = {
+    italic = true,
+  },
 }
 
 ---@type HLTable
 M.add = {
-	NvimTreeOpenedFolderName = { fg = "green", bold = true },
+  NvimTreeOpenedFolderName = { fg = "green", bold = true },
 }
 
 return M

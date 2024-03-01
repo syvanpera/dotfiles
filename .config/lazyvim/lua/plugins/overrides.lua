@@ -1,3 +1,5 @@
+local Util = require("lazyvim.util")
+
 return {
   {
     "folke/noice.nvim",
@@ -125,6 +127,8 @@ return {
         "<leader>bb",
         "<cmd>Telescope buffers<CR>",
       },
+      { "<leader>fF", Util.telescope("files"), desc = "Find Files (cwd)" },
+      { "<leader>ff", Util.telescope("files", { cwd = false }), desc = "Find Files (root)" },
     },
   },
 
@@ -161,6 +165,18 @@ return {
     "folke/trouble.nvim",
     keys = {
       { "<leader>el", "<cmd>TroubleToggle<cr>" },
+      {
+        "<leader>en",
+        function()
+          require("trouble").next({ skip_groups = true, jump = true })
+        end,
+      },
+      {
+        "<leader>ep",
+        function()
+          require("trouble").previous({ skip_groups = true, jump = true })
+        end,
+      },
     },
   },
 
@@ -168,7 +184,8 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "ofseed/copilot-status.nvim",
+      "ofseed/copilot-status.nvim", -- for github/copilot.vim
+      -- "AndreM222/copilot-lualine", -- for zbirenbaum/copilot.lua
     },
     config = function()
       local Util = require("lazyvim.util")
@@ -203,7 +220,21 @@ return {
             { Util.lualine.pretty_path() },
             { "branch", icon = "" },
           },
-          lualine_x = { { lazy_status.updates, cond = lazy_status.has_updates }, "copilot", "fileformat" },
+          lualine_x = {
+            {
+              "copilot",
+              show_running = true,
+              symbols = {
+                status = {
+                  enabled = " ",
+                  disabled = " ",
+                },
+                spinners = require("copilot-status.spinners").dots_negative,
+              },
+            },
+            { lazy_status.updates, cond = lazy_status.has_updates },
+            "fileformat",
+          },
           lualine_y = { "filetype", "progress" },
           lualine_z = {
             { "location", separator = { right = "" }, left_padding = 2 },
@@ -219,6 +250,35 @@ return {
         },
         tabline = {},
         extensions = {},
+      })
+    end,
+  },
+
+  {
+    "nvim-cmp",
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      local cmp = require("cmp")
+
+      opts.mapping = cmp.mapping.preset.insert({
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        -- ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        -- ["<C-f>"] = cmp.mapping.confirm({ select = false }),
+        ["<C-y>"] = cmp.mapping.confirm({ select = false }),
+        -- ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<C-g>"] = cmp.mapping.abort(),
+        ["<S-CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<C-CR>"] = function(fallback)
+          cmp.abort()
+          fallback()
+        end,
       })
     end,
   },

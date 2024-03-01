@@ -3,14 +3,57 @@ local M = {}
 
 M.disabled = {
 	n = {
+		["<C-n>"] = "",
 		["<leader>b"] = "",
 	},
 }
 
 M.general = {
 	n = {
+		["<M-s>"] = { "<cmd>w<cr>", "Save file" },
+
+		-- code
+		["<leader>cf"] = {
+			function()
+				require("conform").format()
+			end,
+			"formatting",
+		},
+	},
+	v = {
+		[">"] = { ">gv", "indent" },
+	},
+}
+
+-- more keybinds!
+
+M.nvimtree = {
+	plugin = true,
+
+	n = {
+		["<M-e>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle nvimtree" },
+	},
+}
+
+M.tabufline = {
+	plugin = true,
+
+	n = {
+		["H"] = {
+			function()
+				require("nvchad.tabufline").tabuflinePrev()
+			end,
+			"Goto prev buffer",
+		},
+
+		["L"] = {
+			function()
+				require("nvchad.tabufline").tabuflineNext()
+			end,
+			"Goto next buffer",
+		},
+
 		-- buffers
-		["<leader>bb"] = { "<cmd>Telescope buffers<CR>", "Find buffers" },
 		["<leader>bd"] = {
 			function()
 				require("nvchad.tabufline").close_buffer()
@@ -23,9 +66,30 @@ M.general = {
 			end,
 			"Close other buffers",
 		},
+	},
+}
 
-		-- files
-		["<leader>."] = { "<cmd>Telescope file_browser theme=ivy path=%:p:h select_buffer=true<CR>", "File browser" },
+M.gitsigns = {
+	plugin = true,
+
+	n = {
+		-- git
+		["<leader>gd"] = {
+			function()
+				require("gitsigns").toggle_deleted()
+			end,
+			"Toggle deleted",
+		},
+	},
+}
+
+M.telescope = {
+	plugin = true,
+
+	n = {
+		-- buffers
+		["<leader>bb"] = { "<cmd>Telescope buffers<CR>", "Find buffers" },
+		["<leader>."] = { "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", "File browser" },
 		["<leader>fp"] = {
 			function()
 				require("telescope.builtin").find_files({
@@ -36,74 +100,12 @@ M.general = {
 			end,
 			"Find nvim config files",
 		},
-
-		-- misc
-		["<leader><tab>"] = { "<cmd>e #<CR>", "Alternate file" },
-		["<M-s>"] = { "<cmd>w<CR>", "Save file" },
-		["<M-e>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree" },
-		["<M-F>"] = { "<cmd>Telescope live_grep<CR>", "Live grep" },
-
-		--  format with conform
-		["<leader>fm"] = {
-			function()
-				require("conform").format()
-			end,
-			"formatting",
-		},
-	},
-	v = {
-		[">"] = { ">gv", "indent" },
-		["<leader>y"] = { '"+y', "Copy to clipboard" },
 	},
 }
 
-M.dap = {
+M["nvim-tmux-navigation"] = {
 	plugin = true,
-	n = {
-		["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
-		["<leader>dus"] = {
-			function()
-				local widgets = require("dap.ui.widgets")
-				local sidebar = widgets.sidebar(widgets.scopes)
-				sidebar.open()
-			end,
-			"Open debugging sidebar",
-		},
-	},
-}
 
-M.dap_python = {
-	plugin = true,
-	n = {
-		["<leader>dpr"] = {
-			function()
-				require("dap-python").test_method()
-			end,
-			"Debug python test",
-		},
-	},
-}
-
--- M.dap_go = {
---   plugin = true,
---   n = {
---     ["<leader>dgt"] = {
---       function()
---         require('dap-go').debug_test()
---       end,
---       "Debug go test"
---     },
---     ["<leader>dgl"] = {
---       function()
---         require('dap-go').debug_last()
---       end,
---       "Debug last go test"
---     }
---   }
--- }
-
-M.tmux_navigation = {
-	plugin = true,
 	n = {
 		["<C-h>"] = {
 			function()

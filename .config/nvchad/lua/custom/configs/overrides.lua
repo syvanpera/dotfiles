@@ -12,7 +12,6 @@ M.treesitter = {
 		"c",
 		"markdown",
 		"markdown_inline",
-		"python",
 		"go",
 		"terraform",
 		"hcl",
@@ -42,17 +41,14 @@ M.mason = {
 		"clangd",
 		"clang-format",
 
-		-- python stuff
-		"pyright",
-		"mypy",
-		"ruff",
-		"debugpy",
+		-- shell stuff
+		"shfmt",
 
 		-- golang
-		-- "gopls",
-		-- "gofumpt",
-		-- "goimports",
-		-- "delve",
+		"gopls",
+		"gofumpt",
+		"goimports",
+		"delve",
 
 		-- terraform
 		"terraform-ls",
@@ -61,12 +57,7 @@ M.mason = {
 }
 
 -- git support in nvimtree
-local actions = require("telescope.actions")
 M.nvimtree = {
-	auto_close = true,
-	-- disable_netrw = false,
-	-- hijack_netrw = false,
-
 	git = {
 		enable = true,
 	},
@@ -81,17 +72,11 @@ M.nvimtree = {
 	},
 }
 
+local actions = require("telescope.actions")
 M.telescope = {
 	defaults = {
 		mappings = {
 			i = {
-				["<C-l>"] = actions.cycle_history_next,
-				["<C-h>"] = actions.cycle_history_prev,
-				["<C-n>"] = actions.move_selection_next,
-				["<C-p>"] = actions.move_selection_previous,
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
-				["<esc>"] = actions.close,
 				["<C-g>"] = actions.close,
 			},
 		},

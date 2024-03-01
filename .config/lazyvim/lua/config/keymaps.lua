@@ -10,11 +10,14 @@ vim.keymap.del("n", "<leader><tab><tab>")
 vim.keymap.del("n", "<leader><tab>]")
 vim.keymap.del("n", "<leader><tab>[")
 vim.keymap.del("n", "<leader><tab>d")
+vim.keymap.del("n", "<leader>e")
 
 -- map("n", "<leader><tab>", "")
 
 map("n", "<M-s>", "<cmd>w<cr>", { desc = "Save buffer" })
-map("n", "<leader><tab>", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "<leader><tab>", "<cmd>e #<cr>", { desc = "Switch to other buffer" })
+map("n", "<C-w>n", "<cmd>vnew<cr>", { desc = "New vertical split" })
+map("n", "<C-w>N", "<cmd>new<cr>", { desc = "New horizontal split" })
 map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
 
 -- use jk to exit insert mode
@@ -28,8 +31,6 @@ map("n", "<leader>td", "<cmd>tabclose<cr>", { desc = "Close tab" })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "Close other tabs" })
 map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "Next tab" })
 map("n", "<leader>tk", "<cmd>tabprev<cr>", { desc = "Prev tab" })
--- map("n", "<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
--- map("n", "<s-tab>", "<cmd>tabprev<cr>", { desc = "Prev tab" })
 
 -- buffer operations
 -- map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next buffer" })
@@ -39,9 +40,9 @@ map("n", "<leader>tk", "<cmd>tabprev<cr>", { desc = "Prev tab" })
 map("n", "<leader>th", "<cmd>nohl<cr>", { desc = "[T]oggle [H]ighliht" })
 
 -- copilot
-map("i", "<C-f>", function()
-  vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
-end, { desc = "Copilot Accept", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
+-- map("i", "<C-f>", function()
+--   vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
+-- end, { desc = "Copilot Accept", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
 -- map("i", "<C-f>", "copilot#Accept()", { silent = true, expr = true, desc = "Copilot Accept" })
 
 map("n", "<leader>fp", Util.telescope.config_files(), { desc = "Find Config File" })
@@ -71,7 +72,6 @@ map("n", "<leader>fp", Util.telescope.config_files(), { desc = "Find Config File
 --
 -- map("n", "<leader>fp", Util.telescope.config_files(), { noremap = true, silent = true, desc = "Find Config File" })
 
--- lsp & code stuff
 -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Show definition" })
 -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Smart rename" })
