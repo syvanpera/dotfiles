@@ -34,6 +34,15 @@ return {
   },
 
   {
+    "willamboman/mason.nvim",
+    opts = {
+      ui = {
+        border = "rounded",
+      },
+    },
+  },
+
+  {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,
   },
@@ -218,7 +227,6 @@ return {
             },
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
             { Util.lualine.pretty_path() },
-            { "branch", icon = "" },
           },
           lualine_x = {
             {
@@ -235,7 +243,11 @@ return {
             { lazy_status.updates, cond = lazy_status.has_updates },
             "fileformat",
           },
-          lualine_y = { "filetype", "progress" },
+          lualine_y = {
+            { "branch", icon = "" },
+            "filetype",
+            "progress",
+          },
           lualine_z = {
             { "location", separator = { right = "" }, left_padding = 2 },
           },

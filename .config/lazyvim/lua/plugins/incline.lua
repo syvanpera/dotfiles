@@ -1,5 +1,5 @@
 -- stylua: ignore
-if true then return {} end
+-- if true then return {} end
 
 return {
   "b0o/incline.nvim",
@@ -23,11 +23,11 @@ return {
           guibg = "#44406e"
 
           local buffer = {
-            ft_icon and { "", guibg = "#000000", guifg = ft_bgcolor },
+            ft_icon and { "", guibg = "#181826", guifg = ft_bgcolor },
             ft_icon and { ft_icon, " ", guibg = ft_bgcolor, guifg = ft_fgcolor } or "",
             " ",
             { filename, gui = modified and "bold,italic" or "bold" },
-            ft_icon and { "", guifg = guibg, guibg = "#000000" },
+            ft_icon and { " ", guifg = guibg },
             guibg = guibg,
           }
           return buffer
@@ -42,7 +42,7 @@ return {
             ft_icon and { ft_icon, " ", guibg = "#44406e", guifg = ft_fgcolor } or "",
             " ",
             { filename, gui = modified and "bold,italic" or "bold" },
-            ft_icon and { " ", guifg = guibg, guibg = "#000000" },
+            ft_icon and { " ", guifg = guibg },
             guibg = guibg,
           }
 

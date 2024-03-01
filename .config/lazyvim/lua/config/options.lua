@@ -10,4 +10,4 @@ vim.opt.laststatus = 3
 vim.opt.cmdheight = 1
 vim.opt.clipboard = ""
 
--- vim.g.copilot_no_tab_map = true
+vim.g.lsp_disabled_servers = { "yaml" }

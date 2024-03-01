@@ -14,6 +14,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.terraform" },
     { import = "lazyvim.plugins.extras.lang.json" },
+    -- { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.util.dot" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     -- { import = "lazyvim.plugins.extras.editor.aerial" },
@@ -25,6 +26,7 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.lang.nix" },
     { import = "plugins.lang.python" },
+    -- { import = "plugins.code.azure_pipelines" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
