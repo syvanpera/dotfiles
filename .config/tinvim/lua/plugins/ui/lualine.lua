@@ -3,7 +3,9 @@ if not status_ok then
     return
 end
 
+local Util = require("lazyvim.util")
 local icons = require('lib.icons')
+local lazy_status = require("lazy.status")
 
 local colors = {
     bg = '#202328',
@@ -64,6 +66,8 @@ local progress = { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 local filetype = { 'filetype', color = { fg = colors.blue, gui = 'bold' } }
 local filesize = { 'filesize', color = { fg = colors.fg, gui = 'bold' }, cond = conditions.buffer_not_empty }
 local fileformat = { 'fileformat', icons_enabled = true, color = { fg = colors.white, gui = 'bold' } }
+local copilot = { "copilot", show_running = true, symbols = { status = { enabled = " ", disabled = " " }, spinners = require("copilot-status.spinners").dots_negative, } }
+
 
 local filename = {
     'filename',
@@ -192,10 +196,24 @@ local config = {
     sections = {
         lualine_a = {},
         lualine_b = { separator, mode(icons.ui.Neovim) },
-        lualine_c = { filename, branch },
-        lualine_x = { diagnostics, lsp, filetype, filesize, fileformat, encoding },
+        lualine_c = {
+            { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+            Util.lualine.pretty_path(),
+            branch
+        },
+        -- lualine_c = { filename, branch },
+        lualine_x = {
+            diagnostics,
+            lsp,
+            filetype,
+            encoding,
+            fileformat,
+        },
         lualine_y = { 'location', progress },
-        lualine_z = {},
+        lualine_z = {
+            { lazy_status.updates, cond = lazy_status.has_updates },
+            copilot,
+        },
     },
 }
 

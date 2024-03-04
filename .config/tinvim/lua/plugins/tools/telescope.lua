@@ -116,35 +116,34 @@ telescope.setup({
     --     git_files = { mappings = multi_open_mappings },
     --     oldfiles = { mappings = multi_open_mappings },
     -- },
-    -- extensions = {
-    --     fzf = {
-    --         fuzzy = true,
-    --         override_generic_sorter = true,
-    --         override_file_sorter = true,
-    --         case_mode = 'smart_case',
-    --     },
-    --     undo = {
-    --         use_delta = true,
-    --         use_custom_command = nil,
-    --         side_by_side = true,
-    --         diff_context_lines = vim.o.scrolloff,
-    --         entry_format = 'state #$ID, $STAT, $TIME',
-    --         -- time_format = '%d %b %H:%M',
-    --         mappings = {
-    --             i = {
-    --                 ['<S-cr>'] = require('telescope-undo.actions').yank_additions,
-    --                 ['<C-cr>'] = require('telescope-undo.actions').yank_deletions,
-    --                 ['<cr>'] = require('telescope-undo.actions').restore,
-    --             },
-    --         },
-    --     },
-    --     menufacture = { mappings = { main_menu = { [{ 'i', 'n' }] = '<C-,>' } } },
-    -- },
+    extensions = {
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = 'smart_case',
+        },
+        -- undo = {
+        --     use_delta = true,
+        --     use_custom_command = nil,
+        --     side_by_side = true,
+        --     diff_context_lines = vim.o.scrolloff,
+        --     entry_format = 'state #$ID, $STAT, $TIME',
+        --     -- time_format = '%d %b %H:%M',
+        --     mappings = {
+        --         i = {
+        --             ['<S-cr>'] = require('telescope-undo.actions').yank_additions,
+        --             ['<C-cr>'] = require('telescope-undo.actions').yank_deletions,
+        --             ['<cr>'] = require('telescope-undo.actions').restore,
+        --         },
+        --     },
+        -- },
+        -- menufacture = { mappings = { main_menu = { [{ 'i', 'n' }] = '<C-,>' } } },
+    },
 })
 
--- require('telescope').load_extension('fzf')
+pcall(require('telescope').load_extension, 'fzf')
 -- require('telescope').load_extension('menufacture')
 -- require('telescope').load_extension('undo')
--- require('telescope').load_extension('harpoon')
 -- require('telescope').load_extension('notify')
 -- require('telescope').load_extension('refactoring')

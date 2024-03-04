@@ -111,7 +111,7 @@ return {
         Lock = ' ',
         Minus = '‒ ',
         Music = '󰝚 ',
-        NeoVim = ' ',
+        NeoVim = ' ',
         NewFile = ' ',
         None = ' ',
         Note = ' ',
