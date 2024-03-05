@@ -1,31 +1,33 @@
-local status_ok, lualine = pcall(require, 'lualine')
-if not status_ok then
+---@diagnostic disable-next-line: unused-local, unused-function
+local config1 = function()
+  local status_ok, lualine = pcall(require, "lualine")
+  if not status_ok then
     return
-end
+  end
 
-local Util = require("lazyvim.util")
-local icons = require('lib.icons')
-local lazy_status = require("lazy.status")
+  local Util = require("lazyvim.util")
+  local icons = require("lib.icons")
+  local lazy_status = require("lazy.status")
 
-local colors = {
-    bg = '#202328',
-    fg = '#bbc2cf',
-    yellow = '#ECBE7B',
-    cyan = '#008080',
-    darkblue = '#081633',
-    green = '#98be65',
-    orange = '#FF8800',
-    violet = '#a9a1e1',
-    magenta = '#c678dd',
-    blue = '#51afef',
-    red = '#ec5f67',
-}
+  local colors = {
+    bg = "#202328",
+    fg = "#bbc2cf",
+    yellow = "#ECBE7B",
+    cyan = "#008080",
+    darkblue = "#081633",
+    green = "#98be65",
+    orange = "#FF8800",
+    violet = "#a9a1e1",
+    magenta = "#c678dd",
+    blue = "#51afef",
+    red = "#ec5f67",
+  }
 
-local mode_color = {
+  local mode_color = {
     n = colors.green,
     i = colors.blue,
     v = colors.magenta,
-    [''] = colors.magenta,
+    [""] = colors.magenta,
     V = colors.magenta,
     c = colors.yellow,
     t = colors.red,
@@ -34,155 +36,161 @@ local mode_color = {
     no = colors.fg,
     s = colors.violet,
     S = colors.violet,
-    [''] = colors.violet,
+    [""] = colors.violet,
     ic = colors.yellow,
     cv = colors.red,
     ce = colors.red,
     r = colors.cyan,
     rm = colors.cyan,
-    ['r?'] = colors.cyan,
-    ['!'] = colors.red,
-}
+    ["r?"] = colors.cyan,
+    ["!"] = colors.red,
+  }
 
-local conditions = {
+  local conditions = {
     buffer_not_empty = function()
-        return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+      return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
     end,
     buffer_is_file = function()
-        return vim.bo.buftype == ''
+      return vim.bo.buftype == ""
     end,
     hide_in_width = function()
-        return vim.fn.winwidth(0) > 80
+      return vim.fn.winwidth(0) > 80
     end,
     check_git_workspace = function()
-        local filepath = vim.fn.expand('%:p:h')
-        local gitdir = vim.fn.finddir('.git', filepath .. ';')
-        return gitdir and #gitdir > 0 and #gitdir < #filepath
+      local filepath = vim.fn.expand("%:p:h")
+      local gitdir = vim.fn.finddir(".git", filepath .. ";")
+      return gitdir and #gitdir > 0 and #gitdir < #filepath
     end,
-}
-local searchcount = { 'searchcount', color = { fg = colors.fg, gui = 'bold' } }
-local selectioncount = { 'selectioncount', color = { fg = colors.fg, gui = 'bold' } }
-local progress = { 'progress', color = { fg = colors.fg, gui = 'bold' } }
-local filetype = { 'filetype', color = { fg = colors.blue, gui = 'bold' } }
-local filesize = { 'filesize', color = { fg = colors.fg, gui = 'bold' }, cond = conditions.buffer_not_empty }
-local fileformat = { 'fileformat', icons_enabled = true, color = { fg = colors.white, gui = 'bold' } }
-local copilot = { "copilot", show_running = true, symbols = { status = { enabled = " ", disabled = " " }, spinners = require("copilot-status.spinners").dots_negative, } }
+  }
+  local searchcount = { "searchcount", color = { fg = colors.fg, gui = "bold" } }
+  local selectioncount = { "selectioncount", color = { fg = colors.fg, gui = "bold" } }
+  local progress = { "progress", color = { fg = colors.fg, gui = "bold" } }
+  local filetype = { "filetype", color = { fg = colors.blue, gui = "bold" } }
+  local filesize = { "filesize", color = { fg = colors.fg, gui = "bold" }, cond = conditions.buffer_not_empty }
+  local fileformat = { "fileformat", icons_enabled = true, color = { fg = colors.white, gui = "bold" } }
+  local copilot = {
+    "copilot",
+    show_running = true,
+    symbols = {
+      status = { enabled = " ", disabled = " " },
+      spinners = require("copilot-status.spinners").dots_negative,
+    },
+  }
 
-
-local filename = {
-    'filename',
+  local filename = {
+    "filename",
     cond = conditions.buffer_not_empty and conditions.buffer_is_file,
-    color = { fg = colors.magenta, gui = 'bold' },
-}
+    color = { fg = colors.magenta, gui = "bold" },
+  }
 
-local buffers = {
-    'buffers',
+  local buffers = {
+    "buffers",
     filetype_names = {
-        TelescopePrompt = icons.ui.Telescope .. 'Telescope',
-        dashboard = icons.ui.Dashboard .. 'Dashboard',
-        lazy = icons.ui.Sleep .. 'Lazy',
-        mason = icons.ui.Package .. 'Mason',
-        NvimTree = icons.documents.OpenFolder .. 'Files',
-        spectre_panel = icons.ui.Search .. 'Spectre',
+      TelescopePrompt = icons.ui.Telescope .. "Telescope",
+      dashboard = icons.ui.Dashboard .. "Dashboard",
+      lazy = icons.ui.Sleep .. "Lazy",
+      mason = icons.ui.Package .. "Mason",
+      NvimTree = icons.documents.OpenFolder .. "Files",
+      spectre_panel = icons.ui.Search .. "Spectre",
     },
     use_mode_colors = true,
-}
+  }
 
-local branch = {
-    'branch',
+  local branch = {
+    "branch",
     icon = icons.git.Branch,
     fmt = function(str)
-        return str:sub(1, 32)
+      return str:sub(1, 32)
     end,
-    color = { fg = colors.green, gui = 'bold' },
-}
+    color = { fg = colors.green, gui = "bold" },
+  }
 
-local diff_icons = {
-    'diff',
+  local diff_icons = {
+    "diff",
     symbols = { added = icons.git.AddAlt, modified = icons.git.DiffAlt, removed = icons.git.RemoveAlt },
     diff_color = {
-        added = { fg = colors.green },
-        modified = { fg = colors.orange },
-        removed = { fg = colors.red },
+      added = { fg = colors.green },
+      modified = { fg = colors.orange },
+      removed = { fg = colors.red },
     },
     cond = conditions.hide_in_width,
-}
+  }
 
-local diagnostics = {
-    'diagnostics',
-    sources = { 'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic' },
+  local diagnostics = {
+    "diagnostics",
+    sources = { "nvim_lsp", "nvim_diagnostic", "nvim_workspace_diagnostic" },
     symbols = {
-        error = icons.diagnostics.Error,
-        warn = icons.diagnostics.Warning,
-        info = icons.diagnostics.Information,
-        hint = icons.diagnostics.Hint,
+      error = icons.diagnostics.Error,
+      warn = icons.diagnostics.Warning,
+      info = icons.diagnostics.Information,
+      hint = icons.diagnostics.Hint,
     },
     diagnostics_color = {
-        color_error = { fg = colors.red },
-        color_warn = { fg = colors.yellow },
-        color_info = { fg = colors.blue },
-        color_hint = { fg = colors.yellow },
+      color_error = { fg = colors.red },
+      color_warn = { fg = colors.yellow },
+      color_info = { fg = colors.blue },
+      color_hint = { fg = colors.yellow },
     },
-}
+  }
 
-local lsp = {
+  local lsp = {
     function()
-        local msg = 'No LSP'
-        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-        local clients = vim.lsp.get_active_clients()
-        if next(clients) == nil then
-            return msg
-        end
-        for _, client in ipairs(clients) do
-            local filetypes = client.config.filetypes
-            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                return client.name
-            end
-        end
+      local msg = "No LSP"
+      local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+      local clients = vim.lsp.get_active_clients()
+      if next(clients) == nil then
         return msg
+      end
+      for _, client in ipairs(clients) do
+        local filetypes = client.config.filetypes
+        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+          return client.name
+        end
+      end
+      return msg
     end,
     icon = icons.ui.Gear,
-    color = { fg = colors.fg, gui = 'bold' },
-}
+    color = { fg = colors.fg, gui = "bold" },
+  }
 
-local encoding = {
-    'o:encoding',
+  local encoding = {
+    "o:encoding",
     fmt = string.upper,
     cond = conditions.hide_in_width,
-    color = { fg = colors.green, gui = 'bold' },
-}
+    color = { fg = colors.green, gui = "bold" },
+  }
 
-local separator = {
+  local separator = {
     function()
-        return icons.ui.Separator
+      return icons.ui.Separator
     end,
     color = function()
-        return { fg = mode_color[vim.fn.mode()] }
+      return { fg = mode_color[vim.fn.mode()] }
     end,
     padding = { left = 0, right = 0 },
-}
+  }
 
-local function mode(icon)
+  local function mode(icon)
     icon = icon or icons.ui.NeoVim
     return {
-        function()
-            return icon
-        end,
-        color = function()
-            return { fg = mode_color[vim.fn.mode()] }
-        end,
-        padding = { left = 0, right = 0 },
+      function()
+        return icon
+      end,
+      color = function()
+        return { fg = mode_color[vim.fn.mode()] }
+      end,
+      padding = { left = 0, right = 0 },
     }
-end
+  end
 
-local config = {
+  local config = {
     options = {
-        component_separators = '',
-        -- section_separators = '',
-        theme = 'onedark',
-        disabled_filetypes = {
-            'dashboard',
-        },
+      component_separators = "",
+      -- section_separators = '',
+      theme = "onedark",
+      disabled_filetypes = {
+        "dashboard",
+      },
     },
     -- extensions = { 'quickfix', 'man', 'mason', 'lazy', 'toggleterm', 'nvim-tree' },
     -- tabline = {
@@ -194,27 +202,143 @@ local config = {
     --     lualine_z = {},
     -- },
     sections = {
-        lualine_a = {},
-        lualine_b = { separator, mode(icons.ui.Neovim) },
-        lualine_c = {
-            { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            Util.lualine.pretty_path(),
-            branch
-        },
-        -- lualine_c = { filename, branch },
-        lualine_x = {
-            diagnostics,
-            lsp,
-            filetype,
-            encoding,
-            fileformat,
-        },
-        lualine_y = { 'location', progress },
-        lualine_z = {
-            { lazy_status.updates, cond = lazy_status.has_updates },
-            copilot,
-        },
+      lualine_a = {},
+      lualine_b = { separator, mode(icons.ui.Neovim) },
+      lualine_c = {
+        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+        Util.lualine.pretty_path(),
+        branch,
+      },
+      -- lualine_c = { filename, branch },
+      lualine_x = {
+        diagnostics,
+        lsp,
+        filetype,
+        encoding,
+        fileformat,
+      },
+      lualine_y = { "location", progress },
+      lualine_z = {
+        { lazy_status.updates, cond = lazy_status.has_updates },
+        copilot,
+      },
     },
-}
+  }
 
-lualine.setup(config)
+  lualine.setup(config)
+end
+
+local config2 = function()
+  local status_ok, lualine = pcall(require, "lualine")
+  if not status_ok then
+    return
+  end
+
+  local Util = require("lazyvim.util")
+  local lazy_status = require("lazy.status")
+  local icons = require("lib.icons")
+  local custom_theme = require("lualine.themes.onedark")
+
+  custom_theme.normal.c.bg = "#1e2030"
+
+  local lsp = {
+    function()
+      local msg = "No LSP"
+      local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+      local clients = vim.lsp.get_clients()
+      if next(clients) == nil then
+        return msg
+      end
+      for _, client in ipairs(clients) do
+        local filetypes = client.config.filetypes
+        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+          return client.name
+        end
+      end
+      return msg
+    end,
+    icon = icons.ui.Gear,
+    -- color = { fg = colors.fg, gui = "bold" },
+  }
+
+  lualine.setup({
+    options = {
+      -- theme = custom_theme,
+      theme = "tokyonight",
+      globalstatus = true,
+      disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+      component_separators = "|",
+      section_separators = { left = "", right = " " },
+    },
+    sections = {
+      lualine_a = {
+        {
+          "mode",
+          -- fmt = function()
+          -- 	return icons.ui.NeoVim
+          -- end,
+          separator = { left = "" },
+          right_padding = 2,
+        },
+      },
+      lualine_c = {},
+      lualine_b = {
+        Util.lualine.root_dir(),
+        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+        { Util.lualine.pretty_path() },
+      },
+      lualine_x = {
+        {
+          "copilot",
+          show_running = true,
+          symbols = {
+            status = {
+              enabled = icons.ui.Copilot,
+              disabled = icons.ui.CopilotDisabled,
+            },
+            spinners = require("copilot-status.spinners").dots_negative,
+          },
+        },
+        { lazy_status.updates, cond = lazy_status.has_updates },
+        "fileformat",
+      },
+      lualine_y = {
+        { "branch", icon = icons.git.Branch },
+        {
+          "diagnostics",
+          symbols = {
+            error = icons.diagnostics.Error,
+            warn = icons.diagnostics.Warn,
+            info = icons.diagnostics.Info,
+            hint = icons.diagnostics.Hint,
+          },
+        },
+        lsp,
+        "filetype",
+      },
+      lualine_z = {
+        { "location", separator = { right = "" }, left_padding = 2 },
+        -- { "progress", left_padding = 0, separator = { right = "" } },
+      },
+    },
+    inactive_sections = {
+      lualine_a = { "filename" },
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = { "location" },
+    },
+    tabline = {},
+    extensions = {},
+  })
+end
+
+return {
+  "nvim-lualine/lualine.nvim",
+  dependencies = {
+    "ofseed/copilot-status.nvim", -- for github/copilot.vim
+  },
+  config = config2,
+  event = { "BufReadPre", "BufNewFile" },
+}

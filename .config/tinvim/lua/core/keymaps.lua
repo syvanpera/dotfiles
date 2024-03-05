@@ -1,7 +1,7 @@
 local function map(mode, lhs, rhs, opts)
-	opts = opts or {}
-	opts.silent = opts.silent ~= false
-	vim.keymap.set(mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.silent = opts.silent ~= false
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 local opts = { noremap = true, silent = true }
 
@@ -18,7 +18,7 @@ vim.g.maplocalleader = " "
 map({ "v", "x" }, "p", '"_dP', opts)
 
 -- Do not copy on x
-map({ "v", "x" }, "x", '"_x', opts)
+-- map({ "v", "x" }, "x", '"_x', opts)
 
 -- Move to line beginning and end
 map({ "n", "v", "x" }, "gl", "$", { desc = "End of line" })
