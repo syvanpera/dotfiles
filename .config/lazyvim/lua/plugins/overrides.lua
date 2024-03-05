@@ -201,6 +201,26 @@ return {
       local lazy_status = require("lazy.status")
       local icons = require("lazyvim.config").icons
 
+      local lsp = {
+        function()
+          local msg = "No LSP"
+          local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+          local clients = vim.lsp.get_clients()
+          if next(clients) == nil then
+            return msg
+          end
+          for _, client in ipairs(clients) do
+            local filetypes = client.config.filetypes
+            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+              return client.name
+            end
+          end
+          return msg
+        end,
+        icon = " ",
+        -- color = { fg = colors.fg, gui = "bold" },
+      }
+
       require("lualine").setup({
         options = {
           theme = "auto",
@@ -216,15 +236,6 @@ return {
           lualine_c = {},
           lualine_b = {
             Util.lualine.root_dir(),
-            {
-              "diagnostics",
-              symbols = {
-                error = icons.diagnostics.Error,
-                warn = icons.diagnostics.Warn,
-                info = icons.diagnostics.Info,
-                hint = icons.diagnostics.Hint,
-              },
-            },
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
             { Util.lualine.pretty_path() },
           },
@@ -245,8 +256,19 @@ return {
           },
           lualine_y = {
             { "branch", icon = "" },
+            {
+              "diagnostics",
+              symbols = {
+                error = icons.diagnostics.Error,
+                warn = icons.diagnostics.Warn,
+                info = icons.diagnostics.Info,
+                hint = icons.diagnostics.Hint,
+              },
+            },
+            lsp,
             "filetype",
-            "progress",
+            -- "o:encoding",
+            -- "progress",
           },
           lualine_z = {
             { "location", separator = { right = "" }, left_padding = 2 },

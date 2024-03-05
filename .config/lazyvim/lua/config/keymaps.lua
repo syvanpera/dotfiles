@@ -15,7 +15,7 @@ vim.keymap.del("n", "<leader>e")
 -- map("n", "<leader><tab>", "")
 
 map("n", "<M-s>", "<cmd>w<cr>", { desc = "Save buffer" })
-map("n", "<leader><tab>", "<cmd>e #<cr>", { desc = "Switch to other buffer" })
+map("n", "<leader><tab>", "<C-^>", { desc = "Switch to other buffer" })
 map("n", "<C-w>n", "<cmd>vnew<cr>", { desc = "New vertical split" })
 map("n", "<C-w>N", "<cmd>new<cr>", { desc = "New horizontal split" })
 map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })

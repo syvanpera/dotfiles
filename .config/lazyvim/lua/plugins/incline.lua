@@ -9,7 +9,7 @@ return {
     require("incline").setup({
       window = {
         padding = 0,
-        margin = { horizontal = 0 },
+        margin = { vertical = 1, horizontal = 0 },
       },
       render = function(props)
         local guibg = "#44406e"
@@ -27,7 +27,8 @@ return {
             ft_icon and { ft_icon, " ", guibg = ft_bgcolor, guifg = ft_fgcolor } or "",
             " ",
             { filename, gui = modified and "bold,italic" or "bold" },
-            ft_icon and { " ", guifg = guibg },
+            -- ft_icon and { " ", guifg = guibg },
+            ft_icon and { "", guifg = guibg, guibg = "#181826" },
             guibg = guibg,
           }
           return buffer
