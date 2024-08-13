@@ -1,11 +1,11 @@
 #!/bin/bash
-# __  ______   ____ 
+# __  ______   ____
 # \ \/ /  _ \ / ___|
-#  \  /| | | | |  _ 
+#  \  /| | | | |  _
 #  /  \| |_| | |_| |
 # /_/\_\____/ \____|
-#                   
-# ----------------------------------------------------- 
+#
+# -----------------------------------------------------
 sleep 1
 
 # kill all possible running xdg-desktop-portals
@@ -24,4 +24,8 @@ sleep 2
 
 # start xdg-desktop-portal
 /usr/lib/xdg-desktop-portal &
+sleep 2
+
+# start xdg-desktop-portal-wlr
+/usr/lib/xdg-desktop-portal-wlr &
 sleep 1

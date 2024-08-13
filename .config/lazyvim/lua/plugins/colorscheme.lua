@@ -7,6 +7,22 @@ return {
         sidebars = "transparent",
         floats = "transparent",
       },
+      on_highlights = function(hl, c)
+        hl.WinSeparator = { fg = c.bg_highlight, bg = "none" }
+      end,
+    },
+  },
+  {
+    "jesseleite/nvim-noirbuddy",
+    enabled = false,
+    dependencies = {
+      { "tjdevries/colorbuddy.nvim", branch = "dev" },
+    },
+    lazy = false,
+    priority = 1000,
+    opts = {
+      preset = "kiwi",
+      -- All of your `setup(opts)` will go here
     },
   },
 

@@ -10,24 +10,22 @@
 //
 {
     // Hyprland Workspaces
-    "hyprland/workspaces" : {
+    "hyprland/workspaces": {
         "on-click": "activate",
         "active-only": true,
         "all-outputs": true,
         "format": "{}",
         "format-icons": {
-          "urgent": "",
-          "active": "",
-          "default": ""
+            "urgent": "",
+            "active": "",
+            "default": ""
         }
     },
-
     // Sway Workspaces
     "sway/workspaces": {
         "all-outputs": true,
         "current-only": false
     },
-
     // Taskbar
     "wlr/taskbar": {
         "format": "{icon}",
@@ -36,7 +34,7 @@
         "on-click": "activate",
         "on-click-middle": "close",
         "ignore-list": [
-           "Alacritty"
+            "Alacritty"
         ],
         "app_ids-mapping": {
             "firefoxdeveloperedition": "firefox-developer-edition"
@@ -46,7 +44,6 @@
             "Foot Server": "Terminal"
         }
     },
-
     // Hyprland Window
     "hyprland/window": {
         "rewrite": {
@@ -58,21 +55,18 @@
         },
         "separate-outputs": true
     },
-
     // Sway Window
     "sway/window": {
         "max-length": 50,
         "all-outputs": true,
         "icon": true
     },
-
     // ML4W Welcome App
     "custom/ml4w-welcome": {
         "on-click": "~/dotfiles/apps/ML4W_Welcome-x86_64.AppImage",
         "format": " ",
         "tooltip": false
     },
-
     // Youtube Subscriber Count
     "custom/youtube": {
         "format": " {}",
@@ -81,7 +75,6 @@
         "on-click": "chromium https://studio.youtube.com",
         "tooltip": false
     },
-    
     // Cliphist
     "custom/cliphist": {
         "format": "",
@@ -90,19 +83,17 @@
         "on-click-middle": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh w",
         "tooltip": false
     },
-
     // Updates Count
     "custom/updates": {
         "format": "  {}",
         "tooltip-format": "{}",
         "escape": true,
-        "return-type": "json",       
+        "return-type": "json",
         "exec": "~/dotfiles/scripts/updates.sh",
         "restart-interval": 60,
         "on-click": "kitty -e ~/dotfiles/scripts/installupdates.sh",
         "tooltip": false
     },
-    
     // Wallpaper
     "custom/wallpaper": {
         "format": "",
@@ -110,77 +101,66 @@
         "on-click-right": "~/dotfiles/.config/hypr/scripts/wallpaper.sh",
         "tooltip": false
     },
-
     // Waybar Themes
     "custom/waybarthemes": {
         "format": "",
         "on-click": "~/dotfiles/.config/waybar/themeswitcher.sh",
         "tooltip": false
     },
-    
     // Settings
     "custom/settings": {
         "format": "",
         "on-click": "kitty --class=dotfiles-floating -e ~/dotfiles/.config/hypr/start-settings.sh",
         "tooltip": false
     },
-
     // Keybindings
     "custom/keybindings": {
         "format": "",
         "on-click": "~/dotfiles/.config/hypr/scripts/keybindings.sh",
         "tooltip": false
     },
-
     // Filemanager Launcher
     "custom/filemanager": {
         "format": "",
         "on-click": "kitty -e yazi",
         "tooltip": false
     },
-
     // Outlook Launcher
     "custom/outlook": {
         "format": "",
         "on-click": "chromium --app=https://outlook.office.com/mail/",
         "tooltip": false
     },
-
     // Teams Launcher
     "custom/teams": {
         "format": "",
         "on-click": "chromium --app=https://teams.microsoft.com/go",
         "tooltip": false
     },
-
     // Browser Launcher
     "custom/browser": {
         "format": "",
         "on-click": "~/dotfiles/.settings/browser.sh",
         "tooltip": false
-    },    
-
+    },
     // ChatGPT Launcher
     "custom/chatgpt": {
         "format": " ",
         "on-click": "chromium --app=https://chat.openai.com",
         "tooltip": false
     },
-
     // Calculator
     "custom/calculator": {
         "format": "",
         "on-click": "qalculate-gtk",
         "tooltip": false
     },
-
     // Windows VM
     "custom/windowsvm": {
         "format": "",
         "on-click": "~/dotfiles/scripts/launchvm.sh",
         "tooltip": false
     },
-
     // Rofi Application Launcher
     "custom/appmenu": {
         // START APPS LABEL
@@ -190,22 +170,19 @@
         "on-click-right": "~/dotfiles/.config/hypr/scripts/keybindings.sh",
         "tooltip": false
     },
-
     // Rofi Application Launcher
     "custom/appmenuicon": {
         "format": "",
         "on-click": "rofi -show drun -replace",
         "on-click-right": "~/dotfiles/.config/hypr/scripts/keybindings.sh",
         "tooltip": false
-    },    
-
+    },
     // Power Menu
     "custom/exit": {
         "format": "",
         "on-click": "wlogout",
         "tooltip": false
     },
-
     // Keyboard State
     "keyboard-state": {
         "numlock": true,
@@ -216,52 +193,45 @@
             "unlocked": ""
         }
     },
-
     // System tray
     "tray": {
         "icon-size": 21,
         "spacing": 10
     },
-
     // Clock
     "clock": {
+        "format": "{:%d.%m.  %H:%M}",
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         // START CLOCK FORMAT
         "format-alt": "{:%Y-%m-%d}"
         // END CLOCK FORMAT
     },
-
     // System
     "custom/system": {
         "format": "",
         "tooltip": false
     },
-
     // CPU
     "cpu": {
         "format": "/ C {usage}% ",
         "on-click": "alacritty -e htop"
     },
-
     // Memory
     "memory": {
         "format": "/ M {}% ",
         "on-click": "alacritty -e htop"
     },
-
     // Harddisc space used
     "disk": {
         "interval": 30,
         "format": "D {percentage_used}% ",
         "path": "/",
         "on-click": "alacritty -e htop"
-    }, 
-
+    },
     "hyprland/language": {
         "format": "/ K {short}"
     },
-
     // Group Hardware
     "group/hardware": {
         "orientation": "inherit",
@@ -269,7 +239,7 @@
             "transition-duration": 300,
             "children-class": "not-memory",
             "transition-left-to-right": false
-        },        
+        },
         "modules": [
             "custom/system",
             "disk",
@@ -278,7 +248,6 @@
             "hyprland/language"
         ]
     },
-    
     // Group Settings
     "group/settings": {
         "orientation": "horizontal",
@@ -291,16 +260,14 @@
             "custom/wallpaper"
         ]
     },
-
     // Group Quicklinks
     "group/quicklinks": {
         "orientation": "horizontal",
         "modules": [
             "custom/browser",
             "custom/filemanager",
-         ]
+        ]
     },
-
     // Network
     "network": {
         "format": "{ifname}",
@@ -314,7 +281,6 @@
         "max-length": 50,
         "on-click": "nm-connection-editor"
     },
-
     // Battery
     "battery": {
         "states": {
@@ -328,9 +294,14 @@
         "format-alt": "{icon}  {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ]
     },
-
     // Pulseaudio
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -347,11 +318,14 @@
             "phone": " ",
             "portable": " ",
             "car": " ",
-            "default": ["", " ", " "]
+            "default": [
+                "",
+                " ",
+                " "
+            ]
         },
         "on-click": "~/dotfiles/.config/rofi/scripts/rofi-sound-picker"
     },
-
     // Bluetooth
     "bluetooth": {
         "format": " {status}",
@@ -360,23 +334,21 @@
         "interval": 30,
         "on-click": "blueman-manager"
     },
-
     // Other
     "user": {
         "format": "{user}",
         "interval": 60,
         "icon": false,
     },
-
     // Idle Inhibator
     "idle_inhibitor": {
         "format": "{icon}",
         "tooltip": true,
-        "format-icons":{
+        "format-icons": {
             "activated": "",
             "deactivated": ""
         },
-        "on-click-right": "swaylock"        
+        "on-click-right": "swaylock"
     },
     "custom/notification": {
         "tooltip": false,

@@ -1,19 +1,19 @@
 #/bin/bash
-#  ___    _ _      _   _                 
-# |_ _|__| | | ___| |_(_)_ __ ___   ___  
-#  | |/ _` | |/ _ \ __| | '_ ` _ \ / _ \ 
-#  | | (_| | |  __/ |_| | | | | | |  __/ 
-# |___\__,_|_|\___|\__|_|_| |_| |_|\___| 
-#                                        
-#  
-# by Stephan Raabe (2023) 
-# ----------------------------------------------------- 
+#  ___    _ _      _   _
+# |_ _|__| | | ___| |_(_)_ __ ___   ___
+#  | |/ _` | |/ _ \ __| | '_ ` _ \ / _ \
+#  | | (_| | |  __/ |_| | | | | | |  __/
+# |___\__,_|_|\___|\__|_|_| |_| |_|\___|
+#
+#
+# by Stephan Raabe (2023)
+# -----------------------------------------------------
 
-# START SWAYIDLE    
+# START SWAYIDLE
 # exit
-# END SWAYIDLE    
-timeswaylock=600
-timeoff=660
+# END SWAYIDLE
+timeswaylock=1800
+timeoff=1860
 #source ~/dotfiles/.config/.settings/swayidle.sh
 if [ -f "/usr/bin/swayidle" ]; then
     echo "swayidle is installed."

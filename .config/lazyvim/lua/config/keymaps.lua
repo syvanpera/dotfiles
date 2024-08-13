@@ -33,6 +33,10 @@ map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "Next tab" })
 map("n", "<leader>tk", "<cmd>tabprev<cr>", { desc = "Prev tab" })
 
 -- buffer operations
+map("n", "tk", ":blast<cr>", { desc = "Move buffer to top" })
+map("n", "tj", ":bfirst<cr>", { desc = "Move buffer to bottom" })
+map("n", "th", ":bprev<cr>", { desc = "Previous buffer" })
+map("n", "tl", ":bnext<cr>", { desc = "Next buffer" })
 -- map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next buffer" })
 -- map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 
@@ -45,7 +49,7 @@ map("n", "<leader>th", "<cmd>nohl<cr>", { desc = "[T]oggle [H]ighliht" })
 -- end, { desc = "Copilot Accept", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
 -- map("i", "<C-f>", "copilot#Accept()", { silent = true, expr = true, desc = "Copilot Accept" })
 
-map("n", "<leader>fp", Util.telescope.config_files(), { desc = "Find Config File" })
+map("n", "<leader>fp", Util.pick.config_files(), { desc = "Find Config File" })
 
 -- map("n", "<M-e>", function()
 --   require("neo-tree.command").execute({ toggle = true, dir = Util.root() })

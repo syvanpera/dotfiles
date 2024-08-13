@@ -16,12 +16,14 @@ return { -- Almost like magit
       function()
         require("neogit").open()
       end,
+      desc = "Open Neogit",
     },
     {
       "<leader>gs",
       function()
         require("neogit").open()
       end,
+      desc = "Open Neogit",
     },
   },
 }
