@@ -1,4 +1,4 @@
-# Defined in - @ line 1
-function vif --description 'alias vif vim (fzf)'
-	vim (fzf) $argv;
+function vif --wraps='nvim ' --wraps='nvim devbox.lock' --wraps='nvim $(fzf)' --description 'alias vif nvim $(fzf)'
+  nvim $(fzf) $argv
+        
 end

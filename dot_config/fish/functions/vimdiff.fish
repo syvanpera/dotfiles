@@ -1,4 +1,4 @@
-# Defined in - @ line 1
-function vimdiff --description 'alias vimdiff nvim -d'
-	nvim -d $argv;
+function vimdiff --wraps='vi -d' --description 'alias vimdiff vi -d'
+  vi -d $argv
+        
 end

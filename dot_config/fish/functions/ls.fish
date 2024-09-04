@@ -1,4 +1,4 @@
-# Defined in - @ line 1
-function ls --description 'alias ls exa --color=always --group-directories-first --time-style=long-iso'
-	exa --color=always --group-directories-first --time-style=long-iso $argv;
+function ls --wraps='eza --group --color=always --group-directories-first --time-style=long-iso --icons' --description 'alias ls eza --group --color=always --group-directories-first --time-style=long-iso --icons'
+  eza --group --color=always --group-directories-first --time-style=long-iso --icons $argv
+        
 end
