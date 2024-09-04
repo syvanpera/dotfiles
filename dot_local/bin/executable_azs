@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-sub_id=$(az account list | jq -r '.[] | "\(.id):\(.name)"' |fzf --with-nth=2 --delimiter=":" |cut -d ':' -f 1)
-if [ ! -z "$sub_id" ] 
-then
-  az account set --subscription "$sub_id"
-fi
-
