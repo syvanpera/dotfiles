@@ -68,7 +68,5 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $real
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
 # use tmux popups for fzf-tab
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
-# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
