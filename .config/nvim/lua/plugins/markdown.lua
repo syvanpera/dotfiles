@@ -53,7 +53,7 @@ return {
         position = "inline",
         icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
         width = { "full", "block", "block", "block" },
-        border = true,
+        -- border = true,
         min_width = 100,
         left_pad = 1,
         right_pad = 4,
