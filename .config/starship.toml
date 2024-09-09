@@ -19,7 +19,9 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[ ](fg:color_blue)\
+[](fg:color_blue bg:color_bg3)\
+$nix_shell\
+[ ](fg:color_bg3)\
 $line_break$character"""
 
 palette = 'gruvbox_dark'
@@ -160,3 +162,9 @@ vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
+[nix_shell]
+symbol = '  '
+style = "bg:color_bg3"
+format = '[$symbol$state$name]($style)'
+impure_msg = ''
