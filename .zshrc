@@ -70,3 +70,4 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # use tmux popups for fzf-tab
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
+export DEVBOX_NO_PROMPT=true
