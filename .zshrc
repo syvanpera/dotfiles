@@ -55,6 +55,8 @@ alias ls="eza --group --color=always --group-directories-first --time-style=long
 alias tm="tmux new-session -A -s main"
 alias vi="nvim"
 alias r="yazi"
+alias cat="batcat"
+alias r="yazi"
 
 # Completion styling
 # idngore case when completing
