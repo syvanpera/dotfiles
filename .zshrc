@@ -43,11 +43,18 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
 
+# Functions
+cds() {
+  cd $(tmux display-message -p '#{session_path}')
+}
+
 # Aliases
-alias vi="nvim"
 alias l="eza --color=always --long --group-directories-first --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias ll="eza -l --group --color=always --group-directories-first --time-style=long-iso --icons --git"
 alias ls="eza --group --color=always --group-directories-first --time-style=long-iso --icons"
+alias tm="tmux new-session -A -s main"
+alias vi="nvim"
+alias r="yazi"
 
 # Completion styling
 # idngore case when completing

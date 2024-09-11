@@ -2,7 +2,7 @@
   pager = delta
 [user]
   name = Tuomo Syvänperä
-  email = tuomo.syvanpera@gmail.com
+  email = tuomo.syvanpera@asteroid.fi
 [alias]
   co = checkout
   st = status
