@@ -1,65 +1,54 @@
+branding:
+  logo-url: https://www.helen.fi/Static/img/helen-sprite/general/links-svg/link-helen-logo.svg
+  favicon-url: https://www.helen.fi/Static/img/helen-sprite/general/links-svg/link-helen-logo.svg
 pages:
   - name: Home
+    width: slim
+    hide-desktop-navigation: false
+    center-vertically: false
     columns:
-      - size: small
-        widgets:
-          - type: calendar
-
-          - type: rss
-            limit: 10
-            collapse-after: 3
-            cache: 3h
-            feeds:
-              - url: https://ciechanow.ski/atom.xml
-              - url: https://www.joshwcomeau.com/rss.xml
-                title: Josh Comeau
-              - url: https://samwho.dev/rss.xml
-              - url: https://awesomekling.github.io/feed.xml
-              - url: https://ishadeed.com/feed.xml
-                title: Ahmad Shadeed
-
-          - type: twitch-channels
-            channels:
-              - theprimeagen
-              - cohhcarnage
-              - christitustech
-              - blurbs
-              - asmongold
-              - jembawls
-
       - size: full
         widgets:
-          - type: hacker-news
+          - type: search
+            autofocus: true
 
-          - type: videos
-            channels:
-              - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
-              - UCv6J_jJa8GJqFwQNgNrMuww # ServeTheHome
-              - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
+          - type: monitor
+            cache: 1m
+            title: Services
+            sites:
+              - title: Jellyfin
+                url: https://yourdomain.com/
+                icon: si:jellyfin
+              - title: Gitea
+                url: https://yourdomain.com/
+                icon: si:gitea
+              - title: qBittorrent # only for Linux ISOs, of course
+                url: https://yourdomain.com/
+                icon: si:qbittorrent
+              - title: Immich
+                url: https://yourdomain.com/
+                icon: si:immich
+              - title: AdGuard Home
+                url: https://yourdomain.com/
+                icon: si:adguard
+              - title: Vaultwarden
+                url: https://yourdomain.com/
+                icon: si:vaultwarden
 
-          - type: reddit
-            subreddit: selfhosted
+          - type: bookmarks
+            groups:
+              - title: DAI-Platform
+                links:
+                  - title: DevOps
+                    url: https://dev.azure.com.mcas.ms/helenoy/DAI-platform
+                  - title: Pipelines
+                    url: https://dev.azure.com.mcas.ms/helenoy/
+                  - title: Board
+                    url: https://dev.azure.com.mcas.ms/helenoy/DAI-platform/_sprints/taskboard/DAI-platform%20Team/DAI-platform/Iteration%201
+              - title: Repos
+                links:
+                  - title: dai-databricks-deployment
+                    url: https://dev.azure.com.mcas.ms/helenoy/DAI-platform/_git/dai-databricks-deployment
+                  - title: dai-databricks-cicd-pipelines
+                    url: https://dev.azure.com.mcas.ms/helenoy/DAI-platform/_git/dai-databricks-cicd-pipelines
 
-      - size: small
-        widgets:
-          - type: weather
-            location: London, United Kingdom
-
-          - type: markets
-            markets:
-              - symbol: SPY
-                name: S&P 500
-              - symbol: BTC-USD
-                name: Bitcoin
-              - symbol: NVDA
-                name: NVIDIA
-              - symbol: AAPL
-                name: Apple
-              - symbol: MSFT
-                name: Microsoft
-              - symbol: GOOGL
-                name: Google
-              - symbol: AMD
-                name: AMD
-              - symbol: RDDT
-                name: Reddit

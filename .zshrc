@@ -1,6 +1,9 @@
 # Set the directory we want to store zinit and plugins in
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 
+# Treat / as word separator to get Ctrl-w to delete a path segment instead of the whole path
+WORDCHARS=${WORDCHARS/\/}
+
 # Download zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
   mkdir -p "$(dirname $ZINIT_HOME)"
@@ -80,3 +83,4 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 export DEVBOX_NO_PROMPT=true
+export DEVBOX_USE_VERSION=0.13.0-dev

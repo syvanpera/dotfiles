@@ -22,6 +22,6 @@ map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
 map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- toggles
-map("n", "<leader>th", "<cmd>nohl<cr>", { desc = "[T]oggle [H]ighliht" })
+map("n", "<leader>th", "<cmd>nohl<cr>", { desc = "toggle highliht" })
 
 -- map("n", "<leader>fp", Util.pick.config_files(), { desc = "Find Config File" })
