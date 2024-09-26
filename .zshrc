@@ -83,4 +83,4 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 export DEVBOX_NO_PROMPT=true
-export DEVBOX_USE_VERSION=0.13.0-dev
+export DEVBOX_USE_VERSION=0.13.0-deva
