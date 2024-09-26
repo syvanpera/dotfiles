@@ -11,9 +11,22 @@ add_newline = true
 # [╭╴](bold cyan)[ ](bold cyan) \
 # $jobs$username@$hostname$directory$git_branch$git_status$line_break[╰─](bold cyan)$character"""
 # [╭╴](bold cyan)[ ](bold cyan) \
-format = """\
-[╭╴](yellow)[ ](yellow) \
-$jobs$hostname$directory$git_branch$git_status$azure$terraform$nix_shell$python$line_break[╰─](yellow)$character"""
+format = """
+[╭╴](bold cyan)\
+[](color_orange)\
+$os\
+$hostname\
+[ ](bg:none fg:color_orange)\
+$jobs\
+$directory\
+$git_branch\
+$git_status\
+$azure\
+$terraform\
+$nix_shell\
+$python\
+$line_break\
+[╰─](bold cyan)$character"""
 
 palette = 'gruvbox_dark'
 
@@ -31,8 +44,8 @@ color_yellow = '#d79921'
 
 # Change the default prompt characters
 [character]
-success_symbol = "[󰁔 ](yellow)"
-error_symbol = "[󰁔 ](orange)"
+success_symbol = "[󰁔](bold cyan)"
+error_symbol = "[󰁔](bold orange)"
 # error_symbol = "[](bold cyan)"
 
 # Shows an icon that should be included by zshrc script based on the distribution or os
@@ -49,12 +62,36 @@ format = "[$user]($style)"
 disabled = false           # disable in powershell
 show_always = true
 
-[hostname]
-format = "[$hostname]($style) "
-style = "bold yellow"
-trim_at = "-"
-ssh_only = false
+[os]
 disabled = false
+style = "bg:color_orange fg:color_fg0"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = " " # "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[hostname]
+ssh_only = false
+style = "bg:color_orange fg:color_fg0"
+format = '[ $hostname ]($style)'
 
 [directory]
 truncation_length = 3
