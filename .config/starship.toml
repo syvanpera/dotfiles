@@ -12,7 +12,7 @@ add_newline = true
 # $jobs$username@$hostname$directory$git_branch$git_status$line_break[╰─](bold cyan)$character"""
 # [╭╴](bold cyan)[ ](bold cyan) \
 format = """
-[╭╴](bold cyan)\
+[╭╴](color_orange)\
 [](color_orange)\
 $os\
 $hostname\
@@ -26,7 +26,7 @@ $terraform\
 $nix_shell\
 $python\
 $line_break\
-[╰─](bold cyan)$character"""
+[╰─](color_orange)$character"""
 
 palette = 'gruvbox_dark'
 
@@ -44,8 +44,10 @@ color_yellow = '#d79921'
 
 # Change the default prompt characters
 [character]
-success_symbol = "[󰁔](bold cyan)"
-error_symbol = "[󰁔](bold orange)"
+# success_symbol = "[󰁔](color_orange)"
+success_symbol = "[](color_orange)"
+# success_symbol = "[](color_orange)"
+error_symbol = "[](color_red)"
 # error_symbol = "[](bold cyan)"
 
 # Shows an icon that should be included by zshrc script based on the distribution or os
@@ -168,10 +170,11 @@ disabled = true
 
 [nix_shell]
 symbol = ' '
-format = '󰇙 [$symbol$state$name]($style) '
+# format = '󰇙 [$symbol$state$name]($style) '
+format = '󰇙 [$symbol$state]($style) '
 # symbol = '❄️ '
 disabled = false
-impure_msg = ''
+impure_msg = 'devbox'
 
 [azure]
 disabled = true

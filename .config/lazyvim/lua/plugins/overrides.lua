@@ -190,7 +190,7 @@ return {
       },
       {
         "<leader>bb",
-        "<cmd>Telescope buffers<CR>",
+        "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=insert theme=ivy<CR>",
       },
       -- { "<leader>fF", Util.pick("files"), desc = "Find Files (cwd)" },
       -- { "<leader>ff", Util.pick("files", { cwd = nil }), desc = "Find Files (root)" },
