@@ -1,0 +1,13 @@
+theme = Ayu Mirage
+
+background = 101622
+foreground = d9d7ce
+
+font-size = 10
+
+window-decoration = false
+
+command = fish
+
+keybind = alt+v=paste_from_clipboard
+keybind = alt+,=reload_config
