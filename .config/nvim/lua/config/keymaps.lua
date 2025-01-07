@@ -27,4 +27,6 @@ map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 -- toggles
 map("n", "<leader>th", "<cmd>nohl<cr>", { desc = "toggle highlight" })
 
+map("n", "-", "<cmd>Oil<cr>", { desc = "Edit current directory" })
+
 -- map("n", "<leader>fp", Util.pick.config_files(), { desc = "Find Config File" })

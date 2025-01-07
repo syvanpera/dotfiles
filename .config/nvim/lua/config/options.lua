@@ -5,3 +5,6 @@
 vim.cmd([[noremap Y Y]])
 
 vim.opt.clipboard = ""
+
+-- Disable all snack animations
+-- vim.g.snacks_animate = false
