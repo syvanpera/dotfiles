@@ -14,6 +14,7 @@ return {
     priority = 1000,
     config = true,
     opts = {
+      inverse = false,
       transparent_mode = true,
     },
   },
