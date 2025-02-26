@@ -1,0 +1,161 @@
+# ████████╗███╗   ███╗██╗   ██╗██╗  ██╗
+# ╚══██╔══╝████╗ ████║██║   ██║╚██╗██╔╝
+#    ██║   ██╔████╔██║██║   ██║ ╚███╔╝
+#    ██║   ██║╚██╔╝██║██║   ██║ ██╔██╗
+#    ██║   ██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗
+#    ╚═╝   ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+# Terminal multiplexer
+# https://github.com/tmux/tmux
+
+set -gq allow-passthrough on     # pass through escape sequences to the terminal
+set -g base-index 1              # start indexing windows at 1 instead of 0
+set -g detach-on-destroy off     # don't exit from tmux when closing a session
+set -g escape-time 0             # zero-out escape time delay
+set -g history-limit 1000000     # significantly increase history size
+set -g mouse on                  # enable mouse support
+set -g renumber-windows on       # renumber all windows when any window is closed
+set -g set-clipboard on          # use system clipboard
+set -g focus-events on
+
+setw -g mode-keys vi        # vi copypaste mode
+
+# Set prefix
+unbind C-b
+# set -g prefix C-s
+set -g prefix C-Space
+
+# Reload config
+bind , source-file ~/.config/tmux/tmux.conf \; display-message "Configuration reloaded."
+
+# Clear console
+bind C-l send-keys C-l
+
+bind Escape copy-mode
+bind -Tcopy-mode-vi 'v' send -X begin-selection
+bind -Tcopy-mode-vi 'y' send -X copy-pipe-and-cancel "wl-copy"
+bind -Tcopy-mode-vi Escape send -X cancel
+bind -Tcopy-mode-vi V send -X rectangle-toggle
+
+# Split window
+bind | split-window -h -c "#{pane_current_path}"        # vertical split
+bind - split-window -v -c "#{pane_current_path}"        # horizontal split
+bind _ split-window -v -l 20 -c "#{pane_current_path}"  # vertical split with predefined size
+
+# Resize pane
+bind -n C-M-h resize-pane -L 1
+bind -n C-M-l resize-pane -R 1
+bind -n C-M-j resize-pane -D 1
+bind -n C-M-k resize-pane -U 1
+
+# Move pane to new window
+bind b break-pane
+
+# Smart pane switching with awareness of Vim splits.
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?|.poetry-wrapped)(diff)?$'"
+bind -n 'C-h' if-shell "$is_vim" 'send-keys C-h' 'select-pane -L'
+bind -n 'C-j' if-shell "$is_vim" 'send-keys C-j' 'select-pane -D'
+bind -n 'C-k' if-shell "$is_vim" 'send-keys C-k' 'select-pane -U'
+bind -n 'C-l' if-shell "$is_vim" 'send-keys C-l' 'select-pane -R'
+tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' "bind -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' "bind -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+bind -n 'C-Space' if-shell "$is_vim" 'send-keys C-Space' 'select-pane -t:.+'
+
+# A few bindings for some commonly used programs
+bind r new-window -n 'yazi' -c "#{pane_current_path}" yazi
+bind g new-window -n 'git' -c "#{pane_current_path}" lazygit
+
+# Smart session switching
+bind -n M-p run-shell "~/.local/bin/tms"
+bind -n M-P run-shell "tmux switch-client -t default"
+
+# Quick window switching
+bind -n M-o select-window -l
+bind -n M-l next-window
+bind -n M-h previous-window
+
+# Quick session switching
+bind -n § switch-client -l\; refresh-client -S
+bind -n M-n switch-client -l\; refresh-client -S
+bind -n M-- switch-client -l\; refresh-client -S
+bind -n M-k switch-client -p\; refresh-client -S
+bind -n M-j switch-client -n\; refresh-client -S
+
+### Configure Tmux Plugin Manager
+set-environment -gF TMUX_PLUGIN_MANAGER_PATH '#{HOME}/.local/share/tmux/plugins/'
+
+if 'test ! -d "${TMUX_PLUGIN_MANAGER_PATH}/tpm"' {
+  run 'mkdir -p "${TMUX_PLUGIN_MANAGER_PATH}"'
+  run 'git clone https://github.com/tmux-plugins/tpm "${TMUX_PLUGIN_MANAGER_PATH}/tpm"'
+  run '${TMUX_PLUGIN_MANAGER_PATH}/tpm/bin/install_plugins'
+}
+
+# set -g @plugin 'joshmedeski/tmux-nerd-font-window-name'
+# set -g @plugin 'alexwforsythe/tmux-which-key'  # prefix + space
+# set -g @plugin 'tmux-plugins/tmux-cpu'
+# set -g @plugin 'tmux-plugins/tmux-battery'
+# set -g @plugin 'dreknix/tmux-primary-ip'
+
+# # tooling
+# set -g @plugin 'omerxx/tmux-sessionx'          # prefix + o
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'catppuccin/tmux'
+set -g @plugin 'joshmedeski/tmux-nerd-font-window-name'
+
+# General statusline customisation
+set -g status-style 'bg=default'
+
+# Theme
+## Configure the catppuccin plugin <https://github.com/catppuccin/tmux>
+set -g @catppuccin_flavor 'mocha'
+
+# show border for status line
+set -g pane-border-format ""
+set -g pane-border-status top
+set -g pane-border-style fg=colour0
+set -g pane-active-border-style fg=colour0
+
+set -g status-position top
+
+# status left style
+set -g status-left-length 100
+set -g status-left ""
+# set -ga status-left "#{?client_prefix,#{#[bg=#{@thm_red},fg=#{@thm_mantle},bold]  #S },#{#[bg=default,fg=#{@thm_green}]  #S }}"
+set -ga status-left "#{?client_prefix,#{#[bg=#{@thm_red},fg=#{@thm_mantle},bold]   #S },#{#[bg=default,fg=#{@thm_green}]   #S }}"
+set -ga status-left "#[bg=default,fg=#{@thm_overlay_0},none]│"
+set -ga status-left "#[bg=default,fg=#{@thm_maroon}]  #{pane_current_command} "
+set -ga status-left "#[bg=default,fg=#{@thm_overlay_0},none]│"
+set -ga status-left "#[bg=default,fg=#{@thm_blue}]  #{=/-32/...:#{s|$USER|~|:#{b:pane_current_path}}} "
+
+# set -g status-justify "left"
+
+# status right style
+set -g status-right-length 100
+set -g status-right ""
+# set -ga status-right "#{?#{e|>=:11,#{battery_percentage}},#{#[bg=#{@thm_red},fg=#{@thm_mantle}]},#{#[bg=#{@thm_mantle},fg=#{@thm_pink}]}} #{battery_icon} #{battery_percentage} "
+# set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0}, none]│"
+# set -ga status-right "#[bg=#{@thm_mantle}]#{?#{==:#{online_status},ok},#[fg=#{@thm_mauve}] 󰖩 on ,#[fg=#{@thm_red},bold]#[reverse] 󰖪 off }"
+# set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_overlay_0}, none]│"
+# set -ga status-right "#[bg=#{@thm_mantle},fg=#{@thm_blue}] 󰭦 %Y-%m-%d 󰅐 %H:%M "
+
+# window style
+set -wg automatic-rename on
+set -g automatic-rename-format ''
+# set -g window-status-separator '|'
+set -g window-status-separator ''
+set -g status-justify 'absolute-centre'
+set -g @catppuccin_status_background 'none'
+set -g @catppuccin_window_status_style 'custom'
+set -g @catppuccin_window_flags ""
+set -g @catppuccin_window_number ""
+set -g @catppuccin_window_text "#[fg=#{@thm_rosewater},bg=default] #I#{?#{!=:#{window_name},},: #W ,}"
+set -g @catppuccin_window_current_number ""
+set -g @catppuccin_window_current_text "#[fg=#{@thm_blue},bg=#{@thm_mantle}]#[fg=#{@thm_mantle},bg=#{@thm_blue}] #I#{?#{!=:#{window_name},},: #W ,}#[fg=#{@thm_blue},bg=#{@thm_mantle}]"
+
+# Configure Online
+set -g @online_icon "ok"
+set -g @offline_icon "nok"
+
+# initialize tmux plugin manager and source all plugins
+run '#{TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm'
