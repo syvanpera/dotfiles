@@ -1,15 +1,18 @@
 # theme = catppuccin-mocha
 # theme = tokyonight
-theme = Kanagawa Wave
+# theme = Kanagawa Wave
+theme = Dracula+
 
 command = fish
+# title = ""
 
 font-size = 10
 
 window-padding-x = 2
 window-padding-y = 5,2
 background-opacity = 0.95
-background = #181825
+background = #101622
+# background = #181825
 
 mouse-hide-while-typing = true
 

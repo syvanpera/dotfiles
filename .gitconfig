@@ -1,31 +1,25 @@
-[core]
+[core] 
   pager = delta
+
 [user]
+  email = tuomo.syvanpera@gmail.com
   name = Tuomo Syvänperä
-  email = tuomo.syvanpera@asteroid.fi
+
 [alias]
   co = checkout
   st = status
-  wa = worktree add
-  wl = worktree list
-  wr = worktree remove
-[init]
-  defaultBranch = main
-[pull]
-	rebase = true
 
-[interactive]
-  diffFilter = delta --color-only
+[pull]
+  rebase = true
 
 [delta]
-  navigate = true    # use n and N to move between diff sections
-  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  navigate = true
+  light = false
 
-[merge]
-  conflictstyle = diff3
+[includeIf "gitdir:/home/tuomo/projects/asteroid"]
+  path = /home/tuomo/projects/asteroid/.gitconfig
 
-[diff]
-  colorMoved = default
-
-[includeIf "gitdir:~/.dotfiles/"]
-  path = .gitconfig-personal
+[includeIf "gitdir:/home/tuomo/projects/helen"]
+  path = /home/tuomo/projects/helen/.gitconfig
+[init]
+	defaultBranch = main

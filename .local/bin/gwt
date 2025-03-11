@@ -1,0 +1,341 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+trap cleanup SIGINT SIGTERM ERR EXIT
+
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+
+usage() {
+  cat << EOF
+Usage: $(basename "${BASH_SOURCE[0]}") <command> [options]
+
+Commands:
+  clone       Clone a bare git repo and set up environment for working comfortably and exclusively from worktrees.
+  create      Create a new worktree from a branch.
+  list        List all worktrees for the current repository.
+  checkout    Check out a branch as a new worktree in a directory named after the branch.
+
+Run 'gwt <command> --help' for more information on a specific command.
+EOF
+  exit
+}
+
+cleanup() {
+  trap - SIGINT SIGTERM ERR EXIT
+  tput cnorm # enable cursor
+}
+
+setup_colors() {
+  if [[ -t 2 ]] && [[ -z "${NO_COLOR-}" ]] && [[ "${TERM-}" != "dumb" ]]; then
+    NOFORMAT='\033[0m' RED='\033[0;31m' GREEN='\033[0;32m' ORANGE='\033[0;33m' BLUE='\033[0;34m' PURPLE='\033[0;35m' CYAN='\033[0;36m' YELLOW='\033[1;33m' GRAY='\033[0;90m'
+  else
+    NOFORMAT='' RED='' GREEN='' ORANGE='' BLUE='' PURPLE='' CYAN='' YELLOW='' GRAY=''
+  fi
+}
+
+msg() {
+  echo >&2 -e "${1-}"
+}
+
+die() {
+  local msg=$1
+  local code=${2-1} # default exit status 1
+  msg "$msg"
+  exit "$code"
+}
+
+function spinner() {
+  local LC_CTYPE=C
+  local pid=$1
+  local spin='⣾⣽⣻⢿⡿⣟⣯⣷'
+  local charwidth=3
+
+  local i=0
+  tput civis
+  while kill -0 "$pid" 2>/dev/null; do
+    local i=$(((i + charwidth) % ${#spin}))
+    printf >&2 "%s" "${spin:$i:$charwidth}"
+    printf >&2 "\b"
+    sleep .1
+  done
+  tput cnorm
+  wait "$pid"
+  return $?
+}
+
+run_command() {
+  local message=$1
+  shift
+  echo >&2 -ne "${YELLOW}${message}${NOFORMAT} "
+  "$@" &>/dev/null &
+  spinner $!
+  if [ $? -eq 0 ]; then
+    echo >&2 -e "${GREEN}Done.${NOFORMAT}"
+  else
+    echo >&2 -e "${RED}FAILED.${NOFORMAT}"
+    exit 1
+  fi
+}
+
+clone_usage() {
+  cat << EOF
+Usage: $(basename "${BASH_SOURCE[0]}") clone [-h] [-v] [-l] [-b] repository [directory]
+
+Clone a bare git repo and set up environment for working comfortably and exclusively from worktrees.
+
+Available options:
+
+-h, --help      Print this help and exit
+-v, --verbose   Print script debug info
+-l, --location  Location of the bare repo contents (default: .bare)
+-b, --branch    Branch to check out as a worktree (must exist, will not create it)
+
+Arguments:
+  repository    The URL of the repository to clone.
+  directory     The directory to create the bare repository in (default: current directory).
+EOF
+  exit
+}
+
+clone() {
+  local location='.bare'
+  local branch=''
+
+  while :; do
+    case "${1-}" in
+    -h | --help) clone_usage ;;
+    -v | --verbose) set -x ;;
+    --no-color) NO_COLOR=1 ;;
+    -l | --location)
+        location="${2-}"
+        shift
+        ;;
+    -b | --branch)
+        branch="${2-}"
+        shift
+        ;;
+    -?*) die "Unknown option: $1" ;;
+    *) break ;;
+    esac
+    shift
+  done
+
+  local args=("$@")
+
+  [[ ${#args[@]} -eq 0 ]] && die "Missing repository URL"
+
+  local repository="${args[0]}"
+  local target_dir="${args[1]:-.}" # Default to current directory if not provided
+
+  # Ensure the target directory exists
+  mkdir -p "$target_dir" || die "Failed to create directory: $target_dir"
+
+  # Clone the repository into the specified directory
+  run_command "Cloning bare repository to $target_dir/$location..." \
+    git clone --bare "$repository" "$target_dir/$location"
+
+  pushd "$target_dir/$location" > /dev/null
+  run_command "Adjusting origin fetch locations..." \
+    git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+  popd > /dev/null
+
+  # Write the .git file contents directly (not using run_command)
+  msg "${YELLOW}Setting .git file contents...${NOFORMAT}"
+  echo "gitdir: ./$location" > "$target_dir/.git"
+
+  # If a branch is specified, check it out as a worktree
+  if [[ -n "$branch" ]]; then
+    if git --git-dir="$target_dir/$location" rev-parse --verify "$branch" &>/dev/null; then
+      run_command "Checking out branch '$branch' as a worktree..." \
+        git --git-dir="$target_dir/$location" worktree add "$target_dir/$branch" "$branch"
+    else
+      die "Branch '$branch' does not exist. Aborting."
+    fi
+  fi
+
+  msg "${GREEN}Success.${NOFORMAT}"
+}
+
+create_usage() {
+  cat << EOF
+Usage: $(basename "${BASH_SOURCE[0]}") create [-h] [-v] [-f] [-b] [-B] [-p] [-N] <path>
+
+Script the creation of a new worktree.
+
+Available options:
+
+-h, --help                    Print this help and exit
+-v, --verbose                 Print script debug info
+-b, --branch                  The branch to create
+-B, --base                    The branch to use as the base for the new worktree (default: main)
+-N, --no-create-upstream      Do not create an upstream branch
+EOF
+  exit
+}
+
+create() {
+  local create_upstream=1
+  local base='origin/main'
+  local branch=''
+
+  while :; do
+    case "${1-}" in
+    -h | --help) create_usage ;;
+    -v | --verbose) set -x ;;
+    --no-color) NO_COLOR=1 ;;
+    -N | --no-create-upstream) create_upstream=0 ;;
+    -b | --branch)
+      branch="$2"
+      shift
+      ;;
+    -B | --base)
+      base="${2-}"
+      shift
+      ;;
+    -?*) die "Unknown option: $1" ;;
+    *) break ;;
+    esac
+    shift
+  done
+
+  local args=("$@")
+
+  [[ ${#args[@]} -eq 0 ]] && die "Missing script arguments"
+
+  if [[ -z "$branch" ]]; then
+    branch="${args[0]}"
+  fi
+
+  local worktree="${args[0]}"
+
+  update_remote() {
+    local branch="$1"
+
+    [ $create_upstream -eq 0 ] && return 0
+
+    if [[ -z "$(git ls-remote --heads origin "$branch")" ]]; then
+      msg "${GRAY}Branch '$branch' does not exist on remote. Creating.${NOFORMAT}"
+      run_command "Creating remote branch ${branch}..." git push -u origin "$branch"
+    else
+      msg "${GRAY}Branch '$branch' exists. Setting upstream.${NOFORMAT}"
+      run_command "Setting upstream branch to 'origin/$branch'" git branch --set-upstream-to="origin/$branch"
+    fi
+  }
+
+  if [[ -n "$(git branch --list "$branch")" ]]; then
+    run_command "Generating new worktree from existing branch: $branch" git worktree add "$worktree" "$branch"
+  else
+    run_command "Generating new worktree: $worktree" git worktree add -b "$branch" "$worktree" "$base"
+  fi
+
+  msg "${GRAY}Moving into worktree: $worktree${NOFORMAT}"
+  cd "$worktree" || exit
+  update_remote "$branch"
+  msg "${GREEN}Success.${NOFORMAT}"
+}
+
+list_usage() {
+  cat << EOF
+Usage: $(basename "${BASH_SOURCE[0]}") list
+
+List all worktrees for the current repository.
+EOF
+  exit
+}
+
+list() {
+  while :; do
+    case "${1-}" in
+    -h | --help) list_usage ;;
+    -v | --verbose) set -x ;;
+    --no-color) NO_COLOR=1 ;;
+    -?*) die "Unknown option: $1" ;;
+    *) break ;;
+    esac
+    shift
+  done
+
+  msg "${YELLOW}Listing all worktrees...${NOFORMAT}"
+  git worktree list
+  msg "${GREEN}Done.${NOFORMAT}"
+}
+
+checkout_usage() {
+  cat << EOF
+Usage: $(basename "${BASH_SOURCE[0]}") checkout <branch>
+
+Check out a branch as a new worktree in a directory named after the branch.
+
+Arguments:
+  branch        The branch to check out.
+EOF
+  exit
+}
+
+checkout() {
+  while :; do
+    case "${1-}" in
+    -h | --help) checkout_usage ;;
+    -v | --verbose) set -x ;;
+    --no-color) NO_COLOR=1 ;;
+    -?*) die "Unknown option: $1" ;;
+    *) break ;;
+    esac
+    shift
+  done
+
+  local args=("$@")
+
+  [[ ${#args[@]} -eq 0 ]] && die "Missing branch name"
+
+  local branch="${args[0]}"
+  local worktree_dir="$branch"
+
+  # Check if the branch exists
+  if ! git rev-parse --verify "$branch" &>/dev/null; then
+    die "Branch '$branch' does not exist. Aborting."
+  fi
+
+  # Create the worktree
+  run_command "Creating worktree for branch '$branch'..." \
+    git worktree add "$worktree_dir" "$branch"
+
+  msg "${GRAY}Moving into worktree: $worktree_dir${NOFORMAT}"
+  cd "$worktree_dir" || exit
+  msg "${GREEN}Success. Worktree created at $worktree_dir.${NOFORMAT}"
+}
+
+main() {
+  setup_colors
+
+  if [[ $# -lt 1 ]]; then
+    usage
+  fi
+
+  case "$1" in
+    clone)
+      shift
+      clone "$@"
+      ;;
+    worktree)
+      shift
+      worktree "$@"
+      ;;
+    list)
+      shift
+      list "$@"
+      ;;
+    checkout)
+      shift
+      checkout "$@"
+      ;;
+    -h | --help)
+      usage
+      ;;
+    *)
+      die "Unknown command: $1"
+      ;;
+  esac
+}
+
+main "$@"

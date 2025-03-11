@@ -1,4 +1,4 @@
-function t --wraps=task --wraps=/home/tuomo/.nix-profile/bin/task --wraps=/home/tuomo/.local/bin/task --description 'alias t /home/tuomo/.local/bin/task'
-  /home/tuomo/.local/bin/task $argv
+function t --wraps=task --description 'alias t task'
+  task $argv
         
 end

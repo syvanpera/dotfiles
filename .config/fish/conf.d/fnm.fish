@@ -1,4 +1,3 @@
-
 # fnm
 set FNM_PATH "/home/tuomo/.local/share/fnm"
 if [ -d "$FNM_PATH" ]

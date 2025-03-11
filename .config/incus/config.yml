@@ -1,0 +1,14 @@
+default-remote: local
+remotes:
+  images:
+    addr: https://images.linuxcontainers.org
+    protocol: simplestreams
+    public: true
+  local:
+    addr: unix://
+    protocol: incus
+    public: false
+aliases:
+  del: delete
+  login: exec @ARGS@ -- sudo --login --user tuomo -- tmux new-session -A -s main
+  sh: exec @ARGS@ -- sudo --login --user tuomo

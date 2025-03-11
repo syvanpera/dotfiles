@@ -1,4 +1,4 @@
-function tm --wraps='tmux new-session -A -m main' --wraps='tmux new-session -A -s main' --description 'alias tm tmux new-session -A -s main'
-  tmux new-session -A -s main $argv
+function tm --wraps="tmux new-session -A -s 'default'" --description "alias tm tmux new-session -A -s 'default'"
+  tmux new-session -A -s 'default' $argv
         
 end

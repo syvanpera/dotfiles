@@ -1,5 +1,7 @@
+[general]
 # import = ["/home/tuomo/.config/alacritty/catppuccin-mocha.toml"]
-import = ["/home/tuomo/.config/alacritty/colors.toml"]
+# import = ["/home/tuomo/.config/alacritty/colors.toml"]
+import = ["/home/tuomo/.config/alacritty/kanagawa_dragon.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -33,8 +35,9 @@ action = "ScrollPageDown"
 key = "J"
 mods = "Super"
 
-[shell]
-program = "/usr/bin/fish"
+[terminal]
+# shell = "/usr/bin/sh"
+shell = "/usr/bin/fish"
 
 [window]
 decorations = "none"
