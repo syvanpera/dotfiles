@@ -43,17 +43,17 @@ return {
       end,
     }
 
-    local trouble = require("trouble")
-    local trouble_symbols = trouble.statusline({
-      mode = "lsp_document_symbols",
-      groups = {},
-      title = false,
-      filter = { range = true },
-      format = "{kind_icon}{symbol.name:Normal}",
-      -- The following line is needed to fix the background color
-      -- Set it to the lualine section you want to use
-      hl_group = "lualine_c_normal",
-    })
+    -- local trouble = require("trouble")
+    -- local trouble_symbols = trouble.statusline({
+    --   mode = "lsp_document_symbols",
+    --   groups = {},
+    --   title = false,
+    --   filter = { range = true },
+    --   format = "{kind_icon}{symbol.name:Normal}",
+    --   -- The following line is needed to fix the background color
+    --   -- Set it to the lualine section you want to use
+    --   hl_group = "lualine_c_normal",
+    -- })
 
     -- Config
     local config = {
@@ -218,10 +218,10 @@ return {
       },
     })
 
-    ins_left({
-      trouble_symbols.get,
-      cond = trouble_symbols.has,
-    })
+    -- ins_left({
+    --   trouble_symbols.get,
+    --   cond = trouble_symbols.has,
+    -- })
 
     -- Insert mid section. You can make any number of sections in neovim :)
     -- for lualine it's any number greater then 2
@@ -287,6 +287,12 @@ return {
     -- }
 
     ins_right({
+      "branch",
+      icon = "",
+      color = { fg = colors.violet, gui = "bold" },
+    })
+
+    ins_right({
       "o:encoding", -- option component same as &encoding in viml
       fmt = string.upper, -- I'm not sure why it's upper case either ;)
       cond = conditions.hide_in_width,
@@ -298,12 +304,6 @@ return {
       fmt = string.upper,
       icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
       color = { fg = colors.green, gui = "bold" },
-    })
-
-    ins_right({
-      "branch",
-      icon = "",
-      color = { fg = colors.violet, gui = "bold" },
     })
 
     -- ins_right {
