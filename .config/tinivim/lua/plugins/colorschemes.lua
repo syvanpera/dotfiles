@@ -21,6 +21,7 @@ return {
           DiagnosticSignError = { bg = "none" },
           DiagnosticSignHint = { bg = "none" },
           DiagnosticSignOk = { bg = "none" },
+          WinSeparator = { fg = "#34344d" },
 
           -- Markdown overrides
           ["@markup.link.url.markdown_inline"] = { link = "Special" }, -- (url)
