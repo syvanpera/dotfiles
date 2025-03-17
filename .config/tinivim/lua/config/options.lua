@@ -1,12 +1,12 @@
 local opt = vim.opt
 
 -- Yeah, I hate it that they changed this
-vim.cmd [[noremap Y Y]]
+vim.cmd([[noremap Y Y]])
 
 ----- Interesting Options -----
 
 -- You have to turn this one on :)
-opt.inccommand = 'split'
+opt.inccommand = "split"
 
 -- Best search settings :)
 opt.smartcase = true
@@ -19,13 +19,13 @@ opt.relativenumber = true
 opt.splitbelow = true
 opt.splitright = true
 
-opt.signcolumn = 'yes'
-opt.shada = { "'10", '<0', 's10', 'h' }
+opt.signcolumn = "yes"
+opt.shada = { "'10", "<0", "s10", "h" }
 
 opt.swapfile = false
 
 -- Don't have `o` add a comment
-opt.formatoptions:remove 'o'
+opt.formatoptions:remove("o")
 
 opt.wrap = false
 opt.linebreak = true
@@ -40,7 +40,7 @@ opt.breakindent = true
 
 opt.more = false
 
-opt.foldmethod = 'manual'
+opt.foldmethod = "manual"
 -- opt.foldmethod = 'expr'
 -- opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep:|,foldclose:]]
@@ -58,7 +58,7 @@ opt.showmode = false
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Show which line your cursor is on
 opt.cursorline = true
@@ -80,13 +80,12 @@ opt.timeoutlen = 300
 --   opt.clipboard = 'unnamedplus'
 -- end)
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.filetype.add({
+  filename = {
+    [".envrc"] = "sh",
+  },
+  pattern = {
+    -- INFO: Match filenames like - ".env.example", ".env.local" and so on
+    ["%.env%.[%w_.-]+"] = "sh",
+  },
 })

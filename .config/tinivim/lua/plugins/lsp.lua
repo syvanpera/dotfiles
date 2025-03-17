@@ -36,12 +36,14 @@ return {
       servers = {
         lua_ls = {},
         terraformls = {},
+        nil_ls = {},
       },
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       ensure_installed = {
         "stylua",
         "tflint",
+        "alejandra",
       },
     },
     config = function(_, opts)
