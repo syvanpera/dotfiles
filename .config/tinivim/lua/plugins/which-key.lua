@@ -10,6 +10,7 @@ return {
         { "<leader>a", group = "ai" },
         { "<leader>b", group = "buffer" },
         { "<leader>c", group = "code" },
+        { "<leader>e", group = "error/diagnostic" },
         { "<leader>f", group = "file/find" },
         { "<leader>g", group = "git" },
         { "<leader>n", group = "notification" },
