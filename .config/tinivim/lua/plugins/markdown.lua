@@ -29,8 +29,10 @@ return {
       -- },
       heading = {
         sign = true,
-        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
-        position = "inline",
+        icons = { "󰼏 ", "󰎨 ", "󰼑 ", "󰎲 " },
+        -- icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+        -- position = "inline",
+        position = "overlay",
       },
       checkbox = {
         enabled = true,

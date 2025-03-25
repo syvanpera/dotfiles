@@ -12,7 +12,29 @@ return {
     dashboard = { enabled = false },
     explorer = { enabled = false },
     indent = { enabled = false },
-    input = { enabled = false },
+    input = {
+      enabled = true,
+      icon = " ",
+      icon_hl = "SnacksInputIcon",
+      icon_pos = "left",
+      prompt_pos = "title",
+      win = {
+        style = {
+          position = "float",
+          relative = "cursor",
+          row = 1,
+          keys = {
+            n_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "n", expr = true },
+            i_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "i", expr = true },
+            i_Cy = { "<C-y>", { "cmp_accept", "confirm" }, mode = { "i", "n" }, expr = true },
+            i_cr = { "<cr>", { "cmp_accept", "confirm" }, mode = { "i", "n" }, expr = true },
+            i_Cp = { "<C-p>", { "hist_up" }, mode = { "i", "n" } },
+            i_Cn = { "<C-n>", { "hist_down" }, mode = { "i", "n" } },
+          },
+        },
+      },
+      expand = true,
+    },
     picker = { enabled = false },
     notifier = { enabled = true },
     quickfile = { enabled = false },
@@ -22,12 +44,54 @@ return {
     words = { enabled = false },
   },
   keys = {
-    { "<leader>bd", function() Snacks.bufdelete() end, desc = "delete" },
-    { "<leader>nn", function() Snacks.notifier.show_history() end, desc = "list" },
-    { "<leader>nd", function() Snacks.notifier.show_history() end, desc = "dismiss" },
-    { "<leader>gg", function() Snacks.lazygit() end, desc = "lazygit" },
-    { "<leader>gb", function() Snacks.gitbrowse() end, desc = "browse" },
-    { "<leader>gl", function() Snacks.lazygit.log_file() end, desc = "lazygit log current file" },
-    { "<leader>gL", function() Snacks.lazygit.log() end, desc = "lazygit log (cwd)" },
+    {
+      "<leader>bd",
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = "delete",
+    },
+    {
+      "<leader>nn",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "list",
+    },
+    {
+      "<leader>nd",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "dismiss",
+    },
+    {
+      "<leader>gg",
+      function()
+        Snacks.lazygit()
+      end,
+      desc = "lazygit",
+    },
+    {
+      "<leader>gb",
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = "browse",
+    },
+    {
+      "<leader>gl",
+      function()
+        Snacks.lazygit.log_file()
+      end,
+      desc = "lazygit log current file",
+    },
+    {
+      "<leader>gL",
+      function()
+        Snacks.lazygit.log()
+      end,
+      desc = "lazygit log (cwd)",
+    },
   },
 }

@@ -38,6 +38,7 @@ return {
         lua_ls = {},
         terraformls = {},
         nil_ls = {},
+        bashls = {},
       },
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
