@@ -317,9 +317,9 @@ main() {
       shift
       clone "$@"
       ;;
-    worktree)
+    create)
       shift
-      worktree "$@"
+      create "$@"
       ;;
     list)
       shift
