@@ -58,7 +58,8 @@ opt.showmode = false
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 opt.list = true
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Show which line your cursor is on
 opt.cursorline = true
