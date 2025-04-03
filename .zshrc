@@ -81,6 +81,3 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $real
 zstyle ':fzf-tab:*' switch-group '<' '>'
 # use tmux popups for fzf-tab
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
-export DEVBOX_NO_PROMPT=true
-export DEVBOX_USE_VERSION=0.13.0-deva
