@@ -1,11 +1,13 @@
 return {
-  {
-    "stevearc/oil.nvim",
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {},
-    -- Optional dependencies
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  "stevearc/oil.nvim",
+  dependencies = {
+    { "echasnovski/mini.icons", opts = {} },
+  },
+  lazy = false,
+  opts = {},
+  keys = {
+    { "-", "<cmd>Oil<CR>", desc = "browse cwd", silent = true },
+    { "<leader>-", "<cmd>Oil<CR>", desc = "browse cwd", silent = true },
+    { "<leader>.", "<cmd>Oil<CR>", desc = "browse cwd", silent = true },
   },
 }
