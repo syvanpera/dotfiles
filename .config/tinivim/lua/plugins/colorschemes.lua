@@ -70,9 +70,25 @@ return {
       require("onedark").setup({
         style = "cool",
         transparent = true,
+        highlights = {
+          -- ["CursorLine"] = { bg = "#546178" },
+          ["CursorLineNr"] = { bg = "#546178" },
+        },
       })
       -- Load the colorscheme
       vim.cmd.colorscheme("onedark")
+    end,
+  },
+  {
+    "Mofiqul/dracula.nvim",
+    name = "dracula",
+    priority = 1000,
+    config = function()
+      require("dracula").setup({
+        transparent_bg = true,
+      })
+      -- Load the colorscheme
+      -- vim.cmd.colorscheme("dracula")
     end,
   },
 }
