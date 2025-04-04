@@ -34,11 +34,11 @@ red	= '#F7768E'
 yellow = '#E0AF68'
 
 [os]
-format = '(fg:current_line)[](fg:red)[$symbol ](fg:primary bg:red)'
+format = '(fg:current_line)[](fg:yellow)[$symbol ](fg:primary bg:yellow)'
 disabled = false
 
 [hostname]
-format = '[$hostname](fg:primary bg:red)[](fg:red)'
+format = '[$hostname](fg:primary bg:yellow)[](fg:yellow)'
 style = "bold dimmed green"
 trim_at = "-"
 ssh_only = false
@@ -79,7 +79,7 @@ Unknown = ''
 Windows = ''
 
 [directory]
-format = '[─](fg:current_line)[](fg:blue)[󰷏 ](fg:primary bg:blue)[](fg:blue bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+format = '[─](fg:current_line)[](fg:green)[󰷏 ](fg:primary bg:green)[](fg:green bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
 home_symbol = " ~/"
 truncation_symbol = ' '
 truncation_length = 2
@@ -117,7 +117,7 @@ style = 'fg:current_line'
 
 [cmd_duration]
 min_time = 500
-format = '[](fg:orange)[ ](fg:primary bg:orange)[](fg:orange bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
+format = '[](fg:purple)[ ](fg:primary bg:purple)[](fg:purple bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
 
 [shell]
 format = '[─](fg:current_line)[](fg:blue)[ ](fg:primary bg:blue)[](fg:blue bg:box)[ $indicator](fg:foreground bg:box)[](fg:box)'
@@ -140,3 +140,4 @@ format = """
 [╰─$symbol](fg:current_line) """
 success_symbol = '[󰄾](fg:bold white)'
 error_symbol = '[×](fg:bold red)'
+
