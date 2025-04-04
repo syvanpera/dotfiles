@@ -38,7 +38,7 @@ format = '(fg:current_line)[](fg:red)[$symbol ](fg:primary bg:red)'
 disabled = false
 
 [hostname]
-format = "[$hostname]($style) "
+format = '[$hostname](fg:primary bg:red)[](fg:red)'
 style = "bold dimmed green"
 trim_at = "-"
 ssh_only = false
