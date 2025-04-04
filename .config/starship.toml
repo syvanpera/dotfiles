@@ -112,12 +112,12 @@ format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[]
 symbol = ' C'
 
 [fill]
-symbol = '─'
+symbol = ' '
 style = 'fg:current_line'
 
 [cmd_duration]
 min_time = 500
-format = '[─](fg:current_line)[](fg:orange)[ ](fg:primary bg:orange)[](fg:orange bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
+format = '[](fg:orange)[ ](fg:primary bg:orange)[](fg:orange bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
 
 [shell]
 format = '[─](fg:current_line)[](fg:blue)[ ](fg:primary bg:blue)[](fg:blue bg:box)[ $indicator](fg:foreground bg:box)[](fg:box)'
