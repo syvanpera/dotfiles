@@ -9,7 +9,7 @@ return {
   config = function()
     local fzflua = require("fzf-lua")
     fzflua.setup({
-      { "ivy" },
+      -- { "ivy" },
       keymap = {
         fzf = {
           ["ctrl-q"] = "select-all+accept",

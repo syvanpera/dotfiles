@@ -76,7 +76,7 @@ return {
         },
       })
       -- Load the colorscheme
-      vim.cmd.colorscheme("onedark")
+      -- vim.cmd.colorscheme("onedark")
     end,
   },
   {
@@ -89,6 +89,23 @@ return {
       })
       -- Load the colorscheme
       -- vim.cmd.colorscheme("dracula")
+    end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        transparent = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
+      })
+      -- Load the colorscheme
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
 }
