@@ -6,6 +6,7 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       go = { "goimports", "gofumpt" },
+      -- python = { "isort", "black" },
       -- nix = { "alejandra" },
     },
     format_on_save = {
