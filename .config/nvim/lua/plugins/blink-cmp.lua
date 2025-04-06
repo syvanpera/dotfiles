@@ -4,6 +4,7 @@ return {
   dependencies = {
     { "rafamadriz/friendly-snippets" },
     { "giuxtaposition/blink-cmp-copilot" },
+    { "Kaiser-Yang/blink-cmp-avante" },
     { "xzbdmw/colorful-menu.nvim" },
   },
 
@@ -43,9 +44,9 @@ return {
       documentation = {
         auto_show = true,
       },
-      signature = {
-        enabled = true,
-      },
+      -- signature = {
+      --   enabled = true,
+      -- },
       ghost_text = {
         enabled = true,
       },
@@ -82,8 +83,15 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "copilot", "lsp", "path", "snippets", "buffer" },
+      default = { "copilot", "avante", "lsp", "path", "snippets", "buffer" },
       providers = {
+        avante = {
+          module = "blink-cmp-avante",
+          name = "Avante",
+          opts = {
+            -- options for blink-cmp-avante
+          },
+        },
         copilot = {
           name = "copilot",
           module = "blink-cmp-copilot",
@@ -91,6 +99,15 @@ return {
           async = true,
         },
       },
+      -- default = { "copilot", "lsp", "path", "snippets", "buffer" },
+      -- providers = {
+      --   copilot = {
+      --     name = "copilot",
+      --     module = "blink-cmp-copilot",
+      --     score_offset = 100,
+      --     async = true,
+      --   },
+      -- },
     },
 
     -- Blink.cmp uses a Rust fuzzy matcher by default for typo resistance and significantly better performance
