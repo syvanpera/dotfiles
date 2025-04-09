@@ -40,6 +40,7 @@ return {
         nil_ls = {},
         bashls = {},
         gopls = {},
+        dockerls = {},
       },
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
@@ -49,6 +50,7 @@ return {
         "alejandra",
         "goimports",
         "gofumpt",
+        "dockerls",
       },
     },
     config = function(_, opts)
