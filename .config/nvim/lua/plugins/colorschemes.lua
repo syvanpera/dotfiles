@@ -103,6 +103,11 @@ return {
           sidebars = "transparent",
           floats = "transparent",
         },
+        on_highlights = function(hl, c)
+          hl.WinSeparator = {
+            fg = "#b4befe",
+          }
+        end,
       })
       -- Load the colorscheme
       vim.cmd.colorscheme("tokyonight")

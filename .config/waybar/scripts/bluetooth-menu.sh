@@ -7,7 +7,7 @@
 config="$HOME/.config/rofi/bluetooth-menu.rasi"
 
 # Rofi window override
-override_disabled="mainbox { children: [ listview ]; } listview { lines: 1; padding: 6px; }"
+override_disabled="mainbox { children: [ textbox-custom, listview ]; } listview { lines: 1; padding: 6px 6px 8px; }"
 
 get_device_icon() {
   local device_mac=$1
@@ -38,19 +38,19 @@ while true; do
   done)
 
   options=$(
-    echo "Scan for devices  "
-    echo "Disable Bluetooth"
+    echo "󰏌  Scan for devices"
+    echo "󰂲  Disable Bluetooth"
     echo "$bluetooth_devices"
   )
-  option="Enable Bluetooth"
+  option="󰂯  Enable Bluetooth"
 
   # Get Bluetooth status
   bluetooth_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
 
   if [[ "$bluetooth_status" == "yes" ]]; then
-    selected_option=$(echo -e "$options" | rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
+    selected_option=$(echo -e "$options" | rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
   else
-    selected_option=$(echo -e "$option" | rofi -dmenu -i -selected-row 1 -config "${config}" -theme-str "${override_disabled}" -p " " || pkill -x rofi)
+    selected_option=$(echo -e "$option" | rofi -dmenu -i -selected-row 1 -config "${config}" -theme-str "${override_disabled}" -p " " || pkill -x rofi)
   fi
 
   # Exit if no option is selected
@@ -60,19 +60,19 @@ while true; do
 
   # Actions based on selected option
   case "$selected_option" in
-  "Enable Bluetooth")
+  *"Enable Bluetooth")
     notify-send "Bluetooth Enabled" -i "package-installed-outdated"
     rfkill unblock bluetooth
     bluetoothctl power on
     sleep 1
     ;;
-  "Disable Bluetooth")
+  *"Disable Bluetooth")
     notify-send "Bluetooth Disabled" -i "package-broken"
     rfkill block bluetooth
     bluetoothctl power off
     exit
     ;;
-  "Scan for devices"*)
+  *"Scan for devices")
     notify-send "Press '?' to show help." -i "package-installed-outdated"
     kitty --title '󰂱  Bluetooth TUI' bash -c "bluetui" # Launch bluetui
     ;;

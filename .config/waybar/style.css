@@ -48,8 +48,9 @@ tooltip label {
   transition: none;
 }
 #workspaces button:hover {
-  color: @hover-fg;
-  background: @hover-bg;
+  color: @yellow;
+  background: @workspaces;
+  /* background: @hover-bg; */
   text-shadow: none;
 }
 #workspaces button.active {

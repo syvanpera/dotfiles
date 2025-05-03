@@ -57,7 +57,7 @@
 @define-color cpuinfo         @mantle;
 @define-color memory          @base;
 @define-color cpu             @surface0;
-@define-color distro-fg       @black;
+@define-color distro-fg       @lavender;
 @define-color distro-bg       @overlay2;
 @define-color time            @surface0;
 @define-color date            @base;

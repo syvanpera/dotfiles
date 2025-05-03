@@ -11,17 +11,17 @@
     "custom/ws",            // window icon
     "custom/left1",
 
-    "sway/workspaces",      // workspaces
+    "hyprland/workspaces",  // workspaces
     "custom/right1",
 
     "custom/paddw",
-    "sway/window"           // window title
+    "hyprland/window"       // window title
   ],
 
   "modules-center": [
     "custom/paddc",
     "custom/left2",
-    "custom/temperature",   // temperature
+    "custom/cpuinfo",       // temperature
 
     "custom/left3",
     "memory",               // memory
@@ -69,31 +69,15 @@
   "custom/ws": {
     "exec": "~/.config/waybar/scripts/current-theme.sh",
     "return-type": "json",
-    "format": " 󰤕 ",
+    "format": " 󰍜 ",
     "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
     "min-length": 3,
     "max-length": 3
   },
 
-  "sway/workspaces": {
-    "enable-bar-scroll": false,
-    "disable-scroll": true,
-    "format": "{icon}",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "10": "",
-      "urgent": "",
-      "focused": "",
-      "default": ""
-    },
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace -1",
+    "on-scroll-down": "hyprctl dispatch workspace +1",
     "persistent-workspaces": {
       "1": [],
       "2": [],
@@ -104,23 +88,21 @@
     }
   },
 
-  "sway/window": {
+  "hyprland/window": {
     "format": "{}",
-    "tooltip": false,
     "min-length": 5,
 
     "rewrite": {
       // Desktop
       "": 
-        "<span foreground='#a6e3a1'> </span> Sway",
+        "<span foreground='#89b4fa'> </span> Hyprland",
 
       // Terminal
       "~": "  Terminal",
       "zsh": "  Terminal",
+      "fish": "  Terminal",
       "kitty": "  Terminal",
-
-      "tmux(.*)": 
-        "<span foreground='#a6e3a1'> </span> Tmux",
+      "ghostty": "  Terminal",
 
       // Browser
 
@@ -203,7 +185,7 @@
     }
   },
 
-  "custom/temperature": {
+  "custom/cpuinfo": {
     "exec": "~/.config/waybar/scripts/cpu-temp.sh",
     "return-type": "json",
     "format": "{}",
@@ -220,8 +202,7 @@
 
     "format": "󰘚 {percentage}%",
     "format-critical": "󰀦 {percentage}%",
-    "tooltip": false,
-    // "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
+    "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
     "interval": 5,
     "min-length": 7,
     "max-length": 7
@@ -229,6 +210,7 @@
 
   "cpu": {
     "format": "󰻠 {usage}%",
+    "on-click-right": "ghostty --title='󰻠  Running processes' -e btop",
     "tooltip": false,
     "interval": 5,
     "min-length": 6,
@@ -237,8 +219,8 @@
 
   "custom/distro": {
     // "format": " ",
-    // "format": " ",
     "format": " ",
+    // "format": " ",
     "tooltip": false
   },
 
@@ -246,8 +228,8 @@
     "format": "{icon}",
 
     "format-icons": {
-      "activated": "󰈈 ",
-      "deactivated": "󰈉 "
+      "activated": "󱑎 ",
+      "deactivated": "󱑂 "
     },
 
     "tooltip-format-activated": "Presentation Mode",
@@ -257,19 +239,20 @@
 
   "clock#time": {
     "format": "{:%H:%M}",
-    "tooltip": false,
-    // "tooltip-format": "Standard Time: {:%I:%M %p}",
+    "tooltip-format": "Standard Time: {:%I:%M %p}",
     "min-length": 6,
     "max-length": 6
   },
 
   "clock#date": {
-    "format": "󰨳 {:%m-%d}",
+    "format": "󰨳 {:%d.%m}",
+    "locale": "fi_FI.utf8",
     "tooltip-format": "<tt>{calendar}</tt>",
 
     "calendar": {
       "mode": "month",
       "mode-mon-col": 6,
+      "weeks-pos": "left",
       "on-click-right": "mode",
 
       "format": {
@@ -292,11 +275,11 @@
   },
 
   "custom/wifi": {
-    "exec": "~/.config/waybar/scripts/wifi-status-nm.sh",
+    "exec": "~/.config/waybar/scripts/wifi-status.sh",
     "return-type": "json",
     "format": "{}",
-    "on-click": "~/.config/waybar/scripts/wifi-menu-nm.sh",
-    "on-click-right": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
+    "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+    "on-click-right": "ghostty --title='󰤨  Network Manager TUI' -e impala",
     "interval": 1,
     "min-length": 1,
     "max-length": 1
@@ -313,14 +296,14 @@
     "tooltip-format-disabled": 
       "Bluetooth Disabled",
     "tooltip-format-connected": 
-      "{device_enumerate}",
+      "{num_connections} connected\n{device_enumerate}",
     "tooltip-format-enumerate-connected": 
       "{device_alias}",
     "tooltip-format-enumerate-connected-battery": 
-      ":: {device_alias}: 󱊣 {device_battery_percentage}%",
+      "{device_alias}: 󰥉 {device_battery_percentage}%",
 
     "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
-    "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
+    "on-click-right": "ghostty --title='󰂯  Bluetooth TUI' -e bluetui",
     "interval": 1,
     "min-length": 1,
     "max-length": 1
@@ -330,7 +313,7 @@
     "exec": "~/.config/waybar/scripts/system-update.sh",
     "return-type": "json",
     "format": "{}",
-    "on-click": "~/.config/waybar/scripts/system-update.sh up",
+    "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
     "interval": 30,
     "min-length": 1,
     "max-length": 1
@@ -391,7 +374,7 @@
 
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "format-charging": " {capacity}%",
+    "format-charging": " {capacity}%",
 
     "tooltip-format": "Discharging: {time}",
     "tooltip-format-charging": "Charging: {time}",
@@ -402,8 +385,7 @@
 
   "custom/power": {
     "format": " ",
-    "tooltip": false,
-    // "tooltip-format": "Power Menu",
+    "tooltip-format": "Power Menu",
     "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
 

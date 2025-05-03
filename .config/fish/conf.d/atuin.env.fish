@@ -1,2 +1,3 @@
+atuin init fish | source
 
-source "$HOME/.atuin/bin/env.fish"
+# source "$HOME/.atuin/bin/env.fish"

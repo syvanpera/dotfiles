@@ -2,7 +2,7 @@
 
 config="$HOME/.config/rofi/power-menu.rasi"
 
-actions=$(echo -e "  Lock\n  Shutdown\n  Reboot\n  Suspend\n  Hibernate\n  Logout")
+actions=$(echo -e "  Lock\n  Shutdown\n  Reboot\n  Suspend\n  Hibernate\n󰞘  Logout")
 
 # Display logout menu
 selected_option=$(echo -e "$actions" | rofi -dmenu -i -config "${config}" || pkill -x rofi)
@@ -25,8 +25,6 @@ case "$selected_option" in
   systemctl hibernate
   ;;
 *Logout)
-  uwsm stop
-  # loginctl kill-session "$XDG_SESSION_ID"
-  # loginctl terminate-session "$XDG_SESSION_ID"
+  loginctl kill-session "$XDG_SESSION_ID"
   ;;
 esac

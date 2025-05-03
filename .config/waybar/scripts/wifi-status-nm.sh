@@ -95,7 +95,7 @@ else
 
   active_device=$(nmcli -t -f DEVICE,STATE device status |
     grep -w "connected" |
-    grep -v -E "^(dummy|lo:)" |
+    grep -v -E "^(dummy|lo:|virbr0)" |
     awk -F: '{print $1}')
 
   if [ -n "$active_device" ]; then
@@ -135,7 +135,7 @@ else
     # Get the current Wi-Fi ESSID
     essid=$(echo "$wifi_info" | awk -F: '{print $2}')
 
-    tooltip="> ${essid}\n"
+    tooltip=":: ${essid}"
     tooltip+="\nIP Address: ${ip_address}"
     # tooltip+="\nRouter:      ${gateway}"
     # tooltip+="\nMAC Address: ${mac_address}"
