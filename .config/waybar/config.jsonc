@@ -2,6 +2,7 @@
   "layer": "top",
   "position": "top",
   "mode": "dock",
+  "output": ["eDP-1", "DP-10"],
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 
@@ -42,8 +43,9 @@
     "clock#date",           // date
     "custom/right4",
 
-    "custom/wifi",          // wi-fi
-    "bluetooth",            // bluetooth
+    // "custom/wifi",          // wi-fi
+    // "bluetooth",            // bluetooth
+    "tray",
     "custom/update",        // system update
     "custom/right5"
   ],
@@ -79,6 +81,7 @@
     "enable-bar-scroll": false,
     "disable-scroll": true,
     "format": "{icon}",
+    "all-outputs": true,
     "format-icons": {
       "1": "",
       "2": "",
@@ -264,7 +267,8 @@
   },
 
   "clock#date": {
-    "format": "󰨳 {:%m-%d}",
+    "format": "󰨳 {:%d.%m}",
+    "locale": "fi_FI.utf8",
     "tooltip-format": "<tt>{calendar}</tt>",
 
     "calendar": {

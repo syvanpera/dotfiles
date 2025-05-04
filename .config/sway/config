@@ -28,11 +28,43 @@
 
 # }}}
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
-output * bg /usr/share/backgrounds/default.jxl fill
+# Output configuration --------------------------------------------------------------------------{{{
+
+  # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+  # Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
+  output * bg /usr/share/backgrounds/default.jxl fill
+
+  # output * bg /home/tuomo/Pictures/wallpapers/cityblocks.jpg fill
+
+  output "eDP-1" {
+    mode  2880x1920@120Hz
+    pos 570 2000
+    transform normal
+    scale 2.0
+    scale_filter nearest
+    adaptive_sync off
+    dpms on
+  }
+  output "DP-10" {
+    mode  2560x1440@74.971Hz
+    pos 0 560
+    transform normal
+    scale 1.0
+    scale_filter nearest
+    adaptive_sync off
+    dpms on
+  }
+  output "DP-9" {
+    mode  2560x1440@59.951Hz
+    pos 2560 0
+    transform 90
+    scale 1.0
+    scale_filter nearest
+    adaptive_sync off
+    dpms on
+  }
+
+# }}}
 
 # General UX stuff ------------------------------------------------------------------------------{{{
 
@@ -88,6 +120,20 @@ output * bg /usr/share/backgrounds/default.jxl fill
   client.urgent           $base08 $base08 $base02 $base08   $base08
   client.placeholder      $base02 $base02 $base05 $base02   $base02
   client.background       $base07
+
+# }}}
+
+# Workspaces ------------------------------------------------------------------------------------{{{
+
+  workspace 1 output DP-10
+  workspace 2 output DP-10
+  workspace 3 output DP-9
+  workspace 4 output DP-9
+  workspace 5 output eDP-1
+  workspace 6 output eDP-1
+  workspace 7 output eDP-1
+  workspace 8 output eDP-1
+  workspace 9 output eDP-1
 
 # }}}
 
@@ -243,7 +289,6 @@ output * bg /usr/share/backgrounds/default.jxl fill
   # for_window [class="Gcolor3"]                  floating enable
 
 # }}}
-
 
 # Autostarts ------------------------------------------------------------------------------------{{{
 

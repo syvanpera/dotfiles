@@ -79,6 +79,7 @@ tooltip label {
 #pulseaudio,
 #backlight,
 #battery,
+#tray,
 #custom-power {
   opacity: 1;
   color: @module-fg;
@@ -137,6 +138,12 @@ tooltip label {
 }
 
 /* Temperature */
+
+#custom-temperature {
+  color: @text;
+  background: @tray;
+  padding-left: 3px;
+}
 
 #custom-paddc {
   padding-right: 22px;
@@ -246,6 +253,14 @@ tooltip label {
 }
 
 /* Tray */
+
+#tray {
+  padding-right: 5px;
+  background: @tray;
+}
+#tray:hover {
+  color: @hover-fg;
+}
 
 #custom-wifi {
   padding-left: 5px;
