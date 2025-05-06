@@ -79,6 +79,7 @@ tooltip label {
 #pulseaudio,
 #backlight,
 #battery,
+#custom-notification,
 #tray,
 #custom-power {
   opacity: 1;
@@ -349,6 +350,13 @@ tooltip label {
   color: @charging;
 }
 
+/* Notification */
+
+#custom-notification {
+  color: @module-fg;
+  background: @battery;
+}
+
 /* Power Button */
 
 #custom-leftin2 {
@@ -388,7 +396,7 @@ tooltip label {
 
 /* modules */
 * {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* left and right arrows */

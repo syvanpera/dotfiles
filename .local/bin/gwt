@@ -262,12 +262,13 @@ list() {
 
 checkout_usage() {
   cat << EOF
-Usage: $(basename "${BASH_SOURCE[0]}") checkout <branch>
+Usage: $(basename "${BASH_SOURCE[0]}") checkout branch [directory]
 
 Check out a branch as a new worktree in a directory named after the branch.
 
 Arguments:
   branch        The branch to check out.
+  directory     The directory to check out the branch in (default: branch name)
 EOF
   exit
 }
@@ -289,20 +290,22 @@ checkout() {
   [[ ${#args[@]} -eq 0 ]] && die "Missing branch name"
 
   local branch="${args[0]}"
-  local worktree_dir="$branch"
+  local worktree_dir="${args[1]:-$branch}"
 
   # Check if the branch exists
-  if ! git rev-parse --verify "$branch" &>/dev/null; then
-    die "Branch '$branch' does not exist. Aborting."
+  if ! git rev-parse --verify "origin/$branch" &>/dev/null; then
+    die "Branch 'origin/$branch' does not exist. Aborting."
   fi
 
   # Create the worktree
   run_command "Creating worktree for branch '$branch'..." \
-    git worktree add "$worktree_dir" "$branch"
+    git worktree add --track -b "$branch" "$worktree_dir" "origin/$branch"
 
   msg "${GRAY}Moving into worktree: $worktree_dir${NOFORMAT}"
   cd "$worktree_dir" || exit
   msg "${GREEN}Success. Worktree created at $worktree_dir.${NOFORMAT}"
+
+  # run_command "Setting upstream branch to 'origin/$branch'" git branch --set-upstream-to="origin/$branch"
 }
 
 main() {

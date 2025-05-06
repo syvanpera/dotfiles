@@ -61,7 +61,7 @@ else
 fi
 
 tooltip=":: ${model}\n"
-tooltip+="Clock Speed: ${cpu_frequency}\nTemperature: ${temp_f}°F"
+tooltip+="Clock Speed: ${cpu_frequency}\nTemperature: ${temp}°C"
 
 # module and tooltip
 echo "{\"text\": \"$text_output\", \"tooltip\": \"$tooltip\"}"
