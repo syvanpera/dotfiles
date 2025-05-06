@@ -4,6 +4,7 @@ $os\
 $hostname\
 $directory\
 $git_branch\
+$nix_shell\
 $fill\
 $nodejs\
 $dotnet\
@@ -85,6 +86,12 @@ truncation_symbol = ' '
 truncation_length = 2
 read_only = '󱧵 '
 read_only_style = ''
+
+[nix_shell]
+symbol = '󱄅 '
+format = '[─](fg:current_line)[](fg:blue)[$symbol$state$name](fg:primary bg:blue)[](fg:blue)'
+disabled = false
+impure_msg = ''
 
 [git_branch]
 format = '[─](fg:current_line)[](fg:cyan)[$symbol](fg:primary bg:cyan)[](fg:cyan bg:box)[ $branch](fg:foreground bg:box)[](fg:box)'
