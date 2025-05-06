@@ -13,7 +13,7 @@ Commands:
   clone       Clone a bare git repo and set up environment for working comfortably and exclusively from worktrees.
   create      Create a new worktree from a branch.
   list        List all worktrees for the current repository.
-  checkout    Check out a branch as a new worktree in a directory named after the branch.
+  checkout    Check out a branch (either a new or existing) as a new worktree in a directory named after the branch.
 
 Run 'gwt <command> --help' for more information on a specific command.
 EOF
@@ -156,31 +156,34 @@ clone() {
   msg "${GREEN}Success.${NOFORMAT}"
 }
 
-create_usage() {
+checkout_usage() {
   cat << EOF
-Usage: $(basename "${BASH_SOURCE[0]}") create [-h] [-v] [-f] [-b] [-B] [-p] [-N] <path>
+Usage: $(basename "${BASH_SOURCE[0]}") create [-h] [-v] [-f] [-b] [-B] [-p] [-N] [directory]
 
-Script the creation of a new worktree.
+Checks out a branch into a worktree.
 
 Available options:
 
 -h, --help                    Print this help and exit
 -v, --verbose                 Print script debug info
--b, --branch                  The branch to create
+-b, --branch                  The branch to create/check out
 -B, --base                    The branch to use as the base for the new worktree (default: main)
 -N, --no-create-upstream      Do not create an upstream branch
+
+Arguments:
+directory     The directory to check out the branch in (default: branch name).
 EOF
   exit
 }
 
-create() {
+checkout() {
   local create_upstream=1
   local base='origin/main'
   local branch=''
 
   while :; do
     case "${1-}" in
-    -h | --help) create_usage ;;
+    -h | --help) checkout_usage ;;
     -v | --verbose) set -x ;;
     --no-color) NO_COLOR=1 ;;
     -N | --no-create-upstream) create_upstream=0 ;;
@@ -200,13 +203,11 @@ create() {
 
   local args=("$@")
 
-  [[ ${#args[@]} -eq 0 ]] && die "Missing script arguments"
-
   if [[ -z "$branch" ]]; then
     branch="${args[0]}"
   fi
 
-  local worktree="${args[0]}"
+  local worktree="${args[0]:-$branch}"
 
   update_remote() {
     local branch="$1"
@@ -260,53 +261,55 @@ list() {
   msg "${GREEN}Done.${NOFORMAT}"
 }
 
-checkout_usage() {
-  cat << EOF
-Usage: $(basename "${BASH_SOURCE[0]}") checkout branch [directory]
-
-Check out a branch as a new worktree in a directory named after the branch.
-
-Arguments:
-  branch        The branch to check out.
-  directory     The directory to check out the branch in (default: branch name)
-EOF
-  exit
-}
-
-checkout() {
-  while :; do
-    case "${1-}" in
-    -h | --help) checkout_usage ;;
-    -v | --verbose) set -x ;;
-    --no-color) NO_COLOR=1 ;;
-    -?*) die "Unknown option: $1" ;;
-    *) break ;;
-    esac
-    shift
-  done
-
-  local args=("$@")
-
-  [[ ${#args[@]} -eq 0 ]] && die "Missing branch name"
-
-  local branch="${args[0]}"
-  local worktree_dir="${args[1]:-$branch}"
-
-  # Check if the branch exists
-  if ! git rev-parse --verify "origin/$branch" &>/dev/null; then
-    die "Branch 'origin/$branch' does not exist. Aborting."
-  fi
-
-  # Create the worktree
-  run_command "Creating worktree for branch '$branch'..." \
-    git worktree add --track -b "$branch" "$worktree_dir" "origin/$branch"
-
-  msg "${GRAY}Moving into worktree: $worktree_dir${NOFORMAT}"
-  cd "$worktree_dir" || exit
-  msg "${GREEN}Success. Worktree created at $worktree_dir.${NOFORMAT}"
-
-  # run_command "Setting upstream branch to 'origin/$branch'" git branch --set-upstream-to="origin/$branch"
-}
+# checkout_usage() {
+#   cat << EOF
+# Usage: $(basename "${BASH_SOURCE[0]}") checkout branch [directory]
+#
+# Check out a branch as a new worktree in a directory named after the branch.
+#
+# Arguments:
+#   branch        The branch to check out.
+#   directory     The directory to check out the branch in (default: branch name)
+# EOF
+#   exit
+# }
+#
+# checkout() {
+#   while :; do
+#     case "${1-}" in
+#     -h | --help) checkout_usage ;;
+#     -v | --verbose) set -x ;;
+#     --no-color) NO_COLOR=1 ;;
+#     -?*) die "Unknown option: $1" ;;
+#     *) break ;;
+#     esac
+#     shift
+#   done
+#
+#   local args=("$@")
+#
+#   [[ ${#args[@]} -eq 0 ]] && die "Missing branch name"
+#
+#   local branch="${args[0]}"
+#   local worktree_dir="${args[1]:-$branch}"
+#
+#   # Check if the branch exists
+#   if ! git rev-parse --verify "origin/$branch" &>/dev/null; then
+#     die "Branch 'origin/$branch' does not exist. Aborting."
+#   fi
+#
+#   # Create the worktree
+#   # run_command "Creating worktree for branch '$branch'..." \
+#   #   git worktree add --track -b "$branch" "$worktree_dir" "origin/$branch"
+#   run_command "Creating worktree for branch '$branch'..." \
+#     git worktree add "$branch" "$worktree_dir" 
+#
+#   msg "${GRAY}Moving into worktree: $worktree_dir${NOFORMAT}"
+#   cd "$worktree_dir" || exit
+#   msg "${GREEN}Success. Worktree created at $worktree_dir.${NOFORMAT}"
+#
+#   # run_command "Setting upstream branch to 'origin/$branch'" git branch --set-upstream-to="origin/$branch"
+# }
 
 main() {
   setup_colors
@@ -320,18 +323,18 @@ main() {
       shift
       clone "$@"
       ;;
-    create)
+    checkout)
       shift
       create "$@"
       ;;
-    list)
+    list | ls)
       shift
       list "$@"
       ;;
-    checkout)
-      shift
-      checkout "$@"
-      ;;
+    # checkout | co)
+    #   shift
+    #   checkout "$@"
+    #   ;;
     -h | --help)
       usage
       ;;

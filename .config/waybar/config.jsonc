@@ -12,11 +12,13 @@
     "custom/ws",            // window icon
     "custom/left1",
 
-    "sway/workspaces",      // workspaces
+    // "sway/workspaces",      // workspaces
+    "hyprland/workspaces",      // workspaces
     "custom/right1",
 
     "custom/paddw",
-    "sway/window"           // window title
+    // "sway/window"           // window title
+    "hyprland/window"           // window title
   ],
 
   "modules-center": [
@@ -153,6 +155,113 @@
 
       "vim": 
         "<span foreground='#a6e3a1'> </span> Vim",
+      "vim (.*)": 
+        "<span foreground='#a6e3a1'> </span> $1",
+
+      // Media
+
+      "(.*)Spotify": 
+        "<span foreground='#a6e3a1'> </span> Spotify",
+      "(.*)Spotify Premium": 
+        "<span foreground='#a6e3a1'> </span> Spotify Premium",
+
+      "OBS(.*)": 
+        "<span foreground='#a6adc8'> </span> OBS Studio",
+
+      "VLC media player": 
+        "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+      "(.*) - VLC media player": 
+        "<span foreground='#fab387'>󰕼 </span> $1",
+
+      "(.*) - mpv": 
+        "<span foreground='#cba6f7'> </span> $1",
+
+      "qView": "  qView",
+
+      "(.*).jpg": "  $1.jpg",
+      "(.*).png": "  $1.png",
+      "(.*).svg": "  $1.svg",
+
+      // Social
+
+      "vesktop": 
+        "<span foreground='#89b4fa'> </span> Discord",
+
+      "• Discord(.*)": "Discord$1",
+      "(.*)Discord(.*)": 
+        "<span foreground='#89b4fa'> </span> $1Discord$2",
+
+      // Documents
+
+      "ONLYOFFICE Desktop Editors": 
+        "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+
+      "(.*).docx": 
+        "<span foreground='#89b4fa'> </span> $1.docx",
+      "(.*).xlsx": 
+        "<span foreground='#a6e3a1'> </span> $1.xlsx",
+      "(.*).pptx": 
+        "<span foreground='#fab387'> </span> $1.pptx",
+      "(.*).pdf": 
+        "<span foreground='#f38ba8'> </span> $1.pdf",
+
+      // System
+      "Authenticate": "  Authenticate"
+    }
+  },
+
+  "hyprland/workspaces": {
+    "enable-bar-scroll": false,
+    "disable-scroll": true,
+    "all-outputs": false,
+    "active-only": false
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "tooltip": false,
+    "min-length": 5,
+
+    "rewrite": {
+      // Desktop
+      "": 
+        "<span foreground='#a6e3a1'> </span> Hyprland",
+
+      // Terminal
+      "~": "  terminal",
+      "zsh": "  terminal",
+      "kitty(.*)": "<span foreground='#89b4fa'>󰄛 </span> kitty$1",
+      "ghostty(.*)": "<span foreground='#89b4fa'>󰊠 </span> ghostty$1",
+
+      "tmux(.*)": 
+        "<span foreground='#a6e3a1'> </span> tmux",
+
+      // Browser
+
+      "(.*)Mozilla Firefox": 
+        "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+      "(.*) — Mozilla Firefox": 
+        "<span foreground='#f38ba8'>󰈹 </span> $1",
+
+      "(.*)Zen Browser": 
+        "<span foreground='#fab387'>󰺕 </span> Zen Browser",
+      "(.*) — Zen Browser": 
+        "<span foreground='#fab387'>󰺕 </span> $1",
+
+      // Development
+
+      "(.*) - Visual Studio Code": 
+        "<span foreground='#89b4fa'>󰨞 </span> $1",
+      "(.*)Visual Studio Code": 
+        "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+
+      "nvim": 
+        "<span foreground='#a6e3a1'> </span> neovim",
+      "nvim (.*)": 
+        "<span foreground='#a6e3a1'> </span> $1",
+
+      "vim": 
+        "<span foreground='#a6e3a1'> </span> vim",
       "vim (.*)": 
         "<span foreground='#a6e3a1'> </span> $1",
 

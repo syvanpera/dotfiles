@@ -6,6 +6,7 @@ theme = Dracula+
 command = fish
 # title = ""
 
+font-family = JetBrainsMono Nerd Font
 font-size = 10
 
 window-padding-x = 2
@@ -19,3 +20,4 @@ mouse-hide-while-typing = true
 keybind = alt+c=copy_to_clipboard
 keybind = alt+v=paste_from_clipboard
 keybind = alt+,=reload_config
+keybind = ctrl+enter=ignore
