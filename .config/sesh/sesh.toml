@@ -4,11 +4,22 @@ preview_command = "eza --all --git --icons --color=always {}"
 
 [[session]]
 name = "tmux config"
-path = "~/.dotfiles/.config/tmux"
+path = "~/.config/tmux"
 startup_command = "nvim tmux.conf"
-preview_command = "bat --color=always ~/.dotfiles/.config/tmux/tmux.conf"
+# preview_command = "bat --color=always ~/.dotfiles/.config/tmux/tmux.conf"
 
 [[session]]
 name = "neovim config"
-path = "~/.dotfiles/.config/tinivim"
+path = "~/.config/nvim"
+startup_command = "nvim -c ':FzfLua files'"
+
+[[session]]
+name = "hyprland config"
+path = "~/.config/hypr"
+startup_command = "nvim hyprland.conf"
+# preview_command = "bat --color=always ~/.dotfiles/.config/hypr/hyprland.conf"
+
+[[session]]
+name = "waybar config"
+path = "~/.config/waybar"
 startup_command = "nvim -c ':FzfLua files'"

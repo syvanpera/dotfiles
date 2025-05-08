@@ -105,7 +105,7 @@ return {
         },
         on_highlights = function(hl, c)
           hl.WinSeparator = {
-            fg = "#b4befe",
+            fg = "#34344d",
           }
         end,
       })
