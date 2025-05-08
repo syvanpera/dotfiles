@@ -11,7 +11,12 @@ return {
     bufdelete = { enabled = true },
     dashboard = { enabled = false },
     explorer = { enabled = false },
-    indent = { enabled = true },
+    indent = {
+      animate = {
+        enabled = false,
+      },
+      enabled = true,
+    },
     input = {
       enabled = true,
       icon = " ",

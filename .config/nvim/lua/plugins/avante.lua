@@ -14,6 +14,9 @@ return {
     --   max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
     --   --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
     -- },
+    windows = {
+      width = 40,
+    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",

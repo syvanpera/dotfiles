@@ -37,7 +37,7 @@ return {
       servers = {
         lua_ls = {},
         terraformls = {},
-        nil_ls = {},
+        -- nil_ls = {},
         bashls = {},
         gopls = {},
         dockerls = {},
@@ -47,7 +47,7 @@ return {
       ensure_installed = {
         "stylua",
         "tflint",
-        "alejandra",
+        -- "alejandra",
         "goimports",
         "gofumpt",
         "dockerls",
