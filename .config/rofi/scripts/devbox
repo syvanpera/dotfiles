@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+dir="$HOME/.config/rofi/launchers/type-1"
+theme='custom'
+
+# Get the list of all Incus containers
+containers=$(incus list --format=json | jq -r '.[] | "\(.name) [\(.status)]"')
+
+# Check if there are any containers
+if [[ -z "$containers" ]]; then
+  echo "No containers found."
+  exit 1
+fi
+
+# Use rofi to display the list and allow the user to select a container
+selected_container=$(echo "$containers" | rofi -theme ${dir}/${theme}.rasi -dmenu -p "Select Incus Container")
+
+# Check if a container was selected
+if [[ -n "$selected_container" ]]; then
+  # Check if the selected container is running
+  is_running=$(incus list --format=json | jq -r ".[] | select(.name == \"$selected_container\") | .status")
+
+  if [[ "$is_running" != "Running" ]]; then
+    echo "Starting container: $selected_container"
+    incus start "$selected_container"
+  fi
+
+  # Open a shell into the container using ghostty
+  echo "Opening shell into container: $selected_container"
+  ghostty -e incus exec "$selected_container" -- sudo --login --user tuomo tmux new-session -A -s default
+else
+  echo "No container selected."
+fi
