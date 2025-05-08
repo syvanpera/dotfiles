@@ -13,7 +13,10 @@ if [[ -z "$containers" ]]; then
 fi
 
 # Use rofi to display the list and allow the user to select a container
-selected_container=$(echo "$containers" | rofi -theme ${dir}/${theme}.rasi -dmenu -p "Select Incus Container")
+selected_entry=$(echo "$containers" | rofi -dmenu -p "Select Incus Container")
+
+# Extract the container name from the selected entry
+selected_container=$(echo "$selected_entry" | awk '{print $1}')
 
 # Check if a container was selected
 if [[ -n "$selected_container" ]]; then
@@ -27,7 +30,7 @@ if [[ -n "$selected_container" ]]; then
 
   # Open a shell into the container using ghostty
   echo "Opening shell into container: $selected_container"
-  ghostty -e incus exec "$selected_container" -- sudo --login --user tuomo tmux new-session -A -s default
+  kitty -e incus exec "$selected_container" -- sudo --login --user tuomo tmux new-session -A -s default &
 else
   echo "No container selected."
 fi
