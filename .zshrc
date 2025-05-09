@@ -81,3 +81,14 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $real
 zstyle ':fzf-tab:*' switch-group '<' '>'
 # use tmux popups for fzf-tab
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
+# BEGIN ANSIBLE MANAGED BLOCK
+# END ANSIBLE MANAGED BLOCK
+
+if [[ -z $TMUX ]]; then
+    if tmux has-session -t "$PROJECT" 2>/dev/null; then
+        exec tmux attach-session -t "$PROJECT"
+    else
+        exec tmux new-session -s "$PROJECT"
+    fi
+fi
