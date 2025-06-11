@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "top",
   "mode": "dock",
-  "output": ["eDP-1", "DP-2"],
+  "output": ["eDP-1", "DP-9", "DP-11"],
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 

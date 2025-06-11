@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+dir="$HOME/.config/rofi/launchers/type-1"
+theme='custom'
+
+rofi -theme ${dir}/${theme}.rasi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"
+

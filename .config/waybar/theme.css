@@ -44,7 +44,7 @@
 @define-color main-bg         @crust;
 @define-color main-br         @text;
 
-@define-color active-bg       @overlay2;
+@define-color active-bg       @lavender;
 @define-color active-fg       @crust;
 
 @define-color hover-bg        @surface0;
