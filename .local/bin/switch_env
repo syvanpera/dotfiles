@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# A script to switch between different application environments (e.g., prod, dev)
+# and set the corresponding environment variables.
+
+# --- Usage ---
+# To use this script, you must 'source' it for the environment variables
+# to be set in your current shell session.
+#
+# Example:
+#   source switch_env.sh dev
+#   source switch_env.sh prod
+#
+# To see available environments:
+#   source switch_env.sh
+#
+# To clear the environment variables:
+#   source switch_env.sh unset
+
+# Function to display usage instructions
+usage() {
+    echo "Usage: source $0 {prod|dev|unset}"
+    echo "Available environments:"
+    echo "  prod  - Production environment"
+    echo "  dev   - Development environment"
+    echo "  unset - Unset all environment variables"
+}
+
+# Unset previous environment variables to ensure a clean state
+unset_env() {
+    unset API_URL
+    unset DB_NAME
+    unset DEBUG_MODE
+    unset APP_ENV
+    echo "Environment variables have been cleared."
+}
+
+# Main logic to set environment variables based on the first argument
+set_env() {
+    # First, clear any existing environment variables set by this script
+    unset_env >/dev/null # Suppress output for a cleaner switch
+
+    case $1 in
+        "prod")
+            echo "Activating 'prod' environment..."
+            export API_URL="https://api.your-awesome-app.com"
+            export DB_NAME="production_db"
+            export DEBUG_MODE="false"
+            export APP_ENV="production"
+            ;;
+
+        "dev")
+            echo "Activating 'dev' environment..."
+            export API_URL="http://localhost:8080/api"
+            export DB_NAME="development_db"
+            export DEBUG_MODE="true"
+            export APP_ENV="development"
+            ;;
+
+        *)
+            echo "Error: Unknown environment '$1'"
+            usage
+            return 1
+            ;;
+    esac
+
+    echo "Environment '$APP_ENV' is now active."
+    echo "------------------------------------"
+    echo "API_URL: $API_URL"
+    echo "DB_NAME: $DB_NAME"
+    echo "DEBUG_MODE: $DEBUG_MODE"
+    echo "------------------------------------"
+}
+
+
+# --- Script Execution ---
+
+# Check if an argument was provided
+if [ -z "$1" ]; then
+    usage
+    return 0
+fi
+
+# Handle the 'unset' command separately
+if [ "$1" == "unset" ]; then
+    unset_env
+else
+    set_env "$1"
+fi
