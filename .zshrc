@@ -51,16 +51,6 @@ cds() {
   cd $(tmux display-message -p '#{session_path}')
 }
 
-# Aliases
-alias l="eza --color=always --long --group-directories-first --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias ll="eza -l --group --color=always --group-directories-first --time-style=long-iso --icons --git"
-alias ls="eza --group --color=always --group-directories-first --time-style=long-iso --icons"
-alias tm="tmux new-session -A -s main"
-alias vi="nvim"
-alias r="yazi"
-alias cat="batcat"
-alias r="yazi"
-
 # Completion styling
 # idngore case when completing
 #zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -82,13 +72,25 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # use tmux popups for fzf-tab
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
+export PROJECT=devbox
 # BEGIN ANSIBLE MANAGED BLOCK
 # END ANSIBLE MANAGED BLOCK
 
-if [[ -z $TMUX ]]; then
-    if tmux has-session -t "$PROJECT" 2>/dev/null; then
-        exec tmux attach-session -t "$PROJECT"
-    else
-        exec tmux new-session -s "$PROJECT"
-    fi
-fi
+# Aliases
+alias l="eza --color=always --long --group-directories-first --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ll="eza -l --group --color=always --group-directories-first --time-style=long-iso --icons --git"
+alias ls="eza --group --color=always --group-directories-first --time-style=long-iso --icons"
+alias tm="tmux new-session -A -s $PROJECT"
+alias vi="nvim"
+alias r="yazi"
+alias cat="batcat"
+alias r="yazi"
+
+# This sometimes crashes at least the Windows terminal
+# if [[ -z $TMUX ]]; then
+#     if tmux has-session -t "$PROJECT" 2>/dev/null; then
+#         exec tmux attach-session -t "$PROJECT"
+#     else
+#         exec tmux new-session -s "$PROJECT"
+#     fi
+# fi
