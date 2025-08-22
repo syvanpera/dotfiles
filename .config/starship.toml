@@ -6,6 +6,7 @@ $directory\
 $git_branch\
 $nix_shell\
 $fill\
+$env_var\
 $nodejs\
 $dotnet\
 $python\
@@ -107,7 +108,7 @@ format = '[─](fg:current_line)[](fg:purple)[$symbol](fg:primary bg:purple)[
 symbol = ' .NET'
 
 [python]
-format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+format = '(fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
 symbol = ' python'
 
 [java]
@@ -148,3 +149,8 @@ format = """
 success_symbol = '[󰄾](fg:bold white)'
 error_symbol = '[×](fg:bold red)'
 
+[env_var.ENV]
+variable = 'ENV'
+format = '([](fg:cyan)[ENV: $env_value](fg:primary bg:cyan)[](fg:cyan))'
+symbol = ' '
+default = ''

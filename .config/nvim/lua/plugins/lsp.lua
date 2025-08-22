@@ -41,6 +41,8 @@ return {
         bashls = {},
         gopls = {},
         dockerls = {},
+        basedpyright = {},
+        ruff = {},
       },
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
@@ -51,6 +53,8 @@ return {
         "goimports",
         "gofumpt",
         "dockerls",
+        "basedpyright",
+        "ruff",
       },
     },
     config = function(_, opts)

@@ -28,10 +28,11 @@ usage() {
 
 # Unset previous environment variables to ensure a clean state
 unset_env() {
-    unset API_URL
-    unset DB_NAME
-    unset DEBUG_MODE
-    unset APP_ENV
+    unset ENV
+    unset DATABRICKS_HOST
+    unset DATABRICKS_ACCOUNT_ID
+    unset DATABRCIKS_CLIENT_ID
+    unset DATABRCIKS_CLIENT_SECRET
     echo "Environment variables have been cleared."
 }
 
@@ -43,18 +44,20 @@ set_env() {
     case $1 in
         "prod")
             echo "Activating 'prod' environment..."
-            export API_URL="https://api.your-awesome-app.com"
-            export DB_NAME="production_db"
-            export DEBUG_MODE="false"
-            export APP_ENV="production"
+            export ENV="prod"
+            # export API_URL="https://api.your-awesome-app.com"
+            # export DB_NAME="production_db"
+            # export DEBUG_MODE="false"
+            # export APP_ENV="production"
             ;;
 
         "dev")
             echo "Activating 'dev' environment..."
-            export API_URL="http://localhost:8080/api"
-            export DB_NAME="development_db"
-            export DEBUG_MODE="true"
-            export APP_ENV="development"
+            export ENV="dev"
+            # export API_URL="http://localhost:8080/api"
+            # export DB_NAME="development_db"
+            # export DEBUG_MODE="true"
+            # export APP_ENV="development"
             ;;
 
         *)
@@ -64,11 +67,9 @@ set_env() {
             ;;
     esac
 
-    echo "Environment '$APP_ENV' is now active."
+    echo "Environment '$ENV' is now active."
     echo "------------------------------------"
-    echo "API_URL: $API_URL"
-    echo "DB_NAME: $DB_NAME"
-    echo "DEBUG_MODE: $DEBUG_MODE"
+    echo "ENV: $ENV"
     echo "------------------------------------"
 }
 
@@ -82,8 +83,10 @@ if [ -z "$1" ]; then
 fi
 
 # Handle the 'unset' command separately
-if [ "$1" == "unset" ]; then
+if [[ "$1" == "unset" ]]; then
     unset_env
 else
     set_env "$1"
 fi
+
+# set_env "$1"
