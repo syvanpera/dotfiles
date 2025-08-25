@@ -92,7 +92,7 @@ Available options:
 
 Arguments:
   repository    The URL of the repository to clone.
-  directory     The directory to create the bare repository in (default: current directory).
+  directory     The directory to create the bare repository in (default: name of the repository).
 EOF
   exit
 }
@@ -103,29 +103,29 @@ clone() {
 
   while :; do
     case "${1-}" in
-    -h | --help) clone_usage ;;
-    -v | --verbose) set -x ;;
-    --no-color) NO_COLOR=1 ;;
+    -h | --help) clone_usage ;; 
+    -v | --verbose) set -x ;; 
+    --no-color) NO_COLOR=1 ;; 
     -l | --location)
         location="${2-}"
         shift
-        ;;
+        ;; 
     -b | --branch)
         branch="${2-}"
         shift
-        ;;
-    -?*) die "Unknown option: $1" ;;
-    *) break ;;
+        ;; 
+    -?*) die "Unknown option: $1" ;; 
+    *) break ;; 
     esac
     shift
   done
 
-  local args=("$@")
+  local args=($@)
 
   [[ ${#args[@]} -eq 0 ]] && die "Missing repository URL"
 
   local repository="${args[0]}"
-  local target_dir="${args[1]:-.}" # Default to current directory if not provided
+  local target_dir="${args[1]:-\`basename \"$repository\" .git\`}"
 
   # Ensure the target directory exists
   mkdir -p "$target_dir" || die "Failed to create directory: $target_dir"
