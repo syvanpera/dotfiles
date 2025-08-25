@@ -16,10 +16,8 @@
   navigate = true
   light = false
 
-[includeIf "gitdir:/home/tuomo/projects/asteroid"]
-  path = /home/tuomo/projects/asteroid/.gitconfig
+[includeIf "gitdir:/home/tuomo/project"]
+  path = /home/tuomo/project/.gitconfig
 
-[includeIf "gitdir:/home/tuomo/projects/helen"]
-  path = /home/tuomo/projects/helen/.gitconfig
 [init]
 	defaultBranch = main
