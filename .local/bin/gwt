@@ -125,7 +125,7 @@ clone() {
   [[ ${#args[@]} -eq 0 ]] && die "Missing repository URL"
 
   local repository="${args[0]}"
-  local target_dir="${args[1]:-\`basename \"$repository\" .git\`}"
+  local target_dir="${args[1]:-$(basename \"$repository\" .git)}"
 
   # Ensure the target directory exists
   mkdir -p "$target_dir" || die "Failed to create directory: $target_dir"
