@@ -205,12 +205,11 @@ return {
       --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       -- end
 
-      local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
         -- passing config.capabilities to blink.cmp merges with the capabilities in your
         -- `opts[server].capabilities, if you've defined it
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
       end
 
       local ensure_installed = vim.tbl_keys(opts.servers or {})
