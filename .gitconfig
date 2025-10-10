@@ -1,5 +1,6 @@
 [core] 
   pager = delta
+  editor = nvim
 
 [user]
   email = tuomo.syvanpera@gmail.com
