@@ -56,6 +56,9 @@ opt.undofile = true
 
 opt.showmode = false
 
+opt.modeline = true
+opt.modelineexpr = true
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 opt.list = true
 opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }

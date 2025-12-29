@@ -25,3 +25,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.opt_local.conceallevel = 0
   end,
 })
+
+-- Folding for Terraform files using Treesitter
+vim.api.nvim_create_autocmd("FileType", {
+  -- pattern = "terraform,terraform-vars",
+  pattern = "terraform-vars",
+  group = vim.api.nvim_create_augroup("TerraformFolding", { clear = true }),
+  callback = function()
+    vim.opt_local.foldmethod = "expr"
+    vim.opt_local.foldexpr = "v:lua.vim.treeistter.foldexpr()"
+  end,
+})

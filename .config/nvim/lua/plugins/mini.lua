@@ -7,11 +7,11 @@ return {
     MiniIcons.mock_nvim_web_devicons()
 
     require("mini.comment").setup()
-    require("mini.surround").setup({
-      mappings = {
-        replace = "sc",
-      },
-    })
+    -- require("mini.surround").setup({
+    --   mappings = {
+    --     replace = "sc",
+    --   },
+    -- })
     require("mini.splitjoin").setup()
 
     local hipatterns = require("mini.hipatterns")

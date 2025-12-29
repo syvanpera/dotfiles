@@ -23,6 +23,8 @@ set("n", "<leader>el", vim.diagnostic.open_float, { desc = "line diagnostics" })
 set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "line diagnostics" })
 set("n", "gl", vim.diagnostic.open_float, { desc = "line diagnostics" })
 
+set("n", "<leader>th", "<cmd>nohl<CR>", { desc = "clear highlights" })
+
 -- These mappings control the size of splits (height/width)
 set("n", "<M-,>", "<c-w>5<")
 set("n", "<M-.>", "<c-w>5>")
