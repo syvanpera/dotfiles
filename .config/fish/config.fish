@@ -4,3 +4,6 @@ if status is-interactive
 end
 
 set -U fish_greeting
+
+# opencode
+fish_add_path /home/tuomo/.opencode/bin

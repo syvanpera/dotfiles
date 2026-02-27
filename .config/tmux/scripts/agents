@@ -1,0 +1,7 @@
+#!/bin/bash
+
+agents=("claude" "copilot" "codex" "gemini" "opencode")
+
+for item in "${agents[@]}"; do
+  echo "$item"
+done

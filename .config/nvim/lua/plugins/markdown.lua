@@ -28,6 +28,7 @@ return {
       --   right_pad = 1,
       -- },
       heading = {
+        enabled = false,
         sign = true,
         icons = { "󰼏 ", "󰎨 ", "󰼑 ", "󰎲 " },
         -- icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },

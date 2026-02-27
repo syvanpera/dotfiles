@@ -9,6 +9,8 @@ command = fish
 font-family = JetBrainsMono Nerd Font
 font-size = 10
 
+window-decoration = none
+
 window-padding-x = 2
 window-padding-y = 5,2
 background-opacity = 0.95
