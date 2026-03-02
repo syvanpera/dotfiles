@@ -21,7 +21,7 @@ mkdir -p "$HOME/.config"
 # -t ~      : target home directory
 # -v        : verbose
 # -R        : restow (unlinks and relinks, good for updates)
-stow -t "$HOME" -v -R common
+stow -t "$HOME" -v -R home
 stow -t "$HOME/.config" -v -R config
 
 echo "✅ Dotfiles installation complete!"
