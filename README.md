@@ -6,7 +6,7 @@ These are my personal dotfiles managed with **GNU Stow**.
 
 The repository is organized into "packages" (subdirectories):
 
-- **`common/`**: Contains files that should be symlinked directly to your home directory (`$HOME`).
+- **`home/`**: Contains files that should be symlinked directly to your home directory (`$HOME`).
   - Example: `.bashrc`, `.tmux.conf`, `.zshrc`.
 - **`config/`**: Contains application-specific configuration directories that should be symlinked to `~/.config/`.
   - Example: `nvim/`, `fish/`.
@@ -34,7 +34,7 @@ chmod +x install.sh
 ## Adding New Configurations
 
 ### For Home Directory (`$HOME`)
-Place the file (including the leading dot if necessary) into the `common/` directory.
+Place the file (including the leading dot if necessary) into the `home/` directory.
 
 ### For Config Directory (`~/.config/`)
 1. Create a new directory inside `config/` (e.g., `config/kitty/`).
@@ -46,3 +46,4 @@ Place the file (including the leading dot if necessary) into the `common/` direc
 GNU Stow makes it easy to manage symlinks by using the directory structure of the "package"
 to determine where the symlink should be created. This allows you to keep your dotfiles
 organized in one repository while they appear in their expected locations in your home directory.
+
