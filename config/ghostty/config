@@ -1,0 +1,25 @@
+# theme = catppuccin-mocha
+# theme = tokyonight
+# theme = Kanagawa Wave
+theme = Dracula+
+
+command = fish
+# title = ""
+
+font-family = JetBrainsMono Nerd Font
+font-size = 10
+
+window-decoration = none
+
+window-padding-x = 2
+window-padding-y = 5,2
+background-opacity = 0.95
+background = #101622
+# background = #181825
+
+mouse-hide-while-typing = true
+
+keybind = alt+c=copy_to_clipboard
+keybind = alt+v=paste_from_clipboard
+keybind = alt+,=reload_config
+keybind = ctrl+enter=ignore

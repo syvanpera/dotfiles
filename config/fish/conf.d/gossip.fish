@@ -1,0 +1,1 @@
+gossip completion fish | source
