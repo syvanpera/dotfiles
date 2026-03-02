@@ -14,8 +14,9 @@ if ! command -v stow &> /dev/null; then
     exit 1
 fi
 
-# Ensure ~/.config exists
+# Ensure some folders exists
 mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.local/bin"
 
 # Run stow for the packages
 # -t ~      : target home directory
@@ -23,5 +24,6 @@ mkdir -p "$HOME/.config"
 # -R        : restow (unlinks and relinks, good for updates)
 stow -t "$HOME" -v -R home
 stow -t "$HOME/.config" -v -R config
+stow -t "$HOME/.local/bin" -v -R local/bin
 
 echo "✅ Dotfiles installation complete!"
