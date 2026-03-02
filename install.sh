@@ -24,6 +24,6 @@ mkdir -p "$HOME/.local/bin"
 # -R        : restow (unlinks and relinks, good for updates)
 stow -t "$HOME" -v -R home
 stow -t "$HOME/.config" -v -R config
-stow -t "$HOME/.local/bin" -v -R local/bin
+stow -t "$HOME/.local" -v -R local
 
 echo "✅ Dotfiles installation complete!"
