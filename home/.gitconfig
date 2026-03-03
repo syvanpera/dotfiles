@@ -1,0 +1,26 @@
+[core] 
+  pager = delta
+
+[user]
+  email = tuomo.syvanpera@gmail.com
+  name = Tuomo Syvänperä
+
+[alias]
+  co = checkout
+  st = status
+
+[pull]
+  rebase = true
+
+[delta]
+  navigate = true
+  light = false
+
+[includeIf "gitdir:/home/tuomo/projects/asteroid/"]
+  path = /home/tuomo/projects/asteroid/.gitconfig
+
+[includeIf "gitdir:/mnt/project/helen/"]
+  path = /mnt/project/helen/.gitconfig
+
+[init]
+	defaultBranch = main
