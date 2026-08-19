@@ -1,25 +1,53 @@
-# theme = catppuccin-mocha
-# theme = tokyonight
-# theme = Kanagawa Wave
-theme = Dracula+
-
 command = fish
-# title = ""
 
+# Font Configuration
 font-family = JetBrainsMono Nerd Font
 font-size = 10
 
-window-decoration = none
-
+# Window Configuration
+window-decoration = false
 window-padding-x = 2
 window-padding-y = 5,2
+
 background-opacity = 0.95
-background = #101622
-# background = #181825
 
+# Cursor Configuration
+cursor-style = block
+cursor-style-blink = true
+
+# Scrollback
+#scrollback-limit = 3023
+
+# Terminal features
 mouse-hide-while-typing = true
+copy-on-select = false
+confirm-close-surface = false
 
+# Disable annoying copied to clipboard
+#app-notifications = no-clipboard-copy,no-config-reload
+
+# Key bindings for common actions
 keybind = alt+c=copy_to_clipboard
 keybind = alt+v=paste_from_clipboard
 keybind = alt+,=reload_config
 keybind = ctrl+enter=ignore
+
+# Material 3 UI elements
+unfocused-split-opacity = 0.7
+unfocused-split-fill = #44464f
+
+# Tab configuration
+gtk-titlebar = false
+
+# Shell integration
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,no-cursor
+keybind = shift+enter=text:\n
+
+# Rando stuff
+gtk-single-instance = true
+
+# Dank color generation
+# theme = dankcolors
+# theme = Gruvbox Material Dark
+theme = Catppuccin Mocha

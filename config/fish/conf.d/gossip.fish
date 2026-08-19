@@ -1,1 +1,1 @@
-gossip completion fish | source
+#gossip completion fish | source

@@ -1,1 +1,1 @@
-~/.npm-global/bin/codex completion fish | source
+#~/.npm-global/bin/codex completion fish | source
