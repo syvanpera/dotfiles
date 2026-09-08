@@ -1,0 +1,3 @@
+[submodule ".config/omarchy/plugins/crmne.hyprmoncfg"]
+	path = .config/omarchy/plugins/crmne.hyprmoncfg
+	url = https://github.com/crmne/omarchy-hyprmoncfg.git

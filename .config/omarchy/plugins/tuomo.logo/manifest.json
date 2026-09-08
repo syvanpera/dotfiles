@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "tuomo.logo",
+  "name": "Asteroid logo",
+  "version": "1.0.0",
+  "author": "Tuomo Syvänperä",
+  "description": "Asteroid mark in place of the Omarchy logo; opens the Omarchy menu",
+  "kinds": ["bar-widget"],
+  "entryPoints": { "barWidget": "BarWidget.qml" },
+  "barWidget": {
+    "displayName": "Asteroid logo",
+    "description": "Launches the Omarchy menu",
+    "category": "Compositor",
+    "allowMultiple": false,
+    "defaultSection": "left"
+  }
+}
