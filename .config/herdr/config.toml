@@ -1,3 +1,4 @@
+onboarding = false
 # Mirrors the Omarchy tmux config in config/tmux/tmux.conf
 # tmux session -> herdr workspace, tmux window -> herdr tab, tmux pane -> herdr pane
 
@@ -91,7 +92,8 @@ prompt_new_tab_name = false
 mouse_capture = true
 
 # status-right had the zoom flag followed by #h
-tab_bar_right = [{ type = "zoom" }, { type = "hostname" }]
+tab_bar_right = [{ type = "zoom" }, { type = "hostname" }, { type = "text", text = " "}]
+# tab_bar_right_separator = " · "
 
 # set -g set-titles on / set -g set-titles-string '#h:#W', where tmux's #W was
 # the basename of the pane cwd. This is what Hyprland shows in the group bar,
