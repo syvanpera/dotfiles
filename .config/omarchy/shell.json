@@ -32,7 +32,9 @@
       ],
       "right": [
         {
-          "id": "omarchy.tray"
+          "id": "omarchy.tray",
+          "pinned": [],
+          "hidden": []
         },
         {
           "id": "crmne.hyprmoncfg"
@@ -61,9 +63,34 @@
     "transparent": false
   },
   "idle": {
-    "lock": 420,
-    "screensaver": 300
+    "lock": 600,
+    "screensaver": 900
   },
-  "plugins": [],
-  "version": 1
+  "plugins": [
+    {
+      "id": "tuomo.menu"
+    },
+    {
+      "id": "tuomo.clipboard"
+    },
+    {
+      "id": "tuomo.emojis"
+    },
+    {
+      "id": "tuomo.image-picker"
+    }
+  ],
+  "version": 1,
+  "disabledPlugins": [
+    "omarchy.menu",
+    "omarchy.clipboard",
+    "omarchy.emojis",
+    "omarchy.image-picker"
+  ],
+  "cloneSourceRestores": [
+    "tuomo.menu",
+    "tuomo.clipboard",
+    "tuomo.emojis",
+    "tuomo.image-picker"
+  ]
 }
