@@ -50,7 +50,7 @@ hl.config({
     repeat_rate = 40,
     repeat_delay = 500,
 
-    -- kb_options = "caps:ctrl_modifier,shift:both_capslock_cancel",
+    kb_options = "",
     touchpad = {
       natural_scroll = true,
     },
