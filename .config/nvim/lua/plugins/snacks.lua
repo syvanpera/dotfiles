@@ -3,10 +3,23 @@ vim.pack.add({
 })
 
 require("snacks").setup({
-  explorer = { enabled = true },
+  bigfile = { enabled = true },
+  indent = {
+    enabled = true,
+    animate = {
+      enabled = false
+    }
+  },
+  explorer = {
+    enabled = true,
+    replace_netrw = false,
+  },
   picker = {
     sources = {
       explorer = {
+        -- auto-unfold tree down to the selected file
+        -- auto_close = false,
+        -- jump = { close = false },
         win = {
           list = {
             keys = {
@@ -20,6 +33,7 @@ require("snacks").setup({
   },
 })
 
-vim.keymap.set("n", "<M-e>", function() Snacks.explorer() end, { desc = "File Explorer" })
-vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
-
+vim.keymap.set("n", "<M-e>", function() Snacks.explorer() end, { desc = "explorer" })
+vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "explorer" })
+vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "lazygit" })
+vim.keymap.set("n", "<leader>gl", function() Snacks.lazygit.log() end, { desc = "lazygit log" })
