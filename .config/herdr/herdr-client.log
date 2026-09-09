@@ -33,3 +33,19 @@
 2026-09-08T11:20:22.212640Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=1084557
 2026-09-08T11:20:22.212671Z  INFO herdr::client: connecting to server path=/home/tuomo/.config/herdr/herdr-client.sock
 2026-09-08T11:20:22.396810Z  INFO herdr::client: handshake succeeded version=20 encoding=SemanticFrame
+2026-09-08T12:23:38.751982Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=1084557
+2026-09-08T12:27:32.891503Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=6551
+2026-09-08T12:27:32.891677Z  INFO herdr::client: connecting to server path=/home/tuomo/.config/herdr/herdr-client.sock
+2026-09-08T12:27:32.902479Z  INFO herdr::client: handshake succeeded version=20 encoding=SemanticFrame
+2026-09-08T12:27:54.703078Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=6551
+2026-09-08T12:27:55.566327Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=7530
+2026-09-08T12:27:55.566354Z  INFO herdr::client: connecting to server path=/home/tuomo/.config/herdr/herdr-client.sock
+2026-09-08T12:27:55.725532Z  INFO herdr::client: handshake succeeded version=20 encoding=SemanticFrame
+2026-09-08T12:59:07.388618Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=7530
+2026-09-08T12:59:08.203696Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=23616
+2026-09-08T12:59:08.203731Z  INFO herdr::client: connecting to server path=/home/tuomo/.config/herdr/herdr-client.sock
+2026-09-08T12:59:08.411842Z  INFO herdr::client: handshake succeeded version=20 encoding=SemanticFrame
+2026-09-08T13:24:35.433106Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=23616
+2026-09-08T13:26:59.445723Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=4226
+2026-09-08T13:26:59.445946Z  INFO herdr::client: connecting to server path=/home/tuomo/.config/herdr/herdr-client.sock
+2026-09-08T13:26:59.452566Z  INFO herdr::client: handshake succeeded version=20 encoding=SemanticFrame
