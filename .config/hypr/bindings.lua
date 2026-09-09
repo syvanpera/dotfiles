@@ -28,7 +28,11 @@
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
 
+-- App menu on Alt+Space
+o.bind("ALT + SPACE", "Apps menu", "omarchy-menu toggle apps")
+
 o.bind("SUPER + Q", "Close window", hl.dsp.window.close())
+o.bind("ALT + Q", "Close window", hl.dsp.window.close())
 
 -- scratchpad
 -- hl.unbind("SUPER + SHIFT + S")
@@ -38,6 +42,8 @@ o.bind("SUPER + section", "Move window to scratchpad", hl.dsp.window.move({ work
 
 hl.unbind("SUPER + SHIFT + RETURN")
 o.bind("SUPER + SHIFT + RETURN", "Herdr", { omarchy = "terminal-herdr" })
+o.bind("ALT + RETURN", "Terminal", { omarchy = "terminal" })
+o.bind("ALT + SHIFT + RETURN", "Herdr", { omarchy = "terminal-herdr" })
 
 -- Vim-style window navigation (Alt+hjkl)
 hl.unbind("SUPER + H")
