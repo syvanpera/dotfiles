@@ -106,27 +106,27 @@ sidebar.agents.row_gap = 1
 sidebar_min_width = 30
 
 [[keys.command]]
-  key = "prefix+ctrl+l"
-  type = "shell"
-  command = "herdr pane send-keys \"$HERDR_ACTIVE_PANE_ID\" ctrl+l"
-  description = "clear screen"
+key = "prefix+ctrl+l"
+type = "shell"
+command = "herdr pane send-keys \"$HERDR_ACTIVE_PANE_ID\" ctrl+l"
+description = "clear screen"
 
 [[keys.command]]
-  key = "prefix+_"
-  type = "shell"
-  command = "herdr pane split --current --direction down --ratio 0.7 --focus"
-  description = "split 70/30 down"
+key = "prefix+_"
+type = "shell"
+command = "herdr pane split --current --direction down --ratio 0.7 --focus"
+description = "split 70/30 down"
 
 [[keys.command]]
-  key = "prefix+a"
-  type = "shell"
-  command = "sh -c 'PANE=$(herdr tab create --label Claude --focus | jq .result.root_pane.pane_id); herdr pane run \"$PANE\" claude'"
-  description = "run agent"
+key = "prefix+a"
+type = "shell"
+command = "sh -c 'PANE=$(herdr tab create --label Claude --focus | jq .result.root_pane.pane_id); herdr pane run \"$PANE\" claude'"
+description = "run agent"
 
 [[keys.command]]
-  key = "prefix+g"
-  type = "popup"
-  command = "lazygit"
-  width = "90%"
-  height = "90%"
-  description = "run lazygit"
+key = "prefix+g"
+type = "popup"
+command = "lazygit"
+width = "90%"
+height = "90%"
+description = "run lazygit"
