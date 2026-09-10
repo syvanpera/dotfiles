@@ -75,6 +75,7 @@ end
 -- Clipboard manager on Super+Shift+C (also Super+Ctrl+V)
 hl.unbind("SUPER + SHIFT + C")
 o.bind("SUPER + SHIFT + C", "Clipboard manager", "omarchy-shell shell toggle omarchy.clipboard")
+o.bind("ALT + SHIFT + C", "Clipboard manager", "omarchy-shell shell toggle omarchy.clipboard")
 
 -- Screenshot on Super+Shift+S (was: Move window to scratchpad)
 hl.unbind("SUPER + SHIFT + S")
@@ -83,4 +84,5 @@ o.bind("SUPER + SHIFT + S", "Screenshot", "omarchy-capture-screenshot")
 -- Open agent
 hl.unbind("SUPER + SHIFT + A")
 o.bind("SUPER + SHIFT + A", "Agent", "omarchy-agent --pick")
+o.bind("ALT + SHIFT + A", "Agent", "omarchy-agent --pick")
 
