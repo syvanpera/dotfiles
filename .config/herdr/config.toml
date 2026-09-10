@@ -76,7 +76,7 @@ goto = "prefix+s"
 accent = "blue"
 
 # tmux drew single-line dividers between adjacent panes and no outer frame
-pane_gaps = true
+pane_gaps = false
 pane_outer_borders = true
 
 # tmux had no scrollbar column beside its panes
