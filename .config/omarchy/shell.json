@@ -68,9 +68,6 @@
   },
   "plugins": [
     {
-      "id": "tuomo.menu"
-    },
-    {
       "id": "tuomo.clipboard"
     },
     {
@@ -82,13 +79,11 @@
   ],
   "version": 1,
   "disabledPlugins": [
-    "omarchy.menu",
     "omarchy.clipboard",
     "omarchy.emojis",
     "omarchy.image-picker"
   ],
   "cloneSourceRestores": [
-    "tuomo.menu",
     "tuomo.clipboard",
     "tuomo.emojis",
     "tuomo.image-picker"
