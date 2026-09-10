@@ -3,7 +3,7 @@
 hl.monitor({
   output = "desc:BOE NE135A1M-NY1",
   mode = "2880x1920@120.00",
-  position = "2033x1440",
+  position = "480x1440",
   scale = 2,
   sdr_min_luminance = 0.2,
   sdr_max_luminance = 80,
@@ -12,7 +12,7 @@ hl.monitor({
 hl.monitor({
   output = "desc:LG Electronics LG IPS QHD 303NTLE28728",
   mode = "2560x1440@74.97",
-  position = "4000x0",
+  position = "2560x0",
   scale = 1,
   sdr_min_luminance = 0.2,
   sdr_max_luminance = 80,
@@ -21,7 +21,7 @@ hl.monitor({
 hl.monitor({
   output = "desc:LG Electronics LG IPS QHD 303NTSU28726",
   mode = "2560x1440@74.97",
-  position = "1440x0",
+  position = "0x0",
   scale = 1,
   sdr_min_luminance = 0.2,
   sdr_max_luminance = 80,
