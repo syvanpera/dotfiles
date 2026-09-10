@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "tuomo.herdr",
+  "name": "Herdr sessions",
+  "version": "1.0.0",
+  "author": "tuomo",
+  "description": "Pick a herdr session and attach to it in the default terminal",
+  "kinds": [
+    "overlay"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "overlay": "HerdrSessions.qml"
+  }
+}

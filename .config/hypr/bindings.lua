@@ -86,3 +86,8 @@ hl.unbind("SUPER + SHIFT + A")
 o.bind("SUPER + SHIFT + A", "Agent", "omarchy-agent --pick")
 o.bind("ALT + SHIFT + A", "Agent", "omarchy-agent --pick")
 
+
+-- Herdr session picker on Super+Ctrl+Return
+-- (was: Herdr, a duplicate of the Super+Shift+Return binding above)
+hl.unbind("SUPER + CTRL + RETURN")
+o.bind("SUPER + CTRL + RETURN", "Herdr sessions", "omarchy-shell shell toggle tuomo.herdr")
