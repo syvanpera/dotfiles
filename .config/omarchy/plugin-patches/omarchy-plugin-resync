@@ -1,0 +1,346 @@
+#!/bin/bash
+
+# Keep cloned omarchy-shell plugins in step with the built-ins they came from.
+#
+# `omarchy plugin clone` copies a built-in wholesale, so the clone freezes the
+# version of omarchy that was installed the day it was made. pacman keeps moving
+# the built-in underneath it and nothing notices: omarchy-plugin-update only
+# handles plugins that are their own git checkout with a remote, which a clone
+# living in a dotfiles repo never is.
+#
+# So the clone's own edits are kept here as a patch, and the clone itself is
+# treated as a build artifact: regenerate it from whatever built-in is installed
+# now, re-apply the patch, and the upstream fixes come along for free. A patch
+# that no longer applies is the signal that the edited lines themselves moved.
+#
+# --check   report drift, write nothing (what the post-update hook runs)
+# --apply   regenerate every clean clone in place, refuse the conflicted ones
+# --record  regenerate the patches from the clones as they are on disk now
+
+set -euo pipefail
+
+: "${OMARCHY_PATH:=/usr/share/omarchy}"
+export OMARCHY_PATH
+
+PLUGINS_DIR="$HOME/.config/omarchy/plugins"
+PATCH_DIR="${OMARCHY_PLUGIN_PATCH_DIR:-$HOME/.config/omarchy/plugin-patches}"
+WATCH_FILE="$PATCH_DIR/watch.json"
+# Rejects are debris, not configuration, so they stay out of the patch dir --
+# which is tracked in the dotfiles repo and should hold only the patches.
+REJECT_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/omarchy-plugin-resync"
+
+MODE="check"
+ACK=""
+drift=0
+problems=0
+applied=0
+
+fail() {
+  echo "omarchy-plugin-resync: $*" >&2
+  exit 1
+}
+
+usage() {
+  cat <<USAGE
+Usage: omarchy-plugin-resync [--check | --apply | --record] [--ack <id>:<file>]
+
+  --check   (default) report which clones are behind their built-in; writes nothing
+  --apply   regenerate each clone from the installed built-in plus its patch
+  --record  rewrite the patches from the clones as they stand on disk
+
+  --ack     accept the current built-in as the new baseline for a watched file
+            (see watch.json) after reviewing it by hand
+
+Set OMARCHY_PATH to point at a different omarchy tree to test against it.
+USAGE
+}
+
+while (( $# > 0 )); do
+  case "$1" in
+  --check | --apply | --record)
+    MODE="${1#--}"
+    shift
+    ;;
+  --ack)
+    [[ $# -ge 2 ]] || fail "--ack needs <id>:<file>"
+    ACK="$2"
+    shift 2
+    ;;
+  -h | --help)
+    usage
+    exit 0
+    ;;
+  *)
+    fail "unknown option: $1"
+    ;;
+  esac
+done
+
+[[ -d $PLUGINS_DIR ]] || fail "no plugins directory at $PLUGINS_DIR"
+mkdir -p "$PATCH_DIR"
+
+catalog=$(omarchy-plugin-catalog) || fail "could not read the plugin catalog"
+
+report() { printf '  %-22s %s\n' "$1" "$2"; }
+
+# Clones announce themselves: omarchy-plugin-clone records the built-in it came
+# from in the manifest, so there is no second list here to fall out of step.
+clones() {
+  local dir id from
+  for dir in "$PLUGINS_DIR"/*/; do
+    [[ -f ${dir}manifest.json ]] || continue
+    from=$(jq -r '.omarchy.clonedFrom // empty' "${dir}manifest.json")
+    [[ -n $from ]] || continue
+    id=$(basename "${dir%/}")
+    printf '%s\t%s\n' "$id" "$from"
+  done
+}
+
+source_info() {
+  jq -r --arg id "$1" '
+    .[] | select(.firstParty and .id == $id) | [.sourceDir, .manifestPath] | @tsv
+  ' <<<"$catalog"
+}
+
+# Mirrors copy_plugin in omarchy-plugin-clone: a plugin with its own directory is
+# copied whole (which is what makes files added upstream show up), while a bar
+# widget sharing a directory with its siblings is assembled from its entry points.
+copy_builtin() {
+  local source_dir="$1" manifest="$2" target_dir="$3"
+  local source target source_pattern file
+
+  if [[ ${manifest##*/} == manifest.json ]]; then
+    cp -aL "$source_dir/." "$target_dir/"
+    return
+  fi
+
+  cp -aL "$manifest" "$target_dir/manifest.json"
+  while IFS=$'\t' read -r source target; do
+    [[ $target != /* && $target != *".."* ]] || fail "invalid clone target path: $target"
+    if [[ -d $source_dir/$source ]]; then
+      mkdir -p "$target_dir/$target"
+      cp -aL "$source_dir/$source/." "$target_dir/$target/"
+    else
+      mkdir -p "$(dirname "$target_dir/$target")"
+      cp -aL "$source_dir/$source" "$target_dir/$target"
+    fi
+    if [[ $source != "$target" ]]; then
+      source_pattern=${source//./\\.}
+      while IFS= read -r -d '' file; do
+        sed -i "s|$source_pattern|$target|g" "$file"
+      done < <(rg --files-with-matches --null --fixed-strings "$source" "$target_dir")
+    fi
+  done < <(jq -r '
+    [
+      (.entryPoints[] | {source: ., target: .}),
+      (.omarchy.clonePaths[]? | {source: .source, target: .target})
+    ] | unique_by(.target)[] | [.source, .target] | @tsv
+  ' "$manifest")
+}
+
+# The manifest is rebuilt from the built-in's, not carried over, so a new entry
+# point or a renamed category arrives with everything else. Only the fields that
+# make the clone *this* clone are read back off disk -- recomputing them would
+# undo a hand-renamed plugin.
+overlay_identity() {
+  local staged="$1" live="$2"
+  jq -n --slurpfile up "$staged" --slurpfile mine "$live" '
+    ($up[0]) as $u | ($mine[0]) as $m
+    | $u
+    | .id = $m.id
+    | .name = $m.name
+    | (if ($u.barWidget | type) == "object"
+          and ($m.barWidget | type) == "object"
+          and ($m.barWidget.displayName != null)
+        then .barWidget.displayName = $m.barWidget.displayName
+        else . end)
+    | .omarchy = (
+        (if ($u.omarchy | type) == "object" then $u.omarchy else {} end)
+        + { clonedFrom: $m.omarchy.clonedFrom })
+    | del(.omarchy.clonePaths)
+  ' >"$staged.tmp"
+  mv "$staged.tmp" "$staged"
+}
+
+# Build what the clone *should* look like against the built-in installed now.
+# Returns 0 clean, 3 if the patch would not apply, 4 if the result is not a
+# plugin the shell would load.
+stage_clone() {
+  local id="$1" source_id="$2" stage="$3" reject="$4"
+  local info source_dir manifest
+
+  info=$(source_info "$source_id")
+  [[ -n $info ]] || fail "$id: unknown built-in '$source_id'"
+  IFS=$'\t' read -r source_dir manifest <<<"$info"
+
+  copy_builtin "$source_dir" "$manifest" "$stage"
+  overlay_identity "$stage/manifest.json" "$PLUGINS_DIR/$id/manifest.json"
+
+  if [[ -s $PATCH_DIR/$id.patch ]]; then
+    patch -p1 -d "$stage" --forward --no-backup-if-mismatch -r "$reject" \
+      <"$PATCH_DIR/$id.patch" >/dev/null 2>&1 || return 3
+  fi
+
+  omarchy-plugin-validate "$stage" >/dev/null 2>&1 || return 4
+}
+
+# Name what actually moved, relative to the plugin, rather than pointing at a
+# staging directory the reader has no use for.
+list_changes() {
+  local stage="$1" live="$2" rel
+  {
+    (cd "$stage" && find . -type f -printf '%P\n')
+    (cd "$live" && find . -type f -printf '%P\n')
+  } | sort -u | while IFS= read -r rel; do
+    if [[ ! -f $live/$rel ]]; then
+      echo "added upstream:   $rel"
+    elif [[ ! -f $stage/$rel ]]; then
+      echo "dropped upstream: $rel"
+    elif ! cmp -s "$stage/$rel" "$live/$rel"; then
+      echo "changed:          $rel"
+    fi
+  done
+}
+
+do_record() {
+  local id source_id info source_dir manifest rel patch tmp
+  echo "Recording patches against $OMARCHY_PATH:"
+  while IFS=$'\t' read -r id source_id; do
+    info=$(source_info "$source_id")
+    [[ -n $info ]] || { report "$id" "SKIPPED (unknown built-in '$source_id')"; problems=1; continue; }
+    IFS=$'\t' read -r source_dir manifest <<<"$info"
+
+    patch="$PATCH_DIR/$id.patch"
+    tmp=$(mktemp)
+    # manifest.json is excluded on purpose: overlay_identity regenerates it, so
+    # a diff of it would only re-assert the identity fields it already sets.
+    while IFS= read -r rel; do
+      [[ $rel != manifest.json ]] || continue
+      [[ -f $source_dir/$rel ]] || continue
+      diff -u --label "a/$rel" --label "b/$rel" \
+        "$source_dir/$rel" "$PLUGINS_DIR/$id/$rel" >>"$tmp" || true
+    done < <(cd "$PLUGINS_DIR/$id" && find . -type f -printf '%P\n' | sort)
+
+    if [[ -s $tmp ]]; then
+      mv "$tmp" "$patch"
+      report "$id" "recorded $(grep -c '^@@' "$patch") hunk(s)"
+    else
+      rm -f "$tmp" "$patch"
+      report "$id" "no local edits (no patch)"
+    fi
+  done < <(clones)
+}
+
+do_clones() {
+  local id source_id tmp stage reject rc changed
+  while IFS=$'\t' read -r id source_id; do
+    tmp=$(mktemp -d)
+    stage="$tmp/$id"
+    reject="$tmp/$id.rej"
+    mkdir -p "$stage"
+
+    rc=0
+    stage_clone "$id" "$source_id" "$stage" "$reject" || rc=$?
+
+    if (( rc == 3 )); then
+      problems=1
+      report "$id" "CONFLICT - $source_id moved under the patch"
+      if [[ -f $reject ]]; then
+        mkdir -p "$REJECT_DIR"
+        cp -a "$reject" "$REJECT_DIR/$id.rej"
+        echo "      rejects: $REJECT_DIR/$id.rej"
+      fi
+      rm -rf "$tmp"
+      continue
+    fi
+    if (( rc == 4 )); then
+      problems=1
+      report "$id" "CONFLICT - regenerated plugin fails validation"
+      rm -rf "$tmp"
+      continue
+    fi
+
+    changed=$(list_changes "$stage" "$PLUGINS_DIR/$id")
+    if [[ -z $changed ]]; then
+      report "$id" "ok"
+      rm -rf "$tmp"
+      continue
+    fi
+
+    drift=1
+    if [[ $MODE == apply ]]; then
+      rm -rf "$PLUGINS_DIR/$id"
+      mv "$stage" "$PLUGINS_DIR/$id"
+      applied=1
+      report "$id" "updated from $source_id"
+    else
+      report "$id" "update available from $source_id"
+      sed 's/^/        /' <<<"$changed"
+    fi
+    rm -rf "$tmp"
+  done < <(clones)
+}
+
+# Files written by hand from a built-in rather than patched over it. They can
+# never be regenerated, so all this can do is say when the original moved.
+do_watched() {
+  local id rel derived source_id source_rel path baseline current tmp
+  [[ -f $WATCH_FILE ]] || return 0
+
+  while IFS=$'\t' read -r id rel derived baseline; do
+    source_id="${derived%%/*}"
+    source_rel="${derived#*/}"
+    path=$(jq -r --arg id "$source_id" '
+      .[] | select(.firstParty and .id == $id) | .sourceDir
+    ' <<<"$catalog")
+    [[ -n $path ]] || { report "$id/$rel" "SKIPPED (unknown built-in '$source_id')"; problems=1; continue; }
+    path="$path/$source_rel"
+    [[ -f $path ]] || { report "$id/$rel" "WATCHED FILE GONE ($derived)"; problems=1; continue; }
+
+    current=$(sha256sum "$path" | cut -d' ' -f1)
+    if [[ $current == "$baseline" ]]; then
+      report "$id/$rel" "ok (tracking $derived)"
+    elif [[ $ACK == "$id:$rel" ]]; then
+      tmp=$(mktemp)
+      jq --arg id "$id" --arg rel "$rel" --arg sha "$current" \
+        --arg ver "$(pacman -Q omarchy 2>/dev/null | awk '{print $2}')" '
+        .[$id][$rel].baselineSha256 = $sha | .[$id][$rel].omarchyVersion = $ver
+      ' "$WATCH_FILE" >"$tmp" && mv "$tmp" "$WATCH_FILE"
+      report "$id/$rel" "baseline acknowledged"
+    else
+      problems=1
+      report "$id/$rel" "REVIEW BY HAND - $derived changed"
+      echo "        diff $path $PLUGINS_DIR/$id/$rel"
+      echo "        then: omarchy-plugin-resync --ack $id:$rel"
+    fi
+  done < <(jq -r '
+    to_entries[] | .key as $id | .value | to_entries[]
+    | [$id, .key, .value.derivedFrom, .value.baselineSha256] | @tsv
+  ' "$WATCH_FILE")
+}
+
+if [[ $MODE == record ]]; then
+  do_record
+  exit $(( problems ? 1 : 0 ))
+fi
+
+echo "Cloned plugins vs $OMARCHY_PATH:"
+do_clones
+do_watched
+
+# The shell caches manifests, so a regenerated plugin on disk is not a
+# regenerated plugin in the bar until it re-reads them.
+if [[ $MODE == apply ]] && (( applied )); then
+  omarchy-shell shell rescanPlugins >/dev/null 2>&1 || true
+fi
+
+# Drift is only a failure while it is still unresolved: after --apply the
+# merged clones are the answer, and only what could not be merged is left.
+if (( problems )); then
+  exit 1
+fi
+if (( drift )) && [[ $MODE != apply ]]; then
+  echo "Run 'omarchy-plugin-resync --apply' to take the updates."
+  exit 1
+fi
+echo "Everything is in step."

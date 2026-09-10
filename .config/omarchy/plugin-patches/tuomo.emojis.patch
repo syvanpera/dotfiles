@@ -1,0 +1,15 @@
+--- a/Emojis.qml
++++ b/Emojis.qml
+@@ -203,10 +203,10 @@
+           } else if (Util.editsFilter(event, root.filterText)) {
+             root.setFilter(Util.editedFilter(event, root.filterText))
+             event.accepted = true
+-          } else if (event.key === Qt.Key_Left) {
++          } else if (event.key === Qt.Key_Left || (event.key === Qt.Key_P && event.modifiers === Qt.ControlModifier)) {
+             root.select(-1)
+             event.accepted = true
+-          } else if (event.key === Qt.Key_Right) {
++          } else if (event.key === Qt.Key_Right || (event.key === Qt.Key_N && event.modifiers === Qt.ControlModifier)) {
+             root.select(1)
+             event.accepted = true
+           } else if (event.key === Qt.Key_Up) {

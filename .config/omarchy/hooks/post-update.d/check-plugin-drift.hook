@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+# Cloned plugins are copies of built-ins that pacman keeps updating underneath
+# them, and nothing in omarchy notices: omarchy-plugin-update only handles
+# plugins that are their own git checkout. Report the drift and stop there --
+# taking the update is an explicit `omarchy-plugin-resync --apply`, because a
+# clone is edited code and merging into it is not something to do unasked.
+resync="$HOME/.config/omarchy/plugin-patches/omarchy-plugin-resync"
+[[ -x $resync ]] || exit 0
+
+if ! output=$("$resync" --check 2>&1); then
+  echo "$output"
+  omarchy-notification-send -g 󰐱 "Cloned plugins are behind" \
+    "A built-in changed under one of your clones. Run omarchy-plugin-resync."
+fi

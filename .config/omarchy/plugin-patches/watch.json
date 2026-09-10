@@ -1,0 +1,10 @@
+{
+  "tuomo.logo": {
+    "BarWidget.qml": {
+      "derivedFrom": "omarchy.menu/BarWidget.qml",
+      "baselineSha256": "ad201156483711ba77ec97303183bc02922248e97ac0c0b8ea30d250e57cd0af",
+      "omarchyVersion": "4.0.3-1",
+      "note": "Rewritten by hand, not patched: BarIconButton + MultiEffect recolouring logo.svg. Cannot be regenerated, so this only reports when the original moves."
+    }
+  }
+}

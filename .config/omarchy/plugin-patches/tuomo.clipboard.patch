@@ -1,0 +1,26 @@
+--- a/Clipboard.qml
++++ b/Clipboard.qml
+@@ -367,10 +367,10 @@
+             if (event.modifiers & Qt.ShiftModifier) root.requestClearHistory()
+             else root.removeDisplayIndex(root.selectedIndex)
+             event.accepted = true
+-          } else if (event.key === Qt.Key_Up) {
++          } else if (event.key === Qt.Key_Up || (event.key === Qt.Key_P && event.modifiers === Qt.ControlModifier)) {
+             root.select(-1)
+             event.accepted = true
+-          } else if (event.key === Qt.Key_Down) {
++          } else if (event.key === Qt.Key_Down || (event.key === Qt.Key_N && event.modifiers === Qt.ControlModifier)) {
+             root.select(1)
+             event.accepted = true
+           } else if (event.key === Qt.Key_PageUp) {
+@@ -387,8 +387,8 @@
+             event.accepted = true
+           } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+             if (root.cursorActive && (event.modifiers & Qt.AltModifier)) root.openIndex(root.selectedIndex)
+-            else if (root.cursorActive && (event.modifiers & Qt.ShiftModifier)) root.copyIndex(root.selectedIndex)
+-            else if (root.cursorActive) root.activateIndex(root.selectedIndex)
++            else if (root.cursorActive && (event.modifiers & Qt.ShiftModifier)) root.activateIndex(root.selectedIndex)
++            else if (root.cursorActive) root.copyIndex(root.selectedIndex)
+             else if (displayModel.count > 0) root.cursorActive = true
+             event.accepted = true
+           } else if (event.text && event.text.length === 1 && event.text.charCodeAt(0) >= 32 && event.text.charCodeAt(0) !== 127) {
