@@ -10,6 +10,7 @@
 # registry it regenerates from them. Downloaded artifacts, not configuration.
 .config/herdr/plugins/
 .config/herdr/plugins.json
+.config/herdr/.plugins.lock
 
 # Backups written in place by config editors
 *.bak.*
