@@ -1,4 +1,5 @@
 vim.pack.add({
+  "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/catppuccin/nvim",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/nvim-lualine/lualine.nvim",
