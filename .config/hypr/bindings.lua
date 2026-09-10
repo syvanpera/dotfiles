@@ -40,10 +40,10 @@ o.bind("ALT + Q", "Close window", hl.dsp.window.close())
 o.bind("section", "Toggle scratchpad", hl.dsp.workspace.toggle_special("scratchpad"))
 o.bind("SUPER + section", "Move window to scratchpad", hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }))
 
-hl.unbind("SUPER + SHIFT + RETURN")
-o.bind("SUPER + SHIFT + RETURN", "Herdr", { omarchy = "terminal-herdr" })
 o.bind("ALT + RETURN", "Terminal", { omarchy = "terminal" })
-o.bind("ALT + SHIFT + RETURN", "Herdr", { omarchy = "terminal-herdr" })
+
+hl.unbind("SUPER + SHIFT + RETURN")
+o.bind("ALT + SHIFT + RETURN", "Herdr", { omarchy = "terminal-tmux" })
 
 -- Vim-style window navigation (Alt+hjkl)
 hl.unbind("SUPER + H")
