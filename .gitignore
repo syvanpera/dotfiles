@@ -5,3 +5,11 @@
 # Never track SSH key material; config is the only file allowed through
 .ssh/*
 !.ssh/config
+
+# herdr installs plugins into its config dir: upstream git checkouts plus the
+# registry it regenerates from them. Downloaded artifacts, not configuration.
+.config/herdr/plugins/
+.config/herdr/plugins.json
+
+# Backups written in place by config editors
+*.bak.*
