@@ -12,5 +12,8 @@
 .config/herdr/plugins.json
 .config/herdr/.plugins.lock
 
+# omarchy plugin installed as its own git checkout; see README
+.config/omarchy/plugins/crmne.hyprmoncfg/
+
 # Backups written in place by config editors
 *.bak.*
