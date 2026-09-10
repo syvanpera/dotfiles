@@ -35,18 +35,18 @@ close_pane = ["prefix+x", "alt+esc"]
 zoom = "prefix+z"
 last_pane = "prefix+;"
 
-focus_pane_left = "ctrl+h"
-focus_pane_down = "ctrl+j"
-focus_pane_up = "ctrl+k"
-focus_pane_right = "ctrl+l"
+# focus_pane_left = "ctrl+h"
+# focus_pane_down = "ctrl+j"
+# focus_pane_up = "ctrl+k"
+# focus_pane_right = "ctrl+l"
 
 resize_mode = ["prefix+ctrl+left", "prefix+ctrl+down", "prefix+ctrl+up", "prefix+ctrl+right"]
 
 # Like resize-pane on C-M-S-arrows
-resize_pane_left = "ctrl+alt+h"
-resize_pane_down = "ctrl+alt+j"
-resize_pane_up = "ctrl+alt+k"
-resize_pane_right = "ctrl+alt+l"
+# resize_pane_left = "ctrl+alt+h"
+# resize_pane_down = "ctrl+alt+j"
+# resize_pane_up = "ctrl+alt+k"
+# resize_pane_right = "ctrl+alt+l"
 
 # No tmux equivalent; herdr's default prefix+shift+p is taken by previous session
 rename_pane = "prefix+shift+o"
@@ -137,3 +137,43 @@ command = "lazygit"
 width = "90%"
 height = "90%"
 description = "run lazygit"
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "herdr-splits.nav-left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "herdr-splits.nav-down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "herdr-splits.nav-up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "herdr-splits.nav-right"
+
+[[keys.command]]
+key = "ctrl+alt+h"
+type = "plugin_action"
+command = "herdr-splits.resize-left"
+
+[[keys.command]]
+key = "ctrl+alt+j"
+type = "plugin_action"
+command = "herdr-splits.resize-down"
+
+[[keys.command]]
+key = "ctrl+alt+k"
+type = "plugin_action"
+command = "herdr-splits.resize-up"
+
+[[keys.command]]
+key = "ctrl+alt+l"
+type = "plugin_action"
+command = "herdr-splits.resize-right"
