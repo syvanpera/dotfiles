@@ -73,6 +73,10 @@
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
     },
+    "tree-sitter-manager.nvim": {
+      "rev": "1425eacb78bfee34face0fe06a8384ac3c4d9c8e",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
+    },
     "vim-moonfly-colors": {
       "rev": "261664f92ed51cf0c077555b2d4b2530307eac17",
       "src": "https://github.com/bluz71/vim-moonfly-colors"
