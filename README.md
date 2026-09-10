@@ -18,14 +18,16 @@ that commit to `--ref` instead if the difference ever matters).
 
 ## omarchy plugins
 
-`crmne.hyprmoncfg` is likewise its own git checkout that omarchy updates in
-place, so it is ignored too. The plugins under `.config/omarchy/plugins`
-written here — `tuomo.*` — are tracked as normal.
+`crmne.hyprmoncfg` and `chyld.easy-capture` are their own git checkouts that
+omarchy updates in place, so they are ignored too. The plugins under
+`.config/omarchy/plugins` written here — `tuomo.*` — are tracked as normal.
 
     omarchy plugin add https://github.com/crmne/omarchy-hyprmoncfg.git --enable
+    omarchy plugin add https://github.com/chyld/omarchy-easy-capture.git --enable
 
-`omarchy plugin add` takes no ref, so that installs the current main; v2.3.3
-(`c419135`) is what these dotfiles were last used with. Its bar widget entry
-lives in `.config/omarchy/shell.json`, which is tracked, and it writes the
-tracked `.config/hypr/hyprmoncfg-monitors.lua`. Update it with
-`omarchy plugin update`.
+`omarchy plugin add` takes no ref, so those install the current main. Last used
+with hyprmoncfg v2.3.3 (`c419135`, an exact tag) and easy-capture 0.4.0
+(`59fc509` — that repo publishes no tags, so the version is the manifest's).
+Both are bar widgets enabled in the tracked `.config/omarchy/shell.json`, and
+hyprmoncfg also writes the tracked `.config/hypr/hyprmoncfg-monitors.lua`.
+Update them with `omarchy plugin update`.
