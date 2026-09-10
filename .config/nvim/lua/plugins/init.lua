@@ -7,6 +7,7 @@ vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter",
 })
 
+
 --- catppuccin theme ---
 require("catppuccin").setup({
   transparent_background = true,
@@ -17,6 +18,7 @@ require("catppuccin").setup({
 
 vim.cmd.colorscheme 'catppuccin'
 
+
 --- oil.nvim ---
 require("oil").setup({
   keymaps = {
@@ -26,6 +28,15 @@ require("oil").setup({
 
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Browse cwd" })
 
+
+--- guess indent ---
+require("guess-indent").setup({})
+
+
+--- todo comments ---
+require("todo-comments").setup({ signs = true })
+
+
 local plugins_dir = vim.fs.joinpath(vim.fn.stdpath 'config', 'lua', 'plugins')
 for file_name, type in vim.fs.dir(plugins_dir, { follow = true }) do
   if (type == 'file' or type == 'link') and file_name:match '%.lua$' and file_name ~= 'init.lua' and not file_name:match '^_' then
@@ -33,9 +44,3 @@ for file_name, type in vim.fs.dir(plugins_dir, { follow = true }) do
     require('plugins.' .. module)
   end
 end
-
---- guess indent ---
-require('guess-indent').setup({})
-
---- todo comments ---
-require("todo-comments").setup({ signs = true })
