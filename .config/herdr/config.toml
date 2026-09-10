@@ -177,3 +177,15 @@ command = "herdr-splits.resize-up"
 key = "ctrl+alt+l"
 type = "plugin_action"
 command = "herdr-splits.resize-right"
+
+[[keys.command]]
+key = "alt+p"
+type = "plugin_action"
+command = "fullerzz.sesh.open-picker"
+description = "open Sesh picker"
+
+[[keys.command]]
+key = "alt+n"
+type = "plugin_action"
+command = "fullerzz.sesh.last"
+description = "switch to previous Sesh workspace"
