@@ -92,7 +92,14 @@ prompt_new_tab_name = false
 mouse_capture = true
 
 # status-right had the zoom flag followed by #h
-tab_bar_right = [{ type = "zoom" }, { type = "hostname" }, { type = "text", text = " "}]
+tab_bar_right = [
+  # No built-in session entry; resolve the running session from its socket path
+  { type = "command", command = "herdr session list --json | jq -r '.sessions[] | select(.socket_path==env.HERDR_SOCKET_PATH) | .name'", interval_seconds = 30, timeout_seconds = 3 },
+  { type = "zoom" },
+  { type = "text", text = "@" },
+  { type = "hostname" },
+  { type = "text", text = " " },
+]
 # tab_bar_right_separator = " · "
 
 # set -g set-titles on / set -g set-titles-string '#h:#W', where tmux's #W was
