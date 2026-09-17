@@ -69,12 +69,12 @@ require("mini.notify").setup({
 require("mini.surround").setup()
 
 --- mini completions ---
-local MiniCompletion = require("mini.completion")
-MiniCompletion.setup({
-  lsp_completion = {
-    auto_setup = true,
-  }
-})
+-- local MiniCompletion = require("mini.completion")
+-- MiniCompletion.setup({
+--   lsp_completion = {
+--     auto_setup = true,
+--   }
+-- })
 
 --- mini statusline ---
 -- local statusline = require("mini.statusline")
