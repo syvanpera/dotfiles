@@ -7,13 +7,13 @@
           "id": "omarchy.indicators"
         },
         {
-          "format": "dddd HH:mm",
-          "formatAlt": "d MMMM 'W'ww yyyy",
-          "id": "omarchy.clock",
-          "verticalFormat": "HH\n—\nmm"
+          "id": "omarchy.keyboard-layout"
         },
         {
-          "id": "omarchy.keyboard-layout"
+          "id": "omarchy.clock",
+          "format": "ddd d MMM HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "verticalFormat": "HH\n—\nmm"
         },
         {
           "id": "omarchy.weather"
@@ -40,9 +40,6 @@
           "id": "chyld.easy-capture"
         },
         {
-          "id": "crmne.hyprmoncfg"
-        },
-        {
           "id": "omarchy.agents"
         },
         {
@@ -55,7 +52,7 @@
           "id": "omarchy.audio"
         },
         {
-          "id": "omarchy.monitor"
+          "id": "crmne.hyprmoncfg"
         },
         {
           "id": "omarchy.power"
@@ -81,6 +78,9 @@
     },
     {
       "id": "tuomo.herdr"
+    },
+    {
+      "id": "tuomo.tmux"
     }
   ],
   "version": 1,

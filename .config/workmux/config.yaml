@@ -1,0 +1,25 @@
+mode: session
+nerdfont: true
+agent: claude
+base_branch: auto
+# worktree_dir: ..
+
+panes:
+  - command: nvim
+    focus: true
+  - command: <agent>
+    split: horizontal
+    percentage: 45
+  - command: hunk diff --watch
+    split: vertical
+    percentage: 50
+
+status_format: false
+
+# status_icons:
+#   working: "🤖"
+#   waiting: "💬"
+#   done: "✅"
+
+# status_icons:
+#   done: "#[fg=#a6e3a1]󰄴#[fg=default]"

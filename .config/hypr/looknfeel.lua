@@ -8,8 +8,10 @@ hl.config({
   },
   decoration = {
     rounding = 6,
+    rounding_power = 10,
 
     dim_inactive = false,
+    dim_strength = 0.15,
   },
   scrolling = {
     column_width = 0.5,
