@@ -1,0 +1,16 @@
+[bootstrap.packages]
+"pacman:keyd" = "latest"
+
+[bootstrap.files."/etc/keyd/default.conf"]
+content = '''
+[ids]
+*
+
+[main]
+capslock = overload(control, esc)
+'''
+notify = ["keyd"]
+
+[bootstrap.services.keyd]
+state = "running"
+enabled = true

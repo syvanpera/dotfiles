@@ -1,0 +1,56 @@
+[tools]
+claude = "latest"
+codex = "latest"
+gh = "latest"
+node = "26.8.1"
+opencode = "latest"
+atuin = "latest"
+yazi = "latest"
+delta = "latest"
+bat = "latest"
+go = "latest"
+pi = "latest"
+workmux = "latest"
+"github:raine/aven" = "latest"
+"aqua:joshmedeski/sesh" = "latest"
+television = "latest"
+glow = "latest"
+hunk = "latest"
+"github:agavra/tuicr" = "latest"
+
+[dotfiles]
+"~/.config/atuin" = {}
+"~/.config/aven" = {}
+"~/.config/fish" = {}
+"~/.config/ghostty" = {}
+"~/.config/git" = {}
+"~/.config/herdr" = {}
+"~/.config/herdr-sesh" = {}
+"~/.config/hunk" = {}
+"~/.config/hypr" = {}
+"~/.config/hyprmoncfg" = {}
+"~/.config/kitty" = {}
+"~/.config/lazygit" = {}
+"~/.config/nvim" = {}
+"~/.config/omarchy" = {}
+"~/.config/sesh" = {}
+"~/.config/starship.toml" = {}
+"~/.config/television" = {}
+"~/.config/tmux" = {}
+"~/.config/workmux" = {}
+"~/.ssh/cliamp" = {}
+"~/.ssh/config" = {}
+
+[bootstrap.packages]
+"apt:neovim" = "latest"
+"apt:fish" = "latest"
+"apt:tree-sitter-cli" = "latest"
+"pacman:neovim" = "latest"
+"pacman:fish" = "latest"
+"pacman:tree-sitter" = "latest"
+"pacman:procs" = "latest"
+"pacman:task" = "latest"
+"pacman:tmux" = "latest"
+
+[settings.upgrade]
+auto_prune = false
