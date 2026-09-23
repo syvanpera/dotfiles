@@ -1,0 +1,5 @@
+hl.workspace_rule({ workspace = "1", monitor = "desc: LG Electronics LG IPS QHD 303NTSU28726", default = true, persistent = true })
+hl.workspace_rule({ workspace = "2", monitor = "desc: LG Electronics LG IPS QHD 303NTSU28726" })
+hl.workspace_rule({ workspace = "3", monitor = "desc: LG Electronics LG IPS QHD 303NTLE28728" })
+hl.workspace_rule({ workspace = "4", monitor = "eDP-1" })
+hl.workspace_rule({ workspace = "5", monitor = "eDP-1" })

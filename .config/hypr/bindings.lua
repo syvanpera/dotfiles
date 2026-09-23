@@ -1,103 +1,75 @@
--- Keep only your personal keybinding overrides here. Add new bindings or
--- unbind defaults before replacing them.
+-------------------
+---- VARIABLES ----
+-------------------
 
--- See current bindings and descriptions:
---   omarchy menu keybindings --print
+-- Set programs that you use
+local terminal    = "ghostty"
+local multiplexer = "ghostty -e tmux new-session -A -s Work"
+local fileManager = "nautilus"
+local kuori       = "qs ipc -p ~/.config/kuori call "
 
--- To disable every Omarchy default binding, set this in
--- ~/.config/hypr/hyprland.lua before require("default.hypr.omarchy"), then add
--- only the bindings you want below:
---   omarchy_default_bindings = false
+-- key modifiers
+local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local altMod = "ALT" -- Sets "ALT" key as alternate modifier
 
--- To disable all preinstalled app/webapp bindings, set:
---   omarchy_preinstalled_bindings = false
+---------------------
+---- KEYBINDINGS ----
+---------------------
 
--- Add a new binding.
--- o.bind("SUPER + SHIFT + R", "SSH", "alacritty -e ssh your-server")
+hl.bind(altMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+hl.bind(altMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd(multiplexer))
+hl.bind(altMod .. " + SPACE", hl.dsp.exec_cmd(kuori .. "launcher toggle"))
 
--- Change an existing binding by unbinding it first, then binding the key again.
--- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
--- hl.unbind("SUPER + SPACE")
--- o.bind("SUPER + SPACE", "Omarchy menu", "omarchy-menu toggle root")
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd(kuori .. "launcher power"))
 
--- Disable a default binding without replacing it.
--- hl.unbind("SUPER + SHIFT + B")
+hl.bind(altMod .. " + Q", hl.dsp.window.close())
 
--- Logitech MX Keys examples:
--- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
--- o.bind("SUPER + H", nil, "voxtype record toggle")
--- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
+hl.bind(altMod .. " + SHIFT + C", hl.dsp.exec_cmd(kuori .. "launcher clipboard"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(kuori .. "capture region"))
 
--- App menu on Alt+Space
-o.bind("ALT + SPACE", "Apps menu", "omarchy-menu toggle apps")
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + O", hl.dsp.window.float({ action = "toggle" }))
+-- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+-- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
-o.bind("SUPER + Q", "Close window", hl.dsp.window.close())
-o.bind("ALT + Q", "Close window", hl.dsp.window.close())
+hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
--- scratchpad
--- hl.unbind("SUPER + SHIFT + S")
--- o.bind("SUPER + SHIFT + S", "Move window to scratchpad", hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }))
-o.bind("section", "Toggle scratchpad", hl.dsp.workspace.toggle_special("scratchpad"))
-o.bind("SUPER + section", "Move window to scratchpad", hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }))
-
-o.bind("ALT + RETURN", "Terminal", { omarchy = "terminal" })
-
-hl.unbind("SUPER + SHIFT + RETURN")
-o.bind("ALT + SHIFT + RETURN", "Herdr", { omarchy = "terminal-tmux" })
--- o.bind("ALT + SHIFT + RETURN", "Herdr", "omarchy-launch-terminal bash -c \"tmux new-session -A -s default\"")
-
--- Vim-style window navigation (Alt+hjkl)
-hl.unbind("SUPER + H")
-hl.unbind("SUPER + J")
-hl.unbind("SUPER + K")
-hl.unbind("SUPER + L")
-o.bind("SUPER + H", "Focus left window", hl.dsp.focus({ direction = "l" }))
-o.bind("SUPER + J", "Focus down window", hl.dsp.focus({ direction = "d" }))
-o.bind("SUPER + K", "Focus up window", hl.dsp.focus({ direction = "u" }))
-o.bind("SUPER + L", "Focus right window", hl.dsp.focus({ direction = "r" }))
-
--- Vim-style window moving (Alt+Shift+hjkl)
-o.bind("SUPER + SHIFT + H", "Move window left", hl.dsp.window.swap({ direction = "l" }))
-o.bind("SUPER + SHIFT + J", "Move window down", hl.dsp.window.swap({ direction = "d" }))
-o.bind("SUPER + SHIFT + K", "Move window up", hl.dsp.window.swap({ direction = "u" }))
-o.bind("SUPER + SHIFT + L", "Move window right", hl.dsp.window.swap({ direction = "r" }))
-
--- Workspace navigation on Alt+number (replaces Super+number)
--- Move window to workspace on Alt+Shift+number (replaces Super+Shift+number)
-local workspaces = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
-for _, key in ipairs(workspaces) do
-  local workspace = key == "0" and "10" or key
-  hl.unbind("SUPER + " .. key)
-  hl.unbind("SUPER + SHIFT + " .. key)
-  o.bind("ALT + " .. key, "Switch to workspace " .. workspace, hl.dsp.focus({ workspace = workspace }))
-  o.bind("ALT + SHIFT + " .. key, "Move window to workspace " .. workspace, hl.dsp.window.move({ workspace = workspace }))
+-- Switch workspaces with altMod + [0-9]
+-- Move active window to a workspace with altMod + SHIFT + [0-9]
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind(altMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
+    hl.bind(altMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Clipboard manager on Super+Shift+C (also Super+Ctrl+V)
-hl.unbind("SUPER + SHIFT + C")
-o.bind("SUPER + SHIFT + C", "Clipboard manager", "omarchy-shell shell toggle omarchy.clipboard")
-o.bind("ALT + SHIFT + C", "Clipboard manager", "omarchy-shell shell toggle omarchy.clipboard")
+-- Example special workspace (scratchpad) TODO: Change to "pykälä"
+-- hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
-o.bind("ALT + SHIFT + S", "Audio", "omarchy-shell shell toggle omarchy.audio")
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 
--- Screenshot on Super+Shift+S (was: Move window to scratchpad)
-hl.unbind("SUPER + SHIFT + S")
-o.bind("SUPER + SHIFT + S", "Screenshot", "omarchy-capture-screenshot")
+-- Move/resize windows with mainMod + LMB/RMB and dragging
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Open agent
-hl.unbind("SUPER + SHIFT + A")
-o.bind("SUPER + SHIFT + A", "Agent", "omarchy-agent --pick")
-o.bind("ALT + SHIFT + A", "Agent", "omarchy-agent --pick")
+-- Laptop multimedia keys for volume and LCD brightness
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
+hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
+-- hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
+-- hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd(kuori .. "backlight up"),   { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(kuori .. "backlight down"), { locked = true, repeating = true })
 
-
--- Herdr session picker on Super+Ctrl+Return
--- (was: Herdr, a duplicate of the Super+Shift+Return binding above)
-hl.unbind("SUPER + CTRL + RETURN")
-o.bind("SUPER + CTRL + RETURN", "Herdr sessions", "omarchy-shell shell toggle tuomo.herdr")
-
-
--- tmux session picker on Alt+Ctrl+Return, next to the Alt+Shift+Return tmux
--- terminal above. Lists live tmux sessions and recent zoxide directories.
-hl.unbind("ALT + CTRL + RETURN")
-o.bind("ALT + CTRL + RETURN", "tmux sessions", "omarchy-shell shell toggle tuomo.tmux")
-o.bind("ALT + SHIFT + P", "tmux sessions", "omarchy-shell shell toggle tuomo.tmux")
+-- Requires playerctl
+hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
