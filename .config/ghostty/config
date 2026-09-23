@@ -1,45 +1,77 @@
-# Dynamic theme colors
-config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
-
 command = fish
 
-# Font
-font-family = "JetBrainsMono Nerd Font"
-font-style = Regular
+# Font Configuration
+font-family = JetBrainsMono Nerd Font
 font-size = 9
 
-background-opacity = 0.95
-
-# Window
-window-theme = ghostty
+# Window Configuration
+window-decoration = false
 window-padding-x = 5,2
 window-padding-y = 5,2
-confirm-close-surface=false
-resize-overlay = never
-gtk-toolbar-style = flat
 
-# Cursor styling
-cursor-style = "block"
-cursor-style-blink = false
+background-opacity = 0.95
+background-blur-radius = 32
 
-# Cursor styling + SSH session terminfo
-# (all shell integration options must be passed together)
-shell-integration-features = no-cursor,ssh-env
+# Cursor Configuration
+cursor-style = block
+cursor-style-blink = true
 
-# Keyboard bindings
-keybind = shift+insert=paste_from_clipboard
-keybind = control+insert=copy_to_clipboard
-# Send Shift+Enter as CSI-u so TUIs can distinguish it from Enter.
-keybind = shift+enter=csi:13;2u
-# Legacy encoding sends Alt+Shift+Enter the same as Alt+Enter; send CSI-u so tmux can match M-S-Enter.
-keybind = alt+shift+enter=csi:13;4u
-keybind = super+control+shift+alt+arrow_down=resize_split:down,100
-keybind = super+control+shift+alt+arrow_up=resize_split:up,100
-keybind = super+control+shift+alt+arrow_left=resize_split:left,100
-keybind = super+control+shift+alt+arrow_right=resize_split:right,100
+# Scrollback
+# scrollback-limit = 3023
 
-# Slowdown mouse scrolling
-mouse-scroll-multiplier = 0.95
+# Terminal features
+mouse-hide-while-typing = true
+copy-on-select = false
+confirm-close-surface = false
 
-# Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
-async-backend = epoll
+# Disable annoying copied to clipboard
+#app-notifications = no-clipboard-copy,no-config-reload
+
+# Key bindings for common actions
+keybind = alt+c=copy_to_clipboard
+keybind = alt+v=paste_from_clipboard
+keybind = alt+.=reload_config
+keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+zero=reset_font_size
+keybind = ctrl+enter=ignore
+
+# Material 3 UI elements
+unfocused-split-opacity = 0.7
+unfocused-split-fill = #44464f
+
+# Tab configuration
+gtk-titlebar = false
+
+# Shell integration
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,no-cursor
+# keybind = shift+enter=text:\n
+
+# Rando stuff
+gtk-single-instance = true
+
+theme = Catppuccin Mocha
+
+# palette = 0=#45475a
+# palette = 1=#e4574f
+# palette = 2=#a6e3a1
+# palette = 3=#f0c674
+palette = 4=#5aa2ff
+# palette = 5=#f5c2e7
+# palette = 6=#94e2d5
+# palette = 7=#a6adc8
+# palette = 8=#585b70
+# palette = 9=#f37799
+# palette = 10=#89d88b
+# palette = 11=#ebd391
+# palette = 12=#74a8fc
+# palette = 13=#f2aede
+# palette = 14=#6bd7ca
+# palette = 15=#bac2de
+background = #0b0f16
+# foreground = #cdd6f4
+# cursor-color = #f5e0dc
+# cursor-text = #1e1e2e
+# selection-background = #585b70
+# selection-foreground = #cdd6f4
