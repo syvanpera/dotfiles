@@ -9,26 +9,5 @@ hl.monitor({
   sdr_max_luminance = 80,
 })
 
-hl.monitor({
-  output = "desc:LG Electronics LG IPS QHD 303NTLE28728",
-  mode = "2560x1440@74.97",
-  position = "2560x0",
-  scale = 1,
-  sdr_min_luminance = 0.2,
-  sdr_max_luminance = 80,
-})
-
-hl.monitor({
-  output = "desc:LG Electronics LG IPS QHD 303NTSU28726",
-  mode = "2560x1440@74.97",
-  position = "0x0",
-  scale = 1,
-  sdr_min_luminance = 0.2,
-  sdr_max_luminance = 80,
-})
-
-hl.workspace_rule({ workspace = "1", monitor = "desc:LG Electronics LG IPS QHD 303NTSU28726", default = true, persistent = true })
-hl.workspace_rule({ workspace = "2", monitor = "desc:LG Electronics LG IPS QHD 303NTSU28726" })
-hl.workspace_rule({ workspace = "3", monitor = "desc:LG Electronics LG IPS QHD 303NTLE28728", default = true, persistent = true })
 hl.workspace_rule({ workspace = "4", monitor = "desc:BOE NE135A1M-NY1", default = true, persistent = true })
 hl.workspace_rule({ workspace = "5", monitor = "desc:BOE NE135A1M-NY1" })

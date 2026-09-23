@@ -1,6 +1,7 @@
 vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/catppuccin/nvim",
+  "https://github.com/folke/tokyonight.nvim",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/NMAC427/guess-indent.nvim",
@@ -15,6 +16,14 @@ require("catppuccin").setup({
     transparent = true,
   },
 })
+
+
+--- tokyo night theme ---
+require("tokyonight").setup({
+  style = "night",
+  transparent = true,
+})
+
 
 vim.cmd.colorscheme 'catppuccin'
 

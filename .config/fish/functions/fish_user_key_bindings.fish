@@ -2,6 +2,9 @@ function fish_user_key_bindings
     # Enable vi mode
     # fish_vi_key_bindings
 
+    # Tell fish to treat tmux's Shift+Enter escape sequence as a standard Enter
+    bind \e\[13\;2u execute
+
     # Disable Alt+V
     bind -M default alt-v repaint
     bind -M insert alt-v repaint

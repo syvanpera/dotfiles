@@ -94,6 +94,7 @@ CentOS = ""
 Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
+NixOS = " "
 
 [hostname]
 ssh_only = false

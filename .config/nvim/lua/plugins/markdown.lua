@@ -6,4 +6,8 @@ require("render-markdown").setup({
         enabled = true,
         icons = {},
     },
+    pipe_table = {
+        enabled = true,
+        preset = 'round',
+    },
 })

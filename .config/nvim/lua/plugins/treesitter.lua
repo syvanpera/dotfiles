@@ -29,6 +29,7 @@ require("tree-sitter-manager").setup({
     "vim",
     "vimdoc",
     "yaml",
+    "qmljs",
   },
 })
 

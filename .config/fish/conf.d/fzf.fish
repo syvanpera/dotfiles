@@ -1,1 +1,3 @@
-# fzf --fish | source
+# if status is-interactive
+#     fzf --fish | source
+# end

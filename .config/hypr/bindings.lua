@@ -44,6 +44,7 @@ o.bind("ALT + RETURN", "Terminal", { omarchy = "terminal" })
 
 hl.unbind("SUPER + SHIFT + RETURN")
 o.bind("ALT + SHIFT + RETURN", "Herdr", { omarchy = "terminal-tmux" })
+-- o.bind("ALT + SHIFT + RETURN", "Herdr", "omarchy-launch-terminal bash -c \"tmux new-session -A -s default\"")
 
 -- Vim-style window navigation (Alt+hjkl)
 hl.unbind("SUPER + H")
@@ -77,6 +78,8 @@ hl.unbind("SUPER + SHIFT + C")
 o.bind("SUPER + SHIFT + C", "Clipboard manager", "omarchy-shell shell toggle omarchy.clipboard")
 o.bind("ALT + SHIFT + C", "Clipboard manager", "omarchy-shell shell toggle omarchy.clipboard")
 
+o.bind("ALT + SHIFT + S", "Audio", "omarchy-shell shell toggle omarchy.audio")
+
 -- Screenshot on Super+Shift+S (was: Move window to scratchpad)
 hl.unbind("SUPER + SHIFT + S")
 o.bind("SUPER + SHIFT + S", "Screenshot", "omarchy-capture-screenshot")
@@ -91,3 +94,10 @@ o.bind("ALT + SHIFT + A", "Agent", "omarchy-agent --pick")
 -- (was: Herdr, a duplicate of the Super+Shift+Return binding above)
 hl.unbind("SUPER + CTRL + RETURN")
 o.bind("SUPER + CTRL + RETURN", "Herdr sessions", "omarchy-shell shell toggle tuomo.herdr")
+
+
+-- tmux session picker on Alt+Ctrl+Return, next to the Alt+Shift+Return tmux
+-- terminal above. Lists live tmux sessions and recent zoxide directories.
+hl.unbind("ALT + CTRL + RETURN")
+o.bind("ALT + CTRL + RETURN", "tmux sessions", "omarchy-shell shell toggle tuomo.tmux")
+o.bind("ALT + SHIFT + P", "tmux sessions", "omarchy-shell shell toggle tuomo.tmux")
