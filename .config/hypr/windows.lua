@@ -88,3 +88,14 @@ hl.window_rule({
     match = { tag = "floating-window" },
     size = { 875, 600 }
 })
+
+-- kuori marks the focused window itself, with border_size = 0 in looknfeel.lua,
+-- but hyprland emits nothing while a window is dragged, so kuori's mark cannot
+-- follow a floating window being moved. floating windows get hyprland's own
+-- border instead, and kuori leaves them unmarked (Theme.focusMarkFloating).
+hl.window_rule({
+    name  = "floating-border",
+    match = { float = true },
+
+    border_size = 2,
+})
