@@ -3,7 +3,7 @@
 hl.monitor({
   output = "desc:BOE NE135A1M-NY1",
   mode = "2880x1920@120.00",
-  position = "480x1440",
+  position = "611x1440",
   scale = 2,
   sdr_min_luminance = 0.2,
   sdr_max_luminance = 80,
@@ -29,6 +29,6 @@ hl.monitor({
 
 hl.workspace_rule({ workspace = "1", monitor = "desc:LG Electronics LG IPS QHD 303NTSU28726", default = true, persistent = true })
 hl.workspace_rule({ workspace = "2", monitor = "desc:LG Electronics LG IPS QHD 303NTSU28726" })
-hl.workspace_rule({ workspace = "3", monitor = "desc:LG Electronics LG IPS QHD 303NTLE28728", default = true, persistent = true })
-hl.workspace_rule({ workspace = "4", monitor = "desc:BOE NE135A1M-NY1", default = true, persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = "desc:LG Electronics LG IPS QHD 303NTLE28728" })
+hl.workspace_rule({ workspace = "4", monitor = "desc:BOE NE135A1M-NY1" })
 hl.workspace_rule({ workspace = "5", monitor = "desc:BOE NE135A1M-NY1" })
