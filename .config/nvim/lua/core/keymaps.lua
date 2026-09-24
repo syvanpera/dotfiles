@@ -38,3 +38,7 @@ map("n", "<leader>u", function()
   vim.cmd.packadd("nvim.undotree")
   require("undotree").open()
 end, { desc = "Toggle Builtin Undotree" })
+
+map("i", "<C-f>", function()
+  return vim.fn.pumvisible() == 1 and "<C-y>" or "<C-f>"
+end, { expr = true, desc = "Accept completion item" })
