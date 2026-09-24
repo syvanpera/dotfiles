@@ -134,6 +134,9 @@ hl.config({
     anr_missed_pings = 3,
     on_focus_under_fullscreen = 1,
     initial_workspace_tracking = 0,
+    -- With follow_mouse = 2 the cursor moving to another monitor would still
+    -- make it the active monitor, so ALT+N to its visible workspace was a no-op.
+    mouse_move_focuses_monitor = false,
     -- Let a fresh shell re-acquire the session lock after the lock client
     -- died, so omarchy-restart-shell can recover the LOCK failsafe.
     allow_session_lock_restore = true,
