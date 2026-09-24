@@ -24,6 +24,10 @@ hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd(kuori .. "launcher power"))
 
 hl.bind(altMod .. " + Q", hl.dsp.window.close())
 
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd(kuori .. "lock now"))
+
+hl.bind(altMod .. " + SHIFT + S", hl.dsp.exec_cmd(kuori .."system toggle audio"))
+
 hl.bind(altMod .. " + SHIFT + C", hl.dsp.exec_cmd(kuori .. "launcher clipboard"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(kuori .. "capture region"))
 
