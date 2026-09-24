@@ -1,12 +1,8 @@
--- Enable faster startup by caching compiled lua modules
-vim.loader.enable()
-
 -- Set <space> as the leader key
 -- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.g.have_nerd_font = true
 vim.g.netrw_banner = 0
 
 vim.opt.number = true
@@ -16,11 +12,8 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.smarttab = true
 
 vim.opt.wrap = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
 vim.opt.breakindent = true
 vim.opt.inccommand = "split"
 
@@ -48,7 +41,6 @@ vim.opt.guicursor = ""
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
-vim.opt.termguicolors = true
 
 vim.diagnostic.config({
   signs = {

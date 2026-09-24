@@ -3,7 +3,6 @@ vim.pack.add({
   "https://github.com/catppuccin/nvim",
   "https://github.com/folke/tokyonight.nvim",
   "https://github.com/stevearc/oil.nvim",
-  "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/NMAC427/guess-indent.nvim",
   "https://github.com/folke/todo-comments.nvim",
 })
@@ -47,9 +46,13 @@ require("todo-comments").setup({ signs = true })
 
 
 local plugins_dir = vim.fs.joinpath(vim.fn.stdpath 'config', 'lua', 'plugins')
+local modules = {}
 for file_name, type in vim.fs.dir(plugins_dir, { follow = true }) do
   if (type == 'file' or type == 'link') and file_name:match '%.lua$' and file_name ~= 'init.lua' and not file_name:match '^_' then
-    local module = file_name:gsub('%.lua$', '')
-    require('plugins.' .. module)
+    table.insert(modules, (file_name:gsub('%.lua$', '')))
   end
+end
+table.sort(modules)
+for _, module in ipairs(modules) do
+  require('plugins.' .. module)
 end

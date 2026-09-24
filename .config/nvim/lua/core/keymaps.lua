@@ -1,10 +1,7 @@
 -- Why they changed the default is beyond me
-vim.cmd([[ noremap Y Y]])
+vim.keymap.del("n", "Y")
 
 local map = vim.keymap.set
-
--- replaces selected text WITHOUT losing what you yanked
-map("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
 
 -- delete text without saving it to any register
 map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
@@ -31,7 +28,7 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Move up in buffer with cursor centered" }
 map("n", "n", "nzzzv", { desc = "Next search result with cursor centered" })
 map("n", "N", "Nzzzv", { desc = "Prev search result with cursor centered" })
 
-map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word cursor is on globally" })
+map("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word cursor is on globally" })
 
 map("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Makes file executable" })
 map("n", "<leader>re", "<cmd>restart<cr>", { desc = "Restart config :restart)" })

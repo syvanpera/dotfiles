@@ -34,6 +34,7 @@ require("tree-sitter-manager").setup({
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("treesitter-start", { clear = true }),
   callback = function()
     pcall(vim.treesitter.start)
   end,

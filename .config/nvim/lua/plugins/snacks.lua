@@ -65,9 +65,9 @@ vim.keymap.set("n", "<leader>ft", function() Snacks.picker.todo_comments() end, 
 -- LSP
 vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "goto definition" })
 vim.keymap.set("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "goto declaration" })
-vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "references" })
-vim.keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "goto implementation" })
-vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "goto t[y]pe definition" })
+vim.keymap.set("n", "grr", function() Snacks.picker.lsp_references() end, { desc = "references" })
+vim.keymap.set("n", "gri", function() Snacks.picker.lsp_implementations() end, { desc = "goto implementation" })
+vim.keymap.set("n", "grt", function() Snacks.picker.lsp_type_definitions() end, { desc = "goto t[y]pe definition" })
 vim.keymap.set("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, { desc = "c[a]lls incoming" })
 vim.keymap.set("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "c[a]lls outgoing" })
 vim.keymap.set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
