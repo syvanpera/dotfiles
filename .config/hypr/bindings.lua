@@ -6,7 +6,7 @@
 local terminal    = "ghostty"
 local multiplexer = "ghostty -e tmux new-session -A -s Work"
 local fileManager = "nautilus"
-local kuori       = "qs ipc -p ~/.config/kuori call "
+local kuori       = "kuori ipc call "
 
 -- key modifiers
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
