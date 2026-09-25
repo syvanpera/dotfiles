@@ -1,0 +1,18 @@
+# Only the settings that differ from voxtype's defaults. `voxtype config`
+# prints the full resolved configuration, `voxtype config schema` every key.
+
+[hotkey]
+# Recording is driven by Hyprland keybinds (see hypr/bindings.lua), not by
+# voxtype reading the keyboard itself.
+enabled = false
+
+[output]
+# Enters the Hyprland submap where releasing V stops the recording, whatever
+# order SUPER and V are let go in. See hypr/bindings.lua.
+pre_recording_command = "hyprctl dispatch 'hl.dsp.submap(\"voxtype_recording\")'"
+
+[osd]
+# kuori draws the recording osd itself, out of its system tab (its
+# services/Voxtype.qml reads the daemon's state file), so voxtype's own
+# frontends stay off.
+enabled = false

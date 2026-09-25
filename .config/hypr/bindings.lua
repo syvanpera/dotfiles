@@ -31,6 +31,25 @@ hl.bind(altMod .. " + SHIFT + S", hl.dsp.exec_cmd(kuori .."system toggle audio")
 hl.bind(altMod .. " + SHIFT + C", hl.dsp.exec_cmd(kuori .. "launcher clipboard"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(kuori .. "capture region"))
 
+-- Voice typing, push-to-talk: hold SUPER + V to record, let go to transcribe.
+-- Starting a recording puts Hyprland in the submap below (voxtype's
+-- pre_recording_command), and that is where the release is caught: a release
+-- bind on SUPER + V would miss it whenever SUPER comes up before V.
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("voxtype record start"))
+
+hl.define_submap("voxtype_recording", function ()
+    hl.bind("V", function ()
+        hl.dispatch(hl.dsp.exec_cmd("voxtype record stop"))
+        hl.dispatch(hl.dsp.submap("reset"))
+    end, { release = true, ignore_mods = true })
+
+    -- Throw the recording away instead
+    hl.bind("ESCAPE", function ()
+        hl.dispatch(hl.dsp.exec_cmd("voxtype record cancel"))
+        hl.dispatch(hl.dsp.submap("reset"))
+    end, { ignore_mods = true })
+end)
+
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + O", hl.dsp.window.float({ action = "toggle" }))
