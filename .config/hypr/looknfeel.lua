@@ -21,7 +21,7 @@ hl.config({
 
     resize_on_border = false,
     allow_tearing = false,
-    layout = "dwindle",
+    layout = "scrolling",
   },
 
   decoration = {
@@ -119,7 +119,8 @@ hl.config({
   },
 
   scrolling = {
-    column_width = 0.49,
+    column_width = 0.5,
+    direction = "right"
   },
 
   master = {
