@@ -12,28 +12,20 @@ sync:
   enabled: false
   server_url: null
   interval_seconds: 30
-  auth_token: ''
+  auth_token: null
 daemon:
   wake_addr: 127.0.0.1:47631
 workspace:
   default: null
-  routes:
-    - workspace: "asteroid"
-      paths: ["~/work/asteroid"]
+  routes: []
 project:
   overrides:
     # aven-managed project path mapping
     - workspace_id: '0000000000000000'
       workspace: default
-      project: rig
+      project: kuori
       paths:
-        - /home/tuomo/work/personal/rig
-    # aven-managed project path mapping
-    - workspace_id: '0000000000000000'
-      workspace: default
-      project: vespa-taksi
-      paths:
-        - /home/tuomo/work/personal/vespa-taksi
+        - /home/tuomo/work/personal/kuori
 agent:
   task_intake:
     command: null
@@ -47,6 +39,17 @@ agent:
 update:
   automatic_checks: true
 tui:
+  table:
+    columns:
+    - ref
+    - title
+    - labels
+    - metadata
+    - project
+    - status
+    - priority
+    - time
+    compact_status: false
   sidebar:
     views:
     - queue
