@@ -1,6 +1,19 @@
 # Dotfiles
 
-These are my personal dotfiles managed with [mise-en-place](https://mise.jdx.dev).
+My personal dotfiles, linked into `$HOME` with [GNU Stow](https://www.gnu.org/software/stow/).
+The repo mirrors the home directory, so the whole repo is one stow package:
+
+    cd ~/work/personal/dotfiles
+    stow -t ~ .        # link everything
+    stow -t ~ -R .     # relink after adding or removing configs
+    stow -t ~ -D .     # remove all links
+
+Create `~/.config` before the first run on a new machine. If it is missing,
+stow links `~/.config` itself into the repo, and every app then writes its
+files here. With `~/.config` present, stow links each config directory as a
+whole, so apps can still add files inside their own directory.
+
+Stow skips `README.md`, `.gitignore` and `.git` by default.
 
 ## herdr plugins
 
@@ -15,19 +28,3 @@ they are ignored rather than tracked. Reinstall them on a new machine with:
 Installed as of 2026-09-10: herdr-splits 0.5.3 (`94f30cf`, exactly the v0.5.3
 tag) and sesh 0.11.0 (`a734482`, a commit on main past the v0.11.0 tag — pass
 that commit to `--ref` instead if the difference ever matters).
-
-## omarchy plugins
-
-`crmne.hyprmoncfg` and `chyld.easy-capture` are their own git checkouts that
-omarchy updates in place, so they are ignored too. The plugins under
-`.config/omarchy/plugins` written here — `tuomo.*` — are tracked as normal.
-
-    omarchy plugin add https://github.com/crmne/omarchy-hyprmoncfg.git --enable
-    omarchy plugin add https://github.com/chyld/omarchy-easy-capture.git --enable
-
-`omarchy plugin add` takes no ref, so those install the current main. Last used
-with hyprmoncfg v2.3.3 (`c419135`, an exact tag) and easy-capture 0.4.0
-(`59fc509` — that repo publishes no tags, so the version is the manifest's).
-Both are bar widgets enabled in the tracked `.config/omarchy/shell.json`, and
-hyprmoncfg also writes the tracked `.config/hypr/hyprmoncfg-monitors.lua`.
-Update them with `omarchy plugin update`.
