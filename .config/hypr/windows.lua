@@ -65,6 +65,17 @@ hl.window_rule({
     tag             = "+floating-window",
 })
 
+-- Portal dialogs (file chooser etc.) come from a separate process with no
+-- parent link to the requesting app, so they would tile and end up behind
+-- a floating window that opened them.
+hl.window_rule({
+    match = { class = "^(xdg-desktop-portal-.*)$" },
+
+    float  = true,
+    center = true,
+    size   = { 1100, 700 },
+})
+
 -- Remove the 1px border around the slurp region selection used by screenshots.
 hl.layer_rule({
     match = { namespace = "selection" },
