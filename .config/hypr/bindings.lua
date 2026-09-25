@@ -50,7 +50,7 @@ hl.define_submap("voxtype_recording", function ()
     end, { ignore_mods = true })
 end)
 
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+-- hl.bind(mainMod .. " + M",hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + O", hl.dsp.window.float({ action = "toggle" }))
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
